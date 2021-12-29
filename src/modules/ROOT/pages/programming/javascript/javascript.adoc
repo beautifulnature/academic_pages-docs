@@ -1,0 +1,6 @@
+[[javascript]]
+= javascript
+:page-aliases: javascript/javascript.adoc
+:imagesdir: ../..
+
+Learn javascript.

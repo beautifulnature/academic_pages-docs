@@ -1,0 +1,7 @@
+[[Java]]
+= Java
+// Redirect to this page from .../docs/optaplanner/latest/quickstart/quickstart.html.
+:page-aliases: java/java.adoc
+:imagesdir: ../..
+
+Learn java.

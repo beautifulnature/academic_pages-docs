@@ -1,0 +1,6 @@
+[[c]]
+= c
+:page-aliases: c/c.adoc
+:imagesdir: ../..
+
+Learn c.
