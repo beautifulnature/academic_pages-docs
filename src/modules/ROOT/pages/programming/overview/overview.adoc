@@ -1,0 +1,15 @@
+[[quickStartOverview]]
+= Overview
+// Redirect to this page from .../docs/academic-site/latest/programming/programming.html.
+// :page-aliases: programming/programming.adoc
+:imagesdir: ../..
+
+Programming Languages overview:
+
+* xref:programming/java/java.adoc#java[*Hello Java*]
+** Build a simple Java application.
+* xref:programming/c/c.adoc#c[*Hello C*]
+** Build a C application.
+* xref:programming/javascript/javascript.adoc#javascript[*javascript*]
+
+All programming languages are same. Do things that work.

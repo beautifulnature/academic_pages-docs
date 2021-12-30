@@ -1,5 +1,2 @@
 * xref:electrical/electrical-technology.adoc[leveloffset=+1]
-* Programming
-** xref:programming/java/java.adoc[leveloffset=+1]
-** xref:programming/javascript/javascript.adoc[leveloffset=+1]
-** xref:programming/c/c.adoc[leveloffset=+1]
+* xref:programming/programming.adoc[leveloffset=+1]

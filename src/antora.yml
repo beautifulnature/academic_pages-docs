@@ -1,5 +1,5 @@
 name: academic-site
-title: Academic site User Guide
+title: Academic Pages website User Guide
 version: latest
 nav:
   - modules/ROOT/nav.adoc
