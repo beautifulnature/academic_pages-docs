@@ -18,6 +18,7 @@
 
   <properties>
     <!--
+      
     Antora ignores hidden files. 
     The docs website should not incorporate this file as it brings the single-paged docs duplicating the other content.
     -->
