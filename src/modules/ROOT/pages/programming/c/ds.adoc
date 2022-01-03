@@ -1,0 +1,507 @@
+[[c_ds]]
+= Data Structures through C
+:page-aliases: ds/ds.adoc
+:imagesdir: ../../../../images/programming/c/ds
+
+== Unit 1
+
+=== Data Structures
+
+==== Definition
+
+* Data structures is the concept of set of algorithms used to structure the information.
+* These algorithms are implemented in different programming languages like c, c++, java, python, etc.
+* Structure the information means store and process data in an efficient manner.
+* To store and process data, we may use the following operations:
+1. create()
+2. insert()
+3. delete()
+4. display()
+5. search()
+6. sort()
+7. merge()
+8. split()
+9. traverse()
+* So the data structure may contain algorithms, used for different operations implement these algorithms by a programming language.
+* For example, for stack data structure, write algorithms for different operations
+1. push
+2. pop
+3. display
+* Implement these algorithms in a particular language say C.
+
+==== Classification of Data Structures
+
+Data Structures are normally classified into 2 types:
+1. Primitive Data Structures
+2. Non-Primitive Data Structures
+
+===== Primitive Data Structures
+
+Primitive data structures are built-in types in most programming languages. They are:
+1. Integer:: It is whole numbers i.e. negative value, 0, positive value.
+2. Float:: It is fractional numbers.
+3. Character:: It is character values.
+4. Boolean:: It represents true or false values.
+
+===== Non-Primitive Data Structures
+
+These are derived from primitive data structures. They are:
+1. Array
+2. Structure
+3. Union
+4. Files
+etc.
+
+Non-Primitive data type is further divided into Linear and Non-Linear data structures:
+
+a. Linear Data Structures:
+Here the data elements are connected in a sequence manner.
+Examples are:
+1. Arrays
+2. Linked List
+3. Stacks
+4. Queues
+
+Array:
+It is collection of eleements of same type.
+
+a[5] = {10, 20, 30, 40, 50}
+
+|====
+|0|1|2|3|4
+|10|20|30|40|50
+|====
+
+Linked List:
+* Linked list or single linked list is a sequence of elements in which every element has link to its next element in the sequence.
+* Every element is called as a `node`. 
+Every `node` contains two fields, `data` and `link`. 
+The `data` is a value or string and 
+`link` is an address of next `node`.
+* The first `node`` is called as `HEAD` which is an empty node contains an address of the first node so it link to the first `node`.
+* The first `node` link to second `node` and so on.
+* The last `node` does not link to address but link to `NULL`. 
+Let `ptr` be a `pointer` to the linked list. 
+THe example is given below:
+image::linked-list.png[Linked List]
+
+Stack:
+A `stack` is a data structure in which additions and deletions are made at the top of the `stack`. 
+So we can perform two operations on `stack`.
+1. Adding elements into the stack known as `push`.
+2. Removing elements from the stack known as `pop`.
+image::stack.png[Stack]
+
+Queue:
+A `queue` is a data structure in which additions are made at one end and deletions are made at the other end. 
+We can represent a `queue` in an array.
+
+Here we can perform two operations on `queue`.
+1. Adding elements into the queue known as insertion at rear.
+2. Removing elements from the queue known as deletion at front.
+image::queue.png[Queue]
+
+b) Non-Linear Data Structures:
+Here the data elements are not connected in a sequence manner.
+
+Examples are:
+1. Trees
+2. Graphs
+
+Tree:
+A `tree` is defined as a finite set of one or more `nodes` such that
+1. One `node` is called a root node and
+2. Remaining `nodes` are partitioned into sub trees of the root.
+image::tree.png[Tree]
+
+Graph:
+* A `graph` is a pictorial representation of a set of `points` or `nodes` termed as `vertices` and the `links` that connect the vertices are called `edges`.
+* A `graph`(G) consists of two sets `V` and `E` where `V` is called vertices and `E` is called edges. 
+We also write G = (V, E) to represent the graph.
+* A `graph` may be dircted graph or undirected graph.
+image::graph.png[Graph]
+* Fig(a), Fig(b) are called undirected graph and Fig(c) is called directed graph.
+
+Differences between Linear and Non-Linear Data Structures:
+[cols="1,1"]
+|===
+|Linear Data Structure | Non-Linear Data Structure 
+
+|Every data element is connected to its previous and next element.
+|Every data element is connected with many other data elements.
+
+|Data is arranged in a sequence manner.
+|Data is not arranged in a sequence manner.
+
+|Data can be travered in a single run.
+|Data cannot be traversed in a single run.
+
+|Ex: Arrays, Linked List, Stacks, Queues
+|Ex: Trees, Graphs
+
+|Implementation is easy.
+|Implementation is difficult.
+|===
+
+==== Operations on Data Structures
+
+The different operations on data structures are:
+
+1. Create:
++
+Here we reserve memory for program elements: This can be done using `malloc()` or `calloc()` function. 
+We can create a data structure with giving different elements.
+
+2. Insert:
++
+Here we reserve memory for program element: This can be done using `malloc()` or `calloc()` function. 
+We can insert a data element into a data structure.
+
+3. Delete:
++
+It delete memory space allocated for specified data structure using `free()` function.
+
+4. Display:
++
+It deals with accessing a particular data element within a data structure.
+
+5. Search:
++
+* It finds the data element in the list of data elements.
+* It also find the location of all elements.
+
+6. Sort:
++
+It is the process of arraning all the data elements in a data structure in a particular order say either in ascending or descending order.
+
+7. Merge:
++
+It is the process of combining the data elements of two different sorted list into a single sorted list.
+
+8. Split:
++
+It is the process of partitioning single list to multiple list.
+
+9. Traversal:
++
+It is the process of visiting each and every node of a list in systematic manner.
+
+==== Abstract Data Types (ADT)
+
+An `Abstract Data Type (ADT)` is a collection of values and a set of operations without specifying its implementation.
+
+For example in Array ADT, set of values are ind element & set of operations are create(), retrieval() and store().
+
+*Purpose*:
++
+* The purpose of the ADT is to hide the implementation details of a data structure thus improving software maintenance, reuse and portability.
+* The developers of ADT will adapt changing requirements and save time.
+* The users of ADT are concerned with the interface, but not the implementation.
+* The different ADTs
+** String ADT, List ADT, Stack ADT (last-in, first-out(LIFO))
+** Queue ADT (first-in, first-out(FIFO))
+** Binary Search Tree ADT
+etc.
+
+*Example*:
++
+* A `List ADT` contain operations known as add element, remove element, etc.
+* A `List ADT` can be represented by an `array-based` implementation or a `linked-list` based implementation. 
+In this the `linked-list` based implementation is so commonly used.
+* Similary a `Biney Search Tree ADT` can be represented in different ways with the same operations known as insert, remove, display, etc.
+
+==== Array as an Abstract Data Type
+
+The `Array ADT` is a set of values (index, element) and a set of operations known as `Array create()`, `Item Retrieve()` and `Array Store()`.
+
+The `Array ADT` algorithm is given by
++
+----
+`Array ADT` is
++
+*objects*: A set of pairs<index, element> where for each index, there is a corresponding element.
+*functions*: for all A€Array, i€index, x€element:
+Array create() := It creates a new empty array.
+Item retrieve(A, i) := It returns the element with particular index, if the index is valid or an error if the inded is invalid.
+Array Strore(A, i, x) := It stores the element
+end Array.
+----
+
+==== Stack as an Abstract Data Type
++
+----
+ADT stack is 
+*objects*: a finite ordered list with zero or more elements.
+*functions*: S € Stack, item € element
+Stack create() := creates a new empty stack.
+Stack push(S, item) := adds item to the top of the stack.
+Element pop(S) := removes the top element of the stack and returns it.
+end Stack.
+----
+
+==== Queue as an Abstract Data Type
++
+----
+ADT queue is
+*objects*: a finite ordered list with zero or more elements.
+*functions*: Q € Queue, item € element
+Queue create() := creates a new empty queue.
+Queue addq(Q, item) := adds item to the end of the queue.
+Element deleteq(Q) := removes and return the item from the queue.
+end Queue.
+----
+
+==== Binary Tree as an Abstract Data Type
++
+----
+ADT BinaryTree is
+*objects*: a finite set of nodes.
+*functions*: for all bt, bt1, bt2 € BinaryTree, item € element
+BinaryTree create() := creates a new empty binary tree.
+Boolean IsEmpty := if(bt == empty binary tree) return `TRUE` else return `FALSE`
+BinaryTree MakeBT(bt1, item, bt2) := return a binary tree whose left subtree is bt1, whose right subtree is bt2 and whose root node contains the date item.
+BinaryTree LeftChild(bt) := returns the left subtree of bt.
+Element Data(bt) := returns the data of the root node of bt.
+BinaryTree RightChild(bt) := returns the right subtree of bt.
+End BinaryTree.
+----
+
+==== Graph as an Abstract Data Type
++
+----
+ADT Graph is
+*objects*: a set of vertices and edges.
+*functions*: for all graph € Graph, v, v1 and v2 € Vertices
+Graph create() := creates a new empty Graph.
+Boolean IsEmpty() := if(graph == empty graph) return `TRUE` else return `FALSE`
+Graph InsertVertex(graph, v) := returns a graph with vertex v inserted.
+Graph InsertEdge(graph, v1, v2) := returns a graph with edge (v1, v2) inserted.
+Graph DeleteVertex(graph, v) := returns a graph with vertex v removed.
+Graph DeleteEdge(graph, v1, v2) := returns a graph with edge (v1, v2) removed.
+End ADT Graph.
+----
+
+===== Preliminaries of algorithms
+
+Algorithm is step-by-step process or sequence of steps for solving a problem.
+
+Properties of an Algorithm:
++
+* The properties of an algorithm are:
+Input:
++
+The algorithm must have input values from a specified set.
+Output:
++
+The algorithm must produce the output values from a specified set of input values. 
+The output values are the solution to a problem.
+Finiteness:
++
+For any input the algorithm must terminate after a finite number of steps.
+Definiteness:
++
+All the steps of an algorithm must be precisely defined.
+Effectiveness:
++
+It must be possible to perform each step of the algorithm correctly and in a finite amount of time.
+
+* Each step should be well defined. 
+It can be divided into 3 types.
++
+1. Sequence
+* In an algorithm if all steps are shown then it is known as sequence.
+* for example an algorithm for adding two values.
++
+----
+Ex:
+Step 1: start
+Step 2: read a, b
+Step 3: r = a + b
+Step 4: print r
+Step 5: stop
+----
+2. Selection
++
+* Here we use if condition and the condition is checked only one time.
+* if a condition is satisfied then next statement is executed otherwise else statement is executed.
+* For example an algorithm to check whether the given number is evene or odd.
++
+----
+Ex:
+Step 1: start
+Step 2: read n
+Step 3: if (n % 2 == 0) goto step 4
+        if not goto step 6
+Step 4: print "n is even" goto step 7
+Step 5: else
+Step 6: print "n is odd"
+Step 7: stop
+----
+
+3. Iteration
++
+* Here we use while, do-while and for loop & the condition is checked number of times.
+* i.e. The statements in an iteration block are executed no. of times based on some condition.
+* For example an algorithm to print 1 to n numbers using while loop.
++
+----
+Ex:
+Step 1: start
+Step 2: read n
+Step 3: initialize i = 1
+Step 4: while (i <= 10) goto step 5
+        otherwise goto step 7
+Step 5: print i
+Step 6: compute i++ goto Step 4
+Step 7: stop
+----
+* When an algorithm get coded in a specified programming language such as C, C++ or Java, it becomes a program that can be executed on a computer.
+* Multiple algorithm can exist to solve the same problem or complethe the same task.
+* The appropriate algorithm can be determined based on an number of factors:
++
+1. How long the algorithm takes to run
+2. What resources are required to execute the algorithm
+3. How much space or memory is required.
+4. How exact is the solution provided by the algorithm.
+
+
+=== Searching
+
+=== Sorting
+
+Sorting is a process of placing a list of elements from a collection of dats in some order.
+
+It is nothing but storage of data in sorted order. 
+Sorting can be done in ascending or descending order. 
+It arranges the data in a squence which makes searching easier.
+
+==== Insertion Sort
++
+* In this sorting technique first elements are stored in an array.
+* The process of sorting starts with second element.
+* First the second element is picked and is placed in specified order. 
+Next third element is picked and is placed in specified order. 
+Similarly the fourth, fifth, ...nth element is placeed in specified order.
+* Finally we get the sorting elements.
+
+*Example*
++
+Let us consider the elements of an array: 12, 3, 1, 5, 8
++
+1. Checking second element of array with element before it and inserting it in proper position. 
+In this case 3 is inserted in position of 12.
++
+image::insertion_sort-1.png[]
+2. Checking third element of array with elements before it and inserting it in proper position. 
+In this cas 3 is inserted in position 12.
++
+image::insertion_sort-2.png[]
+3. Checking fourth element of array with elements before it and inserting it in proper position. 
+In this case 5 is inserted in position of 12.
++
+image::insertion_sort-3.png[]
+4. Checking fifth element of array with elements before it and inserting it in propoer position. 
+In this case 8 is inserted in position of 12.
++
+image::insertion_sort-4.png[]
+5. Sorted array in ascending order.
++
+image::insertion_sort-5.png[]
+
+*Algorithm*
++
+Step 1: Check second element of array with element before it and insert it in proper position.
+Step 2: Checking third element of array with element before it and inserting it in proper position.
+Step 3: Repeat this till all emements are checked.
+Step 4: Stop
+
+*Program*
+include::/programs/ds/insertion_sort.c
+
+==== Selection Sort
+
+Selection sort is an algorithm that selects the smallest element from an unsorted list in each iteration and places it at the beginning of the unsorted list.
+
+.Example
+image::selection_sort-1.png[]
+
+* In first pass the first element is compared with all remaining elements and exchange element if first one is greater than second so that the smallest value is in first place. 
+Leave this element.
+* In second pass compare second element to all elements put the next smallest value, in second place. 
+Leave this element. 
+This process is repeated till all the elements are placed.
+* Now we get the sorted elements.
+
+*Algorithm*
++
+Step 1: Set min to the first location.
+Step 2: Search the minimum element in the array.
+Step 3: Swap the first location with the minimum value in the array.
+Step 4: Assign the second element as min.
+Step 5: Repeat this process until we get a sorted array.
+
+*Program*
+include::/programs/ds/selection_sort.c
+
+==== Exchange Sort
+
+The exchange sort is almost similar as the bubble sort. 
+The exchange sort compares each element of an array and swap those elements that are not in their proper position, just like a bubble sort does. 
+The only difference between the two sorting algorithms is the manner in which they compare the elements.
+
+==== Bubble Sort
+
+Bubble sort is based on the idea of repeatedly comparing pairs of adjacent elements and then swapping positions if they eixst in the wrong order.
+
+*Example*
++
+The following figure shows the first pass of a bubble sort. 
+In first pass the first element is compared with second and exchange element if first one is greater than second.
+* Similarly second element is compared with third and exchange element if second one is greater than third.
+* Repeat this so that at the end of first pass the largest element is in the last position. 
+Leave this element.
+
+image::bubble_sort.png[]
+
+* In second pass compare up to before last place value and put the next largest value, that before last place. 
+Leave this element.
+
+* This process is repeated till all the elements are placed. 
+Now we get the sorted elements.
+
+*Algorithm*
++
+Step 1: The first element is compared with second and exchange element if first one is greater than second.
+Step 2: The second element is compared with third and exchange element if second one is greater than third.
+Step 3: Repeat this so that at the end the largest value is in last place.
+Step 4: Likwise sorting is repeated for all elements.
+
+*Program*
+include::/programs/ds/bubble_sort.c
+
+==== Quick Sort
+
+* Quick sort is also one of the exchange sort.
+* In a quick sort we take pivot element, then we place all the smaller elements are on one side of pivot, and greater elements on other side of pivot.
+* After partitioning we have pivot in the final position. 
+After repeatedly partioning, we get the sorted elements.
+
+*Example*
+* Let us consider the elements: 35, 50, 15, 25, 80, 20, 90, 45
+* Let us consider the first element 35 as pivot or i. 
+The last element 45 as j.
+image::quick_sort-1.png[]
+* 50 which is greater than pivot taken as i and 20 smaller than pivot taken as j.
+
+
+
+==== Distribution Sort or Radix Sort
+
+==== Merge Sort
+
+
+
+
+== chapter 2
+
+This is a chapter 2.
