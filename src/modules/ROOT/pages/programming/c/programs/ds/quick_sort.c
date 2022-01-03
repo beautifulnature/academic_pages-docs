@@ -1,4 +1,4 @@
-#include<stdio.h>
+#include <stdio.h>
 
 int main(int argc, char const *argv[])
 {
@@ -45,5 +45,4 @@ void quicksort(int a[25], int first, int last)
         quicksort(a, first, j - 1);
         quicksort(a, j + 1, last);
     }
-
 }

@@ -492,6 +492,52 @@ After repeatedly partioning, we get the sorted elements.
 The last element 45 as j.
 image::quick_sort-1.png[]
 * 50 which is greater than pivot taken as i and 20 smaller than pivot taken as j.
+image::quick_sort-2.png[]
+* Now i is less than j so swap the elements in i and j.
+image::quick_sort-3.png[]
+* Find greater than 35 (80) is i and less than 35 (25) is j.
+image::quick_sort-4.png[]
+* Now i is not less than j. 
+Swap 35 and j. 
+So 35 comes at j place.
+image::quick_sort-5.png[]
+* Now 35 is in correct position.
+* On left side and right side of 35 repeat the process. Consider on left side of 35
+image::quick_sort-6.png[]
+* Let 25 as pivot. 
+The lesser of 25 that is 15 as j and there is no greater. 
+So bring i after j. 
+i > j so swap pivot and j.
+image::quick_sort-7.png[]
+* After swaping
+image::quick_sort-8.png[]
+* Now the left part is sorted. 
+Consider right part.
+image::quick_sort-9.png[]
+* Here 80 as pivot. 
+Greater than 80 is i and less than to 80 is j.
+image::quick_sort-10.png[]
+* Here i is less than j, so swap i and j elements.
+image::quick_sort-11.png[]
+* After swaping, the sorting elements are given by
+image::quick_sort-12.png[]
+* Now join all left part j and right part j to get the sorted elements.
+image::quick_sort-13.png[]
+
+*Algorithm*
++
+Step 1: Let the first element taken as pivot.
+Step 2: Find lesser of pivot say i and greater of pivot say j.
+Step 3: if i is less than j then swap i and j elements. 
+Repeat step 2.
+Step 4: Repeat step 3 until i > j. 
+Now swap j and pivot.
+Step 5: Now the pivot element is in final position. 
+Repeat the above procedure for left and right side of pivot elements until all elements are sorted.
+Step 6: Stop
+
+*Program*
+include::/programs/ds/quick_sort.c
 
 
 
