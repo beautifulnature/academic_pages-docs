@@ -364,8 +364,88 @@ Step 7: stop
 3. How much space or memory is required.
 4. How exact is the solution provided by the algorithm.
 
-
 === Searching
+
+Searching is the process of finding an element in a list of values.
+
+It is the algorithimic process of finding a particular element in a colletion of elements.
+
+1. Linear Search
++
+Defination:
++
+It starts at the beginning of the list and checks each element of the list.
++
+i.e. It sequencially checks each element of the list until a match is found or the whole list has been searched.
+So it is called sequential search.
+
+*Example:*
+* Let the elements are: 10, 6, 3, 8, 9, 12, 14
+* The search element is 12
+* Now it compares 12 with each and every element.
+* The 12 is available at the 6th position.
+* So the searching process is success and element is found.
+
+*Algorithm:*
+Step 1: Read elements in array
+Step 2: Read the element to be searched
+Step 3: Compare the element with each element of the array sequentially
+Step 4: If match is found then the search is success
+Step 5: If match is not found then the search is unsuccess.
+
+*Program*
+include:include::/programs/ds/linear_search.c[]
+
+2. Binary Search
++
+Defination:
++
+Bineary search is the most popular search algorithm. 
+It is efficient and also one of the most commonly used techniques that are used to solve problems.
+
+Binary search sorts the records either in ascending or descending order to gain much better performance than linear search.
+
+Now suppose we have an ascending order record. At the tiem of search it takes the middle record/element, if the searching element is greater than middle element then the element must be located in the second part else it is in the first half. 
+In this way this search algorithm divides the records into two parts in each iteration and thus called binary search.
+
+*Example:*
+* Let the elements in ascending order are: 2, 4, 6, 8, 10, 12, 15
+* The search element is 12
+* For searching it compare first middle element.
+* The middle element is 8 and is not equal to 12. 
+Since 12 is greater than 8 search on right side part of 8. 
+12 is equal to right side part middle. 
+So element is found.
+
+*Algorithm:*
+Step 1: Read sorted elements in array
+Step 2: Read the element to be searched
+Step 3: Compare the element to search and middle element in array. 
+Step 4:If search element is greater than middle element then search in right side of middle element otherwise search on left.
+Step 5: This process is repeated for all eleements in array. 
+If not match is found upto the end then the search is not success.
+
+*Program*
+include:include::/programs/ds/binary_search.c[]
+
+3. Fibonacci Search
+
+* Fibonacci search uses Fibonacci numbers to find the element in the sorted array.
+* Fibonacci numbers are: 0, 1, 1, 2, 3, 5, 8...
+* Fibonacci series generates the subsequent number by adding two previous numbers.
+* For example:
+Let the elements are give by:
+10, 22, 35, 40, 45, 50, 80, 82, 85, 90, 100
+arr[] = {10, 22, 35, 40, 45, 50, 80, 82, 85, 90, 100}
+* Fibonacci numbers are: 0, 1, 1, 2, 3, 5, 8, 13, 21...
+Target element x is 85. 
+Length of array n = 11.
+* Find the smallest Fibbonacci number greater than or equal to 11 is 13.
+* As per our step, a=5, b=8, c=a+b=13.
+* Let offset = -1
+* First compute i = min (offset+a, n-1)
+
+
 
 === Sorting
 
@@ -539,14 +619,120 @@ Step 6: Stop
 *Program*
 include::/programs/ds/quick_sort.c
 
-
-
 ==== Distribution Sort or Radix Sort
+
+Randix sort is one of the sorting algorithms used to sort a list integer numbers in ascending order or descending order.
+
+* In randix sort algorithm, a list of integer numbers will be sorted based on the digits of individual numbers. 
+Sorting is performed from least significant digit to the most significant digit.
+
+* Randix sort algorithm requires the number of passes which are equal to the number of digits present in the largest number among the list of numbers.
+
+* For example, if the largest number is a 3 digit number then that list is sorted with 3 passes.
+
+*Example*
+Consider the following list of unsorted integers:
+
+82, 901, 100, 12, 150, 77, 55, 23
+
+Step 1: Define 10 queues each represents a bucket for digits from 0 to 9.
+image::randix-1.png[]
+Step 2: Insert all the numbers of the list into respective queue based on the least significant digit (ones placed digit) of every number.
+image::randix-2.png[]
+Group all the numbers from queue 0 to 9 in the order they haved inserted & consider the list for next step as input list.
+100, 150, 901, 82, 12, 23, 55, 77
+Step 3: Insert all the numbers of the lsit into respective queue based on the next least significant digit (tens placed digit) of every number.
+image::randix-3.png[]
+Group all the numbers from queue 0 to 9 in the order they haved inserted & consider the list for next step as input list.
+100, 901, 12, 23, 150, 55, 77, 82
+Step 4: Insert all the numbers of the lsit into respective queue based on the next least significant digit (hundreds placed digit) of every number.
+image::randix-4.png[]
+Group all the numbers from queue 0 to 9 in the order they haved inserted & consider the list for next step as input list.
+12, 23, 55, 77, 82, 100, 150, 901
+List got sorted in the increasing order.
+
+*Algorithm*
++
+Step 1 - Define 10 queues each represents a bucket for digits from 0 to 9.
+Step 2 - Consider the least significant digit of every number in the list which is to be sorted.
+Step 3 - Insert each number into respective queue based on the least significant digit.
+Step 4 - Group all the numbers from queue 0 to 9 in the order they have inserted into their respective queues.
+Step 5 - Repeat from step 3 based on the next least significant digit.
+Step 6 - Repeat from step 2 until all the nunmbers are grouped based on the most significant digit.
+
+*Program*
+include::/programs/ds/distribution_sort.c
 
 ==== Merge Sort
 
+It divides input array into two halves, calls itself for the two halves and then sorted and merged that two halves.
+
+*Example*
+
+For example consider the arry of elements: 38, 27, 43, 3, 9, 82, 10
+
+Now the array is recursively divided into two halves till the size becomes one which is shown in the following figure.
+image::merge_sort-1.png[]
+
+Once the size becomes one, the merge process comes into action and starts merging with sorted array till the complete array is merged.
+image::merge_sort-2.png[]
+
+*Algorithm*
++
+Step 1: If it is only one element in the list then it is already sorted.
+Step 2: Divide the list recursively into two halves till the size becomes one.
+Step 3: Once the size becomes 1, the merge process comes into action and starts merging with sorted array till the complete array is merged.
+image::merge_sort-3.png[]
+
+*Program*
+include::/programs/ds/merge_sort.c
 
 
+===== Time Complexity
+
+O(n^2) means that for every insert, it takes n*n operations. i.e. 1 operation for 1 item, 4 operations for 2 items, 9 operations for 3 items.
+
+.Comparison of Sorting Algorithms
+[cols="1,1,1,1,1"]
+|===
+|Algorithm|Data Structure 3+^.^|Time Complexity
+
+|
+|
+|Best
+|Average
+|Worst
+
+|Quick sort
+|Array
+|O(n log n)
+|O(n log n)
+|O(n^2)
+
+|Merge sort
+|Array
+|O(n log n)
+|O(n log n)
+|O(n log n)
+
+|Bubble sort
+|Array
+|O(n)
+|O(n^2)
+|O(n^2)
+
+|Insertion sort
+|Array
+|O(n)
+|O(n^2)
+|O(n^2)
+
+|Selection sort
+|Array
+|O(n^2)
+|O(n^2)
+|O(n^2)
+|===
 
 == chapter 2
 
