@@ -734,6 +734,643 @@ O(n^2) means that for every insert, it takes n*n operations. i.e. 1 operation fo
 |O(n^2)
 |===
 
-== chapter 2
+== Linked Lists
 
-This is a chapter 2.
+=== Introduction
+
+A linked list is a collection of data elements called nodes in which the linear representation is given by links from one node to the next node. 
+A linked list does not store its elements in consecutive memory locations and the user can add any number of nodes to the list.
+
+The elements in a linked list can be accessed only in a sequential manner. 
+But like an array, insertions and deletions can be done at any point in the list in a constant time.
+
+A linked list, in simple terms, is a linear collection of data elements. 
+These data elements are called nodes. 
+Linked list a data structure which in turn can be used to implement other data structures.
+
+Thus, it acts as a building block to implement data structures like stacks, queues and their variations.
+
+==== Basic Terminology
+
+A linked list can be perceived as a train or a sequence of nodes in which each node contains one or more data fields and a pointer to the next node.
+image::linked_lists.png[]
+
+We can see a linked list in which every node contains two parts, an integer and a pointer to the next node. 
+The last node will have no next node connected to it, so it will store a special value called `NULL`.
+
+Since in a linked list, every node contains a pointer to another node which is of the same type, it is also called a self-referential data type.
+
+Let us see how a linked list is maintained in the memory. 
+When we traverse `DATA` and `NEXT` in this manner, we finally see that the linked list in the above example stores characters that when put together form the `HELLO`.
+
+image::linked_list-memory.png[]
+
+==== Linked List vs. Array
+
+Both arrays and linked lists are a linear collection of data elements. 
+But unlike an array, a linked list does not stores its nodes in consecutive memory locations. 
+Another point of difference between an array and a linked list is that a linked list does not allow random access to data. 
+Nodes in a linked list can be accessed only in a sequential manner.
+
+Another advantage of a linked list over an array is that we can add any number of elements in the list. 
+This is not possible in case of an array.
+
+==== Memeory Allocation and De-allocation for a Linked List
+
+If we want to add a node to an already existing linked list in the memory, we first find free space in the memory and then use it to store the information.
+
+Now, the question is which part of the membory is available and which part is occupied? 
+When we delete a node from a linked list, then who changes the status of the memory occupied by it from occupied to available? 
+The answer is the operating system.
+
+The operating system scans through all the memory cells and marks those cells that are being used by some program. 
+Then it collects all the cells which are not being used adds their address to the free pool, so that these cells can be reused by other programs. 
+The process is called grabage collection.
+
+=== Single Linked Lists
+
+A singly linked list is the simplest type of linked list in which every node contains some data and a pointer to the next node of the same data type.
+
+image::single_linked_lists.png[]
+
+Traversing a linked list means accessing the nodes of the list in order to perform some processing on them. 
+Remember a linked list always contains a pointer variable `START` which stores the address of the first node of the list. 
+End of the list is marked by storing `NULL` or -1 in the `NEXT` field of the last node.
+
+==== Operations
+
+===== Traversing a Linked List
+
+For traversing a linked list, we also make use of another pointer variable `PTR` which points to the node that is currently being accessed. 
+Algorithm for traversing a linked list.
+
+----
+Step 1: [INITIALIZE] SET `PTR` to `START`
+Step 2: Repeat Steps 3 & 4 [LOOP] WHILE `PTR` is not `NULL`
+Step 3: [PROCESS] PROCESS `PTR` -> `DATA`
+Step 4: [UPDATE] SET `PTR` to `NEXT`
+Step 5: [TERMINATE] END
+----
+
+image::linked_lists.png[]
+
+===== Searching for a value in a Linked List
+
+Searching a linked list means to find a particular element in the linked list. 
+So searching means finding whether a given value is present in the information part of the node or not. 
+If it is present, the algroithm returns the address of the node that contains the value. 
+However, if the search is unsuccessful, `POS` is set to `NULL` which indicates that `VAL` is not present in the linked list.
+
+Consider the linked list shown below. 
+If we have `VAL = 4`, then the flow of algorithm can be explained as shown in the figure.
+
+image::linked_list-search.png[]
+
+*Algorithm*
+----
+Step 1: [INITIALIZE] SET `PTR` to `START`
+Step 2: Repeat Steps 3  [LOOP] WHILE `PTR` is not `NULL`
+Step 3: [PROCESS]                       IF `PTR` -> `DATA` = `VAL`
+        [UPDATE]                                SET `POS` to `PTR`
+                                                GOTO Step 5
+                                        ELSE
+                                                SET `PTR` to `NEXT`
+                                        [END OF IF]
+                                [END OF LOOP]
+Step 4: [UPDATE] SET `POS` to `NULL`
+Step 4: [TERMINATE] EXIT
+----
+
+===== Inserting a new node in a Linked List
+
+We will see how a new node is added into an existing linked list. 
+We will take four cases and then see how insertion is done in each.
+
+* Case 1: New node is inserted at the beginning
+* Case 2: New node is inserted at the end
+* Case 3: New node is inserted after given node
+* Case 4: New node is inserted before given node
+
+Let us first discuss an important term called `OVERFLOW`. 
+Overflow is a condition that occurs when AVAIL = NULL or no free memory cell is present in the system. 
+when this condition occurs, the program must give an appropriate message.
+
+===== Case 1: New node is inserted at the beginning
+
+Inserting a node at the begining of a Linked List. 
+Consider the linked list shown in the below figure. 
+Suppose we want to add a new node with data 9 and add it as the first node of the list.
+
+image::linked_list-insert-case1.png[]
+
+*Algorithm*
+----
+Step 1: IF AVAIL = NULL
+                [PROCESS] Write OVERFLOW
+                [TERMINATE] GOTO Step 7
+        [END OF IF]
+Step 2: SET NEW_NODE = AVAIL
+Step 3: SET AVAIL = AVAIL -> NEXT
+Step 4: SET NEW_NODE -> DATA = VAL
+Step 5: SET NEW_NODE -> NEXT = START
+Step 6: SET START = NEW_NODE
+Step 7: [TERMINATE] EXIT
+----
+===== Case 2: New node is inserted at the end
+image::linked_list-insert-case2.png[]
+*Algorithm*
+----
+Step 1: IF AVAIL = NULL
+                [PROCESS] Write OVERFLOW
+                [TERMINATE] GOTO Step 9
+        [END OF IF]
+Step 2: SET NEW_NODE = AVAIL
+Step 3: SET AVAIL = AVAIL -> NEXT
+Step 4: SET NEW_NODE -> DATA = VAL
+Step 5: SET NEW_NODE -> NEXT = NULL
+Step 6: SET PTR = START
+Step 7: WHILE PTR -> NEXT != NULL
+                [PROCESS] SET PTR = PTR -> NEXT
+        [END OF WHILE]
+Step 8: SET PTR -> NEXT = NEW_NODE
+Step 9: [TERMINATE] EXIT
+----
+
+===== Case 3: New node is inserted after given node
+Consider the liked list shown in the below figure. 
+Suppose we want to add a new node with value 9 after the node with value 3.
+image::linked_list-insert-case3.png[]
+*Algorithm*
+----
+Step 1: IF AVAIL = NULL
+                [PROCESS] Write OVERFLOW
+                [TERMINATE] GOTO Step 12
+        [END OF IF]
+Step 2: SET NEW_NODE = AVAIL
+Step 3: SET AVAIL = AVAIL -> NEXT
+Step 4: SET NEW_NODE -> DATA = VAL
+Step 5: SET PTR = START
+Step 6: SET PREPTR = PTR
+Step 7: WHILE PREPTR -> DATA != NUM
+Step 8:         [PROCESS] SET PREPTR = PTR
+Step 9:         [PROCESS] SET PTR = PTR -> NEXT
+        [END OF WHILE]
+Step 10: SET NEW_NODE -> NEXT = PREPTR -> NEXT
+Step 11: SET PREPTR -> NEXT = NEW_NODE
+Step 12: [TERMINATE] EXIT
+----
+
+===== Case 4: New node is inserted before given node
+
+Consider the linked list shown in the below figure. 
+Suppose we want to add a new node with value 9 before the node with value 3.
+image::linked_list-insert-case4.png[]
+*Algorithm*
+----
+Step 1: IF AVAIL = NULL
+                [PROCESS] Write OVERFLOW
+                [TERMINATE] GOTO Step 12
+        [END OF IF]
+Step 2: SET NEW_NODE = AVAIL
+Step 3: SET AVAIL = AVAIL -> NEXT
+Step 4: SET NEW_NODE -> DATA = VAL
+Step 5: SET PTR = START
+Step 6: SET PREPTR = PTR
+Step 7: WHILE PTR -> DATA != NUM
+Step 8:         [PROCESS] SET PREPTR = PTR
+Step 9:         [PROCESS] SET PTR = PTR -> NEXT
+        [END OF WHILE]
+Step 10: SET PREPTR -> NEXT = NEW_NODE
+Step 11: SET NEW_NODE -> NEXT = PTR
+Step 12: [TERMINATE] EXIT
+----
+
+==== Deleting a node from a Linked List
+
+We will discuss how a node is deleted from an already existing linked list. 
+We will consider 3 cases and then see how deletion is done in each case.
+
+* Case 1: Delete the first node
+* Case 2: Delete the last node
+* Case 3: Delete a node after a given node
+
+===== Case 1: Deleting a First Node from a Linked List
+image::linked_list-delete-case1.png[]
+*Algorithm*
+----
+Step 1: IF START = NULL
+                [PROCESS] Write UNDERFLOW
+                [TERMINATE] GOTO Step 5
+        [END OF IF]
+Step 2: SET PTR = START
+Step 3: SET START = START -> NEXT
+Step 4: FREE PTR
+Step 5: [TERMINATE] EXIT
+----
+
+===== Case 2: Deleting the Last Node from a Linked List
+image::linked_list-delete-case2_1.png[]
+image::linked_list-delete-case2_2.png[]
+*Algorithm*
+----
+Step 1: IF START = NULL
+                [PROCESS] Write UNDERFLOW
+                [TERMINATE] GOTO Step 8
+        [END OF IF]
+Step 2: SET PTR = START
+Step 3: WHILE PTR -> NEXT != NULL
+Step 4:         [PROCESS] SET PREPTR = PTR
+Step 5:         [PROCESS] SET PTR = PTR -> NEXT
+        [END OF WHILE]
+Step 6: SET PREPTR -> NEXT = NULL
+Step 7: FREE PTR
+Step 8: [TERMINATE] EXIT
+----
+
+===== Case 3: Deleting After a Given Node in a Linked List
+
+Consider the linked list shown in the below figure. 
+Suppose we want to delete the node that succeeds the node with value 4.
+image::linked_list-delete-case3.png[]
+*Algorithm*
+----
+Step 1: IF START = NULL
+                [PROCESS] Write UNDERFLOW
+                [TERMINATE] GOTO Step 
+        [END OF IF]
+Step 2: SET PTR = START
+Step 3: SET PREPTR = PTR
+Step 4: WHILE PREPTR -> DATA != NUM
+Step 5:         [PROCESS] SET PREPTR = PTR
+Step 6:         [PROCESS] SET PTR = PTR -> NEXT
+        [END OF WHILE]
+Step 7: SET PREPTR -> NEXT = PTR -> NEXT
+Step 8: FREE PTR
+Step 9: [TERMINATE] EXIT
+----
+
+=== Reversing Single Linked Lists
+todo::
+
+=== Applications on Single Linked List
+
+* Implementations of stacks and queues.
+* Implementation of graphs: Adjacency list representation of graphs is most popular which uses linked list to store adjacent vertices.
+* Dynamic memory allocation: we use linked list of free blocks.
+* Maintaining directory of names. 
+Performing arithmetic operations on long integers.
+* Manipulation of polynomials by storing constants in the nodes of a linked list. 
+Representing sparse matrices.
+
+==== Polynomial Expression Representation
+
+A polynomial is composed of different terms where each of them holds a coefficient and an exponent. 
+An essential characteristic of the polynomial is that each term in the polynomial expression consists of two parts: one is the coefficient and other is the exponent.
+
+*Example*
+10x^2 + 26x, here 10 and 26 are coefficients and 2, 1 are its exponential values.
+image::polynomial.png[]
+
+===== Addition of two polynomials
+
+----
+Input:
+        poly1 = 5x^2 + 4x^1 + 2x^0
+        poly2 = 5x^1 + 5x^0
+Output:
+        Sum = 5x^2 + 9x^1 + 7x^0
+
+Input:
+        poly2 = 5x^3 + 4x^2 + 2x^0
+        poly2 = 5x^1 + 5x^0
+Output:
+        Sum = 5x^3 + 4x^2 + 5x^1 + 7x^0
+----
+
+image::poly-addition.png[]
+
+===== Multiplication of two polynomials
+
+----
+Input:
+        poly1 = 3x^2 + 5x^1 + 6
+        poly2 = 6x^1 + 8
+Output: 
+        Product = 18x^3 + 54x^2 + 76x^1 + 48
+On multiplying each element of poly1 with elements of poly2, we get:
+        18x^3 + 30x^2 + 36x^1 + 24x^2 + 40x^1 + 48
+        On adding values with same power of x, we get:
+        18x^3 + 54x^2 + 76x^1 + 48
+
+Input:
+        poly1 = 3x^3 + 6x^1 + 9
+        poly2 = 9x^3 + 8x^2 + 7x^1 + 2
+Output: 
+        Product = 27x^6 + 24x^5 + 75x^4 + 135x^3 + 114x^2 + 75x^1 + 18
+----
+image::poly-multiplication.png[]
+
+==== Sparse Matrix Representation using Linked List
+
+A matrix is a two-dimensional data object made of m rows and n columns, therefore having total m x n elements. 
+If most of the elements of the matrix have 0 value, then it is called a sparse matrix.
+
+Example:
+0 0 3 0 4
+0 0 5 7 0
+0 0 0 0 0
+0 2 6 0 0
+
+===== Sparse Matrix Representation using arrays
+
+Method 1: Using Arrays
+2D array is used to represent a sparse matrix in which there are 3 rows named as
+Row: Index of row, where non-zero element is located.
+Column: Index of column, where non-zero element is located.
+Value: Value of non-zero element located at index - (row, column)
+
+image::sparse-matrix-array.png[]
+
+===== Sparse Matrix Representation using Linked List
+
+Method 2: Using Linked List
+In linked list, each node has four fields:
+Row: Index of row, where non-zero element is located.
+Column: Index of column, where non-zero element is located.
+Value: Value of non-zero element located at index - (row, column)
+Next node: Address of the next node.
+
+image::sparse-matrix-linked-list.png[]
+
+==== Advantages of Single Linked list
+
+* Insertion and deletions can be done easily
+* It does not need movement of elements for insertion and deletion
+* Space is not wasted as we can get space according to our requirements.
+* Its size is not fixed. 
+It can be extended or reduced according to requirements.
+* Elements may or may not be stored in consecutive memory available, even then we can store the data in computer.
+* It is less expensive.
+
+==== Disadvantages of Single Linked list
+
+* It requires more space as pointers are also stored with information.
+* Different amount of time is required to access each element.
+* If we have to go to a particular element the we have to go through all those elements that come before it.
+* We cannot traverse it from last and only from the beginning.
+* It is not easy to sort the elements stored in the linear linked list.
+
+=== Doubly Linked Lists
+
+A doubly linked list or a two-way linked list is a more complex type of linked list which contains a pointer to next as well as the previous node in the sequence.
+
+Therefore, it consists of 3 parts - data, a pointer to the next node and a pointer to the previous node.
+
+image::doubly-linked_list.png[]
+
+
+A doubly linked list provides the ease to manipulate the elements in the list as it maintains pointers to nodes in both the directions (forward and backward).
+
+The main advantage of using a doubly linked list is that it makes searching twice as efficient.
+
+Let us view how a doubly linked list is maintained in the memory.
+image::doubly-linked_list-memory.png[]
+
+==== Inserting a New Node in a Doubly Linked List
+
+In this section, we will discuss how a new node is added into an already existing doubly linked list. 
+We will take four cases and then see how insertion is done in each case.
+
+* Case 1: The new node is inserted at the begining
+* Case 2: The new node is inserted at the end
+* Case 3: The new node is inserted after a given node
+* Case 4: The new node is inserted before a given node
+
+===== Case 1: Inserting a Node at the Beginning of a Doubly Linked List
+
+image::doubly-linked_list-insert-case1_1.png[]
+image::doubly-linked_list-insert-case1_2.png[]
+
+*Algorithm*
++
+----
+Step 1: IF AVAIL = NULL
+                Write OVERFLOW
+                GOTO Step 9
+Step 2: SET NEW_NODE = AVAIL
+Step 3: SET AVAIL = AVAIL -> NEXT
+Step 4: SET NEW_NODE -> DATA = VAL
+Step 5: SET NEW_NODE -> PREV = NULL
+Step 6: SET NEW_NODE -> NEXT = START
+Step 7: SET START -> PREV = NEW_NODE
+Step 8: SET START = NEW_NODE
+Step 9: EXIT
+----
+
+===== Case 2: Inserting a Node at the end of a Doubly Linked List
+
+image::doubly-linked_list-insert-case2.png[]
+*Algorithm*
++
+----
+Step 1: IF AVAIL = NULL
+                Write OVERFLOW
+                GOTO Step
+        [END OF IF]
+Step 2: SET NEW_NODE = AVAIL
+Step 3: SET AVAIL = AVAIL -> NEXT
+Step 4: SET NEW_NODE -> DATA = VAL
+Step 5: SET NEW_NODE -> NEXT = NULL
+Step 6: SET PTR = START
+Step 7: WHILE PTR -> NEXT != NULL
+Step 8:         SET PTR = PTR -> NEXT
+        [END OF WHILE]
+Step 9: SET PTR -> NEXT = NEW_NODE
+Step 10: SET NEW_NODE -> PREV = PTR
+Step 11: EXIT
+----
+
+===== Case 3: Inserting a Node After a Given Node in a Doubly Linked List
+image::doubly-linked_list-insert-case3.png[]
+*Algorithm*
++
+----
+Step 1: IF AVAIL = NULL
+                Write OVERFLOW
+                GOTO Step 12
+        [END OF IF]
+Step 2: SET NEW_NODE = AVAIL
+Step 3: SET AVAIL = AVAIL -> NEXT
+Step 4: SET NEW_NODE -> DATA = VAL
+Step 5: SET PTR = START
+Step 6: WHILE PTR -> DATA != NUM
+Step 7:         SET PTR = PTR -> NEXT
+        [END OF WHILE]
+Step 8: SET NEW_NODE -> NEXT = PTR -> NEXT
+Step 9: SET NEW_NODE -> PREV = PTR
+Step 10: SET PTR -> NEXT -> PREV = NEW_NODE
+Step 11: SET PTR -> NEXT = NEW_NODE
+Step 12: EXIT
+----
+
+===== Case 4: Inserting a Node Before a Given Node in a Doubly Linked List
+image::doubly-linked_list-insert-case4.png[]
+*Algorithm*
++
+----
+Step 1: IF AVAIL = NULL
+                Write OVERFLOW
+                GOTO Step 12
+        [END OF IF]
+Step 2: SET NEW_NODE = AVAIL
+Step 3: SET AVAIL = AVAIL -> NEXT
+Step 4: SET NEW_NODE -> DATA = VAL
+Step 5: SET PTR = START
+Step 6: WHILE PTR -> DATA != NUM
+Step 7:         SET PTR = PTR -> NEXT
+        [END OF WHILE]
+Step 8: SET NEW_NODE -> NEXT = PTR
+Step 9: SET NEW_NODE -> PREV = PTR -> PREV
+Step 10: SET PTR -> PREV = NEW_NODE
+Step 11: SET PTR -> PREV -> NEXT = NEW_NODE
+Step 12: EXIT
+----
+
+==== Deleting a Node from a Doubly Linked List
+
+In this section, we will see how a node is deleted from an already existing doubly linked list. 
+We will take four cases and then see how deletion is done in each case.
+
+* Case 1: The first node is deleted
+* Case 2: The last node is deleted
+* Case 3: The node after a given node is deleted
+* Case 4: The node before a given node is deleted
+
+===== Case 1: Deleting the First Node from a Doubly Linked List
+
+image::doubly-linked_list-delete-case1.png[]
+*Algorithm*
++
+----
+Step 1: IF START = NULL
+                Write UNDERFLOW
+                GOTO Step 6
+        [END OF IF]
+Step 2: SET PTR = START
+Step 3: SET START = START -> NEXT
+Step 4: SET START -> PREV = NULL
+Step 5: FREE PTR
+Step 6: EXIT
+----
+
+===== Case 2: Deleting the Last Node from a Doubly Linked List
+
+image::doubly-linked_list-delete-case2_1.png[]
+image::doubly-linked_list-delete-case2_2.png[]
+*Algorithm*
++
+----
+Step 1: IF START = NULL
+                Write UNDERFLOW
+                GOTO Step 6
+        [END OF IF]
+Step 2: SET PTR = START
+Step 3: WHILE PTR -> NEXT != NULL
+Step 4:         SET PTR = PTR -> NEXT
+        [END OF WHILE]
+Step 5: SET PRT -> PREV -> NEXT = NULL
+Step 6: FREE PTR
+Step 7: EXIT
+----
+
+===== Case 3: Deleting the Node After a Given Node in a Doubly Linked List
+
+image::doubly-linked_list-delete-case3.png[]
+*Algorithm*
++
+----
+Step 1: IF START = NULL
+                Write UNDERFLOW
+                GOTO Step 9
+        [END OF IF]
+Step 2: SET PTR = START
+Step 3: WHILE PTR -> DATA != NUM
+Step 4:         SET PTR = PTR -> NEXT
+        [END OF WHILE]
+Step 5: SET TEMP = PTR -> NEXT
+Step 6: SET PTR -> NEXT = TEMP -> NEXT
+Step 7: SET TEMP -> NEXT -> PREV = PTR
+Step 8: FREE TEMP
+Step 9: EXIT
+----
+
+===== Case 4: Deleting the Node Before a Given Node in a Doubly Linked List
+
+image::doubly-linked_list-delete-case4.png[]
+*Algorithm*
++
+----
+Step 1: IF START = NULL
+                Write UNDERFLOW
+                GOTO Step 9
+        [END OF IF]
+Step 2: SET PTR = START
+Step 3: WHILE PTR -> DATA != NUM
+Step 4:         SET PTR = PTR -> NEXT
+        [END OF WHILE]
+Step 5: SET TEMP = PTR -> PREV
+Step 6: SET TEMP -> PREV -> NEXT = PTR
+Step 7: SET PTR -> PREV = TEMP -> PREV
+Step 8: FREE TEMP
+Step 9: EXIT
+----
+
+=== Circular Linked Lists
+
+In a circular linked list, the last node contains a pointer to the first node of the list. 
+We can have a circular singly linked list as well as a circular doubly linked list.
+
+While traversing a circular linked list, we can begin at any node and traverse the list in any direction, forward or backward, until we reach the same node where we startd. 
+Thus a circular linked list has no begining or no ending.
+
+Note that there are no NULL values in the NEXT part of any of the nodes of list.
+
+==== Operation
+
+===== Inserting a New Node in a Circular Linked List
+
+In this section, we will seehow a new node is added into an already existing linked list. 
+We will take two cases and then see how insertion is done in each case.
+
+* Case 1: The new node is inserted at the beginning of the circular linked list
+* Case 2: The new node is inserted at the end of the circular linked list
+
+====== Case 1: Inserting a Node at the Beginning of a Circular Linked List
+
+image::circular-linked_list-insert-before-1.png[]
+image::circular-linked_list-insert-before-2.png[]
+*Algorithm*
++
+----
+Step 1: IF AVAIL = NULL
+                Write OVERFLOW
+                GOTO Step
+        [END OF IF]
+Step 2: SET NEW_NODE = AVAIL
+Step 3: WHILE PTR -> DATA != NUM
+Step 4:         SET PTR = PTR -> NEXT
+        [END OF WHILE]
+Step 5: SET TEMP = PTR -> PREV
+Step 6: SET TEMP -> PREV -> NEXT = PTR
+Step 6: SET PTR -> PREV = TEMP -> PREV
+Step 8: FREE TEMP
+Step 9: EXIT
+----
+
+====== Case 2: Inserting a Node at the End of a Circular Linked List
+
+===== Deleting a Node from a Circular Linked List
+
+===== Case 1: Deleting the First Node from a Circular Linked List
+
+===== Case 2: Deleting the Last Node from a Circular Linked List
