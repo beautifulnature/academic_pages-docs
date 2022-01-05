@@ -1354,23 +1354,220 @@ image::circular-linked_list-insert-before-2.png[]
 ----
 Step 1: IF AVAIL = NULL
                 Write OVERFLOW
-                GOTO Step
+                GOTO Step 11
         [END OF IF]
 Step 2: SET NEW_NODE = AVAIL
-Step 3: WHILE PTR -> DATA != NUM
-Step 4:         SET PTR = PTR -> NEXT
+Step 3: SET AVAIL = AVAIL -> NEXT
+Step 4: SET NEW_NODE -> DATA = VAL
+Step 5: SET PTR = START
+Step 6: WHILE PTR -> NEXT != START
+Step 7:         SET PTR = PTR -> NEXT
         [END OF WHILE]
-Step 5: SET TEMP = PTR -> PREV
-Step 6: SET TEMP -> PREV -> NEXT = PTR
-Step 6: SET PTR -> PREV = TEMP -> PREV
-Step 8: FREE TEMP
-Step 9: EXIT
+Step 8: SET NEW_NODE -> NEXT = START
+Step 9: SET PTR -> NEXT = NEW_NODE
+Step 10: SET START = NEW_NODE
+Step 11: EXIT
 ----
 
 ====== Case 2: Inserting a Node at the End of a Circular Linked List
 
+image::circular-linked_list-insert-end-1.png[]
+image::circular-linked_list-insert-end-2.png[]
+*Algorithm*
++
+----
+Step 1: IF AVAIL = NULL
+                Write OVERFLOW
+                GOTO Step 10
+        [END OF IF]
+Step 2: SET NEW_NODE = AVAIL
+Step 3: SET AVAIL = AVAIL -> NEXT
+Step 4: SET NEW_NODE -> DATA = VAL
+Step 5: SET NEW_NODE -> NEXT = START
+Step 6: SET PTR = START
+Step 7: WHILE PTR -> NEXT != START
+Step 8:         SET PTR = PTR -> NEXT
+        [END OF WHILE]
+Step 9: SET PTR -> NEXT = NEW_NODE
+Step 10: EXIT
+----
+
 ===== Deleting a Node from a Circular Linked List
+
+In this section, we will discuss how a node is deleted from an already existing circular linked list. 
+We will tabke 2 cases and then see how deletion is done in each case. 
+Rest of the cases of deletion are same as that givn for singly linked lists.
+
+* Case 1: The first node is deleted
+* Case 2: The last node is deleted
 
 ===== Case 1: Deleting the First Node from a Circular Linked List
 
+image::circular-linked_list-delete-first.png[]
++
+*Algorithm*
++
+----
+Step 1: IF START = NULL
+                Write UNDERFLOW
+                GOTO Step 8
+        [END OF IF]
+Step 2: SET PTR = START
+Step 3: WHILE PTR -> NEXT != START
+Step 4:         SET PTR = PTR -> NEXT
+        [END OF WHILE]
+Step 5: SET PTR -> NEXT = START -> NEXT
+Step 6: FREE START
+Step 7: SET START = PTR -> NEXT
+Step 8: EXIT
+----
+
 ===== Case 2: Deleting the Last Node from a Circular Linked List
+
+image::circular-linked_list-delete-last.png[]
++
+*Algorithm*
++
+----
+Step 1: IF START = NULL
+                Write UNDERFLOW
+                GOTO Step 8
+        [END OF IF]
+Step 2: SET PTR = START
+Step 3: WHILE PTR -> NEXT != START
+Step 4:         SET PREPTR = PTR
+Step 5:         SET PTR = PTR -> NEXT
+        [END OF WHILE]
+Step 6: SET PREPTR -> NEXT = START
+Step 7: FREE PTR
+Step 8: EXIT
+----
+
+== Queues & Stacks
+
+=== Queues
+
+==== Introduction to Queues
+
+Let us explain the concept of queues using the analogies given below.
+
+* People moving on an escalator. 
+The opeople who got on the escalator first will be the first one to step out of it.
+* People waiting for a bus. 
+The first person standing in the line will be the first oe to get into the bus.
+* People standing outside the ticketing window of a cinema hall. 
+The first person in the line will get the ticket first and thus will be the first one to move out of it.
+* Laguage kept on coveyour belts. 
+The bag which was placed first will be the first to come out at the other end.
+* Cars lined at a toll bridge. 
+The first car to reach the bridge will be the first to leave.
+
+In all these examples, we see that the element at the first position is served first. 
+Same is the case with queue data structure. 
+A queue is FIFO (First In First Out) data structure in which the element that is inserted first is the first one to be taken out. 
+The elements in a queue are added at one end called the `REAR` and removed from the other end called the `FRONT`. 
+Queues can be implemented by using either array or linked list. 
+In this section we will see how queues are implemented using each of these data structures.
+
+==== Array Representation and Implementation of Queues
+
+Queues can be easily represented using linear arrays. 
+As stated earlier, every queue has front and rear variables that point to the position from where deletions and insertions can be done, respectively.
+
+The array representation of a queue is shown in Fig. 3.1.
+
+image::queues-array.png[]
+
+===== Operations on Queues
+
+In Fig.3.1, FRONT = 0 and REAR = 5. 
+Suppose we want to add another element with value 45, the REAR would be incremented by 1 and the value would be stored at the position pointed by REAR.
+
+The queue after addition would be as shown in Fig. 3.2. 
+Here, FRONT = 0 and REAR = 6. 
+Every time  new element has to be added, we repeat the same procedure.
+
+If we want to delete an element from the queue, then the value of FRONT will be incremented. 
+Deletions are done from onl this end of the queue.      
+The queue after deletion would be as shown in Fig. 3.3. 
+Here, FRONT = 1 and REAR = 6.
+
+However, before inserting an element in a queue, we must check for overflow conditions. 
+An overflow will occur when we try to insert an element into a queue that is already full. 
+When REAR = MAX - 1, where MAX is the size of the queue, then we have an overflow condition. 
+Note that we have written MAX -1 because the index starts from 0. 
+Similarly, before deleting an element from a queue, we must check for underflow conditions. 
+An underflow condition occurs when we try to delete an element from a queue that is already empty. 
+If FRONT = -1 and REAR = -1, it means ther is no element in the queue.
+
+* Algorithm for Insertion in Queues*
++
+----
+Step 1: IF REAR = MAX - 1
+                Write OVERFLOW
+                GOTO Step 4
+        [END OF IF]
+Step 2: IF FRONT = -1 and REAR = -1
+                SET FRONT = REAR = 0
+        ELSE
+                SET REAR = REAR + 1
+        [END OF IF]
+Step 3: SET QUEUE[REAR] = NUM
+Step 4: EXIT
+----
+
+* Algorithm for Deletion in Queues*
++
+----
+Step 1: IF FRONT = -1 and FRONT > REAR
+                Write UNDERFLOW
+        ELSE
+                SET VAL = QUEUE[FRONT]
+                SET FRONT = FRONT + 1
+        [END OF IF]
+Step 2: EXIT
+----
+
+Note: The process of inserting an element in the queue is called enqueue and the process of deleting an element from the queue is called dequeue.
+
+==== Linked List Representation and Implementation of Queues
+
+===== Insert Operation
+
+===== Delete Operation
+
+==== Applications of Queues
+
+==== Types of Queues
+
+===== Circular Queues
+
+===== Deques
+
+===== Priority Queues
+
+===== Multiple Queues
+
+=== Stacks
+
+==== Introduction to Stacks
+
+==== Array Representation of Stacks
+
+=== Operations on Stacks
+
+==== Push Operation
+
+==== Pop Operation
+
+==== Peek Operation
+
+=== Linked Representation of Stacks
+
+=== Applications of Stacks
+
+==== Reversing List
+
+
+
+
