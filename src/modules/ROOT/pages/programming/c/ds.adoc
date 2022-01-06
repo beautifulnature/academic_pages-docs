@@ -63,7 +63,7 @@ Examples are:
 4. Queues
 
 Array:
-It is collection of eleements of same type.
+It is collection of elements of same type.
 
 a[5] = {10, 20, 30, 40, 50}
 
@@ -118,7 +118,7 @@ Graph:
 * A `graph` is a pictorial representation of a set of `points` or `nodes` termed as `vertices` and the `links` that connect the vertices are called `edges`.
 * A `graph`(G) consists of two sets `V` and `E` where `V` is called vertices and `E` is called edges. 
 We also write G = (V, E) to represent the graph.
-* A `graph` may be dircted graph or undirected graph.
+* A `graph` may be directed graph or undirected graph.
 image::graph.png[Graph]
 * Fig(a), Fig(b) are called undirected graph and Fig(c) is called directed graph.
 
@@ -133,7 +133,7 @@ Differences between Linear and Non-Linear Data Structures:
 |Data is arranged in a sequence manner.
 |Data is not arranged in a sequence manner.
 
-|Data can be travered in a single run.
+|Data can be traversed in a single run.
 |Data cannot be traversed in a single run.
 
 |Ex: Arrays, Linked List, Stacks, Queues
@@ -172,7 +172,7 @@ It deals with accessing a particular data element within a data structure.
 
 6. Sort:
 +
-It is the process of arraning all the data elements in a data structure in a particular order say either in ascending or descending order.
+It is the process of arranging all the data elements in a data structure in a particular order say either in ascending or descending order.
 
 7. Merge:
 +
@@ -190,7 +190,7 @@ It is the process of visiting each and every node of a list in systematic manner
 
 An `Abstract Data Type (ADT)` is a collection of values and a set of operations without specifying its implementation.
 
-For example in Array ADT, set of values are ind element & set of operations are create(), retrieval() and store().
+For example in Array ADT, set of values are index and item & set of operations are create(), retrieval() and store().
 
 *Purpose*:
 +
@@ -208,7 +208,7 @@ etc.
 * A `List ADT` contain operations known as add element, remove element, etc.
 * A `List ADT` can be represented by an `array-based` implementation or a `linked-list` based implementation. 
 In this the `linked-list` based implementation is so commonly used.
-* Similary a `Biney Search Tree ADT` can be represented in different ways with the same operations known as insert, remove, display, etc.
+* Similarly a `Biney Search Tree ADT` can be represented in different ways with the same operations known as insert, remove, display, etc.
 
 ==== Array as an Abstract Data Type
 
@@ -324,7 +324,7 @@ Step 5: stop
 +
 * Here we use if condition and the condition is checked only one time.
 * if a condition is satisfied then next statement is executed otherwise else statement is executed.
-* For example an algorithm to check whether the given number is evene or odd.
+* For example an algorithm to check whether the given number is even or odd.
 +
 ----
 Ex:
@@ -356,7 +356,7 @@ Step 6: compute i++ goto Step 4
 Step 7: stop
 ----
 * When an algorithm get coded in a specified programming language such as C, C++ or Java, it becomes a program that can be executed on a computer.
-* Multiple algorithm can exist to solve the same problem or complethe the same task.
+* Multiple algorithm can exist to solve the same problem or complete the the same task.
 * The appropriate algorithm can be determined based on an number of factors:
 +
 1. How long the algorithm takes to run
@@ -368,15 +368,15 @@ Step 7: stop
 
 Searching is the process of finding an element in a list of values.
 
-It is the algorithimic process of finding a particular element in a colletion of elements.
+It is the algorithmic process of finding a particular element in a collection of elements.
 
 1. Linear Search
 +
-Defination:
+Definition:
 +
 It starts at the beginning of the list and checks each element of the list.
 +
-i.e. It sequencially checks each element of the list until a match is found or the whole list has been searched.
+i.e. It sequentially checks each element of the list until a match is found or the whole list has been searched.
 So it is called sequential search.
 
 *Example:*
@@ -398,14 +398,14 @@ include:include::/programs/ds/linear_search.c[]
 
 2. Binary Search
 +
-Defination:
+Definition:
 +
-Bineary search is the most popular search algorithm. 
+Binary search is the most popular search algorithm. 
 It is efficient and also one of the most commonly used techniques that are used to solve problems.
 
 Binary search sorts the records either in ascending or descending order to gain much better performance than linear search.
 
-Now suppose we have an ascending order record. At the tiem of search it takes the middle record/element, if the searching element is greater than middle element then the element must be located in the second part else it is in the first half. 
+Now suppose we have an ascending order record. At the time of search it takes the middle record/element, if the searching element is greater than middle element then the element must be located in the second part else it is in the first half. 
 In this way this search algorithm divides the records into two parts in each iteration and thus called binary search.
 
 *Example:*
@@ -422,7 +422,7 @@ Step 1: Read sorted elements in array
 Step 2: Read the element to be searched
 Step 3: Compare the element to search and middle element in array. 
 Step 4:If search element is greater than middle element then search in right side of middle element otherwise search on left.
-Step 5: This process is repeated for all eleements in array. 
+Step 5: This process is repeated for all elements in array. 
 If not match is found upto the end then the search is not success.
 
 *Program*
@@ -440,7 +440,7 @@ arr[] = {10, 22, 35, 40, 45, 50, 80, 82, 85, 90, 100}
 * Fibonacci numbers are: 0, 1, 1, 2, 3, 5, 8, 13, 21...
 Target element x is 85. 
 Length of array n = 11.
-* Find the smallest Fibbonacci number greater than or equal to 11 is 13.
+* Find the smallest Fibonacci number greater than or equal to 11 is 13.
 * As per our step, a=5, b=8, c=a+b=13.
 * Let offset = -1
 * First compute i = min (offset+a, n-1)
@@ -453,7 +453,7 @@ Sorting is a process of placing a list of elements from a collection of dats in 
 
 It is nothing but storage of data in sorted order. 
 Sorting can be done in ascending or descending order. 
-It arranges the data in a squence which makes searching easier.
+It arranges the data in a sequence which makes searching easier.
 
 ==== Insertion Sort
 +
@@ -461,7 +461,7 @@ It arranges the data in a squence which makes searching easier.
 * The process of sorting starts with second element.
 * First the second element is picked and is placed in specified order. 
 Next third element is picked and is placed in specified order. 
-Similarly the fourth, fifth, ...nth element is placeed in specified order.
+Similarly the fourth, fifth, ...nth element is placed in specified order.
 * Finally we get the sorting elements.
 
 *Example*
@@ -473,14 +473,14 @@ In this case 3 is inserted in position of 12.
 +
 image::insertion_sort-1.png[]
 2. Checking third element of array with elements before it and inserting it in proper position. 
-In this cas 3 is inserted in position 12.
+In this case 3 is inserted in position 12.
 +
 image::insertion_sort-2.png[]
 3. Checking fourth element of array with elements before it and inserting it in proper position. 
 In this case 5 is inserted in position of 12.
 +
 image::insertion_sort-3.png[]
-4. Checking fifth element of array with elements before it and inserting it in propoer position. 
+4. Checking fifth element of array with elements before it and inserting it in proper position. 
 In this case 8 is inserted in position of 12.
 +
 image::insertion_sort-4.png[]
@@ -492,7 +492,7 @@ image::insertion_sort-5.png[]
 +
 Step 1: Check second element of array with element before it and insert it in proper position.
 Step 2: Checking third element of array with element before it and inserting it in proper position.
-Step 3: Repeat this till all emements are checked.
+Step 3: Repeat this till all elements are checked.
 Step 4: Stop
 
 *Program*
@@ -531,7 +531,7 @@ The only difference between the two sorting algorithms is the manner in which th
 
 ==== Bubble Sort
 
-Bubble sort is based on the idea of repeatedly comparing pairs of adjacent elements and then swapping positions if they eixst in the wrong order.
+Bubble sort is based on the idea of repeatedly comparing pairs of adjacent elements and then swapping positions if they exist in the wrong order.
 
 *Example*
 +
@@ -554,7 +554,7 @@ Now we get the sorted elements.
 Step 1: The first element is compared with second and exchange element if first one is greater than second.
 Step 2: The second element is compared with third and exchange element if second one is greater than third.
 Step 3: Repeat this so that at the end the largest value is in last place.
-Step 4: Likwise sorting is repeated for all elements.
+Step 4: Likewise sorting is repeated for all elements.
 
 *Program*
 include::/programs/ds/bubble_sort.c
@@ -564,7 +564,7 @@ include::/programs/ds/bubble_sort.c
 * Quick sort is also one of the exchange sort.
 * In a quick sort we take pivot element, then we place all the smaller elements are on one side of pivot, and greater elements on other side of pivot.
 * After partitioning we have pivot in the final position. 
-After repeatedly partioning, we get the sorted elements.
+After repeatedly partitioning, we get the sorted elements.
 
 *Example*
 * Let us consider the elements: 35, 50, 15, 25, 80, 20, 90, 45
@@ -639,15 +639,15 @@ Step 1: Define 10 queues each represents a bucket for digits from 0 to 9.
 image::randix-1.png[]
 Step 2: Insert all the numbers of the list into respective queue based on the least significant digit (ones placed digit) of every number.
 image::randix-2.png[]
-Group all the numbers from queue 0 to 9 in the order they haved inserted & consider the list for next step as input list.
+Group all the numbers from queue 0 to 9 in the order they halved inserted & consider the list for next step as input list.
 100, 150, 901, 82, 12, 23, 55, 77
-Step 3: Insert all the numbers of the lsit into respective queue based on the next least significant digit (tens placed digit) of every number.
+Step 3: Insert all the numbers of the list into respective queue based on the next least significant digit (tens placed digit) of every number.
 image::randix-3.png[]
-Group all the numbers from queue 0 to 9 in the order they haved inserted & consider the list for next step as input list.
+Group all the numbers from queue 0 to 9 in the order they halved inserted & consider the list for next step as input list.
 100, 901, 12, 23, 150, 55, 77, 82
-Step 4: Insert all the numbers of the lsit into respective queue based on the next least significant digit (hundreds placed digit) of every number.
+Step 4: Insert all the numbers of the list into respective queue based on the next least significant digit (hundreds placed digit) of every number.
 image::randix-4.png[]
-Group all the numbers from queue 0 to 9 in the order they haved inserted & consider the list for next step as input list.
+Group all the numbers from queue 0 to 9 in the order they halved inserted & consider the list for next step as input list.
 12, 23, 55, 77, 82, 100, 150, 901
 List got sorted in the increasing order.
 
@@ -658,7 +658,7 @@ Step 2 - Consider the least significant digit of every number in the list which 
 Step 3 - Insert each number into respective queue based on the least significant digit.
 Step 4 - Group all the numbers from queue 0 to 9 in the order they have inserted into their respective queues.
 Step 5 - Repeat from step 3 based on the next least significant digit.
-Step 6 - Repeat from step 2 until all the nunmbers are grouped based on the most significant digit.
+Step 6 - Repeat from step 2 until all the numbers are grouped based on the most significant digit.
 
 *Program*
 include::/programs/ds/distribution_sort.c
@@ -669,7 +669,7 @@ It divides input array into two halves, calls itself for the two halves and then
 
 *Example*
 
-For example consider the arry of elements: 38, 27, 43, 3, 9, 82, 10
+For example consider the array of elements: 38, 27, 43, 3, 9, 82, 10
 
 Now the array is recursively divided into two halves till the size becomes one which is shown in the following figure.
 image::merge_sort-1.png[]
@@ -775,17 +775,17 @@ Nodes in a linked list can be accessed only in a sequential manner.
 Another advantage of a linked list over an array is that we can add any number of elements in the list. 
 This is not possible in case of an array.
 
-==== Memeory Allocation and De-allocation for a Linked List
+==== Memory Allocation and De-allocation for a Linked List
 
 If we want to add a node to an already existing linked list in the memory, we first find free space in the memory and then use it to store the information.
 
-Now, the question is which part of the membory is available and which part is occupied? 
+Now, the question is which part of the memory is available and which part is occupied? 
 When we delete a node from a linked list, then who changes the status of the memory occupied by it from occupied to available? 
 The answer is the operating system.
 
 The operating system scans through all the memory cells and marks those cells that are being used by some program. 
 Then it collects all the cells which are not being used adds their address to the free pool, so that these cells can be reused by other programs. 
-The process is called grabage collection.
+The process is called garbage collection.
 
 === Single Linked Lists
 
@@ -818,7 +818,7 @@ image::linked_lists.png[]
 
 Searching a linked list means to find a particular element in the linked list. 
 So searching means finding whether a given value is present in the information part of the node or not. 
-If it is present, the algroithm returns the address of the node that contains the value. 
+If it is present, the algorithm returns the address of the node that contains the value. 
 However, if the search is unsuccessful, `POS` is set to `NULL` which indicates that `VAL` is not present in the linked list.
 
 Consider the linked list shown below. 
@@ -857,7 +857,7 @@ when this condition occurs, the program must give an appropriate message.
 
 ===== Case 1: New node is inserted at the beginning
 
-Inserting a node at the begining of a Linked List. 
+Inserting a node at the beginning of a Linked List. 
 Consider the linked list shown in the below figure. 
 Suppose we want to add a new node with data 9 and add it as the first node of the list.
 
@@ -1141,7 +1141,7 @@ image::doubly-linked_list-memory.png[]
 In this section, we will discuss how a new node is added into an already existing doubly linked list. 
 We will take four cases and then see how insertion is done in each case.
 
-* Case 1: The new node is inserted at the begining
+* Case 1: The new node is inserted at the beginning
 * Case 2: The new node is inserted at the end
 * Case 3: The new node is inserted after a given node
 * Case 4: The new node is inserted before a given node
@@ -1330,8 +1330,8 @@ Step 9: EXIT
 In a circular linked list, the last node contains a pointer to the first node of the list. 
 We can have a circular singly linked list as well as a circular doubly linked list.
 
-While traversing a circular linked list, we can begin at any node and traverse the list in any direction, forward or backward, until we reach the same node where we startd. 
-Thus a circular linked list has no begining or no ending.
+While traversing a circular linked list, we can begin at any node and traverse the list in any direction, forward or backward, until we reach the same node where we started. 
+Thus a circular linked list has no beginning or no ending.
 
 Note that there are no NULL values in the NEXT part of any of the nodes of list.
 
@@ -1339,7 +1339,7 @@ Note that there are no NULL values in the NEXT part of any of the nodes of list.
 
 ===== Inserting a New Node in a Circular Linked List
 
-In this section, we will seehow a new node is added into an already existing linked list. 
+In this section, we will see how a new node is added into an already existing linked list. 
 We will take two cases and then see how insertion is done in each case.
 
 * Case 1: The new node is inserted at the beginning of the circular linked list
@@ -1395,8 +1395,8 @@ Step 10: EXIT
 ===== Deleting a Node from a Circular Linked List
 
 In this section, we will discuss how a node is deleted from an already existing circular linked list. 
-We will tabke 2 cases and then see how deletion is done in each case. 
-Rest of the cases of deletion are same as that givn for singly linked lists.
+We will take 2 cases and then see how deletion is done in each case. 
+Rest of the cases of deletion are same as that given for singly linked lists.
 
 * Case 1: The first node is deleted
 * Case 2: The last node is deleted
@@ -1452,12 +1452,12 @@ Step 8: EXIT
 Let us explain the concept of queues using the analogies given below.
 
 * People moving on an escalator. 
-The opeople who got on the escalator first will be the first one to step out of it.
+The people who got on the escalator first will be the first one to step out of it.
 * People waiting for a bus. 
-The first person standing in the line will be the first oe to get into the bus.
+The first person standing in the line will be the first to get into the bus.
 * People standing outside the ticketing window of a cinema hall. 
 The first person in the line will get the ticket first and thus will be the first one to move out of it.
-* Laguage kept on coveyour belts. 
+* Luggage kept on conveyor belts. 
 The bag which was placed first will be the first to come out at the other end.
 * Cars lined at a toll bridge. 
 The first car to reach the bridge will be the first to leave.
@@ -1488,7 +1488,7 @@ Here, FRONT = 0 and REAR = 6.
 Every time  new element has to be added, we repeat the same procedure.
 
 If we want to delete an element from the queue, then the value of FRONT will be incremented. 
-Deletions are done from onl this end of the queue.      
+Deletions are done from only this end of the queue.      
 The queue after deletion would be as shown in Fig. 3.3. 
 Here, FRONT = 1 and REAR = 6.
 
@@ -1498,7 +1498,7 @@ When REAR = MAX - 1, where MAX is the size of the queue, then we have an overflo
 Note that we have written MAX -1 because the index starts from 0. 
 Similarly, before deleting an element from a queue, we must check for underflow conditions. 
 An underflow condition occurs when we try to delete an element from a queue that is already empty. 
-If FRONT = -1 and REAR = -1, it means ther is no element in the queue.
+If FRONT = -1 and REAR = -1, it means there is no element in the queue.
 
 * Algorithm for Insertion in Queues*
 +
@@ -1532,41 +1532,714 @@ Note: The process of inserting an element in the queue is called enqueue and the
 
 ==== Linked List Representation and Implementation of Queues
 
+We have seen how a queue is created using an array. 
+Although this technique of creating queue is easy, its drawback is that the array must be declared to have some fixed size. 
+If we allocate space for 50 elements in the queue and it hardly uses 20-25 locations, then half of the space will be wasted.
+
+And in case we allocate less memory locations for a queue that might end up growing large and large, then a lot of re-allocations will have to be done, thereby creating a lot of overhead and consuming a lot of time.
+
+In case the queue is a very small one or its maximum size is known in advance, then the array implementation of the queue gives an efficient implementation, 
+But if the array size cannot be determined in advance, the other alternative i.e., the linked representation.
+
+The storage requirement of linked representation of a queue with n elements is O(n) and the typical time requirement for operations is O(1).
+
+In a linked queue, every element has two parts, one that stores the data and another that stores the address of the next element. 
+The `START` pointer of the linked list is used as `FRONT`. 
+Here we will also use another pointer called `REAR`, which will store the address of the last element in the queue.
+
+All insertions will be done at the rear end and all the deletions will be done at the front end. 
+If `FRONT` = `REAR` = `NULL`, then it indicates that the queue is empty. 
+The linked representation of a queue is shown in Fig.3.4.
+
+
 ===== Insert Operation
+
+The insert operation is used to insert an element into a queue. 
+The new element is added as the last element of the queue. 
+Consider the linked queue shown in Fig.3.5.
+image::queue-linked_list-insert.png[]
+
+To insert an element with value 9, we first check if `FRONT == NULL`. 
+If the condition holds, then the queue is empty. 
+So, we allocate memory for a new node, store the value in its data part and `NULL` in its next part. 
+The new node will then be called both `FRONT` and `REAR`. 
+However, if `FRONT != NULL`, then we will insert the new node at the `REAR` end of the linked queue and name this new node as `REAR`. 
+Thus the updated queue becomes as shown in Fig.3.6.
+
+.Algorithm to insert an element in a linked queue
+----
+Step 1: Allocate memory for the new node and name it as PTR
+Step 2: SET PTR -> DATA = VAL
+Step 3: IF FRONT = NULL
+                SET = FRONT = REAR = PTR
+                SET FRONT -> NEXT = REAR -> NEXT = NULL
+        ELSE
+                SET REAR -> NEXT = PTR
+                SET REAR = PTR
+                SET REAR -> NEXT = NULL
+        [END OF IF]
+Step 4: END
+----
+
+The algorithm shows that inserting an element in a linked queue. 
+In step 1, the memory is allocated for the new node. 
+In step 2, the `DATA` part of the new node is initialize with the value to be stored in the node. 
+In step 3, we check if the new node is the first node of the linked queue. 
+This is done by checking if `FRONT = NULL`. 
+If this is the case, then the new node is tagged as `FRONT` as well as `REAR`. 
+Also `NULL` is stored in the `NEXT` part of the node. 
+However, if the new node is not the first node in the list, then it is added at the `REAR` end of the linked queue (or the last node of the queue).
 
 ===== Delete Operation
 
+The delete operation is used to delete the element that is first inserted in a queue, i.e., the element whose address is stored in `FRONT`. 
+However, for deleting the value, we must first check if `FRONT == NULL` because if this is the case, then the queue is empty and no more deletions can be done. 
+If an attempt is made to delete a value from a queue that is already empty, an underflow message is printed. 
+Consider the queue shown in Fig.3.7
+image::queue-linked_list-delete.png[]
+
+.Algorithm to delete an element in a linked queue
+----
+Step 1: IF FRONT = NULL
+                Write "Underflow"
+                Go to Step 5
+        [END OF IF]
+Step 2: SET PTR = FRONT
+Step 3: SET FRONT = FRONT -> NEXT
+Step 4: FREE PTR
+Step 5: END
+----
+
 ==== Applications of Queues
+
+* Queues are widely used as waiting lists for a single shared resource like printer, disk, CPU
+* Queues are used to transfer data asynchronously (data  not necessarily received at same rate as sent) between two processes (IO buffers), e.g., pipes, file IO, sockets.
+* Queues are used as buffers on MP3 players and portable CD players, iPod playlist.
+* Queues are used in playlist for jukebox to add songs to the end, play from the front of the list.
+* Queues are used in operating system for handling interrupts. 
+When programming a real-time system that can interrupted, for example, by a mouse click, it is necessary to process the interrupts immediately, before proceeding with the current job. 
+If the interrupts have to be handled in the order of arrival, then a FIFO queue is the appropriate data structure.
 
 ==== Types of Queues
 
+A queue data structure can be classified into the following types:
+1. Circular Queue
+2. Deque
+3. Priority Queue
+4. Multiple Queue
+
+We will discuss each of these in detail in the following sections.
+
 ===== Circular Queues
+
+In linear queues, we have discussed so far that insertions can be done only at one end called the `REAR` and deletions are always done from the other end called the `FRONT`. 
+Look at the queue shown in Fig.3.9.
+
+image::queue-linear.png[]
+
+Here, FRONT = 0 and REAR = 9
+
+Now, if you want to insert another value, it will not be possible because the queue is completely full. 
+There is no empty space where the value can be inserted. 
+Consider a scenario in which two successive deletions are made. 
+The queue will then be given as shown in Fig.3.10.
+
+image::queue-linear-deletions.png[]
+
+Here, FRONT = 2 and REAR = 9
+
+Suppose we want to insert a new element in the queue shown in Fig.3.10. 
+Even though there is space available, the overflow condition still exists because the condition `REAR = MAX -1` still holds true. 
+This is a major drawback of a linear queue.
+
+To resolve this problem, we have two solutions. 
+First, shift the elements to the left so that the vacant space can be occupied and utilized efficiently. 
+But this can be very time-consuming, especially when the queue is quite large.
+
+The second option is to use a circular queue. 
+In the circular queue, the index comes right after the last index. 
+Conceptually, you can think of a circular queue as shown in Fig.3.11.
+
+image::queue-circualr.png[]
+
+The circular queue will be full only when `FRONT = 0` and `REAR = Max -1`. 
+A circular queue is implemented in the same manner as a linear queue is implemented. 
+The only difference will be in the code that performs insertion and deletion operations.
+
+===== Insertion
+
+For insertion, we now have to check for the following 3 conditions:
+* If `FRONT = 0` and `REAR = MAX - 1`, then the circular queue if full. 
+Look at the queue given in Fig.3.12 which illustrates this point.
+* If `REAR != MAX - 1`, then `REAR` will be incremented and the value will be inserted as illustrated in Fig.3.13.
+* If `FRONT != 0` and `REAR = MAX - 1`, then it means that the queue is not full. 
+So, set `REAR = 0` and insert the new element there, as shown in Fig.3.14.
+
+image::queue-circular-inset.png[]
+
+*Algorithm*
++
+----
+Step 1: IF FRONT = 0 and REAR = MAX -1
+                Write "Overflow"
+                GOTO step 4
+        [END OF IF]
+Step 2: IF FRONT = -1 and REAR = -1
+                SET FRONT = REAR = 0
+        ELSE IF REAR = MAX - 1 and FRONT != 0
+                SET REAR = 0
+        ELSE
+                SET REAR = REAR + 1
+        [END OF IF]
+Step 3: SET QUEUE[REAR] = VAL
+Step 4: EXIT
+----
+
+Let us look at the algorithm to insert an element in a circular queue. 
+In step 1, we check for the overflow condition. 
+In step 2, we make two checks. 
+First to see if the queue is empty, and second to see if the `REAR` end has already reached the maximum capacity while there are certain free locations before the `FRONT` end. 
+In step 3, the value is stored in the queue at the location pointed by `REAR`.
+
+===== Deletion
+
+Let us now discuss how deletions are performed in this case. 
+To delete an element, again we check for 3 conditions.
+
+* Look at Fig.3.15. 
+If `FRONT = -1`, then there are no elements in the queue. 
+So, an underflow condition will be reported.
+* If the queue is not empty and `FRONT = REAR`, then after deleting the element at the front the queue becomes empty and so `FRONT` and `REAR` are set to -1. 
+This is illustrated in Fig.3.16.
+* If the queue is not empty and `FRONT = MAX - 1`, then after deleting the element at the `FRONT`, `FRONT` is set to 0. 
+This is shown in Fig.3.17.
+
+image::queue-circular-delete.png[]
+
+*Algorithm*
++
+----
+Step 1: IF FRONT = -1
+                Write "Underflow"
+                GOTO step 4
+        [END OF IF]
+Step 2: SET VAL = QUEUE[FRONT]
+Step 3: IF FRONT = REAR
+                SET FRONT = REAR = -1
+        ELSE
+                IF FRONT = MAX - 1
+                        SET FRONT = 0
+                ELSE
+                        SET FRONT = FRONT + 1
+                [END OF IF]
+        [END OF IF]
+Step 4: Exit
+----
+
+Let us look at the algorithm to delete an element form a circular queue. 
+In step 1, we check for the underflow condition. 
+In step 2, the value of the queue at the location point by `FRONT` is stored in VAL. 
+In step 3, we make 2 checks. 
+First to see if the queue has become empty after deletion and 
+second to see if `FRONT` has reached the maximum capacity of the queue. 
+The value of `FRONT` is then updated based on the outcome of these checks.
 
 ===== Deques
 
+A deque (pronounced as 'deck' or 'dequeue') is a list in which the elements can be inserted or deleted at either end. 
+It is also known as a head-tail linked list because elements can be added to or removed from either the front (head) or the back (tail) end.
+
+However, no element can be added and deleted from the middle. 
+In the computer's memory, a deque is implemented using either a circular array or a circular doubly linked list.
+
+In a deque, two pointers are maintained, LEFT and RIGHT, which point to either end of the dequeue. 
+The elements in a deque extend from the LEFT end to the RIGHT end and since it is circular, Dequeue[N-1] is followed by Dequeue[0].
+Consider the deques shown in Fig.3.18
+
+image::queue-dequeue.png[]
+
+There are 2 variants of a double-ended queue. 
+They include
+* `Input restricted deque`. In this dequeue, insertions can be done only at one of the ends, while deletions can be done from both ends.
+* `Output restricted deque`. In this dequeue, deletions can be done only at one of the ends, while insertions can be done from both ends.
+
 ===== Priority Queues
 
+A priority queue is a data structure in which each element is assigned a priority. 
+The priority of the element will be used to determine the order in which the elements will be processed. 
+The general rules of processing the elements of a priority queue are
+* An element with higher priority is processed before an element with a lower priority.
+* 2 elements with the same priority are processed on the first-come-first-served (FCFS) basis.
+
+A priority queue can be thought of as a modified queue in which when an element has to be removed from the queue, the one with the highest-priority is retrieved first. 
+The priority of the element can be set based on various factors. 
+Priority queues are widely used in operation systems to execute the highest priority process first. 
+The priority of the process may be set based on the CPU time it requires to get executed completely.
+
+====== Implementation of a Priority Queue
+
+There are 2 ways to implement a priority queue. 
+We can either use a sorted list to store the elements so that when an element has to taken out, the queue will not have to be searched for the element with the highest priority or we can use an unsorted list so that insertions are always done at the end of the list.
+
+Every time when an element has to be removed from the list, the element with the highest priority will be searched and removed. 
+While a sorted list takes O(n) time to insert an element in the list, it takes only O(1) time to delete an element. 
+On the contrary, an unsorted list will take O(1) time to insert an element and O(n) time to delete and element from the list.
+
+Practically, both these techniques are inefficient and usually a blend of these two approaches is adopted that takes roughly O(log n) time or less.
+
 ===== Multiple Queues
+
+When we implement a queue using an array, the size of the array must be known in advance. 
+If the queue is allocated less space, then frequent overflow conditions will be encountered.
+
+To deal with this problem, the code will have to be modified to reallocate more space for the array. 
+In case we allocate a large amount of space for the queue, it will result in sheer wastage of memory.
+
+Thus, there lies a tradeoff between the frequency of overflows and the space allocated. 
+So a better solution to deal with this problem is to have multiple queues or to have more than one queue in the same array of sufficient size. 
+Fig.3.19 illustrates this concept.
+
+image::queue-multiple-queues.png[]
+
+In the figure, an array Queue[n] is used to represent 2 queues, Queue A and Queue B. 
+The value of n is such that the combined size of both the queues will never exceed n. 
+While operating on these queues, it is important to note one thing, Queue A will grow from left to right, 
+whereas Queue B will grow from right to left at the same time. 
+Extending the concept to multiple queues, a queue can also be used to represent n number of queues in the same array. 
+That is, if we have a QUEUE[n], then each queue will be allocated an equal amount of space bounded by indices b[i] and e[i]. 
+This is shown in Fig.3.20.
 
 === Stacks
 
 ==== Introduction to Stacks
 
+Stack is an important data structure which stores its elements in an ordered manner. 
+We will explain the concept of stacks using an analogy. 
+You must have seen a pile of plates where one plate is placed on top of another as shown in Fig.3.21.
+
+Now, when you want to remove a plate, you remove the topmost plate first. 
+Hence, you can add and remove an element (i.e. a plate) only at/from on position whish is topmost position.
+
+image::stack-plates.png[]
+
+A stack is a linear data structure which uses the same principle, i.e. the elements in a stack are added and removed only from one end, which is called `TOP`.
+
+Hence, a stack is called LIFO (Last-In-First-Out) data structure, as the element that was inserted last is the first one to be taken out.
+
 ==== Array Representation of Stacks
+
+In the computer's memory, stacks can be represented as a linear array. 
+Every stack has a variable called `TOP` associated with it, which is used to store the address of the topmost element of the stack. 
+It is this position where the element will be added to or deleted from.
+
+The is another variable called `MAX`, which is used to store the maximum number of elements that the stack can hold. 
+If `TOP = NULL`, then it indicates that the stack is empty and if `TOP = MAX -1`, then the stack is full. 
+You must be wondering why we have written MAX-1. 
+It is because array indices start from 0. 
+Look at fig.3.22.
+
+image::stack-1.png[]
 
 === Operations on Stacks
 
+A stack supports 3 basic operations:
+1. push
+2. pop
+3. peek
+
+The `push` operation add an element to top of the stack and 
+the `pop` operation removes an element from top of stack. 
+The `peek` operation returns the value of the topmost element of the stack.
+
 ==== Push Operation
+
+* The `push` operation is used to insert an element into the stack.
+* The new element is added at the topmost position of the stack.
+* To insert an element with value 6, we first check if `TOP = MAX - 1`.
+* If the condition is false, then we increment the value of `TOP` and store the new element at the position given by stack[TOP].
+
+image::stack-push.png[]
+
+.Algorithm stack push
+----
+Step 1: IF TOP = MAX - 1
+                PRINT "OVERFLOW"
+                GOTO step 4
+        [END OF IF]
+Step 2: SET TOP = TOP + 1
+Step 3: SET STACK[TOP] = VALUE
+Step 4: END
+----
 
 ==== Pop Operation
 
+* The `pop` operation is used to delete the topmost element from the stack.
+* However, before deleting the value, we must first check if `TOP = NULL` because if that is the case, then it means the stack is empty and no more deletions can be done.
+* To delete the topmost element, we first check if `TOP = NULL`. 
+IF the condition is false, then we decrement the value pointed by `TOP`.
+
+image::stack-pop.png[]
+
+.Algorithm Stack POP
+----
+Step 1: IF TOP = NULL
+                PRINT "UNDERFLOW"
+                GOTO Step 4
+        [END OF IF]
+Step 2: SET VAL = STACK[TOP]
+Step 3: SET TOP = TOP - 1
+Step 4: END
+----
+
 ==== Peek Operation
+
+* Peek is an operation that returns the value of the topmost element of the stack without deleting it from the stack.
+* However, the peek operation first checks if the stack is empty, i.e. if TOP = NULL, then an appropriate message is printed, else the value is returned.
+* Here, the peek operation will return 5, s it is the value of the topmost element of the stack.
+
+.Algorithm Stack Peek
+----
+Step 1: IF TOP = NULL
+                PRINT "STACK IS EMPTY"
+                GOTO Step 3
+Step 2: RETURN STACK[TOP]
+Step 3: END
+----
+
+*EXAMPLE*:
+image::stack-example.png[]
 
 === Linked Representation of Stacks
 
+We have seen how a stack is created using an array. 
+This technique of creating a stack is easy, but the drawback is that the array must be declared to have some fixed size. 
+In case the stack is very small one or its maximum size is known in advance, then the array implementation of the stack gives an efficient implementation. 
+But if the array size cannot be determined in advance, then the other alternative, i.e. linked representation, is used.
+
+The storage requirement of linked representation of the stack with `n` elements is O(n), and the typical time requirement for the operation is O(1).
+
+In a linked stack, every node has 2 parts - 
+one that stores data and another that stores the address of the next node. 
+The `START` pointer of the linked list is used as `TOP`. 
+All insertions and deletions are done at the node pointed by `TOP`. 
+If `TOP = NULL`, then it indicates that the stack is empty. 
+The linked representation of a stack is shown in below figure.
+
+image::stack-linked_list.png[]
+
+==== Push Operation
+
+The push operation is used to insert an element into the stack. 
+The new element is added at the topmost position of the stack. 
+Consider the linked stack shown in below figure.
+image::stack-linked_list-pop-1.png[]
+
+To insert an element with value 9, 
+we first check if `TOP = NULL`. 
+If this is the case, then we allocate memory for a new node, store the value in its `DATA` part and `NULL` in its `NEXT` part. 
+The new node will then be called `TOP`. 
+However, if `TOP != NULL`, then we insert the new node at the beginning of the linked stack and name this new node as `TOP`.
+image::stack-linked_list-pop-2.png[]
+
+The algorithm to push an element into a linked stack. 
+In step 1, memory is allocated for the new node. 
+In step 2, the DATA part of the new node is initialized with the value to be stored in the node. 
+In step 3, we check if the new node is the first node of the linked list, is done by checking if TOP = NULL. 
+In case the IF statement evaluates to true, then NULL is stored in the NEXT part of the node and new node is called `TOP`.
+
+However, if the new node is not the first node in the list, then it is added before the first node of the list (i.e., the `TOP` node) and termed as `TOP`.
+
+.Algorithm Stack Linked Push
+----
+Step 1: Allocate memory for the new node and name it as NEW_NODE
+Step 2: SET NEW_NODE -> DATA = VAL
+Step 3: IF TOP = NULL
+                SET NEW_NODE -> NEXT = NULL
+                SET TOP = NEW_NODE
+        ELSE
+                SET NEW_NODE -> NEXT = TOP
+                SET TOP = NEW_NODE
+        [END OF IF]
+Step 4: END
+----
+
+==== POP Operation
+
+The `pop` operation is used to delete the topmost element from a sack. 
+However, before deleting the value, we must first check if TOP = NULL, because if this is the case, then it means that the stack is empty and no more deletions can be done. 
+If an attempt is made to delete a value from a stack that is already empty, an `UNDERFLOW` message is printed. 
+Consider the stack shown in below figure.
+
+image::stack-linked_list-pop-1.png[]
+
+In case TOP != NULL, then we will delete the node pointed by TOP, and make TOP point to the second element of the linked stack. 
+Thus, the updated stack becomes as shown in below figure.
+image::stack-linked_list-pop-2.png[]
+
+.Algorithm Stack Linked POP
+----
+Step 1: IF TOP = NULL
+                PRINT "UNDERFLOW"
+                GOTO step 5
+        [END OF IF]
+Step 2: SET PTR = TOP
+Step 3: SET TOP = TOP -> NEXT
+Step 4: FREE PTR
+Step 5: END
+----
+
+The algorithm to delete an element from a stack:
+In step 1, we first check for the UNDERFLOW condition.
+In step 2, we use a pointer PTR that points to TOP.
+In step 3, TOP is made to point to the next node in sequence.
+In step 4, the memory occupied by PTR is given back to the free pool.
+
 === Applications of Stacks
 
+In this section we will discuss typical problems where stacks can be easily applied for a simple and efficient solution. 
+The topics that will be discussed in this section include the following:
+
+* Reversing a list
+* Parentheses checker
+* Conversion of an infix expression into a postfix expression
+* Evaluation of a postfix expression
+* Conversion of an infix expression into a prefix expression
+* Evaluation of a prefix expression
+* Recursion
+* Tower of Hanoi
+
 ==== Reversing List
+
+==== Evaluation of Arithmetic Expressions
+
+
+== Trees
+
+=== Basic Terminology in Trees
+
+A tree is recursively defined as a set of one or more nodes where on node is designates as root of the tree and all the remaining nodes can partitioned into non-empty sets each of which is sub-tree of the root. 
+Figure 4.1 shows a tree where node A is the root node; nodes B, C and D are children of the root node and form sub-trees of the tree rooted at node A.
+image::tree-detail.png[]
+
+Root Node:: The root node R is the topmost node in the tree. 
+If R = NULL, then it means the tree is empty.
+
+Sub-trees:: If the root node R is not NULL, then the trees T1, T2 and T3 are called the sub-trees of R.
+
+Leaf-node:: Anode that has no children is called the leaf node or the terminal node.
+
+Path:: A sequence of consecutive edges is called a path. 
+For example in Fig.4.1, the path from the root node A to node I is given as: A, D and I.
+
+Ancestor node:: An ancestor of a node is any predecessor node on the path from root to that node. 
+The root node does not have any ancestors. 
+In the tree given in Fig.4.1, nodes C, G, J and K are the descendants of node A.
+
+Level number:: Every node in the tree is assigned a level number in such a way that the root node is at level 0, children of the root node are at level number 1. 
+Thus, every node is at one level higher that its parent. 
+So, all child nodes have a level number given by parent's level number + 1.
+
+Degree:: Degree of a node is equal to the number of children that a node has. 
+The degree of a leaf node is zero.
+
+* In-degree:: In-degree of a node is the number of edges arriving at the node.
+* Out-degree:: Out-degree of a node is the number of edges leaving that node.
+
+=== Binary Trees
+
+A binary tree is a data structure that is defined as a collection of elements called nodes. 
+In a binary tree, the topmost element is called the root node, and each node has 0, 1 or at the most 2 children.
+
+A node that has zero children is called a leaf node or a terminal node. 
+Every node contains a data element, a leaf pointer which points to the left child and a right pointer which points to the right child. 
+The root element is pointed by a 'root' pointer. 
+If root = NULL, then it means the tree is empty.
+
+Figure 4.2 shows a binary tree. 
+In figure, R is the root node and the two trees T1 and T2 are called the left and right sub-trees of R. 
+T1 is said to be the left successor of R. 
+Likewise, T2 is called the right successor of R.
+
+image::tree-binary.png[]
+
+Note that the left sub-tree of the root node consists of the nodes: 2, 4, 5, 8 and 9. 
+Similarly, the right sub-tree of the root node consists of nodes: 3, 6, 7, 10, 11 and 12.
+
+In the tree, root node 1 has two successors: 2 and 3. 
+Node 2 has two successor nodes: 4 and 5. 
+Node 4 has two successors: 8 and 9. 
+Node 5 has no successor. 
+Node 3 has two successor nodes: 6 and 7. 
+Node 6 has two successors: 10 and 11. 
+Finally, node 7 has only one successor: 12.
+
+A binary tree is recursive by definition as every node in the tree contains a left sub-tree and a right sub-tree. 
+Even the terminal nodes contain an empty left sub-tree and an empty right sub-tree.
+Look at Fig.4.2, nods 5, 8, 9, 10, 11 and 12 have no successors and thus said to have empty sub-trees.
+
+==== Terminology
+
+Parent:: If N is any node in T that has left successor S1 and right successor S2, then N is called the parent of S1 and S2. 
+Correspondingly, S1 and S2 are called the left child and right child of N. 
+Every node other than the root node has a parent.
+
+image::tree-binary-levels.png[]
+
+Level Number:: Every node in the binary tree is assigned a level number (refer Fig.4.3). 
+The root node is defined to be at level 0. 
+The left and the right child of the root node have a level number 1. 
+Similarly, every node is at one level higher than its parents. 
+So all child nodes are defined to have level number as parent's level number + 1.
+
+Degree of a node:: It is equal to the number of children that a node has. 
+The degree of a leaf node is zero. 
+For example, in the tree, degree of node 4 is 2, degree of node 5 is zero and degree of node 7 is 1.
+
+Sibling:: All nodes that are at same level and share the same parent are called siblings (brothers). 
+For example, nodes 2 and 3; nodes 4 and 5; nodes 6 and 7; nodes 8 and 9; and nodes 10 and 11 are siblings.
+
+Leaf node:: A node that has no children is called a leaf node or a terminal node. 
+The leaf nodes in the tree are: 8, 9, 5, 10, 11 and 12.
+
+Similar binary trees:: Two binary trees T and T' are said to be similar if both these trees have the same structure. 
+Figure 4.4 shows two similar binary trees.
+image::tree-binary-similar.png[]
+
+Copies:: Two binary trees T and T' are said to be copies if they have similar structure and if they have same content at the corresponding nodes. 
+Figure 4.5 shows that T' is a copy of T.
+image::tree-binary-copy.png[]
+
+Edge:: It is the line connecting a node N to any of its successors. 
+A binary tree of n nodes has exactly n - 1 edges because every node except the root node is connected to tits parent via an edge.
+
+Path:: A sequence of consecutive edges. 
+For example, in Fig.4.3, the path from the root node to the node 8 is given as: 1, 2, 4 and 8.
+
+Depth:: The depth of a node N is given as the length of the path from the root R to the node N. 
+The depth of the root node is Zero.
+
+Height of a tree:: It is the total number of nodes on the path from the root node to the deepest node in the tree. 
+A tree with only a root node has a height of  1.
+
+A binary tree of height h has at least h nodes and at most 2^h^ - 1 node. 
+This is because every level will have at lease one node and can have at most 2 nodes. 
+SO, if every level has two nodes then a tree with height h will have at most 2^h^ - 1 nodes as at level 0, there is only one element called the root. 
+The height of a binary tree with n nodes is at least log~2~(n+1) and at most n.
+
+In-degree/out-degree of a node:: It is the number of edges arriving at a node. 
+The root node is the only node that has an in-degree equal to zero. 
+Similarly, out-degree of a node is the number of edges leaving that node. 
+Binary trees are commonly used to implement binary search trees, expression trees, expression trees, tournament trees and binary heaps.
+
+*Complete Binary Trees*
+
+A complete binary tree is a binary tree that satisfies two properties. 
+First, in a complete binary tree, every level, expect possibly the last, is completely filled. 
+Second, all nodes appear as far left as possible.
+
+In a complete binary tree T~n~, there are exactly n nodes and level r of T can have at most 2^r^ nodes. 
+Figure 4.7 shows a complete binary tree.
+
+image::tree-binary-complete.png[]
+
+Note that in Fig.4.6, 
+level 0 has 2^0^ = 1 node, 
+level 1 has 2^1^ = 2 nodes, 
+level 2 has 2^2^ = 4 nodes, 
+level 3 has 2^3^ = 8 nodes.
+
+In Fig.4.6, tree T~13~ has exactly 13 nodes. 
+They have been purposely labelled from 1 to 13, so that it is easy for the reader to find the parent node, the right child node, and the left child node of the given node.
+
+The formula can be given as - if K is a parent nofe, then its left child can be calculated as 2 x K and its right child can be calculate as 2 x K + 1.
+
+For example, the children of the node 4 are 8 (2 x 4) and 9 (2 x 4 + 1).
+Similarly, the parent of the node K can be calculated as |K/2|. 
+Given the node 4, its parent can be calculated as |4/2| = 2. 
+The height of a tree T~n~ having exactly n nodes is given as: H~n~ = |log~2~(n + 1)|
+
+Note: This means, if a tree T has 1000000 nodes, then its height is 21.
+
+*Extended Binary Trees*
+
+A binary tree T is said to be an extended binary tree (or a 2-tree) if each node in the tree has either no child or exactly two children. 
+Figure 4.7 shows how an ordinary binary tree is converted into an extended binary tree.
+
+In an extended binary tree, nodes having two children are called internal nodes and nodes having no children are called external nodes. 
+In Fig.4.7, the internal nodes are represented using circles and the external nodes are represented using squares.
+
+To convert a binary tree into an extended tree, every empty sub-tree is replaced by a new node. 
+The original nodes in the tree are the internal nodes, and the new nodes added are called the external nodes.
+
+image::tree-binary-extended.png[]
+
+=== Representation of Binary Trees in the Memory
+
+In the computer's memory, a binary tree can be maintained either by using a linked representation or by using a sequential representation.
+
+*Linked representation of binary trees*
++
+In the linked representation of a binary tree, every node will have 3 parts:
+1) data element
+2) a pointer to the left node and
+3) a pointer to the right node.
+
+So in C, the binary tree is built with a node type given below:
++
+[source, c]
+----
+struct node
+{
+        struct node * left;
+        int data;
+        struct node * right;
+}
+----
+
+Every binary tree has a pointer ROOT, which points to the root element (topmost element) of the tree. 
+If ROOT = NULL, then the tree is empty. 
+Consider the binary tree given in Fig.4.2. 
+The schematic diagram of the linked representation of the binary tree is shown in Fig.4.8.
+
+In Fig.4.8, the left position is used to point to the left child of the node or to store the address of the left child of the node. 
+The middle position is used to store the data. 
+Finally, the right position is used to point to the right child of the node or to store the address of the right child of the node. 
+Empty sub-trees are represented using X (meaning NULL).
+
+image::tree-binary-linked.png[]
+
+Sequential representation of binary trees is done using single or one-dimensional arrays. 
+Thought it is the simplest technique for memory representation, it is inefficient as it requires a lot of memory space.
+
+A sequential binary tree follows the following rules:
+* A one-dimensional array, called TREE, is used to store the element of tree.
+* The root of the tree will be stored in the first location. 
+That is, TREE[1] will store the data of the root element.
+* The children of a node stored in location K will be stored in locations (2 x K) and (2 x K + 1).
+* The maximum size of the array TREE is given as (2h -1), where h is the height of the tree.
+* An empty tree or sub-tree is specified using NULL. 
+If TREE[1] = NULL, then the tree is empty.
+
+Fig.4.9 shows a binary tree and it's corresponding sequential representation. 
+The tree has 11 nodes and it's height is 4.
+
+image::tree-binary-sequential.png[]
+
+=== Traversing a Binary Tree
+
+=== Binary Search Trees
+
+=== Balanced Binary Trees - AVL Trees
+
+==== Operations on AVL Trees
+
+=== Applications of Trees
+
+==== Expression Trees
+
+==== Heap Sort
+
+
 
 
 
