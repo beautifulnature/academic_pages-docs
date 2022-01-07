@@ -2227,11 +2227,272 @@ image::tree-binary-sequential.png[]
 
 === Traversing a Binary Tree
 
+Traversing a binary tree is the process of visiting each node in the tree exactly once in a systematic way. 
+Unlike linear data structures in which the elements are traversed sequentially, tree is a nonlinear data structure in which the elements can be traversed in many different ways. 
+There are different algorithms for tree traversals. 
+These algorithms differ in the order in which the nodes are visited. 
+In this section, we will discuss these algorithms.
+
+==== Pre-order Traversal
+
+To traverse a non-empty binary tree in pre-order, the following operations are performed recursively at each node. 
+The algorithm works by:
+1) Visit the root node.
+2) Traverse the left subtree.
+3) Traverse the right subtree.
+
+Pre-order traversal is also called as depth-first traversal. 
+In this algorithm, the left sub-tree is always traversed before the right sub-tree. 
+The word `pre` in the pre-order specifies that the root node is accessed prior to any other nodes in the left and right sub-trees. 
+Pre-order algorithm is also knows as the NLR traversal algorithm (Node-Left-Right).
+
+image::tree-binary-traversal-preorder.png[]
+
+.Algorithm for pre-order traversal of a binary tree.
+----
+Step 1. While TREE != NULL
+Step 2.         Write TREE -> DATA
+Step 3.         PREORDER(TREE -> LEFT)
+Step 4.         PREORDER(TREE -> RIGHT)
+        [ENd OF WHILE]
+Step 5: END
+----
+
+==== In-order Traversal
+
+To traverse a non-empty binary tree in in-order, the following operations are performed recursively at each node. 
+The algorithm works by:
+1) Traverse the left subtree.
+2) Visit the root node.
+3) Traverse the right subtree.
+
+.Algorithm for in-order traversal of a binary tree.
+----
+Step 1. While TREE != NULL
+Step 2.         INORDER(TREE -> LEFT)
+Step 3.         Write TREE -> DATA
+Step 4.         INORDER(TREE -> RIGHT)
+        [ENd OF WHILE]
+Step 5: END
+----
+
+In-order traversal is also called as symmetric traversal. 
+In this algorithm, the left sub-tree is always traversed before the root and the right sub-tree.
+
+The word `in` in the in-order specifies that the root node is accessed in between the left and right sub-trees. 
+In-order algorithm is also known as the LNR traversal algorithm (Left-Node-Right).
+
+image::tree-binary-traversal-inorder.png[]
+
+==== Post-order Traversal
+
+To traverse a non-empty binary tree in post-order, the following operations are performed recursively at each node. 
+The algorithm works by:
+1) Traverse the left subtree.
+2) Traverse the right subtree.
+3) Visit the root node.
+
+In this algorithm, the left sub-tree is always traversed before the right sub-tree and the root node. 
+The word `post` in the post-order specifies that the root node is accessed after the left and the right  sub-trees.
+
+Post-order algorithm is also known as the LRN traversal algorithm (Left-Right-Node).
+
+.Algorithm for post-order traversal of a binary tree.
+----
+Step 1. While TREE != NULL
+Step 2.         POSTORDER(TREE -> LEFT)
+Step 3.         POSTORDER(TREE -> RIGHT)
+Step 4.         Write TREE -> DATA
+        [ENd OF WHILE]
+Step 5: END
+----
+
+image::tree-binary-traversal-postorder.png[]
+
 === Binary Search Trees
+
+A binary search tree, also known as an ordered binary tree, is a variant of binary trees in which the nodes are arranged in an order. 
+In a binary search tree, all the nodes in the left sub-tree have a value less than that of the root node. 
+Correspondingly, all the nodes in the right sub-tree have a value either equal to or greater than that of the root node. 
+The same rule is applicable to every sub-tree in the tree.
+
+NOTE:: A binary search tree may or may not contain duplicate values, depending on the implementation.
+
+image::tree-binary-search.png[]
+
+The root node is 39. 
+The left sub-tree of the root node consists of nodes 9, 10, 18, 19, 21, 27, 28, 29 and 36.
+
+All these nodes have smaller values than the root node. 
+The right sub-tree of the root node consists of nodes 40, 45, 54, 59, 60 and 65.
+
+Recursively, each of the sub-trees also obeys the binary search tree constraint.
+
+For example, in the left sub-tree of the root node, 27 is the root and all elements in its left sub-tree (9, 10, 18, 19, 21) are smaller than 27, while all nodes in its right sub-tree (28, 29, 36) are greater than the root node's value.
+
+Binary search trees also speed up the insertion and deletion operations. 
+The tree has a speed advantage when the data in the structure changes rapidly.
+
+Binary search trees are considered to be efficient data structures especially when compared with sorted linear arrays and linked lists. 
+In a sorted array, searching can be done in O(log~2~n) time, but insertions and deletions are quite expensive. 
+In contrast, inserting and deleting elements in a linked list is easier, but searching for an element is done in O(n) time.
+
+However, in the worst case, a binary search tree will take O(n) time to search for an element.
+
+To summarize, a binary search tree is a binary tree with the following properties:
+* The left sub-tree of a node N contains values that are less than N's value.
+* The right sub-tree of a node N contains values that are greater than N's value.
+* Both the left and right binary trees also satisfy these properties and thus are binary search trees.
+
+*Example*
+
+Create a binary search tree using the following data elements: 45, 39, 56, 12, 34, 78, 32, 10, 89, 54, 67 and 81.
+
+image::tree-binary-search-example.png[]
+
+=== Operations on Binary search trees
+
+==== Inserting a new node in a binary search tree
+
+The insert function is used to add a new node with a given value at the correct position in the binary search tree. 
+Adding the node at the correct position means that the new node should not violate the properties of the binary search tree. 
+The initial code for the insert function is similar to the search function. 
+THis is because we first find the correct position where the insertion has to be done and then add the node at that position. 
+The insertion function changes the structure of the tree. 
+Therefore, when the insert function is called recursively, the function should return the new tree pointer.
+
+The insert function requires time proportional to the height of the tree in the worst case. 
+It takes O(log n) time to execute in the average case and O(n) time in the worst case.
+
+*Algorithm for inserting a new node in a binary search tree*
+.Insert (TREE, VAL)
+----
+Step 1: If TREE is NULL
+Step 2:         Allocate memory for TREE
+Step 3:         Set TREE -> DATA = VAL
+Step 4:         Set TREE -> LEFT = TREE -> RIGHT = NULL
+Step 5: ELSE
+Step 6:         If VAL < TREE -> DATA
+Step 7:                 INSERT(TREE -> LEFT, VAL)
+Step 8:         ELSE
+Step 9:                 INSERT(TREE -> RIGHT, VAL)
+                [END OF IF]
+        [ENd OF IF]
+Step 10: END
+----
+
+Example: Inserting nodes with values 12 and 55 in the given binary search tree.
+image::tree-binary-search-insert.png[]
+
+==== Deleting a node from a binary search tree
+
+The delete function deletes a node from the binary search tree. 
+However, utmost care should be taken that the properties of the binary search tree are not violated and nodes are not lost in the process.
+
+Case 1. Deleting a node that has no children
+Case 2. Deleting a node with one child
+Case 3. Deleting a node with two children
+
+===== Case 1. Deleting a node that has no children
+
+image::tree-binary-search-delete-no-child.png[]
+
+If we have to delete node 78, we can simply remove this node without any issue.
+
+This is the simplest case of deletion.
+
+===== Case 2. Deleting a node with one child
+
+image::tree-binary-search-delete-one-child.png[]
+
+To handle this case, the node's child is set as the child of the node's parent. 
+In other words, replace the node with its child. 
+Now, if the node is the left child of the node's parent, the node's child becomes the left child of the node's parent. 
+Correspondingly, if the node is the right child of its parent, the node's child becomes the right child of the node's parent.
+
+Look at the binary search tree shown in figure and see how deletion of node 54 is handled.
+
+===== Case 3. Deleting a node with two children
+
+image::tree-binary-search-delete-two-child.png[]
+
+To handle this case, replace the node's value with its in-order predecessor (largest value in the left sub-tree) or in-order successor (smallest value in the right sub-tree).
+
+The in-order predecessor or the successor can then be deleted using any of the above cases.
+
+Look at the binary search tree given in figure and see how deletion of node with value 56 is handled.
 
 === Balanced Binary Trees - AVL Trees
 
+AVL tree is a self-balancing binary search tree invented by G.M. Adelson-Velsky and E.M. Landis in 1962. 
+The tree is named AVL in honour of its inventors. 
+In an AVL tree, the heights of the two sub-trees of a node may differ by at most one. 
+Due to this property, the AVL tree is also know as height-balanced tree. 
+The key advantage of using an AVL tree is that it takes O(log n) time to search, insert and delete operations in an average case as well as the worst case because the height of tree is limited to O(log n).
+
+The structure of an AVL tree is the same as that of a binary search tree but with a little difference. 
+In its structure, it stores an additional variable called the Balance factor. 
+Thus, every node has a balance factor associated with it. 
+The balance factor of a node is calculated by subtracting the height of its right sub-tree from the height of its left sub-tree. 
+A binary search tree in which every node has balance factor of -1, 0 or 1 is said to be height balanced. 
+A node with any other balance factor is considered to be an unbalanced and requires rebalancing of the tree.
+
+Balance factor = Height of left subtree - Height of right subtree
+
+* If the balance factor of a node is 1, then it means that the left sub-tree of the tree is one level higher than that of the right sub-tree. 
+Such a tree is therefore called as a left-heavy tree.
+
+* If the balance factor of a node is 0, then it means that the height of the left subtree (longest path in the left subtree) is equal to the height of the right subtree.
+
+* If the balance factor of a node is -1, then it means that the left sub-tree of the tree is one level lower than that of the right sub-tree. 
+Such a tree is therefore called as a right-heavy tree.
+
 ==== Operations on AVL Trees
+
+===== Searching for a node in an AVL tree
+
+Searching in an AVL tree is performed exactly the same way as it is performed in a binary search tree. 
+Due to the height-balancing of the tree, the search operation takes O(log n) time to complete. 
+Since the operation does not modify the structure of the tree, no special provisions are required.
+
+===== Inserting a new node in an AVL tree
+
+Insertion in an AVL tree is also done in the same way as it is done in a binary search tree. 
+In the AVL tree, the new node is always inserted as the leaf node. 
+But the step of insertion is usually followed by an additional step of rotation. 
+Rotation is done to restore the balance of the tree.
+
+However, if insertion of the new node does not disturb the balance factor, that is, if the balance factor of every node is still -1, 0 or 1, then rotations are not required.
+
+To perform rotation, our first task is to find the critical node. 
+Critical node is the nearest ancestor node on the path from the inserted node to the root whose balance factor is neither -1, 0 nor 1.
+
+The second task in rebalancing the tree is to determine which type of rotation has to be done. 
+There are 4 types of rebalancing rotations and application of these rotations depends on the position of the inserted node with reference to the critical node.
+
+AVL tree is out of balance must be one of the 4 types:
+* LL
++
+The new node is inserted in the left sub-tree of the left sub-tree of the critical node. 
+* RR
++
+The new node is inserted in the right sub-tree of the right sub-tree of the critical node. 
+* LR
++
+The new node is inserted in the right sub-tree of the left sub-tree of the critical node.
+* RL
++
+The new node is inserted in the left sub-tree of the right sub-tree of the critical node.
+
+====== Rotation of LL
+
+When LL loses balance, the AVL tree can be balanced with one rotation as shown below.
+
+Example: Consider the AVL tree given in figure and insert 18 into it.
+
+====== RR rotation
+====== LR rotation
+====== RL rotation
 
 === Applications of Trees
 
