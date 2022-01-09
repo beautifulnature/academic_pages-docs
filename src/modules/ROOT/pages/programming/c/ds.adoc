@@ -1,7 +1,7 @@
 [[c_ds]]
 = Data Structures through C
 :page-aliases: ds/ds.adoc
-:imagesdir: ../../../../images/programming/c/ds
+:imagesdir: {moduledir}/assets/images/programming/c/ds
 
 == Unit 1
 
@@ -31,38 +31,44 @@
 
 ==== Classification of Data Structures
 
-Data Structures are normally classified into 2 types:
+Data Structures are normally classified into 2 types
+
 1. Primitive Data Structures
 2. Non-Primitive Data Structures
 
 ===== Primitive Data Structures
 
 Primitive data structures are built-in types in most programming languages. They are:
-1. Integer:: It is whole numbers i.e. negative value, 0, positive value.
-2. Float:: It is fractional numbers.
-3. Character:: It is character values.
-4. Boolean:: It represents true or false values.
+
+Integer:: It is whole numbers i.e. negative value, 0, positive value.
+Float:: It is fractional numbers.
+Character:: It is character values.
+Boolean:: It represents true or false values.
 
 ===== Non-Primitive Data Structures
 
-These are derived from primitive data structures. They are:
-1. Array
-2. Structure
-3. Union
-4. Files
+These are derived from primitive data structures. They are
+
+* Array
+* Structure
+* Union
+* Files
 etc.
 
 Non-Primitive data type is further divided into Linear and Non-Linear data structures:
 
 a. Linear Data Structures:
++
 Here the data elements are connected in a sequence manner.
 Examples are:
+
 1. Arrays
 2. Linked List
 3. Stacks
 4. Queues
 
-Array:
+*Array:*
+
 It is collection of elements of same type.
 
 a[5] = {10, 20, 30, 40, 50}
@@ -72,7 +78,8 @@ a[5] = {10, 20, 30, 40, 50}
 |10|20|30|40|50
 |====
 
-Linked List:
+*Linked List:*
+
 * Linked list or single linked list is a sequence of elements in which every element has link to its next element in the sequence.
 * Every element is called as a `node`. 
 Every `node` contains two fields, `data` and `link`. 
@@ -85,41 +92,55 @@ Let `ptr` be a `pointer` to the linked list.
 THe example is given below:
 image::linked-list.png[Linked List]
 
-Stack:
+*Stack:*
+
 A `stack` is a data structure in which additions and deletions are made at the top of the `stack`. 
 So we can perform two operations on `stack`.
+
 1. Adding elements into the stack known as `push`.
 2. Removing elements from the stack known as `pop`.
+
 image::stack.png[Stack]
 
-Queue:
+*Queue:*
+
 A `queue` is a data structure in which additions are made at one end and deletions are made at the other end. 
 We can represent a `queue` in an array.
 
 Here we can perform two operations on `queue`.
+
 1. Adding elements into the queue known as insertion at rear.
 2. Removing elements from the queue known as deletion at front.
+
 image::queue.png[Queue]
 
 b) Non-Linear Data Structures:
+
 Here the data elements are not connected in a sequence manner.
 
 Examples are:
+
 1. Trees
 2. Graphs
 
-Tree:
+*Tree:*
+
 A `tree` is defined as a finite set of one or more `nodes` such that
+
 1. One `node` is called a root node and
 2. Remaining `nodes` are partitioned into sub trees of the root.
+
 image::tree.png[Tree]
 
-Graph:
+*Graph:*
+
 * A `graph` is a pictorial representation of a set of `points` or `nodes` termed as `vertices` and the `links` that connect the vertices are called `edges`.
 * A `graph`(G) consists of two sets `V` and `E` where `V` is called vertices and `E` is called edges. 
 We also write G = (V, E) to represent the graph.
 * A `graph` may be directed graph or undirected graph.
+
 image::graph.png[Graph]
+
 * Fig(a), Fig(b) are called undirected graph and Fig(c) is called directed graph.
 
 Differences between Linear and Non-Linear Data Structures:
@@ -193,7 +214,7 @@ An `Abstract Data Type (ADT)` is a collection of values and a set of operations 
 For example in Array ADT, set of values are index and item & set of operations are create(), retrieval() and store().
 
 *Purpose*:
-+
+
 * The purpose of the ADT is to hide the implementation details of a data structure thus improving software maintenance, reuse and portability.
 * The developers of ADT will adapt changing requirements and save time.
 * The users of ADT are concerned with the interface, but not the implementation.
@@ -204,7 +225,7 @@ For example in Array ADT, set of values are index and item & set of operations a
 etc.
 
 *Example*:
-+
+
 * A `List ADT` contain operations known as add element, remove element, etc.
 * A `List ADT` can be represented by an `array-based` implementation or a `linked-list` based implementation. 
 In this the `linked-list` based implementation is so commonly used.
@@ -215,100 +236,133 @@ In this the `linked-list` based implementation is so commonly used.
 The `Array ADT` is a set of values (index, element) and a set of operations known as `Array create()`, `Item Retrieve()` and `Array Store()`.
 
 The `Array ADT` algorithm is given by
-+
-----
+
 `Array ADT` is
-+
+
 *objects*: A set of pairs<index, element> where for each index, there is a corresponding element.
+
 *functions*: for all A€Array, i€index, x€element:
+
 Array create() := It creates a new empty array.
+
 Item retrieve(A, i) := It returns the element with particular index, if the index is valid or an error if the inded is invalid.
+
 Array Strore(A, i, x) := It stores the element
 end Array.
-----
 
 ==== Stack as an Abstract Data Type
-+
-----
+
 ADT stack is 
+
 *objects*: a finite ordered list with zero or more elements.
+
 *functions*: S € Stack, item € element
+
 Stack create() := creates a new empty stack.
+
 Stack push(S, item) := adds item to the top of the stack.
+
 Element pop(S) := removes the top element of the stack and returns it.
 end Stack.
-----
 
 ==== Queue as an Abstract Data Type
-+
-----
+
 ADT queue is
+
 *objects*: a finite ordered list with zero or more elements.
+
 *functions*: Q € Queue, item € element
+
 Queue create() := creates a new empty queue.
+
 Queue addq(Q, item) := adds item to the end of the queue.
+
 Element deleteq(Q) := removes and return the item from the queue.
+
 end Queue.
-----
 
 ==== Binary Tree as an Abstract Data Type
-+
-----
+
 ADT BinaryTree is
+
 *objects*: a finite set of nodes.
+
 *functions*: for all bt, bt1, bt2 € BinaryTree, item € element
+
 BinaryTree create() := creates a new empty binary tree.
+
 Boolean IsEmpty := if(bt == empty binary tree) return `TRUE` else return `FALSE`
+
 BinaryTree MakeBT(bt1, item, bt2) := return a binary tree whose left subtree is bt1, whose right subtree is bt2 and whose root node contains the date item.
+
 BinaryTree LeftChild(bt) := returns the left subtree of bt.
+
 Element Data(bt) := returns the data of the root node of bt.
+
 BinaryTree RightChild(bt) := returns the right subtree of bt.
+
 End BinaryTree.
-----
 
 ==== Graph as an Abstract Data Type
-+
-----
+
 ADT Graph is
+
 *objects*: a set of vertices and edges.
+
 *functions*: for all graph € Graph, v, v1 and v2 € Vertices
+
 Graph create() := creates a new empty Graph.
+
 Boolean IsEmpty() := if(graph == empty graph) return `TRUE` else return `FALSE`
+
 Graph InsertVertex(graph, v) := returns a graph with vertex v inserted.
+
 Graph InsertEdge(graph, v1, v2) := returns a graph with edge (v1, v2) inserted.
+
 Graph DeleteVertex(graph, v) := returns a graph with vertex v removed.
+
 Graph DeleteEdge(graph, v1, v2) := returns a graph with edge (v1, v2) removed.
+
 End ADT Graph.
-----
 
 ===== Preliminaries of algorithms
 
 Algorithm is step-by-step process or sequence of steps for solving a problem.
 
 Properties of an Algorithm:
-+
+
 * The properties of an algorithm are:
++
 Input:
 +
 The algorithm must have input values from a specified set.
++
 Output:
 +
 The algorithm must produce the output values from a specified set of input values. 
 The output values are the solution to a problem.
++
 Finiteness:
 +
 For any input the algorithm must terminate after a finite number of steps.
++
 Definiteness:
 +
 All the steps of an algorithm must be precisely defined.
++
 Effectiveness:
 +
 It must be possible to perform each step of the algorithm correctly and in a finite amount of time.
 
 * Each step should be well defined. 
 It can be divided into 3 types.
-+
-1. Sequence
+
+. Sequence
+. Selection
+. Iteration
+
+*Sequence*
+
 * In an algorithm if all steps are shown then it is known as sequence.
 * for example an algorithm for adding two values.
 +
@@ -320,8 +374,9 @@ Step 3: r = a + b
 Step 4: print r
 Step 5: stop
 ----
-2. Selection
-+
+
+*Selection*
+
 * Here we use if condition and the condition is checked only one time.
 * if a condition is satisfied then next statement is executed otherwise else statement is executed.
 * For example an algorithm to check whether the given number is even or odd.
@@ -338,8 +393,8 @@ Step 6: print "n is odd"
 Step 7: stop
 ----
 
-3. Iteration
-+
+*Iteration*
+
 * Here we use while, do-while and for loop & the condition is checked number of times.
 * i.e. The statements in an iteration block are executed no. of times based on some condition.
 * For example an algorithm to print 1 to n numbers using while loop.
@@ -359,10 +414,10 @@ Step 7: stop
 * Multiple algorithm can exist to solve the same problem or complete the the same task.
 * The appropriate algorithm can be determined based on an number of factors:
 +
-1. How long the algorithm takes to run
-2. What resources are required to execute the algorithm
-3. How much space or memory is required.
-4. How exact is the solution provided by the algorithm.
+. How long the algorithm takes to run
+. What resources are required to execute the algorithm
+. How much space or memory is required.
+. How exact is the solution provided by the algorithm.
 
 === Searching
 
@@ -370,16 +425,17 @@ Searching is the process of finding an element in a list of values.
 
 It is the algorithmic process of finding a particular element in a collection of elements.
 
-1. Linear Search
-+
+*Linear Search*
+
 Definition:
-+
+
 It starts at the beginning of the list and checks each element of the list.
-+
+
 i.e. It sequentially checks each element of the list until a match is found or the whole list has been searched.
 So it is called sequential search.
 
 *Example:*
+
 * Let the elements are: 10, 6, 3, 8, 9, 12, 14
 * The search element is 12
 * Now it compares 12 with each and every element.
@@ -387,19 +443,25 @@ So it is called sequential search.
 * So the searching process is success and element is found.
 
 *Algorithm:*
+
 Step 1: Read elements in array
+
 Step 2: Read the element to be searched
+
 Step 3: Compare the element with each element of the array sequentially
+
 Step 4: If match is found then the search is success
+
 Step 5: If match is not found then the search is unsuccess.
 
 *Program*
+
 include:include::/programs/ds/linear_search.c[]
 
-2. Binary Search
-+
+*Binary Search*
+
 Definition:
-+
+
 Binary search is the most popular search algorithm. 
 It is efficient and also one of the most commonly used techniques that are used to solve problems.
 
@@ -409,6 +471,7 @@ Now suppose we have an ascending order record. At the time of search it takes th
 In this way this search algorithm divides the records into two parts in each iteration and thus called binary search.
 
 *Example:*
+
 * Let the elements in ascending order are: 2, 4, 6, 8, 10, 12, 15
 * The search element is 12
 * For searching it compare first middle element.
@@ -418,17 +481,22 @@ Since 12 is greater than 8 search on right side part of 8.
 So element is found.
 
 *Algorithm:*
+
 Step 1: Read sorted elements in array
+
 Step 2: Read the element to be searched
+
 Step 3: Compare the element to search and middle element in array. 
-Step 4:If search element is greater than middle element then search in right side of middle element otherwise search on left.
+
+Step 4: If search element is greater than middle element then search in right side of middle element otherwise search on left.
+
 Step 5: This process is repeated for all elements in array. 
 If not match is found upto the end then the search is not success.
 
 *Program*
 include:include::/programs/ds/binary_search.c[]
 
-3. Fibonacci Search
+*Fibonacci Search*
 
 * Fibonacci search uses Fibonacci numbers to find the element in the sorted array.
 * Fibonacci numbers are: 0, 1, 1, 2, 3, 5, 8...
@@ -445,8 +513,6 @@ Length of array n = 11.
 * Let offset = -1
 * First compute i = min (offset+a, n-1)
 
-
-
 === Sorting
 
 Sorting is a process of placing a list of elements from a collection of dats in some order.
@@ -456,7 +522,7 @@ Sorting can be done in ascending or descending order.
 It arranges the data in a sequence which makes searching easier.
 
 ==== Insertion Sort
-+
+
 * In this sorting technique first elements are stored in an array.
 * The process of sorting starts with second element.
 * First the second element is picked and is placed in specified order. 
@@ -465,34 +531,37 @@ Similarly the fourth, fifth, ...nth element is placed in specified order.
 * Finally we get the sorting elements.
 
 *Example*
-+
+
 Let us consider the elements of an array: 12, 3, 1, 5, 8
-+
-1. Checking second element of array with element before it and inserting it in proper position. 
+
+. Checking second element of array with element before it and inserting it in proper position. 
 In this case 3 is inserted in position of 12.
 +
 image::insertion_sort-1.png[]
-2. Checking third element of array with elements before it and inserting it in proper position. 
+. Checking third element of array with elements before it and inserting it in proper position. 
 In this case 3 is inserted in position 12.
 +
 image::insertion_sort-2.png[]
-3. Checking fourth element of array with elements before it and inserting it in proper position. 
+. Checking fourth element of array with elements before it and inserting it in proper position. 
 In this case 5 is inserted in position of 12.
 +
 image::insertion_sort-3.png[]
-4. Checking fifth element of array with elements before it and inserting it in proper position. 
+. Checking fifth element of array with elements before it and inserting it in proper position. 
 In this case 8 is inserted in position of 12.
 +
 image::insertion_sort-4.png[]
-5. Sorted array in ascending order.
+. Sorted array in ascending order.
 +
 image::insertion_sort-5.png[]
 
 *Algorithm*
-+
+
 Step 1: Check second element of array with element before it and insert it in proper position.
+
 Step 2: Checking third element of array with element before it and inserting it in proper position.
+
 Step 3: Repeat this till all elements are checked.
+
 Step 4: Stop
 
 *Program*
@@ -513,11 +582,15 @@ This process is repeated till all the elements are placed.
 * Now we get the sorted elements.
 
 *Algorithm*
-+
+
 Step 1: Set min to the first location.
+
 Step 2: Search the minimum element in the array.
+
 Step 3: Swap the first location with the minimum value in the array.
+
 Step 4: Assign the second element as min.
+
 Step 5: Repeat this process until we get a sorted array.
 
 *Program*
@@ -534,13 +607,14 @@ The only difference between the two sorting algorithms is the manner in which th
 Bubble sort is based on the idea of repeatedly comparing pairs of adjacent elements and then swapping positions if they exist in the wrong order.
 
 *Example*
-+
+
 The following figure shows the first pass of a bubble sort. 
 In first pass the first element is compared with second and exchange element if first one is greater than second.
+
 * Similarly second element is compared with third and exchange element if second one is greater than third.
 * Repeat this so that at the end of first pass the largest element is in the last position. 
 Leave this element.
-
++
 image::bubble_sort.png[]
 
 * In second pass compare up to before last place value and put the next largest value, that before last place. 
@@ -550,10 +624,13 @@ Leave this element.
 Now we get the sorted elements.
 
 *Algorithm*
-+
+
 Step 1: The first element is compared with second and exchange element if first one is greater than second.
+
 Step 2: The second element is compared with third and exchange element if second one is greater than third.
+
 Step 3: Repeat this so that at the end the largest value is in last place.
+
 Step 4: Likewise sorting is repeated for all elements.
 
 *Program*
@@ -567,53 +644,72 @@ include::/programs/ds/bubble_sort.c
 After repeatedly partitioning, we get the sorted elements.
 
 *Example*
+
 * Let us consider the elements: 35, 50, 15, 25, 80, 20, 90, 45
 * Let us consider the first element 35 as pivot or i. 
 The last element 45 as j.
++
 image::quick_sort-1.png[]
 * 50 which is greater than pivot taken as i and 20 smaller than pivot taken as j.
++
 image::quick_sort-2.png[]
 * Now i is less than j so swap the elements in i and j.
++
 image::quick_sort-3.png[]
 * Find greater than 35 (80) is i and less than 35 (25) is j.
++
 image::quick_sort-4.png[]
 * Now i is not less than j. 
 Swap 35 and j. 
 So 35 comes at j place.
++
 image::quick_sort-5.png[]
 * Now 35 is in correct position.
 * On left side and right side of 35 repeat the process. Consider on left side of 35
++
 image::quick_sort-6.png[]
 * Let 25 as pivot. 
 The lesser of 25 that is 15 as j and there is no greater. 
 So bring i after j. 
 i > j so swap pivot and j.
++
 image::quick_sort-7.png[]
 * After swaping
++
 image::quick_sort-8.png[]
 * Now the left part is sorted. 
 Consider right part.
++
 image::quick_sort-9.png[]
 * Here 80 as pivot. 
 Greater than 80 is i and less than to 80 is j.
++
 image::quick_sort-10.png[]
 * Here i is less than j, so swap i and j elements.
++
 image::quick_sort-11.png[]
 * After swaping, the sorting elements are given by
++
 image::quick_sort-12.png[]
 * Now join all left part j and right part j to get the sorted elements.
++
 image::quick_sort-13.png[]
 
 *Algorithm*
-+
+
 Step 1: Let the first element taken as pivot.
+
 Step 2: Find lesser of pivot say i and greater of pivot say j.
+
 Step 3: if i is less than j then swap i and j elements. 
 Repeat step 2.
+
 Step 4: Repeat step 3 until i > j. 
 Now swap j and pivot.
+
 Step 5: Now the pivot element is in final position. 
 Repeat the above procedure for left and right side of pivot elements until all elements are sorted.
+
 Step 6: Stop
 
 *Program*
@@ -631,33 +727,49 @@ Sorting is performed from least significant digit to the most significant digit.
 * For example, if the largest number is a 3 digit number then that list is sorted with 3 passes.
 
 *Example*
+
 Consider the following list of unsorted integers:
 
 82, 901, 100, 12, 150, 77, 55, 23
 
 Step 1: Define 10 queues each represents a bucket for digits from 0 to 9.
+
 image::randix-1.png[]
+
 Step 2: Insert all the numbers of the list into respective queue based on the least significant digit (ones placed digit) of every number.
+
 image::randix-2.png[]
+
 Group all the numbers from queue 0 to 9 in the order they halved inserted & consider the list for next step as input list.
 100, 150, 901, 82, 12, 23, 55, 77
+
 Step 3: Insert all the numbers of the list into respective queue based on the next least significant digit (tens placed digit) of every number.
+
 image::randix-3.png[]
+
 Group all the numbers from queue 0 to 9 in the order they halved inserted & consider the list for next step as input list.
 100, 901, 12, 23, 150, 55, 77, 82
+
 Step 4: Insert all the numbers of the list into respective queue based on the next least significant digit (hundreds placed digit) of every number.
+
 image::randix-4.png[]
+
 Group all the numbers from queue 0 to 9 in the order they halved inserted & consider the list for next step as input list.
 12, 23, 55, 77, 82, 100, 150, 901
 List got sorted in the increasing order.
 
 *Algorithm*
-+
+
 Step 1 - Define 10 queues each represents a bucket for digits from 0 to 9.
+
 Step 2 - Consider the least significant digit of every number in the list which is to be sorted.
+
 Step 3 - Insert each number into respective queue based on the least significant digit.
+
 Step 4 - Group all the numbers from queue 0 to 9 in the order they have inserted into their respective queues.
+
 Step 5 - Repeat from step 3 based on the next least significant digit.
+
 Step 6 - Repeat from step 2 until all the numbers are grouped based on the most significant digit.
 
 *Program*
@@ -672,21 +784,25 @@ It divides input array into two halves, calls itself for the two halves and then
 For example consider the array of elements: 38, 27, 43, 3, 9, 82, 10
 
 Now the array is recursively divided into two halves till the size becomes one which is shown in the following figure.
+
 image::merge_sort-1.png[]
 
 Once the size becomes one, the merge process comes into action and starts merging with sorted array till the complete array is merged.
+
 image::merge_sort-2.png[]
 
 *Algorithm*
-+
+
 Step 1: If it is only one element in the list then it is already sorted.
+
 Step 2: Divide the list recursively into two halves till the size becomes one.
+
 Step 3: Once the size becomes 1, the merge process comes into action and starts merging with sorted array till the complete array is merged.
+
 image::merge_sort-3.png[]
 
 *Program*
 include::/programs/ds/merge_sort.c
-
 
 ===== Time Complexity
 
@@ -753,6 +869,7 @@ Thus, it acts as a building block to implement data structures like stacks, queu
 ==== Basic Terminology
 
 A linked list can be perceived as a train or a sequence of nodes in which each node contains one or more data fields and a pointer to the next node.
+
 image::linked_lists.png[]
 
 We can see a linked list in which every node contains two parts, an integer and a pointer to the next node. 
@@ -838,7 +955,7 @@ Step 3: [PROCESS]                       IF `PTR` -> `DATA` = `VAL`
                                         [END OF IF]
                                 [END OF LOOP]
 Step 4: [UPDATE] SET `POS` to `NULL`
-Step 4: [TERMINATE] EXIT
+Step 5: [TERMINATE] EXIT
 ----
 
 ===== Inserting a new node in a Linked List
@@ -1010,7 +1127,7 @@ Step 9: [TERMINATE] EXIT
 ----
 
 === Reversing Single Linked Lists
-todo::
+todo::s
 
 === Applications on Single Linked List
 
@@ -1028,6 +1145,7 @@ A polynomial is composed of different terms where each of them holds a coefficie
 An essential characteristic of the polynomial is that each term in the polynomial expression consists of two parts: one is the coefficient and other is the exponent.
 
 *Example*
+
 10x^2 + 26x, here 10 and 26 are coefficients and 2, 1 are its exponential values.
 image::polynomial.png[]
 
@@ -1076,14 +1194,17 @@ A matrix is a two-dimensional data object made of m rows and n columns, therefor
 If most of the elements of the matrix have 0 value, then it is called a sparse matrix.
 
 Example:
+----
 0 0 3 0 4
 0 0 5 7 0
 0 0 0 0 0
 0 2 6 0 0
+----
 
 ===== Sparse Matrix Representation using arrays
 
 Method 1: Using Arrays
+
 2D array is used to represent a sparse matrix in which there are 3 rows named as
 Row: Index of row, where non-zero element is located.
 Column: Index of column, where non-zero element is located.
@@ -1094,6 +1215,7 @@ image::sparse-matrix-array.png[]
 ===== Sparse Matrix Representation using Linked List
 
 Method 2: Using Linked List
+
 In linked list, each node has four fields:
 Row: Index of row, where non-zero element is located.
 Column: Index of column, where non-zero element is located.
@@ -1128,12 +1250,12 @@ Therefore, it consists of 3 parts - data, a pointer to the next node and a point
 
 image::doubly-linked_list.png[]
 
-
 A doubly linked list provides the ease to manipulate the elements in the list as it maintains pointers to nodes in both the directions (forward and backward).
 
 The main advantage of using a doubly linked list is that it makes searching twice as efficient.
 
 Let us view how a doubly linked list is maintained in the memory.
+
 image::doubly-linked_list-memory.png[]
 
 ==== Inserting a New Node in a Doubly Linked List
@@ -1152,7 +1274,6 @@ image::doubly-linked_list-insert-case1_1.png[]
 image::doubly-linked_list-insert-case1_2.png[]
 
 *Algorithm*
-+
 ----
 Step 1: IF AVAIL = NULL
                 Write OVERFLOW
@@ -1171,7 +1292,6 @@ Step 9: EXIT
 
 image::doubly-linked_list-insert-case2.png[]
 *Algorithm*
-+
 ----
 Step 1: IF AVAIL = NULL
                 Write OVERFLOW
@@ -1193,7 +1313,6 @@ Step 11: EXIT
 ===== Case 3: Inserting a Node After a Given Node in a Doubly Linked List
 image::doubly-linked_list-insert-case3.png[]
 *Algorithm*
-+
 ----
 Step 1: IF AVAIL = NULL
                 Write OVERFLOW
@@ -1216,7 +1335,6 @@ Step 12: EXIT
 ===== Case 4: Inserting a Node Before a Given Node in a Doubly Linked List
 image::doubly-linked_list-insert-case4.png[]
 *Algorithm*
-+
 ----
 Step 1: IF AVAIL = NULL
                 Write OVERFLOW
@@ -1250,7 +1368,6 @@ We will take four cases and then see how deletion is done in each case.
 
 image::doubly-linked_list-delete-case1.png[]
 *Algorithm*
-+
 ----
 Step 1: IF START = NULL
                 Write UNDERFLOW
@@ -1268,7 +1385,6 @@ Step 6: EXIT
 image::doubly-linked_list-delete-case2_1.png[]
 image::doubly-linked_list-delete-case2_2.png[]
 *Algorithm*
-+
 ----
 Step 1: IF START = NULL
                 Write UNDERFLOW
@@ -1287,7 +1403,6 @@ Step 7: EXIT
 
 image::doubly-linked_list-delete-case3.png[]
 *Algorithm*
-+
 ----
 Step 1: IF START = NULL
                 Write UNDERFLOW
@@ -1308,7 +1423,6 @@ Step 9: EXIT
 
 image::doubly-linked_list-delete-case4.png[]
 *Algorithm*
-+
 ----
 Step 1: IF START = NULL
                 Write UNDERFLOW
@@ -1350,7 +1464,6 @@ We will take two cases and then see how insertion is done in each case.
 image::circular-linked_list-insert-before-1.png[]
 image::circular-linked_list-insert-before-2.png[]
 *Algorithm*
-+
 ----
 Step 1: IF AVAIL = NULL
                 Write OVERFLOW
@@ -1374,7 +1487,6 @@ Step 11: EXIT
 image::circular-linked_list-insert-end-1.png[]
 image::circular-linked_list-insert-end-2.png[]
 *Algorithm*
-+
 ----
 Step 1: IF AVAIL = NULL
                 Write OVERFLOW
@@ -1406,7 +1518,6 @@ Rest of the cases of deletion are same as that given for singly linked lists.
 image::circular-linked_list-delete-first.png[]
 +
 *Algorithm*
-+
 ----
 Step 1: IF START = NULL
                 Write UNDERFLOW
@@ -1425,9 +1536,7 @@ Step 8: EXIT
 ===== Case 2: Deleting the Last Node from a Circular Linked List
 
 image::circular-linked_list-delete-last.png[]
-+
 *Algorithm*
-+
 ----
 Step 1: IF START = NULL
                 Write UNDERFLOW
@@ -1528,7 +1637,7 @@ Step 1: IF FRONT = -1 and FRONT > REAR
 Step 2: EXIT
 ----
 
-Note: The process of inserting an element in the queue is called enqueue and the process of deleting an element from the queue is called dequeue.
+Note:: The process of inserting an element in the queue is called enqueue and the process of deleting an element from the queue is called dequeue.
 
 ==== Linked List Representation and Implementation of Queues
 
@@ -1551,12 +1660,12 @@ All insertions will be done at the rear end and all the deletions will be done a
 If `FRONT` = `REAR` = `NULL`, then it indicates that the queue is empty. 
 The linked representation of a queue is shown in Fig.3.4.
 
-
 ===== Insert Operation
 
 The insert operation is used to insert an element into a queue. 
 The new element is added as the last element of the queue. 
 Consider the linked queue shown in Fig.3.5.
+
 image::queue-linked_list-insert.png[]
 
 To insert an element with value 9, we first check if `FRONT == NULL`. 
@@ -1581,9 +1690,12 @@ Step 3: IF FRONT = NULL
 Step 4: END
 ----
 
-The algorithm shows that inserting an element in a linked queue. 
+The algorithm shows that inserting an element in a linked queue.
+
 In step 1, the memory is allocated for the new node. 
+
 In step 2, the `DATA` part of the new node is initialize with the value to be stored in the node. 
+
 In step 3, we check if the new node is the first node of the linked queue. 
 This is done by checking if `FRONT = NULL`. 
 If this is the case, then the new node is tagged as `FRONT` as well as `REAR`. 
@@ -1596,6 +1708,7 @@ The delete operation is used to delete the element that is first inserted in a q
 However, for deleting the value, we must first check if `FRONT == NULL` because if this is the case, then the queue is empty and no more deletions can be done. 
 If an attempt is made to delete a value from a queue that is already empty, an underflow message is printed. 
 Consider the queue shown in Fig.3.7
+
 image::queue-linked_list-delete.png[]
 
 .Algorithm to delete an element in a linked queue
@@ -1669,6 +1782,7 @@ The only difference will be in the code that performs insertion and deletion ope
 ===== Insertion
 
 For insertion, we now have to check for the following 3 conditions:
+
 * If `FRONT = 0` and `REAR = MAX - 1`, then the circular queue if full. 
 Look at the queue given in Fig.3.12 which illustrates this point.
 * If `REAR != MAX - 1`, then `REAR` will be incremented and the value will be inserted as illustrated in Fig.3.13.
@@ -1678,7 +1792,6 @@ So, set `REAR = 0` and insert the new element there, as shown in Fig.3.14.
 image::queue-circular-inset.png[]
 
 *Algorithm*
-+
 ----
 Step 1: IF FRONT = 0 and REAR = MAX -1
                 Write "Overflow"
@@ -1696,9 +1809,12 @@ Step 4: EXIT
 ----
 
 Let us look at the algorithm to insert an element in a circular queue. 
+
 In step 1, we check for the overflow condition. 
+
 In step 2, we make two checks. 
 First to see if the queue is empty, and second to see if the `REAR` end has already reached the maximum capacity while there are certain free locations before the `FRONT` end. 
+
 In step 3, the value is stored in the queue at the location pointed by `REAR`.
 
 ===== Deletion
@@ -1717,7 +1833,6 @@ This is shown in Fig.3.17.
 image::queue-circular-delete.png[]
 
 *Algorithm*
-+
 ----
 Step 1: IF FRONT = -1
                 Write "Underflow"
@@ -1737,8 +1852,11 @@ Step 4: Exit
 ----
 
 Let us look at the algorithm to delete an element form a circular queue. 
+
 In step 1, we check for the underflow condition. 
+
 In step 2, the value of the queue at the location point by `FRONT` is stored in VAL. 
+
 In step 3, we make 2 checks. 
 First to see if the queue has become empty after deletion and 
 second to see if `FRONT` has reached the maximum capacity of the queue. 
@@ -1760,6 +1878,7 @@ image::queue-dequeue.png[]
 
 There are 2 variants of a double-ended queue. 
 They include
+
 * `Input restricted deque`. In this dequeue, insertions can be done only at one of the ends, while deletions can be done from both ends.
 * `Output restricted deque`. In this dequeue, deletions can be done only at one of the ends, while insertions can be done from both ends.
 
@@ -1768,6 +1887,7 @@ They include
 A priority queue is a data structure in which each element is assigned a priority. 
 The priority of the element will be used to determine the order in which the elements will be processed. 
 The general rules of processing the elements of a priority queue are
+
 * An element with higher priority is processed before an element with a lower priority.
 * 2 elements with the same priority are processed on the first-come-first-served (FCFS) basis.
 
@@ -1843,9 +1963,10 @@ image::stack-1.png[]
 === Operations on Stacks
 
 A stack supports 3 basic operations:
-1. push
-2. pop
-3. peek
+
+. push
+. pop
+. peek
 
 The `push` operation add an element to top of the stack and 
 the `pop` operation removes an element from top of stack. 
@@ -1932,6 +2053,7 @@ image::stack-linked_list.png[]
 The push operation is used to insert an element into the stack. 
 The new element is added at the topmost position of the stack. 
 Consider the linked stack shown in below figure.
+
 image::stack-linked_list-pop-1.png[]
 
 To insert an element with value 9, 
@@ -1939,11 +2061,15 @@ we first check if `TOP = NULL`.
 If this is the case, then we allocate memory for a new node, store the value in its `DATA` part and `NULL` in its `NEXT` part. 
 The new node will then be called `TOP`. 
 However, if `TOP != NULL`, then we insert the new node at the beginning of the linked stack and name this new node as `TOP`.
+
 image::stack-linked_list-pop-2.png[]
 
 The algorithm to push an element into a linked stack. 
+
 In step 1, memory is allocated for the new node. 
+
 In step 2, the DATA part of the new node is initialized with the value to be stored in the node. 
+
 In step 3, we check if the new node is the first node of the linked list, is done by checking if TOP = NULL. 
 In case the IF statement evaluates to true, then NULL is stored in the NEXT part of the node and new node is called `TOP`.
 
@@ -1974,6 +2100,7 @@ image::stack-linked_list-pop-1.png[]
 
 In case TOP != NULL, then we will delete the node pointed by TOP, and make TOP point to the second element of the linked stack. 
 Thus, the updated stack becomes as shown in below figure.
+
 image::stack-linked_list-pop-2.png[]
 
 .Algorithm Stack Linked POP
@@ -1989,9 +2116,13 @@ Step 5: END
 ----
 
 The algorithm to delete an element from a stack:
+
 In step 1, we first check for the UNDERFLOW condition.
+
 In step 2, we use a pointer PTR that points to TOP.
+
 In step 3, TOP is made to point to the next node in sequence.
+
 In step 4, the memory occupied by PTR is given back to the free pool.
 
 === Applications of Stacks
@@ -2012,13 +2143,13 @@ The topics that will be discussed in this section include the following:
 
 ==== Evaluation of Arithmetic Expressions
 
-
 == Trees
 
 === Basic Terminology in Trees
 
 A tree is recursively defined as a set of one or more nodes where on node is designates as root of the tree and all the remaining nodes can partitioned into non-empty sets each of which is sub-tree of the root. 
 Figure 4.1 shows a tree where node A is the root node; nodes B, C and D are children of the root node and form sub-trees of the tree rooted at node A.
+
 image::tree-detail.png[]
 
 Root Node:: The root node R is the topmost node in the tree. 
@@ -2042,8 +2173,9 @@ So, all child nodes have a level number given by parent's level number + 1.
 Degree:: Degree of a node is equal to the number of children that a node has. 
 The degree of a leaf node is zero.
 
-* In-degree:: In-degree of a node is the number of edges arriving at the node.
-* Out-degree:: Out-degree of a node is the number of edges leaving that node.
+In-degree:: In-degree of a node is the number of edges arriving at the node.
+
+Out-degree:: Out-degree of a node is the number of edges leaving that node.
 
 === Binary Trees
 
@@ -2103,10 +2235,12 @@ The leaf nodes in the tree are: 8, 9, 5, 10, 11 and 12.
 
 Similar binary trees:: Two binary trees T and T' are said to be similar if both these trees have the same structure. 
 Figure 4.4 shows two similar binary trees.
+
 image::tree-binary-similar.png[]
 
 Copies:: Two binary trees T and T' are said to be copies if they have similar structure and if they have same content at the corresponding nodes. 
 Figure 4.5 shows that T' is a copy of T.
+
 image::tree-binary-copy.png[]
 
 Edge:: It is the line connecting a node N to any of its successors. 
@@ -2120,7 +2254,7 @@ The depth of the root node is Zero.
 
 Height of a tree:: It is the total number of nodes on the path from the root node to the deepest node in the tree. 
 A tree with only a root node has a height of  1.
-
++
 A binary tree of height h has at least h nodes and at most 2^h^ - 1 node. 
 This is because every level will have at lease one node and can have at most 2 nodes. 
 SO, if every level has two nodes then a tree with height h will have at most 2^h^ - 1 nodes as at level 0, there is only one element called the root. 
@@ -2178,14 +2312,14 @@ image::tree-binary-extended.png[]
 In the computer's memory, a binary tree can be maintained either by using a linked representation or by using a sequential representation.
 
 *Linked representation of binary trees*
-+
+
 In the linked representation of a binary tree, every node will have 3 parts:
 1) data element
 2) a pointer to the left node and
 3) a pointer to the right node.
 
 So in C, the binary tree is built with a node type given below:
-+
+
 [source, c]
 ----
 struct node
@@ -2212,6 +2346,7 @@ Sequential representation of binary trees is done using single or one-dimensiona
 Thought it is the simplest technique for memory representation, it is inefficient as it requires a lot of memory space.
 
 A sequential binary tree follows the following rules:
+
 * A one-dimensional array, called TREE, is used to store the element of tree.
 * The root of the tree will be stored in the first location. 
 That is, TREE[1] will store the data of the root element.
@@ -2288,9 +2423,10 @@ image::tree-binary-traversal-inorder.png[]
 
 To traverse a non-empty binary tree in post-order, the following operations are performed recursively at each node. 
 The algorithm works by:
-1) Traverse the left subtree.
-2) Traverse the right subtree.
-3) Visit the root node.
+
+. Traverse the left subtree.
+. Traverse the right subtree.
+. Visit the root node.
 
 In this algorithm, the left sub-tree is always traversed before the right sub-tree and the root node. 
 The word `post` in the post-order specifies that the root node is accessed after the left and the right  sub-trees.
@@ -2340,6 +2476,7 @@ In contrast, inserting and deleting elements in a linked list is easier, but sea
 However, in the worst case, a binary search tree will take O(n) time to search for an element.
 
 To summarize, a binary search tree is a binary tree with the following properties:
+
 * The left sub-tree of a node N contains values that are less than N's value.
 * The right sub-tree of a node N contains values that are greater than N's value.
 * Both the left and right binary trees also satisfy these properties and thus are binary search trees.
@@ -2382,6 +2519,7 @@ Step 10: END
 ----
 
 Example: Inserting nodes with values 12 and 55 in the given binary search tree.
+
 image::tree-binary-search-insert.png[]
 
 ==== Deleting a node from a binary search tree
@@ -2390,7 +2528,9 @@ The delete function deletes a node from the binary search tree.
 However, utmost care should be taken that the properties of the binary search tree are not violated and nodes are not lost in the process.
 
 Case 1. Deleting a node that has no children
+
 Case 2. Deleting a node with one child
+
 Case 3. Deleting a node with two children
 
 ===== Case 1. Deleting a node that has no children
@@ -2471,6 +2611,7 @@ The second task in rebalancing the tree is to determine which type of rotation h
 There are 4 types of rebalancing rotations and application of these rotations depends on the position of the inserted node with reference to the critical node.
 
 AVL tree is out of balance must be one of the 4 types:
+
 * LL
 +
 The new node is inserted in the left sub-tree of the left sub-tree of the critical node. 
@@ -2486,22 +2627,253 @@ The new node is inserted in the left sub-tree of the right sub-tree of the criti
 
 ====== Rotation of LL
 
-When LL loses balance, the AVL tree can be balanced with one rotation as shown below.
+When LL loses balance, the AVL tree can be balanced with one right rotation as shown below. 
+Right branch of the left sub-tree is rearranged as left branch to the critical node.
 
 Example: Consider the AVL tree given in figure and insert 18 into it.
 
-====== RR rotation
+image::tree-avl-left-left.bmp[]
+
+====== Rotation of RR
+
+When RR loses balance, the AVL tree can be balanced with one left rotation as shown below. 
+Left branch of the right sub-tree is rearranged as right branch to the critical node.
+
+Example: Consider ther AVL tree given in figure and insert 89 into it.
+
+image::tree-avl-right-right.bmp[]
+
 ====== LR rotation
+
+When LR loses balance, the AVL tree can be balanced with left rotation followed by right rotation as shown below.
+
+image::tree-avl-left-right.bmp[]
+
 ====== RL rotation
+
+When RL loses balance, the AVL tree can be balanced with right rotation followed by left rotation as shown below.
+
+image::tree-avl-left-right.bmp[]
+
+*Example*
+
+Construct an AVL tree by inserting the following elements in the given order.
+
+63, 9, 19, 27, 18, 108, 99, 81.
+
+image::tree-avl-example.png[]
+
+===== Deleting a node from an AVL tree
+
+Deletion of a node in an AVL tree is similar to that of binary search trees. 
+But it goes on step ahead. 
+Deletion may distrub the AVLness of the tree, so to rebalance the AVL tree, we need to perform rotations.
 
 === Applications of Trees
 
+* Trees are used to store simple as well as complex data. 
+Here simple means an ineger value, character value and complex data means a structure or a record.
+* Trees are often used for implementing other types of data structures like hash tables, sets and maps.
+* A self-balancing tree, Red-Black tree is used in kernel scheduling or preempt massively multiprocessor computer operating system use.
+* Another variation of tree, B-trees are prominently used to store tree structures on disc. 
+They are used to index a large number of records.
+* B-trees are also used for secondary indexes in databases, where the index facilitates a select operation to answer some range criteria.
+* Trees are an important data structure used for compiler construction.
+* Trees are also used in database design.
+* Trees are used in file system directories.
+* Trees are also widely used for information storage and retrieval in symbol tables.
+
 ==== Expression Trees
+
+image::tree-expression-1.png[]
+
+Binary trees are widely used to store algebraic expressions. 
+For example, consider the algebraic expression given as: 
+
+Exp = (a - b) + (c * d)
+
+This expression can be represented using a binary tree as shown in Figure.
+
+Given an expression, Exp = ((a + b) - (c * d)) %  ((e ^ f) / (g - h)), construct the corresponding binary tree.
+
+image::tree-expression-2.png[]
 
 ==== Heap Sort
 
+Heap:: Recall that a heap is a complete binary tree such that the weight of every node is less than the weights of its children.
 
+A heap with n elements can be conveniently represented as the first n elements of an array. 
+Furthermore, the children of a[i] can be found in a[2i] (left child) and a[2i+1] (right child).
 
+Steps:
 
+. Consider the values of the elements as priorities and build the heap tree.
 
+. Start deleteMin operations, storing each deleted element at the end of the heap array.
 
+After performing step 2, the order of the elements will be opposite to the order in the heap tree. 
+Hence if we want the elements to be stored in ascending order, we need to build the heap tree in descending order - the greatest element will have the highest priority.
+
+Note that we have only one array, treating its parts differently:
+
+a) When building the heap tree, part of the array will be considered as the heap, and the rest part - the original array.
+
+b) When sorting, part of the array will be the heap, and the rest part - the sorted array.
+
+*Example*
+
+Given an array of 6 elements: 15, 19, 10, 7, 17 and 16 sort it in ascending order using heap sort.
+
+Here is the array: 15, 19, 10, 7, 17 and 6
+
+*Building the heap tree:*
+
+The array represented as a tree, complete but not ordered:
+
+|====
+|15|19|10|7|17|16
+|====
+
+image::tree-heap-1.png[]
+
+Start with the rightmost node at height 1, the node at position 3 = Size / 2.
+
+It has one greater child and has to percolated down:
+
+image::tree-heap-2.png[]
+
+After processing array[3] the situation is:
+
+image::tree-heap-3.png[]
+
+Next come array[2]. 
+Its children are smaller, so no percolation is needed.
+
+The last node to be processed is array[1]. 
+Its left child is ther greater of the children.
+
+The item at array[1] has to be percolated down to the left, swapped with array[2].
+
+As a result the situtation is:
+
+image::tree-heap-4.png[]
+
+The children of array[2] are greater, and item 15 has to be moved down further, swapped with array[5].
+
+image::tree-heap-5.png[]
+
+Now the tree is ordered, and the binary heap is built.
+
+*Sorting - Performing deleteMax operations:*
+
+Delete the top element 19.
+
+Store 19 in a temporary place, a hole is create at the top.
+
+image::tree-heap-6.png[]
+
+Swap 19 with the last element of the heap.
+
+As 10 will be adjusted in the heap, its cell will no longer be a part of the heap.
+
+Instead it becomes a cell from the sorted array.
+
+image::tree-heap-7.png[]
+
+Percolate down the hole.
+
+image::tree-heap-8.png[]
+
+Percolate once more (10 is less than 15, so it cannot be inserted in the previous hole).
+
+image::tree-heap-9.png[]
+
+Now 10 can be inserted in the hole.
+
+image::tree-heap-10.png[]
+
+*DeleteMax the top element 17:*
+
+Store 17 in a temporary place, a hole is create at the top.
+
+image::tree-heap-11.png[]
+
+Swap 17 with the last element of the heap.
+
+As 10 will be adjusted in the heap, its cell will no longer be a part of the heap.
+
+Instead it becomes a cell from the sorted array.
+
+image::tree-heap-12.png[]
+
+The element 10 is less than the children of the hole, and we percolate the hole down.
+
+image::tree-heap-13.png[]
+
+Insert 10 in the hole.
+
+image::tree-heap-14.png[]
+
+*DeleteMax 16*
+
+Store 16 in a temporary place, a hole is create at the top.
+
+image::tree-heap-15.png[]
+
+Swap 16 with the last element of the heap.
+
+As 7 will be adjusted in the heap, its cell will no longer be a part of the heap.
+
+Instead it becomes a cell from the sorted array.
+
+image::tree-heap-16.png[]
+
+Percolate the hole down (7 cannot be inserted there - it is less than the children of the hole).
+
+image::tree-heap-17.png[]
+
+Insert 7 in the hole.
+
+image::tree-heap-18.png[]
+
+*DeleteMax the top element 15*
+
+Store 15 in a temporary place, a hole is create at the top.
+
+image::tree-heap-19.png[]
+
+Swap 15 with the last element of the heap.
+
+As 10 will be adjusted in the heap, its cell will no longer be a part of the heap.
+
+Instead it becomes a cell from the sorted array.
+
+image::tree-heap-20.png[]
+
+Store 10 in the hole (10 is greater than the children of the hole).
+
+image::tree-heap-21.png[]
+
+*DeleteMax the top element 10*
+
+Remove 10 from the heap and store it into a temporary place.
+
+image::tree-heap-22.png[]
+
+Swap 10 with the last element of the heap.
+
+As 7 will be adjusted in the heap, its cell will no longer be a part of the heap.
+
+Instead it becomes a cell from the sorted array.
+
+image::tree-heap-23.png[]
+
+Store 7 in the hole (as the only remaining element in the heap).
+
+image::tree-heap-24.png[]
+
+7 is the last element from the heap, so now the array is sorted.
+
+image::tree-heap-25.png[]
+
+The `HEAPSORT` procedure takes time (O(n log n)), since the call to `BULD_HEAP` takes time O(n) and each of the n-1 calls to Heapify takes time O(log n).
