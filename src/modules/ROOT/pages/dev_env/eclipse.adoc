@@ -1,0 +1,44 @@
+= Eclipse
+:page-aliases: dev_env/index.adoc
+:doctype: book
+:sectnums: 7
+:sectnumlevels: 7
+:icons: font
+:include_dir: example$eclipse
+:imagedir: eclipse/
+
+== Installation
+
+* download the latest eclipse distribution from https://www.eclipse.org/downloads/packages/
+* unzip the archive
+* make short cuts to the eclipse executable
+* run eclipse
+
+== setup jdk
+
+----
+windows > preferences > java > Installed JREs > add
+----
+
+== setup maven
+
+----
+windows > preferences > Maven > Installations > add
+windows > preferences > Maven > User Settings
+
+----
+
+== Eclipse configuration
+
+* windows > preferences > General > Appearance > Colors and Fonts > Basic > Text Font
+* windows > preferences > General > Workspace > Text file encoding > UTF-8
+* windows > preferences > General > Workspace > New text file line delimiter > Unix
+* windows > preferences > Java > Code Style > Formatter > import > Google Style
+
+todo
+
+=== Eclipse JEE configuration (additional)
+
+* 
+
+

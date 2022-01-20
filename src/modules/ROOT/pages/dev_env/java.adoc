@@ -1,0 +1,22 @@
+= Java
+:page-aliases: dev_env/java.adoc
+:doctype: book
+:sectnums: 7
+:sectnumlevels: 7
+:icons: font
+:include_dir: example$java
+:imagedir: java/
+
+== installation
+
+* Single installation
+** download java from https://cdn.azul.com/zulu/bin/zulu17.32.13-ca-jdk17.0.2-win_x64.zip and unzip to c:\java
+
+* Multiple versions
+** SDK manager (prefer)
+** jEnv (Optional)
+** jEnv https://github.com/FelixSelter/JEnv-for-Windows
+*** useful commands
+**** jenv list
+**** jenv use jdk8 # to use jdk8 in current session
+**** jenv change jdk11 # to change to jdk11 permanently

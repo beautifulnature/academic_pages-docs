@@ -1,0 +1,21 @@
+= SDK Manager on windows
+:page-aliases: dev_env/sdk_manager.adoc
+:doctype: book
+:sectnums: 7
+:sectnumlevels: 7
+:icons: font
+:include_dir: example$sdk
+:imagedir: sdk/
+
+== installation
+
+* https://sdkman.io/install
+* https://ngeor.com/2019/12/07/sdkman-windows.html
+
+== Commands
+
+* > sdk offline # to enable offline mode
+* > sdk offline disable # to disable offline mode
+* > sdk list java
+* > sdk install java 8.0.222
+* > sdk use java 8.0.222

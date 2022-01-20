@@ -1,0 +1,19 @@
+= Maven
+:page-aliases: dev_env/maven.adoc
+:doctype: book
+:sectnums: 7
+:sectnumlevels: 7
+:icons: font
+:include_dir: example$mvn
+:imagedir: mvn/
+
+== Installation
+
+* sdk list maven
+* sdk install maven 3.8.4
+* sdk offline
+* sdk use maven 3.8.4
+
+== configuration
+
+* copy settings.xml to ~/.m2/settings.xml
