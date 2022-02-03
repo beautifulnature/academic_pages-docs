@@ -1,0 +1,7 @@
+= webpack
+
+Steps needed to create a webpack project.
+. $ npm init
+. create index.js, sum.js in `src`` folder
+. install (npm install --save-dev webpack@2.2.0-rc.0) and configure webpack (webpack.config.js at root of the project)
+. run webpack

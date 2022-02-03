@@ -1,0 +1,19 @@
+= Command line
+
+== windows cmd
+
+* > dir             #to display current directory listings
+* > cd dirName      #change directory
+* > .               #current directory
+* > cd /dirName     #to change directory relative to current directory
+* > cd ..           #to change to parent directory
+* > cls             #clear screen
+
+* > ipconfig        #to display ip details
+
+== linux
+
+* $ clear           #clear screen
+* pwd               #present working directory
+* ls                #directory listing
+* cd ~              #to change to home directory

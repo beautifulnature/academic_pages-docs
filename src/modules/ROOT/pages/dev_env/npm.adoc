@@ -1,0 +1,8 @@
+= npm
+
+== commands at cli
+
+* npm init      #to initialise a new project
+* npm install --save-dev webpack@2.2.0-rc.0         # to install webpack for current project
+* npm install -g webpack                            # to install webpack globally
+* npm run build                                     # to build the project

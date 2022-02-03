@@ -5,10 +5,12 @@
 
 Learn javascript.
 
-== chapter 1
+== References
+
+* Deep JavaScript exploringjs.com/deep-js/
 
 This is a chapter 1.
 
-== chapter 2
+== History and evolution of JavaScript
 
-This is a chapter 2.
+

@@ -1,0 +1,38 @@
+= Short cuts
+
+== vs code
+
+* ctrl + ` : Terminal toggle
+* ctrl + b : explorer toggle
+* ctrl + tab : loop through open editors
+* ctrl + entr   : to make a new empty line from current position
+
+== windows
+
+* win + l : logout
+* win + d : go to desktop
+* win + ^ : maximise window
+* win + vv : minimise window to task bar
+* alt + f4 : close program
+* alt + tab : loop through open windows
+* ctrl + w : close active window
+* ctrl + tab : loop through tabs open in current program
+* win + s : search
+
+* win + r : open run command
+* win + r > wt : to open windows terminal
+
+* $ cmd # command prompt
+
+* file explorer navigation
+** win + e : open file explorer
+** alt + ^ : go to parent folder
+** alt + < : go to previous visited folder
+** alt + > : go to next visited folder
+** ctrl + f (e) : search bar
+
+
+== browser
+
+* ctrl + t  : open a new tab
+* alt + d   : go to address bar

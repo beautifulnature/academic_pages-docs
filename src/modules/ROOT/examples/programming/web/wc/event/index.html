@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script type="module">
+      import CustomClicker from "./CustomClicker.js";
+      customElements.define("custom-clicker", CustomClicker);
+    </script>
+  </head>
+  <body>
+    <!-- <custom-clicker onchange="handleChange(event.detail)"></custom-clicker>
+    <script type="text/javascript">
+      function handleChange(e) {
+        console.log(e);
+      }
+    </script> -->
+
+    <custom-clicker></custom-clicker>
+    <script type="text/javascript">
+      document
+        .querySelector("custom-clicker")
+        .addEventListener("change", (e) => {
+          console.log(e.detail);
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,6 @@
+= web servers
+
+* Python on windows
+----
+py -m http.server
+----

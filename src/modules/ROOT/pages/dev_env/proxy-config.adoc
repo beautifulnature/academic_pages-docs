@@ -1,0 +1,15 @@
+= proxy configuration on windows
+
+== Resources
+* https://www.jhipster.tech/configuring-a-corporate-proxy/
+
+== npm
+
+* ~/.npmrc
+
+.npmrc
+----
+proxy=http://10.9.7.1:8080
+https-proxy=http://10.9.7.1:8080
+https_proxy=http://10.9.7.1:8080
+----

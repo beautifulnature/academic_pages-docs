@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script type="module">
+      import RevampedParagraph from "./revampedParagraph.js";
+      customElements.define("revamped-paragraph", RevampedParagraph);
+    </script>
+  </head>
+  <body>
+    <p>place holder for random number</p>
+    <script type="module">
+      import AddNumberWithNewName from "./add_number.js";
+      new AddNumberWithNewName();
+    </script>
+    <script type="module">
+      import { add, subtract } from "./calc.js";
+      console.log(add(1, 2));
+      console.log(subtract(3, 2));
+    </script>
+    <revamped-paragraph></revamped-paragraph>
+    <!-- template for revamped paragraph -->
+    <template id="revamped-paragraph-template">
+      <h1>Revamped Paragraph</h1>
+      <p>This is the default paragraph insid the revamped-paragraph element</p>
+    </template>
+  </body>
+</html>

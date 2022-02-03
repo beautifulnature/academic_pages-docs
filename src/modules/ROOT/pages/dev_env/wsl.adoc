@@ -1,0 +1,15 @@
+= WSL
+
+== resources
+
+* https://wiki.gentoo.org/wiki/Main_Page
+
+
+== ubuntu 20.04
+
+* install wsl
+* install ubuntu
+* wsl -l -v
+* $ lsb_release -a  #linux_standard_base
+* wsl --set-default-version 2
+* 

@@ -1,0 +1,178 @@
+[[Web Components]]
+= Web Components
+:doctype: book
+:sectnums:
+:icons: font
+:include_dir: example$programming\web\wc
+
+== References
+
+* ISBN 978-1-83864-923-4: Getting Started with Web Components
+
+== Web Components Essentials and Specifications
+
+=== Web Component Specifications
+
+* Custom element
+* Shadow DOM
+* Template
+
+==== Custom Elements
+
+. Write a class with functionality associated with that HTML element. 
+class definition.
++
+[source, javascript]
+----
+include::{include_dir}/hello.js
+----
+. Register
++
+----
+include::{include_dir}/hello.js[tag=register]
+----
+
+===== Types of Custom elements
+
+. Autonomous custom element
++
+----
+include::{include_dir}/emoji.js
+----
+
+. Customized built-in element
++
+----
+include::{include_dir}/add-smiley.js
+----
+
+<span is="add-smiley">Hi World</span>
+
+* To check whether a custom element is defined or not using  
++
+----
+customElements.get('smiley-emoji');
+----
+
+==== Shadow DOM
+
+* document.querySelector('html').getRootNode();
+* document.querySelector('html').childNodes();
+* get a reference
+----
+let shadowRootEl = document.querySelector('.entry');
+----
+* mark it as a shadow root
++
+----
+let shadowRoot = shadowRootEl.attachShadow({mode: 'open'});
+----
+* append child
++
+----
+shadowRoot.append('hello shadow');
+----
+
+==== Template
+
+----
+<template id="my-template">
+  <div class="red-border">
+    <p>Hello Template</p>
+    <p>This is a small template</p>
+  </div>
+</template>
+----
+
+case 1: template
+----
+// Get the reference to the template
+let templateReference = document.querySelector('#my-template');
+// Get the content node
+let templateContent = templateReference.content;
+// clone the template content
+// and append it to the target div
+document.querySelector('#target').appendChild(templateContent.cloneNode(true));
+----
+
+case 2: template with shadow DOM
+----
+// Get the reference to the template
+let templateReference = document.querySelector('#my-template');
+// Get the content node
+let templateContent = templateReference.content;
+// Get the reference to target DOM
+let targetDOM = document.querySelector('#target');
+// add a shadow root to the target reference DOM
+let targetShadowRoot = targetDOM.attachShadow({mode: 'open'});
+// clone the template content
+// and append it to the target div
+targetShadowRoot.appendChild(templateContent.cloneNode(true));
+----
+
+case 3: template with custom element
+----
+include::{include_dir}/template-shadow_dom-wc.js
+----
+
+==== Module loader API
+
+. export
++
+after export name cann't be changed.
+. export default
++
+after export name can be changed.
+
+===== Custom elements using imports
+
+== Life Cycle callback methods
+
+=== Overview of life cycle callback methods
+
+In web component creation process has 
++
+* stages
+* after reaching a stage events (life cycle events of web components) are triggered
+* stages can be controlled with the help of life cycle callback methods
+
+=== Types of life cycle call back methods
+
+. connectedCallback()
+. disconnectedCallback()
+. adoptedCallback()
+. attributeChangedCallback()
+
+==== connectedCallback()
+
+* This callback gets invoked every time a copy of a web component gets added to the DOM.
+* useful in 
+** initializing events inside the component
+** state management
+** pre-checks
+
+==== disconnectedCallback()
+
+==== adoptedCallback()
+
+This callback gets triggered when the web component is moved from one parent to another.
+
+adoptedCallback(){
+  console.log('I am adopted');
+}
+
+==== attributeChangedCallback()
+
+== Styling Web Components
+
+=== Styling
+
+=== Accessibility
+
+=== Gold Standard Checklist
+
+https://github.com/webcomponents/gold-standard/wiki)
+
+todo
+Publishing Web Components
+

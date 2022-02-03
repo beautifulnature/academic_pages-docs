@@ -1,0 +1,22 @@
+= Documentation
+
+== References
+
+* Metadata in the digital library - Building an integrated strategy with XML - ISBN 978-1-78330-532-2
+
+* METS https://www.loc.gov/standards/mets/mets-home.html
+
+== Metadata Standards
+
+* Dublin Core
+* METS (Metadata Encoding and Transmission Standard)
+
+== Definitions
+
+meta-data:: data about data
+
+== Metadata Basics
+
+
+
+

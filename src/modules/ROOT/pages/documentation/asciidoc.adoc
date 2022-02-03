@@ -1,0 +1,20 @@
+= Asciidoc
+
+== Writing guide
+
+* include with tag
++
+In source code tag the block
++
+----
+# tag::register[]
+customElements.define('hello-world', HelloWorld);
+# end::register[]
+----
+
+use it adoc file
++
+----
+include::filename.ext[tag=register]
+----
+
