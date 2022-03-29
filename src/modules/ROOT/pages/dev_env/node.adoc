@@ -1,0 +1,11 @@
+= node
+
+== install
+
+install through nvm
+
+== usage
+
+----
+node -v
+----

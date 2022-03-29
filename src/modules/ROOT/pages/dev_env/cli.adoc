@@ -10,6 +10,10 @@
 * > cls             #clear screen
 
 * > ipconfig        #to display ip details
+* > fsutil file createnew filename requiredSize
+* > fsutil file createnew index.html 0
+* > rd /s /q folder
+* > ren folder newFolderName
 
 == linux
 
@@ -17,3 +21,11 @@
 * pwd               #present working directory
 * ls                #directory listing
 * cd ~              #to change to home directory
+
+== nushell
+
+== windows terminal
+----
+wt
+----
+

@@ -1,0 +1,7 @@
+[[Office]]
+= Office
+:doctype: book
+:sectnums:
+:icons: font
+
+include::word/word_prog.adoc[leveloffset=+1]

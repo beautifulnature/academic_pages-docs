@@ -1,5 +1,5 @@
 = Maven
-:page-aliases: dev_env/maven.adoc
+// :page-aliases: dev_env/maven.adoc
 :doctype: book
 :sectnums: 7
 :sectnumlevels: 7

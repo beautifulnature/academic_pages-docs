@@ -1,0 +1,14 @@
+[[Utilities]]
+= Utility Tools
+:doctype: book
+:sectnums:
+:icons: font
+
+== pdftk
+
+* split pages
++
+----
+> pdftk input.pdf cat 1-500 output output.pdf
+> pdftk input.pdf cat 501-end output output.pdf
+----

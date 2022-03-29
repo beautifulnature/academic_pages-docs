@@ -1,5 +1,5 @@
 = Java
-:page-aliases: dev_env/java.adoc
+// :page-aliases: dev_env/java.adoc
 :doctype: book
 :sectnums: 7
 :sectnumlevels: 7

@@ -18,3 +18,25 @@ use it adoc file
 include::filename.ext[tag=register]
 ----
 
+== images
+
+----
+image::sunset.jpg[]
+----
+
+== NOTE
+----
+NOTE: This is note
+----
+
+== Table
+.Table Heading
+[%header]
+|====
+|Column Heading 1
+|Column Heading 2
+
+|Cell 1,1 data
+|Cell 1,2 data
+|====
+

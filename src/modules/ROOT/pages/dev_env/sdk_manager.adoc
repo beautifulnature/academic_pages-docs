@@ -1,5 +1,5 @@
 = SDK Manager on windows
-:page-aliases: dev_env/sdk_manager.adoc
+// :page-aliases: dev_env/sdk_manager.adoc
 :doctype: book
 :sectnums: 7
 :sectnumlevels: 7

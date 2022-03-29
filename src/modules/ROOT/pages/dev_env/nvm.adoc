@@ -1,0 +1,15 @@
+= nvm
+
+== install
+
+== usage
+
+----
+nvm list available                  #to list remote
+nvm proxy http://10.9.7.1:8080      #to set proxy
+nvm proxy                           #to see proxy
+nvm install latest
+nvm use 17.6.0
+nvm list                            #to list local
+nvm version
+----

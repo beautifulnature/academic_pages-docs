@@ -1,0 +1,59 @@
+= Git git-scm.com
+
+== Vocabulary
+
+Project = Repository (repo)
+
+Working directory
+
+Staging = Control what's get committed
+
+Commit = Git's way of saving
+
+== Commands
+
+----
+git config --global --add http.proxy http://USERNAME:PASSWORD@PROXY_ADDRESS:PROXY_PORT
+git config --global --add https.proxy http://USERNAME:PASSWORD@PROXY_ADDRESS:PROXY_PORT
+git status
+git branch -M main
+
+git add -A
+git commit -m "first commit"
+git checkout -- .
+git push origin main
+git pull origin main
+
+git config --get remote.origin.url
+git remote set-url origin new.git.url/here
+
+git branch -a
+git remote show origin
+git remote prune origin --dry-run
+git remote prune origin
+git symblic-ref refs/remotes/origin/HEAD refs/remotes/origin/main
+
+git config --global -l
+git config --global user.name "beautifulnature"
+git config --global user.email "heimarunag@gmail.com"
+
+git init
+git remote -v
+git branch --unset-upstream
+----
+
+== Git branches
+
+----
+git branch
+git reset package.json  #to unstage a file
+git branch newBranch    #to create a new branch
+git checkout newBranch  #to checkout to newBranch
+git branch -d newBranch #to delete newBranch
+git merge newBranch --no-ff #merge with no fastforward
+git rm -r --cached /path/to/folder  #to delete folder from remote repo. first add the folder to .gitignore then do the command
+git rm --cached /path/to/file
+----
+
+
+

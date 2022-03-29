@@ -1,0 +1,2399 @@
+= Word Programming
+:page-aliases: word/word_prog.adoc
+:doctype: book
+:sectnums: 7
+:sectnumlevels: 7
+:icons: font
+:include_dir: example$word
+:imagedir: word/
+
+== Part A: Basis of working with VBA
+
+=== Chapter 1: VBA Basics and Word Macros
+
+page 29 pending
+
+==== All beginnings are difficult
+
+Every task has to start somewhere. 
+This is no different when it comes to automating Word. 
+A simple entry point is hard to spot because Word's object model is rich and powerful. 
+In addition, it is made more difficult for pure VBA developers to implement all tasks with VBA code only, since some interfaces (Part C) can only be addressed from outside.
+
+The diagram in figure 1.1 shows only the top level of the object mode for Word. 
+For a more detailed chart, see the Microsoft website at http://msdn2.microsoft.com/en-us/library/bb288731.aspx [Ms472-K01-01]. 
+Although the presentation refers to Word 2007, it is also largely valid for later versions. 
+The changes made to the Word 2010 object model are summarized on the http://msdn.microsoft.com/en-us/library/ee836186(office.14).aspx [Ms472-K01-02] page.
+
+image::{imagedir}wom.png[The top level of the Word Object Model]
+
+The innovations that have found their way into the development and into the object model with Word 2013 are summarised on the page http://msdn.microsoft.com/de-de/library/office/ff838936.aspx [Ms472-K01-03]. 
+This page should also serve as a point of contact for you, as other help and news will certainly also be listed or linked here, which will only be made available after this book has been published. 
+The entry page for the documentation can be found at http://msdn.microsoft.com/de-de/library/fp179696.aspx [Ms472-K01-04].
+
+Overall, only a few new features have been added to Word 2013; most relate to enhancements to content controls (Chapter 7), tracking changes and comments, and the newly added apps for Office (Chapter 21).
+
+==== Programming aids
+
+The macro recorder remains a first entry point for solving a task. 
+However, the problem arises that not all actions are recorded by the macro recorder in Word 2013 or that recorded actions have to be painstakingly supplemented with the help of the VBA help (see the section "The object model help - a hidden treasure trove" later in this chapter). 
+After that, the cleaned code is built into the effective macro or procedure.
+
+===== Use the macro recorder
+
+The macro recorder can be started in the ribbon via the command DEVELOPER TOOLS/Code/Record macro or by double-clicking on the corresponding icon in the status bar (figure 1.2). 
+In order for the DEVELOPER TOOLS tab to be visible in the ribbon, it must be displayed via FILE/Options/Customize the ribbon.
+
+image::{imagedir}macro.png[macro recorder]
+
+In the `Record Macro` dialog box that appears (figure 1.3), give the macro a descriptive name (the suggestion is "Macron", where n is a sequence number). 
+You should also enter a helpful description for faster identification later on. 
+It is also possible to assign the new macro to a button in the quick access toolbar (Word 2007 to 2013), the ribbon (Word 2010/2013) or a keyboard shortcut in the user interface.
+
+It is important to set the context from the Save macro in drop-down list box, as this option set the actual location of the macro. 
+By default, a new macro is inserted in the NewMacros module of the Normal.dotm template. 
+Word can make macros available to the whole environment, or only to specific documents or templates. 
+You can look up detailed information on this topic in Chapter 14.
+
+NOTE: If you enter a macro name that already exits in the NewMacros module, Word asks if you want to overwrite the existing macro; check that existing macro before overwriting it, or enter a different macro name if necessary.
+
+image:{imagedir}macro-dialog.png[In addition to the macro name, it is important to specify the storage location for the macro]
+
+image:{imagedir}macro-record.png[]
+After confirming the `Record Macro` dialog box (if you don't have a toolbar or keyboard clicked), return to the document. 
+The `Stop Recording` icon now appears in the status bar.
+
+From now on, almost all interaction performed in Word are turned into a procedure in the code module `NewMacros` recorded. 
+The following points must be observed:
+* The display of a dialog box is not recorded, but the end result of the settings made in it. 
+(Example: You display the Open dialog box and choose a Document. 
+The Macro Recorder records the opening of this document, but not the opening of the dialog box.) How to open a dialog box is shown in Chapter 15.
+
+* The macro recorder only recognises those user actions that are performed within the Word application environment. 
+For example, insert an Excel spreadsheet into the Word document, the insertion will probably be recorded. 
+All listed in the spreadsheet modifications are not recorded as they are made in the Excel environment. 
+To learn more about handling inserted objects, please refer to Chapter 12.
+
+* Switching to another application window is also not recorded. 
+A switching between Word document windows is recorded if this is done via the VIEW tab or the Windows taskbar. 
+Will not be recognized that comes with Alt + Tab. 
+The automation of other Office applications will be discussed in Chapter 11.
+
+* The insertion, marking and formatting of graphics is partly recorded. 
+It is however, not possible to return to the document with a mouse click. 
+To do this, press the (Esc) key.
+
+image::{imagedir}macro-record-pause.png[]
+* To make a mark or action that cannot be performed using the keyboard or a menu command, you can pause the macro recorder (stop recording button). 
+Click the button again to continue recording.
+
+The recording is ended with the Stop recording button. 
+Switch to the Visual Basic Editor (Alt + F11) to view and adjust the result in the Newmacros module.
+
+The macro recorder has a long history: it drew up to and including Word version 95 (7.0). 
+The user actions are faithful to the WordBasic programming language. 
+The result can be used without big change. 
+Since Word 97, the Word programming language is VBA (Visual Basic for Applications). 
+This is designed on an object-oriented basis, which means that the code should address the objects in the application directly, rather than faithfully reflection individual user actions. 
+This puts the macro recorder in a dilemma, because it only perceives what the user is doing during the recording. 
+The individual interactions cannot be abstracted and transferred to the object mode in a broader sense.
+
+Thus, the result of a recording can only be used to a limited extent: the code must be reworked more or less. 
+In addition, a recorded macro is difficult to manage because it is direct, it's hard to tell from the code what it's supposed to do. 
+Unfortunately, the program lines are rarely sufficiently commented on by the manufacturer. 
+If such a macro is used within a "inherited" from the company, it is difficult if not impossible to change this at a later point in time to adapt to needs or changes in the Word environment.
+
+As an extreme example, consider the recorded procedure in Listing 1.1. 
+The caret was in the first cell of an empty table when recording started. 
+The mark was expanded to the right across the entire row (five cells) and formatted it as bold. 
+After that column headings have been entered in each cell of that row. 
+Finally, the insertion point is in the first column of the second line (figure 1.4). 
+So that the recorded macro works as desired, the user must place the insertion point in the position in the first cell of a table. 
+Otherwise a runtime error occurs.
+
+Would you have really guessed this process and the condition when reading the program lines? 
+May be, but it would have taken a lot of headaches. 
+In Listing 1.1, the purpose and location of the process difficult to discern.
+
+image::{imagedir}macro-table.png[The table should always look like this, which is not guaranteed by the recorded macro]
+
+.Listing 1.1 The procedure recorded with macro recorder
+----
+Sub TabelPrepare()
+'
+' TablePrepare Macro
+'
+    Selection.EndKey Unit:=wdLine, Extend:=wdExtend
+    Selection.EndKey Unit:=wdLine, Extend:=wdExtend
+    Selection.EndKey Unit:=wdLine, Extend:=wdExtend
+    Selection.EndKey Unit:=wdLine, Extend:=wdExtend
+    Selection.EndKey Unit:=wdLine, Extend:=wdExtend
+    Selection.EndKey Unit:=wdLine, Extend:=wdExtend
+    Selection.Font.Bold = wdToggle
+    Selection.MoveLeft Unit:=wdCharacter, Count:=1
+    Selection.TypeText Text:="Spalte 1"
+    Selection.MoveRight Unit:=wdCell
+    Selection.TypeText Text:="Spalte 2"
+    Selection.MoveRight Unit:=wdCell
+    Selection.TypeText Text:="Spalte 3"
+    Selection.MoveRight Unit:=wdCell
+    Selection.TypeText Text:="Spalte 4"
+    Selection.MoveRight Unit:=wdCell
+    Selection.TypeText Text:="Spalte 5"
+    Selection.MoveRight Unit:=wdCell
+End Sub
+----
+
+NOTE: The Word Object Model documentation is VBA-oriented because VBA is likely to remain the Office programming language (see the blog entry "Roadmap for Apps for Office, VSTO and VBA" http://blogs.msdn.com/b/officeapps/archive/2013/06/18/
+roadmap-for-apps-for-office-vsto-and-vba.aspx [Ms472-K01-05].) 
+In addition, the object mode more closely reflects the user interface and working of Word and can therefore something appear strange. 
+We'll go into more detail on this in the section "The Object Model Helper - A Hidden treasure vault" later in this chapter. 
+But because of that, the Macro Recorder can help you too.
+
+Compare Listing 1.2. 
+This procedure only requires that the insertion point be within the table and does not generate an error message if it is not. 
+It bolds the first row of this table, labels the columns, and finally places the insertion point in the first column of the second row.
+
+It is immediately noticeable that this procedure is significantly shorter and much more meaningful (if the reader has some knowledge of English). 
+The fist step is to check whether the insertion point is within a table. 
+If this is the case (regardless of where in the table), an object variable set to the current table and to the first row. 
+This line is formatted in bold. 
+The procedure then iterates through all the cells in that row and inserts the text "Column " plus its cell index into each cell. 
+Finally, the first cell in the second row is marked. 
+The highlight is reduced to one spot so that the user can continue typing immediately.
+
+.Listing 1.2 The programmed procedure that formats a table just like Listing 1.1
+----
+Sub TabelPrepare2()
+    Dim tbl As Word.Table
+    Dim row As Word.row
+    Dim i As Integer
+    If Selection.Range.Information(wdWithInTable) Then
+        Set tbl = Selection.Tables(1)
+        Set row = tbl.Rows(1)
+        row.Range.Bold = True
+        For i = 1 To row.Cells.Count
+            row.Cells(i).Range.Text = "Column " & CStr(i)
+        Next
+        tbl.Cell(2, 1).Range.Select
+        Selection.Collapse
+    End If
+End Sub
+----
+
+In C#, the code for the example is as shown in Listing 1.3. 
+The code is part of a Windows Form project and is executed by the top button in Figure 1.5. The procedure contains minimal error handling because Word is automated from the outside. 
+First of all, contact must be made with the Word application, which is related to the method
+GetActiveObject is possible. 
+If this fails or no documents are available, a corresponding message is displayed and the execution is aborted. 
+After successful execution a message will also appear. 
+At the end, the wdApp object is released again.
+
+NOTE: See Chapter 10 for more on automating Word through the .NET environment.
+
+image::{imagedir}macro-cs.png[The top button runs the C# code from Listing 1.3 to format a table]
+
+.Listing 1.3 The C# version of Listing 1.2
+----
+//additional declarations at the beginning of the project
+using wd = Microsoft.Office.Interop.Word;
+using wdMarschal = System.Runtime.InteropServices.Marshal;
+private void TabelleVorbereiten2_CS()
+{
+    wd.Application wdApp = null;
+    try
+    {
+        //GetActiveObject raises an error if the application isn't already running
+        wdApp = (wd.Application)wdMarschal.GetActiveObject("Word.Application");
+    }
+    catch (System.Runtime.InteropServices.COMException cex)
+    {
+        string exception = cex.ToString();
+        string notRunning = "HRESULT: 0x800401E3 (MK_E_UNAVAILABLE)";
+        if (exception.Contains(notRunning))
+        {
+            Type t = Type.GetTypeFromProgID("Word.Application");
+            wdApp = (wd.Application)Activator.CreateInstance(t);
+        }
+        else
+        {
+            MessageBox.Show(exception);
+            return;
+        }
+    }
+    try
+    {
+        if (wdApp == null)
+        {
+            MessageBox.Show("Word läuft nicht.");
+            return;
+        }
+        if (!wdApp.Visible) wdApp.Visible = true;
+        if (wdApp.Documents.Count == 0)
+        {
+            MessageBox.Show("Kein geöffnetes Dokument gefunden.");
+            return;
+        }
+        object objDirectionEnd = wd.WdCollapseDirection.wdCollapseEnd;
+        wd.Selection sel = wdApp.Selection;
+        if ((bool)sel.Range.get_Information(wd.WdInformation.wdWithInTable))
+        {
+            wd.Table tbl = sel.Tables[1];
+            wd.Row row = tbl.Rows[1];
+            row.Range.Bold = 1;
+            for (int i = 1; i <= row.Cells.Count; i++)
+            {
+                row.Cells[i].Range.Text = "Spalte " + i;
+            }
+            tbl.Cell(2, 1).Range.Select();
+            sel.Collapse(ref objDirectionEnd);
+            sel = null;
+            tbl = null;
+            row = null;
+        }
+        //Show the Word window
+        MessageBox.Show("Fertig!");
+        wdApp.Activate();
+    }
+    catch (System.Runtime.InteropServices.COMException ex)
+    {
+        MessageBox.Show(ex.Message);
+    }
+    finally
+    {
+        wdMarschal.ReleaseComObject(wdApp);
+        wdApp = null;
+    }
+}
+----
+
+The above example shows the difference between an old macro language like WordBasic and an object-oriented programming language. 
+Well-designed code of an object-oriented programming language is self-documenting, the program flow is without any comment.
+
+Not all recorded macros are so cryptic in terms of the objects used. 
+Below is a small recorded macro that create and AutoShape (a rectangle) inserted into the document and then moved to the left.
+----
+Sub Macro2()
+    ActiveDocument.Shapes.AddShape(msoShapeRectangle, 234#, 135#, 99#, 63#).Select
+    Selection.ShapeRange.IncrementLeft -9#
+    Selection.ShapeRange.IncrementLeft -9#
+    Selection.ShapeRange.IncrementTop -9#
+End Sub
+----
+
+The lines of code in this macro indicate that an AutoShape is a Shape object. 
+In addition, the Shape object has the method IncrementLeft (in small increments move to left) this information can be used in the help for the VBA editor or in the Object catalog the respective objects are explored.
+
+TIP: Doesn't return the result of the recorded interaction, as in Listing 1.1 direct information about the required object, can substitute creating or inserting of the required object are recorded.
+
+How does a macro as recorded in Listing 1.1 become a structured, clear one procedure as in the case in Listing 1.2? 
+A program based on objects helps with this and uses their properties and methods. 
+This is a main goal of this guide, to which the first 2 parts in particular are dedicated. 
+In the first part of this chapter we present the programming aids and an introduction to the basics of the VBA language. 
+In the next part we will deal with Word object model.
+
+ON-LINE: The example file Bsp01_01.docm with two code examples and the file Kap01_CS.zip with the C# example can be found in the download archive for the book in the \Examples\Kap01 folder.
+
+==== The Object model help - a hidden treasure
+
+As Office users, we're often tempted to say, "Help needs help". 
+The help format has been turned inside out for every version of Office in the last 14 years. 
+This applies equally to their content and structure. 
+Unfortunately we cannot claim these changes always made a real improvement. 
+In fact, in Office 2003, the user and VBA help interfaces were built on different technologies.
+
+In this section we will provide an overview of the object model help interfaces in Word present 2007 to 2013. 
+In particular, options for accessing help and finding information are discussed.
+
+image::{imagedir}help.png[]
+Common to all version is the info button (?), behind which is the entry Microsoft Visual Basic Help is located. 
+Selecting this button will launch Help (if installed or available online) started, the result of which differs fundamentally in the 4 versions:
+
+* For Word 2007, an independent window will pop up. 
+The entire help section is through the Search drop-down list box is available. 
+Contrasted with the help for the Word application all information about the object model is located locally on the computer instead of partially in the internet.
+
+You can pin the help window in front of all other windows with a button. 
+What is striking is the the object model help has been reorganised according to the Visual Studio model. 
+Figure 1.6 illustrates this by listing all the methods and properties of the range object. 
+By clicking on an entry, the help on the topic is displayed.
+
+image::{imagedir}help-w-2007.png[Figure 1.6 Listing of all methods and properties of an object]
+
+The user interface does not diifer from 2007. 
+A help file is installed locally, but the information is searched on the internet by default. 
+This setting can be changed below right (Figure 1.7). 
+In general, the online content is more up-to-date than the installed help file.
+
+image::{imagedir}help-w-2007-option.png[Figure 1.7 Switch between online and local help sources]
+
+In Office 2013, Help is only available online. 
+It is part of the MSDN documentation in the new Windows 8 look (Figure 1.8). 
+The consequence of this change is that the developer is dependent on access to the internet.
+
+image::{imagedir}help-w-2013.png[Figure 1.8 Office 2013 help window]
+
+Whichever version of help you choose, be sure to give your opinion on the content that is at the bottom of the page. 
+Corrections reported here as well as suggestions for improvement are read!
+
+Important: Shortly before the book was completed, Microsoft made available an offline English version of the "Office 2013 VBA Documentation" for Office 2013 for download at the following address http://www.microsoft.com/en-us/download/details.aspx?id=40326 [Ms472-K01-06]
+Irrespective of this, after the complete installation of Office 2013 you will find the help files known from previous versions (FM20.CHM, VBOB6.CHM. VBUI6.CHM and others) in the C:\Program Files\Common Files\Microsoft Shared\VBA\VBA7.1\1031
+
+NOTICE: If you are developing in the .NET environment, the VBA help files are available through the usual .NET help interfaces only if you have Visual Studio Tools for Office installed. 
+Otherwise you have to open the help files directly or view them via the application interface (VBA editor in Word).
+
+The Word 2013 Developer's reference is available in German on MSDN (http://msdn.microsoft.com/de-de/library/office/ee861527.aspx [Ms472-K01-07]).
+
+The entire Word 2010 Developer's reference is available in English on MSDN (http://msdn.microsoft.com/en-us/library/ee861527(office.14).aspx [Ms472-K01-08]).
+
+The one for Word 2007 is available in English on MSDN (http://msdn2.microsoft.com/en-us/library/bb244391.aspx [Ms472-K01-09]).
+
+The Word 2003 Devloper's reference is available for download in English from MSDN (http://www.microsoft.com/en-us/download/details.aspx?id=15312 [Ms472-K01-10]) or online at http://msdn2.microsoft.com/en-us/library/aa272078(office.11).aspx [Ms472-K01-11].
+
+Finding the information you are looking for within the VBA help is not always is easy, even if you have an excellent knowledge of English. 
+The only realistic chance of finding the information you need is if you know the name of an object, property, or method. 
+Sometimes browsing the table of contents helps.
+
+For this reason, this book starts with a section on the macro recorder, because it can provide the term that serves as a key to the help text. 
+Enter the term in search field of the Object Browser (section "The Object Browser") or position the mouse pointer within the term in the code windows and press (F1). 
+The help window opens and should display the topic for the term.
+
+==== Supporting tools of the VB editor
+
+The same programming language - VBA (Visual Basic for Applications) - is available in all office applications except InforPath. 
+The Visual Basic Editor is used as a common programming environment. 
+This is where the code is recorded and managed. 
+If you are familiar with the VB editor of another Office application you only have to learn the Word object model. 
+If you have never worked with the VB editor before, don't worry: In contrast to the object model, dealing with the VB editor environment is not difficult.
+
+If you plan to automate Word with another programming language - for example from the .NET Framework - you should still familiarize yourself with the VB editor. 
+Recording macros is a good way to gain insight into the Word object model. 
+Finally, these macros can be found in the VB editor.
+
+You can call the VB editor is all Word versions by pressing the key combination (Alt)+(F11). 
+It can be reached in the ribbon via DEVELOPER TOOLS/Code/Visual Basic.
+
+All parts and commands of the VB Editor are explained in the "Microsoft Visual Basic User Interface Help" at http://msdn.microsoft.com/en-us/library/office/jj692815.aspx [Ms472-K01-12]. 
+In this section, we'll look at tools to help you work with the Word object model.
+
+NOTICE: The VB editor also has an automation interface. 
+It is possible to show and hide the windows, create and edit modules and user forms, and manage references to other code libraries. 
+This aspect is presented in Chapter 20.
+
+image::{imagedir}vbe-save.png[]
+Don't forget to save your project regularly. 
+It is recommended to save the program code before each test execution. 
+As in a normal application, this is done via the menu command File/Save <Project name>, with the key combination (Ctrl)+(S) or via the icon button shown on the right.
+
+Please note that this only save the Word file containing the macro. 
+For example, if you recorded and edited a macro in Normal.dotm, the Normal.dotm is saved and not the current document. 
+Conversely, save the current one document, the macro code will be in the Normal.dotm or another associated with the document project not saved.
+
+For large projects or to exchange code, it is often advisable to create backup copies. 
+This is done using the File/Export file menu command in VB editor. 
+In contrast to the in Using the methods mentioned in the "Copy macros" section, the export function creates a plain text file. 
+Standard modules get the file name extension .bas, class modules .cls. 
+For forms will creates two files: .frm and .frx (the latter contains binary code that encapsulates the OLE elements of the form defined). 
+The advantages of pure text files are obvious: There is no danger of loss due to document corruption, and they can be opened anytime, anywhere.
+
+Such a file is inserted into a VBA project using the File/Import File menu command.
+
+PROTIP: Word stores VBA code in the internal document structures. 
+If these are damaged, Word may no longer be able to manage the code correctly. 
+This circumstance leads to larger and larger files and, in the worst case, can lead to the document crashing. 
+If you suspect such a problem, or you have done a lot of work on the code, remove all code modules using File/Remove <module name>, save the file, and import the modules you just exported into the project. 
+Converting to plain text removes unwanted leftovers. 
+A tool is available that automates this procedure. 
+You can download the VBA code cleaner to your computer from the website http://word.mvps.org/downloads/index.htm [Ms472-K01-13]
+
+==== IntelliSense
+
+In the Using the Macro Recorder section we have the Macro Recorder and a recorded one sample code presented. 
+With the disadvantage of the result and the need to recorded having to adjust code. 
+The procedure in figure 1.9 corresponds to the listing in that section. 
+Of course, it's easy to say that you have to adapt the code. 
+But where should you come from? know what to write? 
+Do you have to use long lines like If Selection.Range.Information(wdWithinTable) 
+Then know by heart?
+
+image::{imagedir}code-in-vbe.png[Listing 1.9 VBA in code window of VB editor]
+
+The answer is "No, not quite". 
+Writing code is a combination of several factors, and the VB editor helps with the IntelliSense function.
+
+Once you know the name of an object, you can look it up in the help. 
+It says how this is to be used in the code (the syntax) and which properties and methods are available to stand. 
+When it comes to writing the code, you start with the object name and type a point immediately afterwards. 
+The VB editor reacts to the input of the point with a list of valid properties and methods as shown in figure 1.10.
+
+image::{imagedir}vbe-intellisense.png[VB editor's IntelliSense function helps to write code]
+
+You can use the scroll bar to scroll through this list, or just keep typing. 
+The highlight will automatically jump to the appropriate entry. 
+By pressing Tab or Enter button the suggestion is accepted.
+
+TIP: For all IntelliSense lists, press (Esc) to close the list idle conclude.
+
+==== The Object catalogue
+
+image::{imagedir}object_catalogue.png[]
+
+All too often it happens that we only remember part of the term or object name we are looking for recall. 
+In this case, the search function in the help fails. 
+But we have a tool at our disposal available that also know how to make something of vague fragments of memory: the catalog of objects. 
+It is called up via the symbol button shown or by pressing the key (F2).
+
+As can be seen in Figure 1.11, the object catalog offers an overview of the associated properties and methods (elements) of an object (class). 
+In the upper area are on the right some icon buttons for operation, but the two drop-down list boxes on the left are more important. 
+Th top one lists each loaded object library and offers the possibility to perform a search for either All Libraries or just a specific, selected one.
+
+NOTICE: To load additional object libraries, you must set a link to them, which can be done via the context menu or Tools/Links. 
+You can find out more about references in Chapter 9.
+
+image::{imagedir}object_catalogue-access.png[]
+
+Enter the term to be searched for in the lower drop-down list field and then click the Enter key or click the binoculars icon button. 
+(The entries in this drop-down list box are saved during a session). 
+The search results appear in second part of the object catalog. 
+All elements containing the searched string are listed in third column on the right. 
+The object (class) to which they belong is in the Column to the left and the associated application (library) is displayed in the first column.
+
+By clicking on an entry in the search results window, the object (class) is selected on the left side in the subjacent, two-part window. 
+All appear in the right column associated properties and methods (items). 
+In the bottom part you will find further information to the element-for example, the value that is returned-or, as in figure 1.11, the procedure syntax. 
+The underlined terms each serve as a hyperlink, via which further information is displayed in the Elements list.
+
+You can access help for a selected item by pressing the (F1) key or via the context menu.
+
+NOTICE: A major advantage of the object catalog is that, unlike the Help documentation accesses the definitions in the object library directly. 
+If you for one Element Differences between the information in the object browser and the help documentation notice, rely on the object catalog without hesitation.
+
+==== Integrate and manage macros in the user interface
+
+As described in the section "Using the Macro Recorder" earlier in this chapter, macros can be included in the Quick Access Toolbar and, starting with Word 2010, the ribbon. 
+You can also assign a key combination if required. 
+This can be made up at any time via the user interface.
+
+===== Assign a macro to a symbol
+
+To assign a macro to a toolbar button in Word for quick access, perform the following steps (Figure 1.12 illustrates this process):
+
+. First click on the Office button or on the FILE tab and then on the Word Options or Options button.
+. Open the Quick Access Toolbar category.
+. From the customize Quick Access Toolbar drop-down list box, select the desired storage location for the adjustment (see Chapter 14).
+
+image::{imagedir}macros-quick-access.png[Figure 1.12 Add macros to the quick access toolbar and customise the toolbar button]
+
+. In the Select commands drop-down list box, select Macros.
+. First click the name of the macro you want to add to the Quick Access Toolbar and then click the Add button. 
+The macro name appears in the list on the right.
+. To change the button label or icon, click the button change.
+
+To assign a macro to a command on the ribbon (Word 2010 or later), proceed in the same way, but select the Customize ribbon category in the options instead of the Icon button in the toolbar category.
+
+When manually customising the default ribbon, not all changes can be made without restrictions. 
+The internal tabs can be hidden, but not deleted. 
+The internal groups within a tab cannot be edited but can be hidden and replaced with groups of the same name. 
+You can create your own tabs or add your own groups and the associated commands to the existing ones, whereby internal Word commands and macros can be assigned here.
+
+The changes to the ribbon and to the quick access toolbar are managed together in one file. 
+In Word 2007 this file is named Word.qat, from Word 2010 the name is Word.officeUI. 
+The file is saved by the program in the folder C:\Users\[username]\App Data\Local\Microsoft\Office.
+
+As of Word 2010, there is also the option of exporting these customisations to a file (WordCustomizations.exportedUI) and importing them onto another system. 
+But be careful: if such a file is imported, all other existing changes will be overwritten at the same time and will therefore be lost.
+
+The officeUI and exportedUI files are pure XML files. 
+This data can thus be edited very easily with XML tools or a text editor.
+
+NOTICE: In Word 2007, only the Quick Access Toolbar is user customizable. 
+Only the icons in the 'Change' button dialog box are available for this purpose. 
+It is not possible to adapt them or to use your own graphics for them.
+Chapter 16 explains how to add programming to the ribbon.
+
+===== Assign a macro to a keyboard shortcut
+
+To assign a macro to a key combination, proceed as follows:
+
+. First click on the Office button or on e FILE tab and then on the Word Options or Options button
+. Open the Quick Access Toolbar or Customize the Ribbon category
+. Choose the Customize button
+. In the Customize Keyboard dialog box that opens, specify the save location (see Chapter 14)
+. Select the Macros category.
+. In the Macros list, select the target entry to which a key combination is to be assigned.
+. Click in the New keyboard shortcut field.
+. Press the desired key sequence on your keyboard. 
+Then, in the Customize Keyboard dialog box, notice the entry to the right of currently assigned to: if it says [unassigned], you can safely set this shortcut. 
+However, if a command name appears in the field, you must decide whether you actually want to recreate the key combination and want to overwrite the exiting command or try a different combination. 
+To do this, press the LeftArrow < key and enter a different abbreviation.
+
+NOTICE: How key combinations are defined by the object model is explained in Chapter 17
+----
+*Ranking in multiple loaded documents*
+
+But what happens if two files (documetns and/or templates) contain macros and toolbars of the same name or if the same key combination with different commands are assigned?
+
+Microsoft also thought of this and defined the following order for Word:
+* Macors are identified by ProjectName.ModuleName.MacroName, like this the list Commands shown in Figure 1.12. 
+It is therefore important to give each VBA project a unique name (see Chapter 9). 
+If two macros have exactly the same name, one of the names are changed. 
+Was the associated macro a key combination or in if older Word versions are also assigned to a toolbar, this connection is lost and must be reestablished.
+* The following applies to keyboard shortcuts and toolbars:
+** What is defined in a single document takes precedence
+** After that, what is in the template attached to the document is taken into account is fixed
+** An add-in that may be loaded follows in the hierarchy
+** And assignments from Normal.dotm come last.
+----
+
+IMPORTANT: A macro does not appear in the list in the user interface.
+
+You will notice that not all procedures of a module are in the list of available ones macros are listed. 
+Basically, only simple, public procedures can do this run by the user. 
+Th following types of procedures do not appear in these lists:
+* Procedures designated as private (for more on private, see the "Validity vs Visibility" section in this chapter)
+* Procedures that have (optional) arguments defined
+* Procedures that return a value (functions)
+* Procedures that reside in a module that contain the Option Private Module
+* Procedures that are in a class module or UserForm module
+
+===== Copy Macros
+
+Often macros are first created in Normal.dotm because that is the default location. 
+Only later it is realized that the macro is better in a single document or in a document template would be housed. 
+The code can then be easily copied and deleted in the VB editor and pasted or backed up as described in the section »Supporting tools of the VB Editors« described earlier in this chapter.
+
+But what if you want to share macros with other users and those people don't want to deal with the VB editor? 
+Word offers a great tool for this, with which individual code modules (or styles and in Word 2003 and earlier toolbars and AutoTexts) can be copied between Word files: the Organize dialog box (see Figure 1.13).
+
+image::{imagedir}orgainse-macros.png[Easily manage and copy macros between Word files with the Organize dialog]
+
+To access the Organize dialog box, choose DEVELOPER TOOLS/Templates/Document Template and then click the Organize button.
+
+Note that only entire modules and not individual procedures can be managed. 
+Around to copy an entry, select it in one of the list boxes and then click on the Copy button. 
+If you want to replace one of the files, you must first close them; to do this, click the Close File button. 
+The button label changes then open in file to allow opening another document or document template enable.
+
+NOTICE: The Organize functionality is also present in the Word object model. 
+Look for the terms "OrganizerCopy", "OrganizerDelete" and "OrganizerRename" in the VBA help after.
+
+The programmatic creation of macros is presented in Chapter 20.
+
+==== Macro security
+
+As implemented in Word 2.0, the WordBasic programming language for creating macros was, programmers with not too noble intentions have realized that with this tool not only supports the user in his daily work, but also all kinds of mischief can be done. 
+With the introduction of Word 95, the first so-called macro viruses appeared on. 
+The documents infected with it contained macros with defective program code. 
+These viruses sometimes caused considerable damage and infected all edited documentation.
+
+As a countermeasure, Microsoft has integrated multi-level macro security into Word 97. 
+Now the user could specify whether or not the macros within documents should be activated and executed at all.
+
+Ten years later, in Word 2007 and its subsequent versions, the security measures further refined and adjusted. 
+Both the professional developer and the user who support his work with macros.
+
+===== Adjust security level
+
+To define the security settings, select FILE/Options and then the category Trust Center Off. 
+This page contains links to more information about the security measures and the Trust Center settings button. 
+Click on it to bring up the dialog box as in figure 1.14.
+
+image::{imagedir}word-trust-center.png[Figure 1.14 The Word 2013 Trust Center]
+
+The dialog includes the categories listed in Table 1.1. 
+These allow a more refined settings of the access options for remote control of Word compared to earlier ones. 
+For details, look up the phrase 'trust center' in Word help.
+
+Table 1.1 pending
+
+image::{imagedir}macro-locations.png[Figure 1.15 The default locations treated as trusted sources (here in Word 2013)]
+
+We authors recommend the default macro security settings. 
+For Word 2007 to Word 2013, this means that you are in Trust Center (Security Center) in the category Macro Settings select Disable all macros except digitally signed macros.
+
+This ensures that only macros are run whose code you know or whose sources you know they trust. 
+Although this raises the hurdle for Word files with dangerous content, i.e macro viruses, you should still not be under the impression that there is a false sense of security determines malware that can also bypass this protection.
+
+In a later step, we will show you how, despite these security settings, if necessary Save macros in individual documents so that they remain functional.
+
+*Certificates and Signatures*
++
+In order to be able to determine the integrity (identification of the manufacturer and immutability of the content) of programs and documents, digital certificates are used in IT deployed.
+
+Digital certificates are based on two components: the actual certificate and the associated signature.
+
+The certificate contains the public key of the certificate holder. 
+In addition to this key, the certificate contains the certificate name, serial number, period of validity, name of the certification body, etc.
+
+The certificate is issued by a recognized certification body. 
+This ensures that the applicant is really who he or she claims to be. 
+The person, well the manufacturer or the developer is consequently identified.
+
+When a certificate is issued, the applicant receives a Key pair (private and public key) supplied. 
+To ensure the integrity of this certificate guarantee, it is digitally signed with the private key of the certification authority.
+
+Signed programs, drivers, documents or even macros can be used with the associated certificate can be opened. 
+Your own passport serves as an analogy to the real world.
+
+The signature is a private key. 
+With this, programs Drivers, documents or even macros are signed. 
+Serves as an analogy to the real world the personal signature.
+
+When a file is signed, a hash is placed over the file. 
+This is with the private Key of the certificate encrypted and added to the file as a signature. 
+The encrypted one Hash can only be decrypted with the public key. 
+Will the hash on the workstation of the recipient is formed again, this must match the decrypted one.
+
+The certificate must be made generally accessible by the owner. 
+It has to open installed on the workstation on which the signed data is processed. 
+The certificate will then be added to the list of trusted publishers.
+
+A signed macro can only be activated together with the associated certificate, provided that the security settings, as described in the "Adjust security level" section of this
+chapter have been set to High. 
+This ensures that the macro has not been modified by any unauthorized person since delivery.
+
+As an analogy to the real world, one could, for example, cash a check at the counter use. The person at the counter trusts that the passport presented is genuine. 
+The owner can be identified from the photo. 
+By his signature, which is in the passport is also present, it proves that the passport has not been altered (photo replaced).
+
+However, using digital signatures also has its pros and cons. 
+The most important of which are summarized briefly.
+
+Table 1.2 Comparison of the advantages and disadvantages of digital signatures
+|====
+|Advantage
+|Disadvantage
+
+|It is ensured that the content of a file is through no unauthorized person has been changed
+|After modification, the file can only be opened that workstation to be re-signed
+which the signature is actually installed.
+
+|The manufacturer of the file is known or can be identified
+|The public key, i.e. the certificate, must be be accessible at any time or together with the file to be delivered
+
+|Greater Security
+|Additional administration costs
+|====
+
+1. Well-known and recognized certification authorities are, for example, VeriSign (http://www.verisign.de) or Thawte (http://www.thawte.com).
+2. The private key is secret and should not be disclosed to anyone. 
+It is used for encryption a message. 
+The public key, on the other hand, must be accessible to the recipient of an encrypted message be made. 
+It serves to decode this message.
+3. Digitally signing a certificate: A hash is formed over the certificate using the private key of the Certification authority encrypted and appended to the certificate as a signature.
+
+===== Create your own signature using selfcert.exe
+
+For private use of macros, it is not worth acquiring a signature from an official certification body. 
+Nevertheless, it makes sense that every VBA project is signed.
+
+This topic is also described in detail in the application help. 
+Search the term >>Digitally Sign a Macro Project<< and select the topic of the same name.
+
+The small tool selfcert.exe is included with Microsoft Office 2003 to Office 2013. 
+The File will, if the appropriate option has been selected, during the program installation created in the folder C:\Program Files\Microsoft Office\Office<version number>. 
+With this utility you can create signatures on your own workstation and then Use signing of VBA projects.
+
+To create a signature using selfcert.exe, proceed as follows:
+1. In the C:\Program Files\Microsoft Office\Office<version number> folder, start the Program selfcert.exe.
+2. Specify a meaningful name for your signature and confirm this information with OK.
+
+image::{imagedir}digital-certificate.png[Figure 1.16 Assign a meaningful name to the new certificate]
+
+IMPORTANT: Make sure that you enter the name of the new certificate, i.e. the signature, can no longer change. 
+There is also no way to put the created certificate together to export with the signature (private key) and on another or second workstation to install to develop macros on this workstation and with the same to be able to provide a signature.
+
+Certificates created with selfcert.exe should really only be used for private use. 
+You should definitely not use professionally created document templates and add-ins Find.
+
+Certificates can also be created with Windows Server. 
+These are primarily for internal use within the company environment, but can if necessary
+also passed on to third parties. 
+In this case, however, aware of a guarantee an official certification body, which guarantees the authenticity of the certificate.
+
+===== Add a signature to VBA projects
+
+So that the macros within an add-in, a document template or a document in the interaction with the recommended security settings must be activated the individual projects are provided with a digital signature. 
+This signature ensures that the macros are not modified by an unauthorized person.
+
+To provide a project with a digital signature, proceed as follows:
+1. Open the appropriate file and switch to the Visual Basic Editor (Alt + F11)
+2. Select the Tools/Digital Signature menu command and click on Digital in the dialog box Signature the Choose button.
+3. In the Select Certificate dialog box, highlight the certificate you want from the list of existing ones Certificates and confirm the selection with OK.
+4. Then confirm the assignment with OK.
+
+image::{imagedir}signature.png[Figure 1.17 Assign the required certificate to the project]
+
+NOTICE: The signature must be assigned individually for each project as long as that
+project is edited at the same workstation, this assignment remains.
+
+===== Create certificate for signature
+
+If macros were signed with the signature created according to the section >>Creating your own signature using selfcert.exe « above, the associated certificate can be created in a second step.
+
+This certificate can be passed on and installed in advance. 
+It represents the so-called public key. 
+If the certificate is installed in advance, the documents exchanged later can be used immediately. 
+Otherwise, the certificate can be read directly from the signed file upon first contact.
+
+To create the certificate for a signature based on selfcert.exe , proceed as follows: 
+1. Call the Visual Basic Editor and select the Tools/Digital Signature menu command. 
+In the Digital Signature dialog box, click the Choose button.
+2. In the Windows Security dialog box, select View certificate properties and then switch to the Details tab.
+3. Click the Copy to file button and follow the wizard's instructions.
+4. Assign a meaningful name to the future file and continue to follow the wizard's instructions.
+
+image::{imagedir}certificate.png[Figure 1.18 Determine the file name of the certificate file (reduced representation of the dialog box)]
+
+NOTICE: The file you just created (stored in the C:\Users\<username>\Documents folder by default) must be publicly available or shared with the file that was signed.
+
+Please note that we authors only use the term "pass on" to mean distribution for private use (e.g. family, friends and acquaintances, etc.).
+
+===== Read certificate
+
+If a file is signed and passed on, as described in the section "Signing VBA projects" in this chapter, the associated certificate can be read in beforehand on the workstation so that the macros can be activated.
+
+To add a certificate to the list of trusted sources, do the following in front:
+1. Obtain the corresponding certificate file from the manufacturer of the macros or from the Author of the file if not already included.
+2. Start installing the certificate by double-clicking on the Run the relevant file (file extension .cer).
+3. In the Certificate dialog box, click the Install Certificate button. 
+Follow the Assistant instructions.
+
+If the certificate was not first read in on the workstation, this can be done on first contact be made with a signed document from said source. 
+When opening the document a corresponding warning is issued (Figure 1.19). 
+To import the certificate directly Proceed as follows.
+
+1. Open the document. 
+In the Microsoft Word Security Alert dialog box, select the View Signature Details entry.
+2. On the General tab, click the View Certificate button.
+3. In the Certificate dialog box, click the Install Certificate button. 
+Follow the instructions of the assistant and confirm the final security prompt with Yes.
+
+image::{imagedir}signed-certificate.png[Figure 1.19 Signed document is opened whose certificate is not yet installed]
+
+The inclusion of the certificate in the certificate store enables the macros to be activated all those files signed with the same signature. 
+Nevertheless, when you open one such a file will continue to issue a security warning. The corresponding warning can definitely acknowledged by checking the Always trust macros from this source check box is activated.
+
+==== VBA basics
+
+In this section we will try to introduce you to the basics of Visual Basic for Applications (VBA). 
+If you have little or no experience with a programming language, the following sections will give you a brief overview of the most important points of VBA:
+
+* The declaration and handling of variables, the different types of variables, their validity within the project and passing values to a function are defined in the "Variables" section of this chapter.
+* The use of constants, their declaration, and their validity within the project are also explained in this chapter in the "Constants" section.
+* Program branches are discussed in more detail in the "Conditions" section and program iterations in the "Loop" section.
+* The "Error Handling" section deals with handling possible program errors.
+* Simple examples with operations on the file system complete this chapter. 
+Its uses are covered in the "File System Operations" section
+
+NOTICE: If you, as a .NET developer, need to port VBA code or have questions about VB data types, pay particular attention to the information in this chapter.
+We also refer to the MSDN topics "Converting Office VBA Help code examples to Visual Basic .NET and C#" and "Language changes in Visual Basic". 
+At the time of writing this book, the two articles could be found at the following addresses:
+* http://msdn2.microsoft.com/en-us/library/aa192490(office.11).aspx [Ms472-K01-14]
+* http://msdn.microsoft.com/en-us/library/skw8dhdd(vs.71).aspx [Ms472-K01-15]
+
+===== Variables
+
+A variable means a "varying quantity". 
+Within a program variables used to cache individual values and objects. 
+In this way the same program sequence, for example an addition, can count any values together. 
+The corresponding values for the individual variables, in this case the two addenda, must be assigned in advance.
+
+----
+intNumberA = 1
+intNumberB = 100
+IntNumberC = intNumberA + intNumberB
+----
+
+====== Standard data types
+
+Different data types are available in VBA. 
+With the exception of the variant data type they can only record a certain amount of data. 
+The most important data types are summarized below. 
+See the VBA online help for more information Topic >>Data types (summary)<<
+
+IMPORTANT: For VBA, the authors follow the principle of declaring all variables always at the beginning of a procedure or function. 
+So the program sequence remains structured and clear, and for example during a search for program errors all assigned data types remain visible at a glance.
+
+The Option Explicit command shown in Figure 1.20 at the top of the module automatically via the settings in the VB editor via the menu command Extras/Options/Editor/Insert variable declaration required.
+
+image::{imagedir}vba-option.png[Figure 1.20 Declare all variables at the beginning of a procedure]
+
+In other programming languages (e.g. C#) the variables are often not declared until they to be needed. 
+In these cases, the validity is more finely regulated by the program structure, than the classic VB languages do. 
+For example, there is one in a do loop declared variable invalid outside of loop.
+
+*String*
++
+Variables of data type String contain character strings, which can be distinguished in two ways: those with variable length and those with fixed length. 
+This is used as the type identifier for String Dollar sign ($). 
+The default is an empty string ("").
+
+----
+Dim strText1 As String
+Dim strText2 As String * 50
+Dim strText3$
+----
+
+NOTICE: Because the .NET Framework does not generally support fixed-length strings, we don't recommend working with such variables when your code might be in a .NET language needs to be ported.
+`.NET` developers, we point out the possible existence of declarations for strings fixed length alert. 
+You will have to adjust these.
+
+*Boolean*
++
+Variables of the Boolean data type can only have the two logical values True or False. 
+The default is False.
+----
+Dim bStatus As Boolean
+----
+
+NOTICE: Some Office applications set integer values for "True" in the background and "false". 
+The value 0 (zero) always stands for "False", while for "True" both - 1 and 1 are used. Worse still, Microsoft might change the "true" value in between have changed. 
+So, pay the most attention to code that contains Boolean values tests for "true".
+
+*integer*
++
+Integer data type variables contain only whole numbers, in the range from -32768 to 32767. 
+This data type is therefore primarily suitable for enumerated values. 
+The percent sign (%) is used as the type identifier for integer. 
+The default is zero.
+----
+Dim intValue1 As Integer
+Dim intValue2%
+----
+
+An enumeration value consists of a finite set of unique integers. 
+Each of these numbers has a special meaning in the context used. 
+This allows easy selection from a specific number of possibilities, e.g. 0 = Sunday, 1 = Monday etc.
+
+*Long*
++
+Like integers, variables of the Long data type also only contain whole numbers. 
+However, that is the number range here is several times larger (-2147483648 to 2147483647). 
+In this respect, this data type is preferable for integers. 
+The type identifier for Long is the ampersand (&). 
+The default is zero.
+----
+Dim lngNumber1 As Long
+Dim lngNumber2&
+----
+*Long-Long*
++
+Variables of type LongLong (LongLong Integer) are entered as a 64bit signed integer (8 bytes) with a value range from -9223372036854775808 to 9223372036854775807. 
+The type declaration character for LongLong is caret (^). 
+LongLong is only on 64bit platforms a valid declared type (see chapter 2 for more information).
+
+NOTICE: In the .NET environment, integer data types are the same names used but with different values. 
+The classic 
+VB data type Integer (16-bit) corresponds to the .NET data type Short, 
+Long (32-bit) corresponds to the .NET data type Integer and 
+is in .NET the number range for the Long data type with 64 bits.
+
+For more information about 64-bit customisations in Visual Basic for Applications, see the MSDN at http://msdn.microsoft.com/de-de/library/office/gg264421.aspx [Ms472-K01-16].
+
+*Single*
++
+Variables of data type Single contain single-precision floating-point numbers. 
+In the most cases this accuracy is sufficient for calculations within a program.
+Therefore, using this data type for floating point numbers is recommended. 
+The exclamation mark (!) is used as a type identifier for single. 
+The default is zero.
+----
+Dim sngNumber1 As Single
+Dim sngNumber2!
+----
+
+*Variant*
++
+Variables of the variant data type can contain any data - with the exception of fixed-length string variables and user-defined data types. 
+Variant is used for all variables which are not explicitly assigned another data type. 
+A type identifier for this data type does not exist. 
+The default value is Empty.
+----
+Dim varContent1 As Variant
+Dim varContent2
+----
+
+NOTICE: The .NET environment does not support the Variant data type. 
+Instead must for variables with undefined content of the data type Object (or object in C#) are declared.
+
+*Object*
++
+Variables of data type Object contain memory addresses and refer to the corresponding ones
+objects of the application. 
+The variable is always assigned using a set statement. 
+If a variable of the data type Object is declared, the assignment is made to the corresponding one object at runtime. 
+A binding of the object already during the compilation process can achieved by declaring the variable with the name of a specific class. 
+The default is Nothing.
+
+See Chapter 9 for more on "binding at runtime vs compile time"
+
+----
+Dim objWB1 As Object
+Dim objWB2 As Excel.Workbook
+----
+
+The values or the reference to the corresponding object can only be assigned using the set statement.
+
+----
+Set doc = Documents.Add
+----
+
+NOTICE: For the designations of the variables within the individual program examples special naming conventions were observed. 
+Additional information and recommendations for naming constants can be found in the books archive in the folder \Beilagen.
+
+===== Validity or Visibility
+
+If a project is divided into various procedures and functions, which are also different program modules can be achieved by an optimal declaration of the variables their validity or their visibility within the project can be influenced. 
+VBA knows three different forms of declaration of a variable:
+* At the level of the procedure or function. 
+The variable can only be used within the current procedure be used.
+* At the program module level. 
+The variable can be used throughout the module.
+* Public at the program module level. 
+The variable can be used throughout the project.
+
+The two keywords Private and Public determine the validity or visibility of variables
+and constants defined within the project.
+
+*Private*
++
+When a module-level variable or constant is declared with the Private keyword, these are only available to the program within the current module.
+If a module-level variable or constant is declared using Dim, this line matches a declaration with the Private keyword. 
+In this case, the validity is also limited to that current module.
+
+*Public*
++
+When a module-level variable or constant is declared with the Public keyword, it is available throughout the program. 
+It is then a public or global variable or constant.
+
+NOTICE: The Private and Public keywords are also used to declare functions and procedures are used and - as with variables and constants - affect their validity and visibility within the project.
+
+image::{imagedir}validity-visibility.png[Figure 1.21 Overview of the validity of variables within a project]
+
+Of course, it would be easiest to declare all variables of data type variant with a validity throughout the project. 
+However, we authors strongly advise against this approach and instead recommend following rules below when declaring variables.
+
+The main advantage of the limited visibility of variables is the clarity of the program and a slightly easier search for program errors. 
+Since each variable must be created purposefully, don't access a variable that has been created somewhere within the program and whose current contents are not known. 
+It is also avoided that the content is inadvertently overwritten and becomes unusable for a later planned use.
+
+Rules of the game for declaring variables:
+* The validity of a variable is set to the lowest possible level. 
+The structure of the program code is designed in such a way that the variables can primarily be declared at the procedure level.
+
+Passing values to a procedure using arguments is opposed to a declaration with greater validity preferable. 
+Additional information on the topic >>Handover of Arguments to a Procedure<< see the section "Passing Variables to Procedures" later in this chapter.
+
+A data type is always explicitly assigned to each newly declared variable. 
+The Data type Variant is only used in exceptional cases.
+
+* All variables are declared at the beginning of a procedure.
+
+*Lifespan from variables*
++
+A variable declared at procedure level "dies" as soon as the corresponding procedure is processed. 
+The reserved memory is automatically freed. 
+Another call for the same procedure, the old content of the variable is no longer available; the variable is in memory newly created.
+
+*release from object variables*
++
+In the case of variables of the type Object, it is not only useful, but in many cases even essential, that they are released again after their use. 
+By using the keyword Nothing disconnects the object in question. 
+This release is after a closed control of another application is mandatory. 
+More about >>Control from other programs<< is explained in Chapters 9 and 10.
+
+----
+Set doc = Nothing
+----
+
+When releasing objects, keep in mind that they are in the reverse order of their assignment
+he follows. 
+In this way you prevent possible errors during program execution.
+
+Listing 1.4 Variables of type Object are released in reverse order
+----
+Sub Demo_Object()
+    Dim doc As Word.Document
+    Dim tbl As Word.Table
+    Dim cel As Word.Cell
+    'Document instantiate
+    Set doc = Documents.Add( _
+        Template:=ThisDocument.FullName)
+    'Tabel instantiate
+    Set tbl = doc.Tables(1)
+    'Cell instantiate
+    Set cel = tbl.Cell(1, 1)
+    cel.Range.Text = Now
+    'Release all objects
+    Set cel = Nothing
+    Set tbl = Nothing
+    Set doc = Nothing
+End Sub
+----
+
+*Passing variables to procedures*
++
+Variables should be declared at procedure level whenever possible so that the program
+can be structured. 
+To use the values of these variables in other procedures or functions, they must be passed as arguments to the function in question be handed over.
+
+These arguments can be defined in two different ways when declaring the procedure:
+
+* ByVal:: A value is passed to the procedure by value. 
+This means that within the Procedure a copy of the variable is available for editing. 
+The original value of actual variable cannot be changed by the procedure.
+
+* ByRef:: A value is passed to the procedure by reference. 
+This means that the address of the variable is passed to the procedure. 
+The variable is available for editing within the procedure. 
+The original value of the actual variable can be changed.
+
+If nothing is specified in the procedure declaration, the arguments are given by reference ByRef.
+
+NOTICE:: In the .NET environment, the situation is reversed: by default, arguments are passed to procedures by value (ByVal). 
+Also here is when porting VBA code to .NET caution required.
+
+===== Pass argument by value (ByVal)
+
+The following example of a triangle area calculation1 is to pass an argument as Value, i.e. ByVal, clarify. 
+In Listing 1.5, the subAreaTriangle procedure is used in the first ByRef A value is passed to the procedure by reference. 
+This means that the address of the variable is passed to the procedure. 
+The variable is available for editing within the procedure. 
+The original value of the actual variable can be changed.
+If nothing is specified in the procedure declaration, the arguments are given by reference ByRef step the value of the variable sngHeight is halved, then in the second step the two routes multiplied. 
+The result is the area of the triangle.
+
+The program sequence contains two additional screen messages (MsgBox) to check the effective
+values. 
+They make it clear that in the main procedure, the value of the variable sngHeight
+remained the same, although this variable is inside the subAreaTriangle procedure in the first calculation step was changed.
+
+Listing 1.5 When using ByVal, the variable inside the main procedure is not changed
+----
+Sub Demo_ByVal1()
+    Dim sngSide As Single
+    Dim sngHeight As Single
+    sngSide = 2.5
+    sngHeight = 4
+    subAreaTriangle sngSide, sngHeight
+    MsgBox sngHeight, , "Control A" 'is 4
+End Sub
+
+Public Sub subAreaTriangle( _
+    ByVal sngSide As Single, _
+    ByVal sngHeight As Single)
+    
+    Dim sngArea As Single
+    sngHeight = sngHeight / 2
+    sngArea = sngHeight * sngSide
+    MsgBox "Area " & CStr(sngArea) 'is 5
+    MsgBox sngHeight, , "Control B" 'is 2
+End Sub
+----
+
+Formula for calculating the area of a triangle: side * associated height / 2. 
+The order of the three factors can changed and has no influence on the result.
+
+To keep the procedure call for computing the triangle area as simple as possible, we could
+the variables can also be declared at module level. 
+The example code in Listing 1.6 is similar adjusted: the declaration of the variables takes place on the module level.
+
+There is no need to pass the arguments to the subAreaTriangle procedure, since the
+variables are already known. 
+The actual calculation of the area is again carried out in two steps.
+
+Two screen messages (MsgBox) are also installed here to check the effective values. 
+So it can be seen that this time the value of the variable sngHeight is divided by the division within the procedure subAreaTriangle has also changed in the main procedure.
+
+A simple change in the calculation formula causes the values of the two variables can no longer be changed within the main procedure, but the problem remains consist:
+
+----
+sngArea = sngHeight * sngSide
+sngArea = sngArea / 2
+----
+
+The example mentioned shows impressively how easily a program error can creep in. 
+The search for faulty program lines may then be very time-consuming, especially since the error sometimes only occurs under certain circumstances.
+
+Listing 1.6 A bad example with variables declared at the module level
+----
+Option Explicit
+    Dim sngSide As Single
+    Dim sngHeight As Single
+
+Sub Demo_ByVal2()
+    sngSide = 2.5
+    sngHeight = 4
+    subAreaTriangle
+    MsgBox sngHeight, , "Control A" 'is 2
+End Sub
+
+Public Sub subAreaTrinangle()
+    Dim sngArea As Single
+    sngHeight = sngHeight / 2
+    sngArea = sngHeight * sngSide
+    MsgBox "Area " & CStr(sngArea) 'is 5
+    MsgBox sngHeight, , "Control B" 'is 2
+End Sub
+----
+
+====== Pass argument by reference (ByRef)
+
+The next example shows how to pass an argument by reference, that is, ByRef.
+
+The procedure subTotalCost in Listing 1.7 fictitious total cost of the purchase calculated. 
+First, the fixed discount is deducted from the unit price. 
+Subsequently the individual item is calculated by multiplying the two variables sngQuantity and sngAmount. 
+
+Note that only the sngTotal argument is passed to the procedure by reference. 
+So is indirect documentation of the program. 
+There are also fewer program errors that can creep in, since you have consciously specified one or the other type of transfer, ensures that only the variable sngTotalCost can be changed in the main procedure.
+Variables that belong together can be stored and managed in a data field (array) and if all three values were passed by reference, the discount would be calculated in the first
+Step trigger a change in prices in the main procedure.
+
+Listing 1.7 Using ByRef changes the variable inside the main procedure
+----
+Sub Demo_ByRef()
+    Dim sngTotalCost As Single
+    subTotalCost 2, 15.5, sngTotalCost
+    subTotalCost 21, 5, sngTotalCost
+    subTotalCost 2.5, 10, sngTotalCost
+    MsgBox sngTotalCost
+End Sub
+
+Public Sub subTotalCost( _
+    ByVal sngQuantity As Single, _
+    ByVal sngPrice As Single, _
+    ByRef sngTotal As Single)
+
+    Dim sngSingleItem As Single
+    Dim sngDiscount As Single
+    sngDiscount = 0.9
+    sngPrice = sngPrice * sngDiscount
+    sngSingleItem = sngQuantity * sngPrice
+    sngTotal = sngTotal + sngSingleItem
+    MsgBox "SingleItem " & CStr(sngSingleItem) & _
+        vbCr & "Total " & CStr(sngTotal)
+End Sub
+----
+
+In the first section of this chapter, we recommended that you include all of the variables along with to declare a data type. 
+Furthermore, we would now like to suggest to you, with every declaration of arguments to specify how they are passed to the procedure.
+
+The program code remans clearer because the detailed declaration of the arguments indirect documentation of the program. 
+There are also fewer program errors that can creep in, since you have consiously specified one or the other type of transfer.
+
+===== Store variables in data fields
+
+Variables that belong together can be stored and managed in a data field (array) and thereby reducing their number. 
+Apart from the elimination of the declaration effort, if only a single variable has to be declared instead of a large number of variables, the program also becomes more flexible, since the required number of variables can be defined as required.
+
+The recipient address of a letter serves as an example, where the number of address lines can vary. 
+As can be seen in Listing 1.8, variables for salutation, first name, surname, street, zip code, city, etc. can be declared. Should the letter be sent abroad? or if the address is a company address, corresponding variables are missing. 
+No problems arise if, as in Listing 1.9, there is a data field for each address line is created.
+
+Listing 1.8 Assigning the letter address to individually defined variables
+----
+Sub Demo_WithoutDataField()
+    Dim strSalutation As String
+    Dim strFirstnameName As String
+    Dim strStreet As String
+    Dim strPostcodeCity As String
+    Dim doc As Word.Document
+    
+    'Address Query
+    strSalutation = InputBox("Salutation Input")
+    strFirstnameName = InputBox("First name and Name Input")
+    strStreet = InputBox("Street Input")
+    strPostalcode = InputBox("Postalcode and City Input")
+    'Brief Create
+    Set doc = Application.Documents.Add
+    doc.Range.Text = strSalutation & vbVerticalTab & _
+        strFirstnameName & vbVerticalTab & _
+        strStreet & vbVerticalTab & _
+        strPostalcode
+End Sub
+----
+
+To properly understand the program lines in Listing 1.9, more information follows the data fields:
+* The default lower bound for an array is zero. 
+However, it is possible to use this value with of the Option Base directive and set it to one (1).
+IMPORTANT: We do not recommend using Option Base. 
+Because this statement is at the module level must be declared, it affects all declared in the same module accordingly data fields. 
+Do you want to deliberately set the lower limit of individual data fields to one set a specific value, this can be done when the variable is declared.
+Also, the Option Base directive is not supported in the .NET Framework; there is the lower limit of a data field must be 0 (zero).
+* A data field can have one or more dimensions. 
+Basically even that exists ability to create nested data fields, i.e. a single field, which in turn contains a data field. 
+The management of data fields with more than three dimensions or nested constructs is very complex and therefore rarely occurs in practice in front.
+----
+Dim strVariable1(5) As String
+Dim strVariable2(5, 3) As String
+----
+* A data field can either be preassigned a static size in the declaration line.
+----
+Dim strAddress(5) As String
+----
+
+or get the assignment of the size dynamically during runtime of the program using ReDim.
+
+----
+Dim strAddress() As String
+ReDim Preserve strAddress(intCount)
+----
+
+NOTICE: With the ReDim statement, a data field can be re-dimensioned, i.e. the upper limit can be reset. 
+However, this is only possible if no static size has been declared.
+The ReDim statement can only be applied to the last dimension of the array. 
+If the statement is used without the Preserve addition, the data field is reinitialized and the saved values are discarded.
+
+.Listing 1.9 Assigning the postal address to a dynamic data field
+----
+Sub Demo_WithDataField()
+    Dim strAddressLine As String
+    Dim strAddress() As String
+    Dim intCount As Integer
+    Dim doc As Word.Document
+
+    'Request address
+        Do
+            strAddressLine = InputBox("AddressLine " & CStr(intCount + 1) & " Input")
+
+            If Len(strAddressLine) <> 0 Then
+                ReDim Preserve strAddress(intCount)
+                strAddress(intCount) = strAddressLine
+                intCount = intCount + 1
+            Else
+                Exit Do
+            End If
+        Loop While Len(strAddressLine) <> 0
+
+    'Create Letter
+        Set doc = Application.Documents.Add
+        For intCount = 0 To intCount - 1
+            doc.Range.InsertAfter strAddress(intCount) & vbVerticalTab
+        Next intCount
+End Sub
+----
+===== Determine the size of a data field
+
+The current size of a data field can be determined dynamically during runtime. 
+VBA provides the two functions LBound and UBound for this purpose.
+
+Using these functions, the loop for creating the letter address from Listing 1.9 would have looked like this:
+
+----
+For intCounter = LBound(strAddress) To UBound(strAddress)
+----
+
+====== Sort data fields
+
+Unfortunately, VBA does not offer a function to sort a data field. 
+Either must have its own function developed or searched for on the internet using  appropriate sorting algorithms (bubble sort, etc.) be searched. 
+Alternatively, the SortArray function of the WordBasic object can be used. 
+Chapter 4 contains more information about WordBasic.
+
+ONLINE: The code sequences listed can be found in the example file Bsp01_02.docm in the
+download archive for the book in the \Examples\Kap01 folder.
+
+===== Constants
+
+A constant is a quantity whose value does not change. 
+In this respect, she represents the opposite of a variable - which would actually already have dealt with the topic.
+
+The same data types can be assigned to a constant and the same apply Validity and lifetime rules as for variables. 
+We authors also recommend that always declare all constants at the beginning of a procedure or function, thus analogous to the variables.
+
+Finally, the question remains open, what justifies the use of a constant or what a constant can be used for in the program at all.
+
+*Purpose of constants*
++
+Constants are used in a program sequence when the same value is used several times is used (e.g. a fixed conversion factor, the file name of a configuration file etc.). 
+Using a constant has the following advantages:
+* The effective value is only entered at one point within the project. 
+In case of a possible If the value is changed, the adjustment only has to be made at this point.
+* The creeping in of program errors is reduced, because instead of always the same one
+instruction within the project a constant is used. 
+Constants are from IntelliSense supported and recognized as such by the compiler. 
+Spelling errors are therefore total locked out.
+* You can also use the constants to document your program code. 
+The program sequence stays clearer, the instructions are easier to understand.
+
+For these reasons, it makes sense to refrain from using constants regularly is made. 
+The disadvantage of the additional declaration effort is offset by the advantages.
+
+The use of constants should be explained to you with a simple conversion from English
+Measure of length inches (inches) are shown in meters.
+
+----
+sngLengthA = sngLengthA * 0.0254
+----
+
+With this instruction it is not possible to determine at first glance what the meaning of the number is >>0.0254<< within the project and why this calculation is performed.
+
+----
+sngLengthA = sngLengthA * sngINCH_METER
+----
+
+However, if the number >>0.0254<< is replaced by a constant, the reason for the calculation can be derived from the meaningful name of the variable.
+
+.Listing 1.10 Using Constants in Conversion Functions
+----
+Option Explicit
+    Public Const sngINCH_METER As Single = 0.0254
+
+Sub Demo_1()
+    Dim sngLengthA As Single
+    sngLengthA = 10
+    MsgBox CStr(sngLengthA) & " Inch = " & vbCr & _
+        CStr(fctInchInMeter(sngLengthA)) & " Meter"
+End Sub
+
+Function fctInchInMeter( _
+    ByVal sngInch As Single) _
+    As Single
+    fctInchInMeter = sngInch * sngINCH_METER
+End Function
+----
+
+If you study Listing 1.10 more closely, you will see that the declaration of the sngINCH_METER constant has been entered for the entire project to be visible.
+
+----
+Public Const sngINCH_METER As Single = 0.0254
+----
+
+This contradicts the author team's recommendation to always declare constants (and also variables) at procedure level whenever possible. 
+In principle you are of course right, but in the present case, the question arises as to whether the defined conversion factor really only has to be available to the relevant function. 
+Even a simple change in the program shows the reason for a global constant:
+
+----
+MsgBox CStr(sngLengthA) & " Inch = " & vbCr & _
+    CStr(fctInchInMeter(sngLengthA)) & " Meter" & vbCr & _
+    CStr(sngINCH_METER) & " conversion factor"
+----
+
+NOTICE: Special naming conventions have been observed for the designations of the
+constants within the individual program examples. 
+See Appendix A for additional information and recommendations for variable naming.
+
+If a constant is newly created, you should give particular thought to its validity and make them visible so that they are actually available when programming the project.
+
+The experiences from Listing 1.10 show that the right declaration is often only found at second glance can be seen.
+
+ONLINE: The code sequences listed can be found in the example file Bsp01_03.docm
+in the download archive for the book in the folder \Examples\Kap01.
+
+===== Useful VBA functions
+
+Named Visual Basic for Applications, it would only be logical in the Office programming language you can also find some "real" Visual Basic, and that's the way it is. 
+In addition to the functionality the application object model provides the developer with a variety of generally useful functions and methods available. 
+These are all listed in the Visual Basic Help files. 
+Here we will describe some of the most commonly used ones.
+
+*Input Box*
++
+Windows applications are interactive: the user is included in the process. 
+This means he is occasionally prompted for an input. 
+For many tasks it is worth having one Build the UserForm as described in Chapter 14. However, it is only a very short one or simple inputs, it takes less effort to display an InputBox, as shown in figure 1.22 shown.
+
+image::{imagedir}input-box.png[Figure 1.22 An InputBox for short, simple user input]
+
+The user input is returned as a character string, which can either be used directly or stored in a variable. 
+The function has the following syntax, where prompt for "prompt" means. 
+See the function help entry for a description of all arguments.
+
+----
+InputBox(prompt[, title] [, default] [, xpos] [, ypos] [, helpfile, context])
+----
+
+TIP: If you see an argument enclosed in square brackets ([]), the argument is optional. 
+Optional arguments are usually always at the end, after the required arguments.
+
+*MsgBox*
++
+A simple example is shown in Listing 1.11. 
+In the procedure InputBoxShow two Variables declared as strings. 
+The prompt text is assigned to strPrompt, the value for strAnswer is returned by the InputBox in Listing 1.11. 
+The text that the user in the input field will be displayed in a MsgBox as shown in Figure 1.22.
+
+.Listing 1.11 Interaction of the InputBox and MsgBox functions
+----
+Private Const strMSGTITLE As String = "Test VB Function"
+Sub InputBoxShow()
+    Dim strRequest As String
+    Dim strReply As String
+    strRequest = "Please enter some text"
+    strReply = InputBox(strRequest, strMSGTITLE)
+    MsgBox strReply
+End Sub
+----
+
+The MsgBox function has the following syntax:
+----
+MsgBox(prompt[, buttons] [, title] [, helpfile, context])
+----
+
+Again, prompt is the only required argument. 
+But the buttons argument is very interesting and helpful. 
+This not only allows various buttons to be displayed in order to evaluate the user's feedback. 
+You can also tell him the importance of the message.
+Table 1.3 lists the possible values. 
+These can be added together to display any combination of buttons and icons, as shown in Figure 1.23 and demonstrate Table 1.3.
+
+Table 1.3 Values for the `buttons` argument of the `MsgBox` function
+pending
+
+image::{imagedir}message-box.png[Figure 1.23 Make a message box meaningful with differenct combinations of buttons and icons]
+
+.Listing 1.12 The messagebox is furnished with buttons, icons and a title
+----
+Sub TestVBFunction2()
+    Dim strRequest As String
+    Dim strReply As String
+    strRequest = "Please enter some text"
+    strReply = InputBox (strRequest, strMSGTITLE)
+    MsgBox strReply, vbYesNo + vbQuestion, strMSGTITLE
+End Sub
+----
+
+You may have noticed that the close icon, top right of Figure 1.23, isn't is active. 
+This is because a clear "yes" or "no" answer is expected from the user. 
+Well, the user can click yes or no. 
+But how does the code know what is chosen became? 
+The selection is recorded in a variable.
+
+----
+lValue = MsgBox(strResponse, vbYesNo + vbQuestion, strMSGTITLE)
+----
+
+TIP: Please note: if the return value is held in a function, all arguments must be enclosed in a pair of parentheses. 
+Compare the lines of code, calling the MsgBox function, with and without a preceding variable for the return value.
+
+The values returned by a MsgBox are listed in Table 1.4. 
+How to get this information evaluate is described in the "Conditions" section of this chapter.
+
+Table 1.4 The return values for a MsgBox
+
+|====
+|Constant
+|Value
+|Description
+
+|vbOK
+|1
+|OK
+
+|vbCancel
+|2
+|Abort
+
+|vbAbort
+|3
+|Cancellation
+
+|vbRetry
+|4
+|Repeat
+
+|vbIgnore
+|5
+|To ignore
+
+|vbYes
+|6
+|Yes
+
+|vbNo
+|7
+|No
+|====
+
+*Left Right Mid*
++
+So far, the entire character string has always been used. 
+But it happens that only one fraction of it is needed. 
+Visual Basic provides some functions that we can use letters can be read from the left (Left), from right (Right) or from any position (Mid).
+
+The syntax of the tree functions is:
+----
+Left(string, length)
+Right(string, length)
+Mid(string, start[, length])
+----
+
+Listing 1.13 illustrates how these functions are used. 
+You can see the result in Figure 1.24.
+
+.Listing 1.13 How the Left, Right, and Mid string functions work
+----
+Sub TestVBStringFunctions1()
+    Dim strPromt As String
+    Dim strResponse As String
+    Dim lValue As Long
+    
+    strPromt = "Please enter some text."
+    strResponse = InputBox (strPrompt)
+    MsgBox "The complete string: " & strResponse & vbCr & _
+        "The three letters on the left: " & Left(strResponse, 3) _
+        & vbCr & "The four letters on the right: " & Right(strResponse, 4) _
+        & vbCr & "The third through sixth characters: " & Mid(strResponse, 3, 4) _
+        , , strMSGTITLE
+End Sub
+----
+
+TIP: Listing 1.13 also shows how long lines of code break with an underscore will. 
+You can also see how new lines are built into a character string with vbCR will. 
+You can also use Chr$(13) instead of vbCR.
+
+image::{imagedir}string.png[illustration 1.24 The result of Listing 1.13]
+
+*Instr InstrRev Replace*
++
+It is sometimes useful to know whether a character occurs in a character string at all,
+and if so, at which point. 
+Visual Basic provides the functions Instr and InstrRev for this, which return the position of the character searched for, as shown in Figure 1.25 and Listing 1.14 see. 
+The syntax of the two functions is:
+----
+InStr([Start, ]String1, String2[, Comparision])
+InstrRev(stringcheck, stringmatch [, start[, compare]])
+----
+
+It is also possible to use the Replace function to replace all occurrences of a character string within to replace another. 
+The syntax of the replace function is:
+----
+Replace(expression, find, replace[, start[, count[, compare]]])
+----
+
+image::{imagedir}insert-replace.png[illustration 1.25 The Effects of the Instr, InstrRev, and Replace Functions]
+
+.Listing 1.14 The Instr, InstrRev, and Replace functions
+----
+Sub TestVBStringFunctions2()
+    Dim strPrompt As String
+    Dim strReply As String
+    Dim lValue As Long
+    strPrompt = "Please enter some text."
+    strReply = InputBox(strPrompt)
+    MsgBox "The full string: " & strReply & vbCr & _
+        "The first letter B is on the position: " & InStr(strReply, "B") _
+        & vbCr & "The last letter E is on position: " & _
+        InStrRev(strReply, "E") & vbCr & "'e' has been replaced with 'a': " _
+        & Replace(strReply, "e", "a"), , strMSGTITLE
+End Sub
+----
+
+*Dates Format*
++
+There are two more functions to be introduced in this section: Date and Format. 
+The Date function returns the current date in the short format defined under Windows.
+
+Of course it would be nice if the date could be displayed differently. 
+For this Visual Basic has the Format function ready. 
+You can see the result and the code behind it in Figure 1.26 and Listing 1.15. 
+This function is also used for formatting numbers. 
+The syntax is:
+
+----
+Format(expression[, Format[, firstdayofweek[, firstweekofyear]]])
+----
+
+image::{imagedir}date.png[illustration 1.26 The current date was formatted as d-mmm-yyyy using the Format function.]
+
+See the function help topic for details on the valid symbols used with the format can be determined. 
+Also follow the links under See also.
+
+.Listing 1.15 Specify a date using the Format function
+----
+Sub TestFormatFunction()
+    Dim strDate As String
+    MsgBox "Today's Date: " & Date & vbCr & _
+        "And Fomat: " & Format(Date, "d-MMM-yyyy"), , strMSGTITLE
+End Sub
+----
+
+*Condition*
++
+Only rarely does a task run smoothly from A to Z - without any ifs or buts. 
+Most of the time, decisions have to be made and the code has to do this or that, depending on the current state.
+
+VBA basically provides two constructs are available that allow the code to branch off in different lanes:
+If...Then...Else and Select Case.
+
+In its basic form, If...Then tests a condition, and if it evaluates to true, the specified actions are taken. 
+If Else is included, the commands listed below will be executed if the condition is false. 
+An If block always ends with End If. 
+The lines of code within the block are generally indented to make the code more readable.
+
+Listing 1.16 shows an example. 
+An InputBox prompts the user to enter a number.
+The input is returned in the string strAnswer. 
+The If code line tests whether the input is numeric (IsNumeric). 
+If so, the message is displayed as in Figure 1.27, otherwise nothing happens. 
+Note that despite the specified number format "0.00" (i.e. with dot) a comma is used as the decimal separator. 
+The format function converts that specified format so that the result matches the system settings.
+
+image::{imagedir}number.png[illustration 1.27 The number entered is formatted using the Format function]
+
+The condition whether the user input is numeric is checked
+----
+Sub TestIsNumericFunction()
+    Dim strReply As String
+    strReply = InputBox("Please enter some text:")
+    If IsNumeric(strReply) Then
+        MsgBox "They gave the number " & _
+        Format(strReply, "0.00") & " a."
+    End If
+End Sub
+----
+
+If the user has made an invalid entry by mistake, he will look at his screen with some
+consternation if the expected message does not appear. 
+For this reason, the example in Listing 1.17 has been expanded to include an Else block. If the If code line is evaluated as "False", execution jumps here and prints an appropriate message.
+
+NOTICE: A tricky mistake is entering letters instead of numbers. 
+In the beginning, when people switched from the typewriter to the computer, it was more
+common. 
+But even today he cannot be ruled out when difficulties with numbers arise. 
+The UCase function clearly shows that an "l" (lowercase "L") was entered instead of a "1" (one). 
+Less obvious is that a capital "O" was typed instead of a "0" (zero).
+
+*IsDate*
++
+Listing 1.17 uses the two Visual Basic functions IsDate and Ucase. 
+IsDate checks whether the expression is a valid date. 
+It doesn't matter what format it was in. 
+Windows short or long format is the same valid as 1-Sep-2013 or 2013/01/01. 
+It is important to know that the function actively forces a valid date. 
+8.24.2013 is also accepted as 24.8.2013. 
+The IsDate function tries to make a valid date out of all possible combinations of the given value.
+
+*UCase*
++
+The UCase function converts all letters in a string to uppercase. 
+As you may have noticed in Figure 1.25, the VB functions distinguish between upper and lower case.
+
+.Listing 1.17 If the entry corresponds to a date, it is displayed in a specific format. Otherwise a message appears that the date is not valid.
+----
+Sub TestIsDateFunction()
+    Dim strReply As String
+    strReply = InputBox("Enter a Date:")
+    If IsDate(strReply) Then
+        MsgBox "You have the Date " & _
+            Format(strReply, "d. mmmm yyyy") & " entered."
+    Else
+        MsgBox "Your entry - " & strReply & " - is not a valid date." _
+            & vbCr & "Please try again...", vbOKOnly + vbCritical, strMSGTITLE
+    End If
+End Sub
+----
+
+===== Compiler instructions
+
+===== File System operations
+
+Filesystem access is used in many macros, often dealing with the determine the status of a file. 
+So the programmer wants to make sure that a file or a folder exists before editing it. 
+It must be the size or the save date of a file can be determined. 
+Or superfluous files are removed from the hard disk. 
+This are a few examples that require access to the file system.
+
+The examples below give you an insight into the many possibilities related to the file system. 
+However, we authors are aware that the program examples shown do not cover all areas of the topic.
+
+====== List all files in a folder
+
+*Dir*
++
+The `Dir` function is available to list all files or all files with the same file name extension in a specific folder.
+
+The function returns the first filename found in the specified folder with the specified search pattern matches. 
+In order for all files to be determined, the function must be called again. 
+However, no argument may be passed to the function for the following calls. 
+The next file name is returned with each new call. 
+Will no more file is no longer found, an empty character string ("") is returned. 
+The `Dir` function supports a wildcard search.
+
+This circumstance is used in Listing 1.25 to display a list of all exiting documents in the current folder.
+
+.Listing 1.25 Listing all filenames in the current folder
+----
+Sub ListAllFiles()
+    Dim strFilename As String
+    Dim strFilelist As String
+    strFilename = Dir$(MacroContainer.Path & Application.PathSeparator & "*.doc?")
+    Do While Not strFilename = ""
+        strFilelist = strFilelist & strFilename & vbCr
+        strFilename = Dir
+    Loop
+    MsgBox strFilelist
+End Sub
+----
+
+image::{imagedir}file_list.png[illustration 1.30 All existing documents are listed]
+
+In a first step, the Dir function is initialized. 
+This program line already supplies one first hit, i.e. the names of the first files in the current folder of the file with the macro code.
+
+----
+strFilename = Dir$(MacroContainer.Path & Application.PathSeparator & "*.doc?")
+----
+
+Now a Do While…Loop loop is run through until the function is called repeatedly returns an empty string.
+
+----
+Do While Not strFilename = ""
+----
+
+Two program steps are executed within the loop: The last file name found is appended to the list of already determined file names. 
+Then the name of the next file requested. 
+This call to the function is now done without specifying an argument:
+
+----
+strFilelist = strFilelist & strFilename & vbCr
+strFilename = Dir
+----
+
+*Placeholder for the file system*
++
+The Microsoft Windows operating system supports two placeholders for access to the file
+system. 
+These placeholders allow a group of files within the file system to be addressed at the same time.
+
+The question mark (?) is the placeholder for a single character. 
+For example, the files File.docx, FileMacros.docm and FileAlt.doc using the wildcard displayed.
+
+The asterisk (*) is a wildcard for any number of characters. 
+For example, everyone can documents with the file name extension .docx and all document templates with the file name extension .dotx are deleted at the same time.
+
+----
+Kill "*.do?x"
+----
+
+====== Add a backslash to the folder name
+
+A file within the file system is identified by specifying the file name and the folder in where the file in question is stored is uniquely determined. 
+The individual subfolders and the filenames are separated by using backlash (\).
+
+The valid folder name never ends with a backslash (for example, C:\Program Files). 
+However, this rule has an exception. 
+The root folder for each drive ends with a backslash (e.g. C:\).
+
+Do 2 variables need to be linked together to access the file system (one variable contains the folder name, the other the file name), it must be ensured that the result of this link is a valid file name:
+----
+strFilename = strPath & strFilename
+----
+
+The preceding line of code does not guarantee that a valid Filename is generated because the variable strPath does not necessarily have to end with a backslash.
+
+Listing 1.26 takes this fact into account using a separate function. 
+If required, the function appends the missing backslash to the folder name.
+
+.Listing 1.26 When linking to folder names, it is checked whether the path ends with a backslash
+----
+Sub DirectoryNameWithBackslash()
+    Dim strPath As String
+    Dim strFilename As String
+    strPath = Environ("ProgramFiles") & "\Microsoft Office\Office15"
+    strFilename = "Winword.exe"
+    strFilename = fctPathInclBackslash(strPath) & strFilename
+    MsgBox strFilename
+End Sub
+
+Public Function fctPathInclBackslash( _
+    ByVal strPath As String) _
+    As String
+    
+    'The function checks whether the passed Path 
+    'has a backslash as the last character.
+    'If not, it will be appended.
+    If Not (Right$(strPath, 1) = Application.PathSeparator) Then
+        strPath = strPath & Application.PathSeparator
+    End If
+    fctPathInclBackslash = strPath
+End Function
+----
+
+In addition to the actual linking of the two variables, it is checked whether the variable strPath already ends with a backslash. 
+If this is not the case, the required delimiter is replaced by the Function fctPathInclBackslash added:
+----
+strFilename = fctPathInclBackslash(strPath) & strFilename
+----
+
+How the fctPathInclBackslash function works is quickly explained. 
+At the argument strPath becomes read the first character from the right and compare it with the valid separator. does it is not the separator you are looking for, the variable is replaced by the corresponding character, i.e. a backslash, expanded and assigned to the return value.
+
+Operating system environment variables (for Windows) can be accessed via the Environ function will. In this example, using
+
+----
+Environ("ProgramFiles")
+> ? Environ(ProgramFiles)
+> C:\Program Files
+----
+
+accessed the default path environment variable.
+
+image::{imagedir}backslash.png[illustration 1.31 The missing backslash in the variable strPath was appended]
+
+====== Check if a specific file exists
+
+Before you can work with a specific file, you should check whether the file in question actually exists on the file system. 
+This can be determined using the Dir function, based on the knowledge from the "Listing All Files in a Folder" section of this chapter.
+
+----
+If Not Dir("C:\Temp\Test.docx") = "" Then
+----
+
+Calling the Dir function without using a wildcard character returns the name of the file your are looking for, if it is found. 
+Otherwise an empty character string is returned.
+
+IMPORTANT: We strongly advise against using the Dir function for this task. 
+The reason for this lies in the reinitialization of the relevant function by specifying a file name.
+
+Listing 1.25 can be used to illustrate this. 
+If not only the file names found were appended to a variable within the loop, but also another function was called, there would be a risk that the Dir function in a subordinate function would be reinitialized and therefore not all files in the output folder would be processed.
+
+*GetAttr*
++
+Listing 1.27 checks whether a specific file is on the file system without using the Dir function. 
+In order to achieve this, it is not the existence of the file in the file system that is determined, but its file attributes using GetAttr.
+
+.Listing 1.27 Using File Attributes to check whether a file exists
+----
+Sub CheckIfFileExists()
+    MsgBox fctExistsFile("C:\BOOTLOG.TXT"), vbInformation, "C:\BOOTLOG.TXT"
+    MsgBox fctExistsFile("C:\Temp\Test.docx"), vbInformation, "C:\Temp\Test.docx"
+    MsgBox fctExistsFile("C:\Programs"), vbInformation, "C:\Programs"
+end sub
+
+Public Function fctExistsFile( _
+    ByVal strFilename As String) _
+    As Boolean
+    
+    'The function tries to determine the file attributes of the searched file.
+    'The determined value must not match that for a folder.
+    'The error if the file does not exist is skipped with "On Error".
+
+    Const intATTR_NOTFILE = vbDirectory + vbVolume
+    On Error Resume Next
+    fctExistsFile = CBool((GetAttr(strFilename) And intATTR_NOTFILE) = 0)
+End Function
+----
+
+As can be seen from Table 1.6, the individual attributes are assigned numerical values. The return value is compared bit by bit with vbDirectory constant. 
+
+The bitwise comparison with folder returns the value 16. 
+The typecast function CBool returns "True" for any non-zero value.
+
+The bitwise comparison with a file, on the other hand, returns a value equal to zero. 
+The CBool type conversion function returns false for any value equal to zero.
+
+If the folder you are looking for does not exist, an error is raised. 
+The preceding statement On Error Resume Next means that the line in question is not evaluated and the program continues to work. 
+The type conversion function automatically returns back false in this case.
+
+At the beginning of the function it is ensured that the passed folder name does not end with back slash. 
+Nevertheless, it can be checked whether the root folder (e.g. C:\) exists. 
+In this case, the check is not performed on the root folder (C:\), but on the current one folder (C:). 
+Since there is always a root folder for each current folder on a specific drive exists, checking the current folder is sufficient.
+
+====== Check if someone has access to a file
+
+Before you can work with a specific file, you must ensure that file exits. 
+If changes are to be made to the file in question, additionally check whether the file is already being edited by another user.
+
+Files are automatically blocked from further access by the operating system if a File is open in edit mode. 
+A distinction is made as to whether the file is saved serval times or can only be opened once, i.e. exclusively. 
+This circumstance is used in Listing 1.29 to carryout the relevant test.
+
+.Listing 1.29 Check whether exclusive access to a file is possible
+----
+Sub CheckHasFileAccess()
+    MsgBox fctIsFileAlreadyOpen("C:\pagefile.sys")
+    MsgBox fctIsFileAlreadyOpen(MacroContainer.FullName)
+End Sub
+
+Function fctIsFileAlreadyOpened( _
+    ByVal strFilename As String) _
+    As Boolean
+
+    'The function tries to open a file exclusively. 
+    'If the file is already used by another process, this attempt will fail.
+
+    On Error Resume Next
+    Open strFilename For Binary Access Read Lock Read As #1
+    Close #1
+    fctIsFileAlreadyOpened = CBool(Err.Number)
+End Function
+----
+
+The function attempts to open the file exclusively in change mode. 
+If the file is already open, this attempt fails. 
+The previously called On Error Resume Next statement causes that the line in question is not evaluated, the program continues to work. 
+The cast function CBool evaluates the current error number. 
+For each non-zero value, the returned true value.
+
+====== Get the last save date of a file
+
+*FileDate-Time*
++
+To find out when a file or folder was last saved on disk, the FileDateTime function is available. 
+In this case, too, it makes sense to do that first environment to check whether the attempt to determine the date of the folder entry could succeed.
+
+TIP: We generally recommend using a collection of individual functions and procedures
+with a precisely defined range of functions (e.g. deleting a file, changing the date, determine a file, etc.). 
+This avoids you having to worry about possible errors every time you call the original VBA command. this is no more necessary, since this is already done centrally within the individual function from the collection.
+
+Listing 1.30 ensures that a valid folder entry without a trailing backslash is available. In a second step, it is checked whether it is a valid folder entry acts.
+
+.Listing 1.30 Finding the save date of a folder entry
+----
+Sub GetFileDateAndTime()
+    MsgBox fckFileDateAndTimeDetermine(Environ("LOCALAPPDATA"), "dd/ mmmm yyyy"), vbInformation, Environ("LOCALAPPDATA")
+    MsgBox fckFileDateAndTimeDetermine(MacroContainer.FullName), vbInformation, MacroContainer.FullName
+End Sub
+
+Public Function fckFileDateAndTimeDetermine( _
+    ByVal strFilename As String, _
+    Optional ByVal strFormat As String = "dd/mm/yyyy hh:mm:ss") _
+    As String
+    'The function gets the system date of a file or
+    'folder, or returns an empty string
+    'if strFilename does not eixt
+    'Path has no trailing backslash
+    If Right$(strFilename, 1) = Application.PathSeparator Then
+        strFilename = Left$(strFilename, Len(strFilename) - 1)
+    End If
+    'Does the file/folder exist?
+    If fctExistFile(strFilename) Or fctExistsFolder(strFilename) Then
+        fckFileDateAndTimeDetermine = Format$(FileDateTime(strFilename), strFormat)
+    End If
+End Function
+----
+
+NOTICE: The current program example is based on the two functions from Listing 1.27
+and Listing 1.28. 
+In order for the example to run, these functions must be accessible.
+
+As a special feature, the desired output format of the function fctFileDateAndTime can be transferred as an additional parameter. 
+If no value is entered, the defined standard value is used. 
+This is achieved by specifying the Optional keyword and the additional assignment of a value within the declaration line:
+
+----
+Optional ByVal strFormat As String = "dd/mm/yyyy hh:mm:ss")
+----
+
+image::{imagedir}file-date-time.png[illustration 1.32 Different return value of the function depending on the parameter strFormat]
+
+====== Determine the size of a file
+
+*FileLen*
++
+Listing 1.31 first checks whether the file you are looking for is on the data carrier. 
+If this is the case, the size of the file is determined using the FileLen function and converted into the appropriate unit of measure. 
+In the final program step, the output format is determined.
+
+.Listing 1.31 Determine the size of a file and convert the result into the desired unit of measure
+----
+Option Explicit
+
+Enum eFilesize
+    eDG_Byte = 1
+    eDG_kByte = 1024
+    eDG_MByte = 1048576
+End Enum
+
+Sub GetFileSize()
+    MsgBox fctGetFileSize(MacroContainer.FullName, eDG_Byte)
+    MsgBox fctGetFileSize(Environ("ProgramFiles") & _
+        "\Microsoft Office\Office15\WinWord.exe", eDG_MByte)
+End Sub
+
+Public Function fctGetFileSize( _
+    ByVal strFilename As String, _
+    ByVal lngDG As eFilesize, _
+    Optional ByVal strFormat As String = "###,###,###,##0") _
+    As String
+
+    'The function determines the file size of a file or
+    'returns -1 if
+    'strFilename doesnot exist
+    Dim lngSize As Long
+    Dim strSize As String
+    If fctExistsFile(strFilename) Then
+        lngSize = FileLen(strFilename)
+        'Convert to desired file size
+        lngSize = (lngSize - 1) \ lngDG + 1
+        Select Case lngDG
+        Case eDG_Byte
+            strSize = " Byte"
+        Case eDG_kByte
+            strSize = " Kbyte"
+        Case eDG_Mbyte
+            strSize = " Mbyte"
+        End Select
+    Else
+        lngSize = -1
+    End If
+    fctGetFileSize = Format$(CStr(lngSize), strFormat) & strSize
+End Function
+----
+
+NOTICE: The current program example is based on the two functions already presented from Listing 1.27. 
+In order for the example to run, this function must be accessible.
+
+The desired output format of the function fctGetFileSize can be used as an additional parameter be handed over. 
+If no value is entered, the defined standard value is used. 
+This is achieved by specifying the keyword Optional and the additional assignment of a 
+value within the declaration line:
+
+----
+Optional ByVal strFormat As String = "###,###,###,##0"
+----
+
+Another special feature of the function fctGetFileSize can be the desired unit of measure for be passed the return value. 
+For this purpose, a corresponding enumeration was made at the module level declared. 
+The assigned values also correspond to the conversion factors:
+
+----
+Enum eFilesize
+    eDG_Byte = 1
+    eDG_kByte = 1024
+    eDG_MByte = 1048576
+End Enum
+----
+
+IntelliSense is automatically supported by the editor because the lngDG parameter in the
+declaration line is not of the Long type but of the eFileSize type:
+
+----
+ByVal lngDG As eFileSize
+----
+
+image::{imagedir}file-size.png[illustration 1.33 Different return value of the function depending on the two parameters]
+
+ONLINE: The code sequences listed can be found in the example file Bsp01_06.docm in
+the download archive provided in the \Examples\Cap01 folder.
+
+==== Summary
+
+This chapter provides an introduction to Word macros. 
+This is important so that a user without previous knowledge of VBA can quickly find his way around:
+* It was discussed how simple macros can be recorded with the so-called macro recorder and
+how these can be post-processed in a second step.
+* Then useful tools in the VB editor were presented, including the help and the object catalogue
+* It was also described how the user can use his macros in the Word environment via a button or keyboard shortcut makes it accessible.
+* Another section dealt with the integrated macro security of Word and how a VBA project can be digitally signed
+* Next, the handling of VBA variables, their standard data types, their visibility and the transfer to procedures was presented
+* After that, the VBA constants and the user-defined types were explained
+* Another section was dedicated to useful VBA functions, program conditions and loops
+* Particular attention was paid to conditional compilation using compiler instructions
+* It was also shown how possible program errors can be caught using error handling
+* Practical examples of the file system round off what is learned in this chapter
+
+=== Chapter 2: Using Windows APIs in VBA
+
+TOC pending
+
+Many tasks and processes can be implemented with VBA as long as you move within the Office programs. 
+However, a solution using only the VBA commands and VBA options is not always the simplest or shortest.
+
+In many cases it makes no sense or even impossible to use VBA functions to do certain tasks.
+
+In these cases, the developer can use Windows to access thousands of commands and ready-made functions that the Windows operating system makes available and that the operating system and the system programs themselves access. 
+These internal functions are accessed via API functions (Application Program Interface) contained in DLLs (Dynamic Link Library).
+
+This chapter introduces some useful API functions (APIs) that either provide special functionalities or perform certain tasks more easily and quickly can be easily integrated into VBA.
+
+ONLINE: You will find all the examples for the respective sections in the Bsp02_1.docm file in individual modules, some with additional application examples. 
+In addition, this folder contains the Bsp01-1.ini file for the examples in the "Accessing INI Files" section of this chapter. 
+The files can be found in download archive for this book in the folder \Examples\Chapter02\.
+
+==== Structure of the API functions
+
+In principle, each API function has the same structure, which is mainly evident from the name of the function and the library in which the function resides. 
+In addition, individual necessary arguments or entire list of arguments can be specified for the call.
+
+With Office 2010, Microsoft has a 64-bit version for the first time alongside the previous 32-bit versions by Office, which can only be installed on the 64-bit version of Windows from version 7 and Windows Server from version 2008 R2. 
+This division into 32-bit and 64-bit versions has drastic effects on the use of APIs under Office: 
+For the first time, API functions no longer run directly under Office 2010 64-bit, but have to be adapted.
+
+If you try to run the previously working code on Word 64-bit you get a compile error indicating that the code is designed for use on 64-bit systems needs to be adjusted. 
+The message also provides the solution for the adjustment: use in the declare statement, include the PtrSafe attribute.
+
+image::{imagedir}error-64bit.png[Figure 2.1 Error message when trying to execute an API function under Word 64 bit]
+
+All Declare statements must now include the PtrSafe keyword to be under the 64-bit versions of Microsoft Office can be run: The PtrSafe keyword specifies indicating that a Declare statement is safe to run on the 64-bit versions of Microsoft Office can be.
+
+The basic syntax of an API function is now as follows (the individual parts are defined in
+Table 2.1 explained):
+----
+[Public|Private] Declare [PtrSafe] Sub|Function Name Lib "LibName" [Alias "AliasName"]
+[([arglist])] [As Type]
+----
+
+Table 2.1 pending
+
+IMPORTANT: However, adding the PtrSafe attribute to the Declare statement is not a guarantee the functionality of an API function. 
+To understand this a little better, you have to deal with the difference between 32-bit and 64-bit systems. 
+Since this would lead too far at this point, only one main feature should be addressed: the different memory addressing.
+
+While a 32-bit system can address a maximum memory area of 4GB (2^32 bits) and can use, in 64-bit systems the address space is 2^64 bits, i.e theoretically 16 EiB (Exbibyte). 
+Around 192 GB are available under Windows 7 (Ultimate).
+
+The enlarged address space now has a direct impact on all API functions that access memory areas either via a handle or a pointer. 
+This changes e.g. the Long data type (a 4-byte, i.e. 32-bit data type) or the LongLong data type (64-bit 8-byte data types).
+
+Further information can also be found in the VBA help under >>64-bit Visual Basic for Applications - Overview<< and >>PrtSafe<<
+* http://www.microsoft.com/en-us/download/details.aspx?id=9970 [Ms472-K02-01]
+* http://msdn.microsoft.com/de-de/library/office/gg278581(v=office.15).aspx [Ms472-K02-02]
+
+After installing the download, you will find the files with more information in the folder C:\Office 2010 Developer Resources\Documents\Office2010Win32API_PtrSafe
+
+This includes the Win32API_PtrSafe.txt with >>Declare statements for Visual Basic for Applications and Microsoft Office 2010<<, i.e. with declaration information for API functions and Type declarations for Office 2010 64-bit.
+
+Learn more about compatibility between the 32-bit and 64-bit versions of Office 2010 can be found in the article >>Compatibility between the 32-bit and 64-bit versions of Office 2010<<, which you can access from Microsoft under the following link: 
+http://msdn.microsoft.com/en-us/library/ee691831(office.15).aspx [Ms472-K02-03]
+
+==== API functions on 64-bit and 32-bit Use Office versions
+
+Since API functions can only be executed under 64-bit Office versions with adjustments and then no longer under 32-bit Office versions, Office 2010 will use VBA version 7 (VBA7) included. 
+In this VBA version, the compiler constants have been expanded and bring now has its own compiler constants for the 64-bit and 32-bit versions of Office.
+
+The compiler constants from Word 2010 are listed in Table 2.2.
+
+.Table 2.2. Compiler constants from Word 2010
+[%header]
+|====
+|Constant
+|Description
+
+|Wind64
+|Indicates that the development environment is 64-bit compatible or not
+
+|Vba7
+|Indicates that the development environment is compatible or incompatible with Visual Basic for Application version 7.0
+|====
+
+These additional compiler constants can now be used to create compiler statements which mean that API functions for both Office versions can be included in a common project. 
+For this purpose, under the respective version, only the conditions are compiled for that the specified conditions are met.
+
+Compiler directive for conditional compilation for 64-bit and 32-bit Office versions
+----
+#If Win64 Then
+    Private Declare PtrSafe Sub Sleep Lib "kernel32" (ByVal dwMilliseconds As Long)
+#Else
+    Private Declare Sub Sleep Lib "kernel32" (ByVal dwMilliseconds As Long)
+#End If
+----
+
+IMPORTANT: So that the compiler statement compiles without errors on 64-bit Office versions is used, the order of the compiler constants must be observed: First the compiler constant Win64 are queried and only then the compiler constant Win32, because the
+Compiler constant Win32 returns back True on both 32-bit and 64-bit versions of Office  because the 32-bit version can also be installed on Windows 7 64-bit.
+
+.Listing 2.2 Compiler instruction order
+----
+#If Win64 Then
+' Win64=true, Win32=true, Win16= false
+#ElseIf Win32 Then
+' Win32=true, Win16=false
+#Else
+' Win16=true
+#End If
+----
+
+You can then use the compiler constants for the VBA versions (Vba7 and Vba6) to choose between Office 2010/2013 and older Office versions that use VBA version 6 so that overall a good differentiation between the different Office versions is possible.
+
+.Listing 2.3 Condition compilation to determine the Word information of different installations
+----
+Function VBAVersion() As String
+    Dim sVer As String
+    sVer = "You use " & vbCrLf & Application.Name & vbCrLf & _
+                "Version:" & vbTab & Application.Version & vbCrLf
+    #If Win64 Then
+        sVer = sVer & vbTab & "64-Bit" & vbCrLf
+        #If VBA7 Then
+            sVer = sVer & "VBA:" & vbTab & "7"
+        #Else
+            sVer = sVer & "VBA:" & vbTab & "6"
+        #End If
+    #ElseIf Win32 Then
+        sVer = sVer & vbTab & "32-Bit" & vbCrLf
+        #If VBA7 Then
+            sVer = sVer & "VBA:" & vbTab & "7"
+        #Else
+            sVer = sVer & "VBA:" & vbTab & "6"
+        #End If
+    #Else
+        sVer = sVer & vbTab & "16-Bit" & vbCrLf
+        sVer = sVer & "VBA:" & vbTab & "5"
+    #End If
+    VBAVersion = sVer
+End Function
+----
+
+image::conditional-compilation.png[Figure 2.2 Conditional compilation output of Word 2007 (32-bit on Windows 7 64-bit), Word 2010 (64-bit on Windows 7 64-bit), Word 2010 (32-bit on Windows 7 64-bit) and Word 2013 (32-bit on Windows 7 32-bit)]
+
+ON-LINE: All examples in the Bsp02_1.docm file are provided with the compiler instructions for both versions of Office. 
+You will find the in the download archive for this book in the \Examples\Kap02 folder.
+
+==== Combining and completing paths
+
+A frequent question arises when specifying or combing path specifications: Does a path end with a backslash ("\") or not?
+
+For example, to open files or to check if folders exist, the correct one is (Different) syntax important: For example, the Dir function does not require a final Backslash when checking a folder, while backslash when searching for a filename in the folder is necessary.
+
+For example, in Listing 2.4, the first call to the Dir function returns the existing folder name, while backslash returns the first file entry in the folder (if the folder
+exists)
+
+.Listing 2.4 Different return values of the Dir function
+----
+Debug.Print Dir("C:\temp",vbDirectory )
+> temp
+Debug.Print Dir("C:\temp\",vbDirectory )
+> .
+----
+
+Another problem occurs with the combination of path and file name or two folder names: It must be ensured that the overall path contains correctly set backslashes. 
+Normally, both path parts should be checked for beginning and ending backslashes before they can be combined, otherwise errors regarding unknown or incorrect paths can occur.
+
+.Listing 2.5 Incorrect evaluation with missing or double backslash
+----
+Debug.Print "C:\temp" & "Test.doc"
+> C:\tempTest.doc
+Debug.Print "C:\temp\" & "\Test.doc"
+> C:\temp\\Test.doc
+----
+
+This problem could be checked by querying the last character and written in the form of a function for future use, as was shown in Chapter 1. 
+But why not use existing routes? 
+A set of API functions is available under Windows, which takes care of the correct combination and creation of paths.
+
+===== Completing a path
+
+Using the PathAndBackslash API function, a backslash is automatically added to a path if none is already available. 
+The declaration is as follows (the explanation is in Table 2.3):
+
+----
+#If Win64 Then
+    Declare PtrSafe Function PathAddBackslash Lib "shlwapi.dll" Alias "PathAddBackslashA" _
+    (ByVal pszPath As String) As Long
+#Else
+    Declare Function PathAddBackslash Lib "shlwapi.dll" Alias "PathAddBackslashA" _
+    (ByVal pszPath As String) As Long
+#End If
+----
+
+.Table 2.3 Parameters of the PathAndBackslash API function
+[%header]
+|====
+|Parameter
+|Meaning
+|Input/Output
+
+|pszPath
+|Variable with path to be checked
+|On/Off
+|====
+
+This function expects a variable of the type String as input and output parameter. 
+Since the extended path is output in the same variable as the input parameter, you can use the do not specify the path directly, but must specify it using a Variable (buffer). 
+This Buffer must be large enough to hold the return value. 
+If the buffer is too small, the result is truncated at the buffer limit.
+
+Normally, to create the buffer, the path is expanded by a number of null characters (vbNullChar) extended. 
+The addition of these characters has the advantage that this function returns the position of the first null character that terminates the string. 
+Listing 2.6 illustrates this principle.
+
+.Listing 2.6 Ending the path with a backslash using PathAddBaclslash
+----
+Sub subAddBackslash()
+    Dim strPath As String, strTemp As String
+    strPath = "C:\Temp" & String(254, vbNullChar)
+    PathAddBackslash strPath
+    MsgBox strPath, vbInformation, "Return Path"
+End Sub
+----
+
+image::{imagedir}complete-backslash.png[Complete Path Output]
+
+===== Combining Paths
+
+To combine two paths together, you can use the PathCombine API function.
+
+The declaration is as follows (the explanation is in Table 2.4):
+----
+#If Win64 Then
+    Declare PtrSafe Function PathCombine Lib "shlwapi.dll" Alias "PathCombineA" _
+        (ByVal szLast As String, _
+        ByVal lpszDir As String, _
+        ByVal lpszFile As String) As Long
+#Else
+    Declare Function PathCombine Lib "shlwapi.dll" Alias "PathCombineA" _
+        (ByVal szLast As String, _
+        ByVal lpszDir As String, _
+        ByVal lpszFile As String) As Long
+#End If
+----
+
+.Table 2.4 Parameters of the PathCombine API function
+[%header]
+|====
+|Parameter
+|Meaning
+|Input/Output
+
+|szLast
+|Variable with the combined path
+|output
+
+|lpszDir
+|Variable with the base path
+|input
+
+|lpszFile
+|Variable with the path to append
+|input
+|====
+
+In addition to the two path specifications, this function expects lpszDir and lpszFile, which are combined should, a variable szLast, in which the result is output.
+
+The buffer variable szLast must be created so large that the combined path definitely fits in, as shown in Listing 2.7.
+
+.Listing 2.7 Combining two paths using PathCombine
+----
+Sub subPathCombine()
+    Dim strPath1 As String, strPath2 As String
+    Dim strPathCombine As String
+    strPath1 = "C:\Temp\"
+    strPath2 = "Test\"
+    strPathCombine = String(1024, vbNullChar)
+    PathCombine strPathCombine, strPath1, strPath2
+    MsgBox strPathCombine, vbInformation, "Return Path"
+End Sub
+----
+
+image::combine-path.png[Composite path output]
+
+IMPORTANT: The important thing is that the second path must be specified relatively; i.e. he must not have any drive letters. 
+Otherwise the first path specification is ignored.
+
+==== Execute file using the file extension
+
+==== Make user form transparent
+
+==== Access to registry entries
+
+===== Determining registry entries and values
+
+==== Access to INI files
+
+===== Finding all sections of an INI file
+
+==== Get the name of the logged in user
+
+==== Pause processing for a specified time
+
+==== Query button status
+
+==== Summary
+
+=== Chapter 3: Word and XML: An introduction
