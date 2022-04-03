@@ -1,0 +1,17 @@
+= Integers
+
+Natural numbers:: positive numbers
+Whole numbers:: Starting from 0
+Integers:: positive, negative and zero (natural numbers, zero and negative numbers) (Whole numbers and negative numbers)
+
+* Integer properties
+* operations on Integers
+
+== Number line
+
+== Properties
+* additive inverse
+
+== Operations
+* subtraction
+add the additive inverse of the integer that is being subtracted.

@@ -1,0 +1,2 @@
+* AD, BC
+* subtract a -ve integer, we move to the right
