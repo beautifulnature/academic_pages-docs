@@ -15,3 +15,4 @@ Integers:: positive, negative and zero (natural numbers, zero and negative numbe
 == Operations
 * subtraction
 add the additive inverse of the integer that is being subtracted.
+* subtract a -ve integer, we move to the right of the number line

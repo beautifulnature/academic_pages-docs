@@ -1,0 +1,16 @@
+= My Note taking Work Flow
+
+* go to academic pages floder (win + e > D: > projects > academic_pages-docs)
+
+This is automated script (note_taking.bat) on desktop, double click.
+
+* check status of workspace
+----
+> git status
+> git push origin main # push to main branch if workspace is clean
+> git pull origin main # pull from main branch
+----
+
+== vscode xcuts
+
+* ctrl + ` > toggle terminal
