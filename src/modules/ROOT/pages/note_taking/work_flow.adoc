@@ -10,6 +10,12 @@ This is automated script (note_taking.bat) on desktop, double click.
 > git push origin main # push to main branch if workspace is clean
 > git pull origin main # pull from main branch
 ----
+----
+> if not clean, git add .
+> git commit -m "add notes"
+> git push origin main
+> git pull origin main # pull from main branch
+----
 
 == vscode xcuts
 
