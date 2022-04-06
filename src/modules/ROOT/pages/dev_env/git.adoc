@@ -42,6 +42,11 @@ git remote -v
 git branch --unset-upstream
 ----
 
+If you changed git location, cert to be changed as follows:
+----
+git config --global http.sslcainfo "C:/portable/git/mingw64/ssl/certs/ca-bundle.crt"
+----
+
 == Git branches
 
 ----

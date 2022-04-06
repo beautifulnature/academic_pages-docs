@@ -1,4 +1,39 @@
-28-03-2022
+07-04-2022
 ----------
+== science
+
+== technology
+. mechatronics
+
+=== programming
+. core java
+. javascript
+
+. c
+. c++
+. operating system
+
+. python
+
+. flutter
+
+. db
+
+== engineering
+
+== art
+
+=== literature
+
+language:
+telugu
+english
+sanskrit
+hindi
+german
+
+== math
 . calculus made easy
+
+== likes
 . oka yogi atma katha
