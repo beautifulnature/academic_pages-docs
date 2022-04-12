@@ -1,0 +1,1018 @@
+= Assessor Workshop
+
+EFQM= Evaluation of Financial Quality Management
+
+== Program Objectives
+
+To enable participants to learn and appreciate the Excellence Model and apply in performing the following roles better:
+
+* The Assessor
+* The Change Agent
+* The Practitioner
+
+To prepare professionals as Assessors for the Assessment of 
+#to do
+
+by establishing a common understanding of:
+
+* The Model criteria
+* Consensus process
+* Site visit process (Elaboration)
+* The scoring process
+* Feedback report writing
+
+== Methodology used for delivery
+
+* Concise formal inputs by the workshop facilitator
+* Individual Learning
+* Group exercise using the case study
+* Peer learning
+
+Note:
+* The course is not a critique of the Award Model and procedures
+* Points for improvement and criticism will be noted for the review process.
+
+== Disruptions
+
+=== The need for Transformation (VUCA world)
+
+|====
+|Complexity
+
+Multiple key decision factors
+
+Characteristics:: The situation has many interconnected parts and variables. 
+Some information is available or can be predicted, but the volume or nature of it can be overwhelming to process.
+
+Example:: You are doing business in many countries, all with unique regulatory environments, tariffs and cultural values.
+
+Approach:: Restructure, bring on or develop specialists and build up resources adequate to address the complexity.
+
+
+|Volatility
+
+Rate of change
+
+Characteristics:: The challenge is unexpected or unstable and may be of unknow duration, but it's not necessarily hard to understand; knowledge about it is often available.
+
+Example:: Prices fluctuate after a natural disaster takes a supplier off-line.
+
+Approach:: Build in slack and devote resources to preparedness - for instance, stockpile inventory or overbuy talent. 
+These steps are typically expensive; your investment should match the risk.
+|Ambiguity
+
+Lack of clarity about meaning of an event
+
+Characteristics:: Casual relationships are completely unclear. 
+No precedents exist; you face "unknow unknowns."
+
+Example:: You decide to move into immature or emerging markets or to launch products outside your core competencies.
+
+Approach:: Experiment. 
+Understanding cause and effect requires generating hypotheses and testing them. 
+Design your experiments so that lessons learned can be broadly applied.
+|Uncertainty
+
+Unclear about the present
+
+Characteristics:: Despite a lack of other information, the event's basic cause and effect are known. 
+Change is possible but not a given.
+
+Example:: A competitor's pending product launch muddies the future of the business and the market.
+
+Approach:: Invest in information - collect, interpret and share it. 
+This works best in conjunction with structural changes, such as adding information analysis networks, that can reduce ongoing uncertainty.
+|====
+
+X-axis: How much do you know about the situation?
+Y-axis: How well can you predict the outcome of your actions?
+
+== EFQM
+
+You cannot do today's job with yesterday's methods and still be in business tomorrow.
+
+=== The EFQM Model
+
+==== Outstanding Organisations
+
+Outstanding organisations achieve and sustain levels of performance that meet or exceed the expectations of all the stakeholders.
+
+Four dimensions
+. Inclusive
+. Comprehensive
+. Predictable
+. Sustainable
+
+===== Key Characteristics of Outstanding organisation
+
+* Creating & delivering sustainable value proposition for its stakeholders considering the 3P (People, Planet, Profit) perspective in its eco system.
+* Leadership style: Less hierarchical, Less command and more collaborative
+* A people centric approach to create value leveraging diversity
+* Manage for today and manage the change for tomorrow to be future ready.
+* Mindset for creativity and innovation including disruptive thinking to generate value and enhanced performance.
+* Addressing threats and opportunities in the Organisation's ecosystem with Agility.
+* Develop a culture of co-creation within the ecosystem.
+
+===== Macro View / Insights of the Model
+
+====== The Ten Principles of the United Nations Global Compact
+
+*Human Rights*
++
+Principle 1.
++
+Businesses should support and respect the protection of internationally proclaimed human rights, within the scope of their influence.
+
+Principle 2.
++
+Businesses should make sure that they are not complicit in human rights abuses.
+
+*Labour Standards*
++
+Principle 3.
++
+Businesses should uphold the freedom of association and the effective recognition of the right to collective bargaining.
+
+Principle 4.
++
+Businesses should uphold the elimination of all forms of forced and compulsory labour.
+
+Principle 5.
++
+Businesses should uphold the abolition of child labour.
+
+Principle 6.
++
+Businesses should uphold the elimination of discrimination in respect of employment and occupation.
+
+*Environment*
++
+Principle 7.
++
+Businesses should support a precautionary approach to environmental challenges.
+
+Principle 8.
++
+Businesses should undertake initiatives to promote greater environmental responsibility.
+
+Principle 9.
++
+Businesses should encourage the development and diffusion of environmentally friendly technologies.
+
+*Anti-corruption*
++
+Principle 10.
++
+Businesses should work against corruption in all its forms, including extortion and bribery.
+
+====== The Model Incorporates Sustainable Development Goals
+
+. No Poverty
+. Zero Hunger
+. Good Health and Well being
+. Quality Education
+. Gender Equality
+. Clean Water & Sanitation
+. Affordable & Clean Energy
+. Decent Work & Economic Growth
+. Industry Innovation & Infrastructure
+. Reduced inequalities
+. Sustainable City & Communities
+. Sustainable Consumption & Production
+. Climate Action
+. Life below water
+. Life on Land
+. Peace & Justice
+. Partnership for the Goals
+
+====== Model focuses on
+
+* Purpose driven Organisation
+** Inspirational Purpose
+** Aspirational Vision
+** Strategy the Delivers
+** Winning Culture
+* Organisational Culture
+* Aligned Organisation
+* Leveraging Creativity and Innovation
+* Data Analytics & Predictive Analysis
+* Governance Structure
+* Disruptions
+** Technology
+** Business Model
+* Mega Trends
+* Stakeholders
+* Creating sustainable value
+* The Ten principles of the United Nations Global Compact
+* UN's 17 Sustainable Development Goals
+* Circular Economy
+
+====== Benefits of adapting the EFQM Model
+* Helps Define your purpose
+* Helps create your culture
+* Helps Forge Strong Leaders
+* Helps Address Unique Organisational challenges
+* Helps Foster Agile Practices
+* Helps Forecast the future.
+
+===== The EFQM Model
+
+* Organisation
+
+** Direction
+*** Purpose, Vision & Strategy
+*** Organisational Culture & Leadership
+** Execution
+** Results
+
+====== The Fundamentals
+
+The EFQM model structure is based on the simple but powerful logic of asking 3 questions:
+.Why (Direction)
++
+`Why` does this organistaion exist? 
+What purpose does it fulfil? 
+Why this particular Strategy...
+.How (Execution)
++
+`How` does it intend to deliver on its purpose and its strategy...
+.What (Results)
++
+`What` has it actually achieved to date? 
+`What` does it intend to achieve tomorrow...
+
+======= Direction (Positioning statement)
+
+For an organistaion to achieve and sustain outstanding results that meet or exceed the expectations of its stakeholders it is necessary, but not sufficient, for it to:
+
+* Define an inspiring Purpose
+* Create a Vision that is aspirational
+* Develop a strategy that is centered on creating sustainable value
+* Build a winning culture
+
+. Criterion 1:
++
+*1.1 Define Purpose & Vision*
++
+* Understand: Importance & relevance
+* Define: Inspiring purpose - appealing to stakeholders
+* Use: Purpose for creating a aspirational vision
+* Involve: Stakeholders - connect & involvement
+* Identify: Areas for sustainable & outstanding results
+
+*1.2 Identify and Understand stakeholder needs*
++
+* Identify stakeholders and prioritize key stakeholders - Help / Hinder
+* Understands how its Purpose & Vision affects it key stakeholders
+* Identify: Key stakeholders needs & expectations based on its purpose & vision
+* Analyses factors influencing behavior, relationship and decision making of key stakeholder and the impact on it.
+* Studies and understands key stakeholder competence and impact on its PVS & Business model
+
+Identify your key stakeholders and prioritize. 
+
+Give a weightage on 0-100% scale.
+
+Multiple stakeholders can have same weightage score.
+[%header]
+|====
+|Sl.No.
+|Stakeholder
+|Weightage %
+
+|1
+|Customer
+|20%
+
+|2
+|Investor/Share Holder/Owner
+|
+
+|3
+|Employee/People
+|
+|====
+
+1.3 Understand the Ecosystem, own capabilities & major challenges
+* Research & Understand: Ecosystem, Megatrends, Link to UNSD goals & Global compact
+* Analyses: Different scenarios for response and impact on its PVS.
+* Knows the potential of its current capabilities to impact its PVS
+* Investigates and understands current and future market place dynamics for the impact on PVS
+* Assess & evaluate Data, info & knowledge across ecosystem for today and future
+
+1.4 Develop strategy
+* Develop strategy and related priorities with an action plan and pace aligned to eco system
+* Translate strategy and related priorities into performance targets and transformation initiatives.
+* Involvement of key stakeholders to enable engagement, deployment and communication - Strategy
+* Develop Business models that fit the PVS
+* Update, Adapt... strategic priorities to based on learning from all sources
+
+1.5 Design and implement a Governance & Performance Measurement system
+
+* Design & implement a governance and PMS aligned to aspirations, addressing strategy, ecosystem development & challenges.
+* Puts in place a Governance structure to enable key stakeholder contribution
+* Defines & implements a review schedule to monitor progress incorporating agility that monitors strategy implementation, performance & transformation priorities. 
+* Ensures Performance & Transformation management and reporting is built in to ensure stakeholder Accountability and Transparency.
+* Makes sure that all legal and regulatory requirements.
+
+. Criterion 2: 
++
+Organisational Culture & Leadership
++
+*2.1 Steer the Organisation's culture & nurture values*
+
+* Understands and steers culture for alignment to purpose and adaptation if needed.
+* Nurtures values, Walk the talk - demonstrates desired behaviors of values.
+* Demonstrates desired behaviors and make people demonstrate the same in their actions.
+* Expresses and promotes concern - scarcity of resources, responsible environmental behaviour.
+* Aligns Appraisals, R & R to its values to steer culture
+* Identifies, recognizes and promotes role models in its ecosystem
+
+*2.2 Create the conditions for realising the change*
+
+* Works with key stakeholders for a "successful change"
+* Create a culture of "no fear for failure". fail fast, fail safe approach for learning.
+* Facilitate spirit of learning, encourage improvements & at times transformation
+* Determine & demonstrate pace of change, link needs, benefits and consequences on its PVS.
+* Learns from change management experiences.
+
+*2.3 Enable Creativity & Innovation*
+
+* Understands importance and benefits of Creativity, Innovation & Disruptive thinking (CIDt)
+* Sets ambitious goals and targets that encourage CIDt
+* Enables a culture where CIDt is encouraged, learning is encouraged from failures.
+* Develops a culture for expertise for using improvement tools and techniques
+* Engages with Learning collaborative networks to identify opportunities for CIDt
+* Seeks External benchmarking opportunities to keep pace with contemporary environment.
+
+*2.4 Unite Behind & Engage in Purpose, Vision & Strategy*
+
+* Invests in PVS communication to stakeholders to create trust, confidence and commitment.
+* Encourages & appreciates feedback and concerns on it PVS
+* Conveys to key S/Hs their impact, contribution, alignment & engagement - PVS.
+* Ensures that key S/Hs know the importance of alignment to the PVS.
+* Recognize, celebrate and share success with key S/Hs to reinforce desired behaviour.
+
+======= Execution (Positioning statement)
+
+The Direction, prepares the way forward for the organisation, but it then needs to execute its strategy effectively and efficiently, ensuring that it:
+
+* knows who the S/Hs are in its ecosystem and engages fully with those that are key to its success
+* creates sustainable value
+* drives the levels of performance necessary for success today and, at the same time, drives the necessary improvement and transformation if it is to be successful in the future.
+
+*Criterion 3*
++
+Engaging Stakeholders
+
+*3.1 Customers - Build sustainable relationships*
+
+Customers include direct, indirect, users, touchpoints at different stages, prosumers and influencers who are recipients of products/services and solutions
+
+* Identify & classify customers based on defined criteria
+* Maintain relationship at all stages... including no tangible interaction phase
+* Understand the communication & contact needs
+* Establish Easy to use communication channels - Agility
+
+*3.2 People - Attract, Engage, Develop & Retain*
+
+People: Individuals/ Groups of people engaged by the organisation
+
+* Develop a people strategy aligned to organisational strategy and plans
+* Adapts: Needs & expectations - current & future on all parameters
+* Enables: People based on PVS for change and developmental needs
+* Empowers: Communication, sharing, experiences with the ecosystem
+* Creates: Ambience to thrive with well being supported
+* Ensures: Proactively guided, rewarded, recognized and cared for
+
+*3.3 Business & Governing Stakeholders - Secure & sustain ongoing support*
+
+Individuals / groups to whom organisation is accountable for its fiscal, legal, ethical and general stewardship requirements.
+
+Biz: Owners, shareholders, investors, funding organisations
+Governing: Govt, statutory & regulatory, Public authority etc.
+
+* Identifies its key business & governing stakeholders, understands their expectations
+* Involves them in transformation ambitions and strategic direction
+* Forge mutually beneficial relationships
+* Makes itself transparent and accountable establishing trust with this group
+
+*3.4 Society - Contribute to development, well-being & prosperity*
+
+Individuals / Organisations outside the organisation
+Immediate community / wider society
+
+* Uses PVS to develop an understanding of its contribution to the society.
+* Establishes Develops and maintains relationship with key societal S/H - Mutual benefit
+* Utilises: Easy to use communication channels for experience sharing - Agile feedback
+* Makes itself transparent and accountable establishing trust with this group
+
+*3.5 Partners & Suppliers - Building relationships & ensure support for creating sustainable value*
+
+External parties that the organisation chooses to work with to fulfill its purpose, achieve its vision, deliver the strategy and reach shared objectives that benefit both parties
+
+* Segments: key partners and suppliers aligned to PVS
+* Ensures: Alignment of them to Organisational strategy
+* Build: Trusting relationship for creating sustainable value
+* Works: Proactively to leverage culture and expertise for mutual benefit
+
+*Weighting factors (see table below)*
+
+- The exact value of the weighting factor to be applied for each of the criterion parts within C3 & C6 will be the decision of the organisation
+- To avoid, for example, an Applicant for the EFQM Global Award (EGA), deciding to allocate the 200 points for stakeholder perceptions as follows:
+** 150 points (75%) to customer perceptions
+** 50 points (25%) to people perceptions
+** 0 points for the other 3, recognised stakeholder groups
+- A minimum and maximum weighting factor for the 5 recognised stakeholder groups will be introduced as follows:
+** None of the 5 recognised stakeholder groups can be scored below 10% of the maximum number of points available
+** None of the 5 recognised stakeholder groups can be scored above 40% of the maximum
+
+[%header]
+|====
+|Examples
+|Customer
+
+3.1 & 6.1
+|People
+
+3.2 & 6.2
+|Business & Governing
+
+3.3 & 6.3
+|Society
+
+3.4 & 6.4
+|Partner
+
+3.5 & 6.5
+|Totals
+
+|1
+|20%
+|20%
+|20%
+|20%
+|20%
+|100%
+
+|2
+|15%
+|15%
+|15%
+|15%
+|40%
+|100%
+
+|3
+|20%
+|30%
+|15%
+|20%
+|15%
+|100%
+
+|4
+|40%
+|30%
+|10%
+|10%
+|10%
+|100%
+
+|5
+|35%
+|25%
+|15%
+|10%
+|15%
+|100%
+|====
+
+*Exercise*
+
+Identify the S/Hs, use the power/influence vs interest matrix, prioritize the S/Hs
+
+*Criterion 4*
++
+Creating Sustainable Value
+
+*4.1 Design the Value & How it is created*
+
+* Understands its differentiators w.r.t competition & uses it for value creation
+* Involves key S/Hs in co-creation for value generation
+* Develops: Product / Service / Solution portfolio to meet current and future needs for existing and potential target groups aligned to purpose
+* Designs value considering Life cycle management approaches
+* Uses qualitative & quantitative methods (data, survey, research) to improve value proposition & value creation
+
+*4.2 Communicate & Sell the Value*
+
+* Express differentiators and value proposition into engaging messages for all customer and target groups
+* Leverages power of networking. 
+Responsible on and off line behaviour.
+* Uses strategies and approaches to communicate value proposition of its PSS
+* Makes it easy for target groups to work with at all stages of the Business
+
+*4.3 Deliver the Value*
+
+* Implements effective and efficient ways to create value to deliver its purpose and value proposition
+* Delivers sustainable value through is PSS by meeting / exceeding N&E
+* Delivers its PSS minimizing negative social and environment impact.
+* Advises its target groups on responsible use of its PSS.
+
+*4.4 Define & Implement the Overall Experience*
+
+* Uses insights for defining and implementing the overall experience
+* Puts in place a consistent, seamless and effective progression with all touch points during value creation.
+* Takes advantage to design personalised experiences for target groups as well as it PSS
+* Makes sure that people have resources, competence & empowerment to maximise the experience.
+* Designs, implements and uses timely feedback systems to improve phases of value creation as well as PSS
+
+*Criterion 5*
++
+Driving Performance & Transformation
+
+*5.1 Drive Performance & Manage Risk*
++
+* Uses: Performance Mgmt System: Link between PVS & Results
+* Uses PMS: informed, effective and responsive fact based improvements
+* Manages: Projects & improves process
+* Identifies: Risks and potential impact on strategic priorities
+* Develops: Plans to manage & mitigate strategic, functional & cultural risks
+
+*5.2 Transform the Organisation for the Future*
++
+* Identify: Transformation & Change needs aligned to Purpose, Strategy, CSV, Results
+* Adapts: Strategy & Biz models for today & tomorrow
+* Build: Organisation structure to deliver PVS
+* Establish & Utilize: Agile working approaches - stablility for today
+* Restructures: Value creation processes based on needs
+
+*5.3 Drive Innovation & Utilise Technology*
+
+* Provides: Capability, resources and tools to develop and sustain CIDt
+* Leverages: Innovations for today and future
+* Evaluates: Technology for value creation & improvements for agility
+* Introduces: Relevant developments in Tech for maximizing benefit
+* Evaluates & manages: Application of Circular economy principles
+
+*5.4 Leverage Data, Information & Knowledge*
+
+* Ensure: It identifies data to support transformation plans and manage products
+* Uses: Advanced Analytics to extract value from data for insights and action
+* Converts: Data to info to knowledge for creating sustainable value
+* Makes use: Knowledge from S/H ecosystem for CSV
+* Ensure: Ethical use of data, info & knowledge
+* Secures, Protects and maximizes knowledge & IP
+
+*5.5 Manage Assets & Resources*
+
+== RADAR for Direction, Execution & Results
+
+=== EFQM Model: RADAR Logic
+
+. Define the `Results` you want to achieve
+. Plan and develop the `Approach` that will deliver the result
+. `Deploy` the approach
+. `ASSESS` the impact and `REFINE` to ensure you achieve the desired results
+
+==== RADAR Tool - DIRECTION
+
+.Matrix Chart 1: Analysis of Direction
+[%header, cols="1,1,5"]
+|====
+|Elements
+|Attributes
+|Description
+
+.2+|Approach
+|Sound
+|The Approach has a clear rationale, aims to fulfil and respond to key S/H needs, is described appropriately and is designed to be fit for the future.
+|Aligned
+|N.B. Not applied to Direction
+
+.2+|Deployment
+|Implemented
+|The Approach is Deployed in relevant areas in an effective and timely manner.
+|Flexible
+|N.B. Not applied to Direction
+
+.2+|Assessment & Refinement
+|Evaluated & Understood
+|Feedback on the effectiveness & efficiency of the Approach and its Deployment are collected, understood and shared.
+|Learn & Improve
+|Findings from emerging trends analysis, measurement, learning and benchmarking are used to inspire creativity and generate innovative solutions to improve performance in appropriate timescales.
+|====
+
+==== Scoring: RADAR for Direction
+[cols="5, 5, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1"]
+|====
+|
+|
+|Inability to achieve
+3+|Limited ability to achieve
+3+|Ability to achieve
+2+|Comprehensive ability to achieve
+2+|Outstanding ability to achieve
+
+|Approach
+|Sound
+|0%
+|10%
+|20%
+|30%
+|40%
+|50%
+|60%
+|70%
+|80%
+|90%
+|100%
+
+|Deployment
+|Implemented
+|0%
+|10%
+|20%
+|30%
+|40%
+|50%
+|60%
+|70%
+|80%
+|90%
+|100%
+
+.2+|Assessment & Refinement
+|Evaluated & Understood
+|0%
+|10%
+|20%
+|30%
+|40%
+|50%
+|60%
+|70%
+|80%
+|90%
+|100%
+
+|Learn & Improve
+|0%
+|10%
+|20%
+|30%
+|40%
+|50%
+|60%
+|70%
+|80%
+|90%
+|100%
+
+2+|Overall score (not higher than the score for 'Sound')
+|0%
+|10%
+|20%
+|30%
+|40%
+|50%
+|60%
+|70%
+|80%
+|90%
+|100%
+|====
+
+N.B RADAR for Direction: Please see section 3.4 for more information on scoring.
+
+==== RADAR Tool - EXECUTION
+
+.Matrix Chart 2: Analysis of Execution
+[%header, cols="1, 1, 6"]
+|====
+|Elements
+|Attributes
+|Description
+
+.2+|Approach
+
+|Sound
+|The Approach has a clear rationale, aims to fulfil and respond to key S/H needs, is described appropriately and is designed to be fit for the future.
+
+|Aligned
+|The Approach supports an organisation's Direction and is integrated with other relevant approaches.
+
+.2+|Deployment
+
+|Implemented
+|The Approach is Deployed in relevant areas in an effective and timely manner.
+
+|Flexible
+|The Execution enables flexibility and adaptation.
+
+.2+|Assessment & Refinement
+
+|Evaluated & Understood
+|Feedback on the effectiveness & efficiency of the approach and its deployment are collected, understood and shared.
+
+|Learn & Improve
+|Findings from emerging trends analysis measurement, learning and benchmarking are used to inspire creativity and generate innovative solutions to improve performance in appropriate timescales.
+|====
+
+==== Scoring: RADAR for Execution
+[cols="5, 5, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1"]
+|====
+|
+|
+|Inability to achieve
+3+|Limited ability to achieve
+3+|Ability to achieve
+2+|Comprehensive ability to achieve
+2+|Outstanding ability to achieve
+
+.2+|Approach
+|Sound
+|0%
+|10%
+|20%
+|30%
+|40%
+|50%
+|60%
+|70%
+|80%
+|90%
+|100%
+
+|Align
+|0%
+|10%
+|20%
+|30%
+|40%
+|50%
+|60%
+|70%
+|80%
+|90%
+|100%
+
+.2+|Deployment
+|Implemented
+|0%
+|10%
+|20%
+|30%
+|40%
+|50%
+|60%
+|70%
+|80%
+|90%
+|100%
+
+|Flexible
+|0%
+|10%
+|20%
+|30%
+|40%
+|50%
+|60%
+|70%
+|80%
+|90%
+|100%
+
+.2+|Assessment & Refinement
+|Evaluated & Understood
+|0%
+|10%
+|20%
+|30%
+|40%
+|50%
+|60%
+|70%
+|80%
+|90%
+|100%
+
+|Learn & Improve
+|0%
+|10%
+|20%
+|30%
+|40%
+|50%
+|60%
+|70%
+|80%
+|90%
+|100%
+
+2+|Overall score (not higher than the score for 'Sound')
+|0%
+|10%
+|20%
+|30%
+|40%
+|50%
+|60%
+|70%
+|80%
+|90%
+|100%
+|====
+==== RADAR Tool - RESULTS
+
+.Matrix Chart 3: Analysis of Results
+[%header, cols="1, 1, 6"]
+|====
+|Elements
+|Attributes
+|Description
+
+.2+|Relevance & Usability
+
+|Scope & Relevance
+|A set of results that clearly link to the Purpose, Vision & Strategy of the organisation are identified. 
+The selected set of Results is reviewed and improved over time.
+
+|Usable Data
+|Results are timely, reliable, accurate and appropriately segmented to provide meaningful insights that support performance improvement and transformation.
+
+.4+|Performance
+
+|Trends
+|Positive trends or sustained outstanding performance over the strategic period/cycle.
+
+|Targets
+|Relevant targets are set in line with the Strategy and are consistently achieved.
+
+|Comparisons
+|Relevant external comparisons suitable to position own performance in line with the strategic direction are made and are favourable.
+
+|Future Focus
+|Based on current cause & effect relationships, analysis of data sets, performance patterns & predictive measures, the organisation understands the drivers for outstanding performance in the future
+|====
+
+==== Scoring: RADAR for Results
+[cols="5, 5, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1"]
+|====
+|
+|
+|Inability to achieve
+3+|Limited ability to achieve
+3+|Ability to achieve
+2+|Comprehensive ability to achieve
+2+|Outstanding ability to achieve
+
+.2+|Relevance & Usability
+|Scope & Relevance
+|0%
+|10%
+|20%
+|30%
+|40%
+|50%
+|60%
+|70%
+|80%
+|90%
+|100%
+
+|Usable Data
+|0%
+|10%
+|20%
+|30%
+|40%
+|50%
+|60%
+|70%
+|80%
+|90%
+|100%
+
+.4+|Performance
+|Trends
+|0%
+|10%
+|20%
+|30%
+|40%
+|50%
+|60%
+|70%
+|80%
+|90%
+|100%
+
+|Targets
+|0%
+|10%
+|20%
+|30%
+|40%
+|50%
+|60%
+|70%
+|80%
+|90%
+|100%
+
+|Comparisons
+|0%
+|10%
+|20%
+|30%
+|40%
+|50%
+|60%
+|70%
+|80%
+|90%
+|100%
+
+|Future Focus
+|0%
+|10%
+|20%
+|30%
+|40%
+|50%
+|60%
+|70%
+|80%
+|90%
+|100%
+
+2+|Overall score (not higher than the score for 'Scope & Relevance')
+|0%
+|10%
+|20%
+|30%
+|40%
+|50%
+|60%
+|70%
+|80%
+|90%
+|100%
+|====
+
+==== RADAR Guidelines for Direction & Execution
+[%header, cols="1, 2, 10"]
+|====
+|APPROACH
+|Guidance
+|The applicant needs to achieve:
+
+|Sound
+|THe approach has a clear rationale, aims to fulfil and respond to key S/H needs, is described appropriately and is designed to be fit for the future
+|* Ther is a clear reason to support the choice of the approach in place - what was the rationale behind choosing and/or adopting a specific approach, for instance, by means of research, learning or benchmarking?
+* The approach is appropriately described for those needing to understand it e.g. is it visualised, did the 'ways of working' change over time?
+* The approach is focused on the key S/H expectations and everyone involved in the execution of it (bot Strategic and Operational e.g. those who benefit from it and also those who use the approach.)
+* The approach already shows signs of maturity or is a proven practice, e.g. because the changes made became smaller over time, or the approach has been shown to work also in abnormal or difficult circumstances.
+* The approach is designed to be fit for the future and can be adapted to changing circumstances.
+|====
+==== RADAR Guidelines for Results
+
+==== Scoring Guidelines
+==== RADAR for DIRECTION
+==== RADAR for EXECUTION
+==== RADAR for RESULTS
+
+==== Suggested Weightages process
+
+==== Organisational Profile
+===== Organisational Profile - Macro Factors
+===== Organisational Profile - Business Context
+===== Organisational Context
+===== Organisational Profile
+
+===== Deriving Key themes / Characterizing the Organisation
+===== Group Work
+===== Group Work - Guidelines
+===== Consensus Process: Key Points
+===== Enables - Approach
+===== Scoring Matrices: Enablers Criteria - Approach
+===== Enablers: Deployment
+===== Scoring Matrices: Enablers Criteria - Deployment
+===== Deployment Spread (Contextual)
+===== Enablers - Assessment & Refinement
+===== Scoring Matrices: Enablers Criteria - A&R
+
+===== Feedback statements Guidelines
+===== Unacceptable Feedback statements
+===== Feedback Comments - General Guidelines
+===== Enabler Comments - Basic Format
+===== Direction & Execution Statements - Key Strengths
+===== Direction & Execution - Statements-Basic Format
+===== Direction & Execution - Statements-Key OFIs
+
+
+
+
+
+
