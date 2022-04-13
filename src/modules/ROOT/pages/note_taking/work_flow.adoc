@@ -2,6 +2,11 @@
 
 * go to academic pages floder (win + e > D: > projects > academic_pages-docs)
 
+* win + R                                   #Run program
+* cmd Enter                                 #to open command prompt
+* cd /d D:\projects\academic_pages Enter    #change directory
+* code .                                    #open current folder in vscode
+
 This is automated script (note_taking.bat) on desktop, double click.
 
 * check status of workspace
