@@ -970,46 +970,1163 @@ The selected set of Results is reviewed and improved over time.
 
 |Sound
 |THe approach has a clear rationale, aims to fulfil and respond to key S/H needs, is described appropriately and is designed to be fit for the future
-|* Ther is a clear reason to support the choice of the approach in place - what was the rationale behind choosing and/or adopting a specific approach, for instance, by means of research, learning or benchmarking?
+a|* There is a clear reason to support the choice of the approach in place - what was the rationale behind choosing and/or adopting a specific approach, for instance, by means of research, learning or benchmarking?
 * The approach is appropriately described for those needing to understand it e.g. is it visualised, did the 'ways of working' change over time?
 * The approach is focused on the key S/H expectations and everyone involved in the execution of it (bot Strategic and Operational e.g. those who benefit from it and also those who use the approach.)
 * The approach already shows signs of maturity or is a proven practice, e.g. because the changes made became smaller over time, or the approach has been shown to work also in abnormal or difficult circumstances.
 * The approach is designed to be fit for the future and can be adapted to changing circumstances.
+
+|Aligned
+|The approach supports an organisation's direction and is integrated with other relevant approaches.
+a|* The approach is designed to deliver the desired results (now and in the future), and it is aligned with the organisation's direction.
+* There is a visible/logical link with the strategy, and the approach supports one or more strategic objectives.
+* The people choosing the approach are aligning it with one or more facets of the strategy, while also considering dependencies from and/or impact on other approaches.
+3+|DEPLOYMENT
+|Implemented
+|The approach is deployed in relevant areas in an effective and timely manner.
+a|* The extent to which the approach has been used and is put into practice. 
+This may relate to different levels within an organisation's hierarchy; different locations; the number of actual implementations based on the approach; the number of employees actively involved or the various products, services and solutions being offered.
+* There is an awareness of the further potential for deployment in-depth and/or breadth.
+* Some facts & figures exist to show how often the approach is used, how the use has varied over time and why.
+|Flexible
+|The execution enables flexibility and adaptation.
+a|* There is a plan and timing for the actual deployment that allows flexibility and adaptation according to changing circumstances.
+* Example(s) exist where the circumstances required temporary or definitive evolutions, small or big.
+3+|ASSESSMENT & REFINEMENT
+|Evaluated & Understood
+|Feedback on the effectiveness & efficiency of the approach and its deployment is collected, understood and shared.
+a|* There is a view for the specific approach on the effectiveness (achieving the desired output) and efficiency (cost in resources/time/money).
+* There is a way to know how frequently measuring and collecting feedback should be done e.g. what is a good fit.
+* Feedback is analysed, understood and shared with relevant S/Hs in and outside the organisation.
+|Learn & Improve
+|Findings from emerging trends analysis, measurement, learning and benchmarking are used to inspire creativity and generate innovative solutions to improve performance in appropriate timescales.
+a|* Actions to understand future emerging trends and their potential impact are taken.
+* There is knowledge resulting from learning activities and comparisons to understand if the approach can be considered as 'outdated', 'normal', 'better' or 'outstanding'.
+* There is an awareness of the potential for further improvement (incremental or radical breakthrough e.g. continuous improvement/change/transformation).
+* The measurement and learning from above lead to real improvements and are visible in the results.
+* There is a way to select and only act on the best ideas and proposals, not on all of them, e.g. based on the understanding of the limitations in time, resource and capabilities when translating ideas to practice.
 |====
 ==== RADAR Guidelines for Results
+[%header, cols="1, 2, 10"]
+|====
+|RELEVANCE & USABILITY
+|Guidance
+|The applicant needs to achieve:
+
+|Scope & Relevance
+|A set of results that clearly link to the Purpose, Vision & Strategy of the organisation are identified. 
+The selected set of results is reviewed and improved over time.
+a|* The oganisation is clear about what it needs to measure/achieve/manage to deploy its strategy and understand its impact on key S/H perceptions and Strategic/Operational performance (understand how the selection and prioritisation of results is decided upon).
+* The prioritised measures/results used are meaningful within the context of the Direction and Strategy.
+* When using the results to understand 'the footprint', impact and performance of the organisation, what is the way to make a difference between the essential, not so essential and non-important results to look at?
+* What kind of understandable and useful insights exist on how the various results are related to each other?
+* If both the effectiveness and efficiency aspects exist, is there awareness of how these correlate/inter-relate?
+* How is the set of results reviewed and adapted when Strategic/Operational changes occur?
+|Useable Data
+|Results are timely, reliable, accurate and appropriately segmented to provide meaningful insights that support performance improvement and transformation.
+a|* The speed, consistency, completeness or any other quality aspects of the data and information used as source are appropriate for the organisation.
+* Data, including predictive measures, is gathered and turned into information and insights to aid decision making and drive performance improvement and transformation.
+* What is the reason for a specific segmentation when analysing performance/achievements?
+
+3+|PERFORMANCE
+|Trends
+|Positive trends or sustained outstanding performance over the strategic period/cycle.
+a|* What is the clock speed of the sector/operating environment the organisation is active in?
+* What the trend evolution over time demonstrates - is the performance improving, stablising or degrading in line with the strategic objectives and operational targets?
+* A specific trend is stronger, comparable or weaker than other relevant trends in the sector - how steep or fast?
+
+|Targets
+|Relevant targets are set in line with the Strategy and are consistently achieved.
+a|* For a selected key result a desired level to be achieved exists, is aligned with the Strategy and is understood by relevant key S/Hs.
+* When this desired future performance level for a key result is clear - what is or was the rationale behind agreeing to that specific level?
+* How close in reality these desired levels of performance are achieved or surpassed, or not at all, and how this impacts adapting the targets for the future.
+
+|Comparisons
+|Relevant external comparisons suitable to position own performance in line with the strategic direction are made and are favourable.
+a|* If there is (starting with strategic direction results) an awareness of similar measures used by 'others', within or outside of the sector or organisation.
+* To what extent the information to compare with is valid, can be trusted, is easy to use etc. to position their own performance.
+* What does the comparison say about a specific measure? 
+Is it a bit or much better, may be even 'the best', or just in the same range, or a bit/ a lot worse, and how it impacts target setting?
+* Notice: Competitor and industry averages may be used, but for outstanding organisations, these will also show comparisons with best-in-class or world-class - they can show they 'are the benchmark', they perform at a level others would like to be at.
+|Future Focus
+|Based on current cause & effect relationships, analysis of data sets, performance patterns & predictive measures, the organisation understands the drivers for outstanding performance in the future.
+a|* What are the insights gained concerning cause-effect relationships? 
+e.g. how the approach has made a significant difference, and which result would never have been achieved without one or more specific actions, projects, initiatives etc.
+* For which results is there a high level of trust and strong ability to convince others that the gains achieved in performance will be sustained? 
+What is the probability it will further improve or stabilise?
+* What are the relevant predictive measures given the sector and operating environment of the organisation?
+* How are predictive measures used to understand future performance?
+* Comprehension of the KPI linkages and hierarchy e.g., the relationship of upstream and downstream indicators.
+|====
 
 ==== Scoring Guidelines
+
+Criterion 1,2,4,5: All sub criteria within these criteria are with equal weightage
+
+* Each of the 5 Criterion parts in Purpose, Vision & Strategy contribute 20% of the 100 points allocated to Criterion 1
++
+--
+a. 1a = 20 points
+b. 1b = 20 points
+c. 1c = 20 points
+d. 1d = 20 points
+e. 1e = 20 points
+--
+
+* Each of the 4 Criterion parts in Creating Sustainable Value contribute 25% of the 200 points allocated to Criterion 4
++
+--
+a. 4a = 50 points
+b. 4b = 50 points
+c. 4c = 50 points
+d. 4d = 50 points
+--
+
+* In Criterion 7 (Strategic & Operational Performance) there are no criterion parts and so the 200 points available are allocated at the level of criterion 7.
+
+* Criterion 3 & 6
++
+The exact value of the weighting factor to be applied to be applied for each of the criterion parts within C3 & C6 will be the decision of the organisation, but it must comply with the minimum and maximum weighting rules for the 5 recognised S/H groups as shown below:
++
+- None of the 5 recognised S/H groups can be scored below 10% of the maximum number of points available.
+- None of the 5 recognised S/H groups can be scored above 40% of the maximum number of points available.
+- Between the lower threshold of 10% and the upper threshold of 40%, organisations can decide on using weighting factors in 5% bandwidths.
+
+[%header, cols=7]
+|====
+|Examples
+|Customer 3.1 & 6.1
+|People 3.2 & 6.2
+|Business & Governing 3.3 & 6.3
+|Society 3.4 & 6.4
+|Partner 3.5 & 6.5
+|Totals
+
+|1
+|20%
+|20%
+|20%
+|20%
+|20%
+|100%
+
+|2
+|15%
+|15%
+|15%
+|15%
+|40%
+|100%
+
+|3
+|20%
+|30%
+|15%
+|20%
+|15%
+|100%
+
+|4
+|40%
+|30%
+|10%
+|10%
+|10%
+|100%
+
+|5
+|35%
+|25%
+|15%
+|10%
+|15%
+|100%
+|====
+
 ==== RADAR for DIRECTION
+[%header, cols="2,8,1,1,1,1,1,1,1,1,1,1"]
+|====
+|Approaches
+|Description
+2+|Inability to achieve
+2+|Limited ability to achieve
+2+|Ability to achieve
+2+|Comprehensive ability to achieve
+2+|Outstanding ability to achieve
+
+|Sound
+|The approaches have a clear rationale, aim to fulfill and respond relevant S/H needs, are described appropriately and are designed to be fit for future.
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+
+|Aligned
+11+|Not used for Direction
+|Deployment
+|Description
+2+|Inability to achieve
+2+|Limited ability to achieve
+2+|Ability to achieve
+2+|Comprehensive ability to achieve
+2+|Outstanding ability to achieve
+
+|Implemented
+|The approaches are deployed in relevant areas in an effective and timely manner.
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|Flexible
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|ASSESSMENT & REFINEMENT
+|Description
+2+|Inability to achieve
+2+|Limited ability to achieve
+2+|Ability to achieve
+2+|Comprehensive ability to achieve
+2+|Outstanding ability to achieve
+
+|Evaluated & Understood
+|Feedback on the effectiveness & efficiency of the approaches and their deployment are collected, understood and shared.
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|Learn & Improve
+|Findings from emerging trends analysis, measurement, learning and benchmarking are used to inspire creativity and generate innovative solutions to improve performance in appropriate timescales.
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+2+|Overall Score
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|====
+
+[cols=12]
+|====
+|Scale
+|0%
+|10%
+|20%
+|30%
+|40%
+|50%
+|60%
+|70%
+|80%
+|90%
+|100%
+|====
 ==== RADAR for EXECUTION
+[%header, cols="2,8,1,1,1,1,1,1,1,1,1,1"]
+|====
+|Approaches
+|Description
+2+|Inability to achieve
+2+|Limited ability to achieve
+2+|Ability to achieve
+2+|Comprehensive ability to achieve
+2+|Outstanding ability to achieve
+
+|Sound
+|The approaches have a clear rationale, aim to fulfill and respond relevant S/H needs, are described appropriately and are designed to be fit for future.
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+
+|Aligned
+|The approaches support an Organisation's direction and are integrated with other relevant approaches.
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+
+|Deployment
+|Description
+2+|Inability to achieve
+2+|Limited ability to achieve
+2+|Ability to achieve
+2+|Comprehensive ability to achieve
+2+|Outstanding ability to achieve
+
+|Implemented
+|The approaches are deployed in relevant areas in an effective and timely manner.
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|Flexible
+|The execution enables flexibility and adaption.
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|ASSESSMENT & REFINEMENT
+|Description
+2+|Inability to achieve
+2+|Limited ability to achieve
+2+|Ability to achieve
+2+|Comprehensive ability to achieve
+2+|Outstanding ability to achieve
+
+|Evaluated & Understood
+|Feedback on the effectiveness & efficiency of the approaches and their deployment are collected, understood and shared.
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|Learn & Improve
+|Findings from emerging trends analysis, measurement, learning and benchmarking are used to inspire creativity and generate innovative solutions to improve performance in appropriate timescales.
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+2+|Overall Score
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|====
+[cols=12]
+|====
+|Scale
+|0%
+|10%
+|20%
+|30%
+|40%
+|50%
+|60%
+|70%
+|80%
+|90%
+|100%
+|====
 ==== RADAR for RESULTS
+[%header, cols="2,8,1,1,1,1,1,1,1,1,1,1"]
+|====
+|Relevance & Usability
+|Description
+2+|Inability to achieve
+2+|Limited ability to achieve
+2+|Ability to achieve
+2+|Comprehensive ability to achieve
+2+|Outstanding ability to achieve
+
+|Scope & Relevance
+|A set of results that clearly link to the purpose & strategy of the organisation are identified. 
+The selected set of results is reviewed and improved over time.
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+
+|Useable Data
+|Results are timely, reliable, accurate and appropriately segmented to provide meaningful insights that support performance improvement and transformation.
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+
+|Performance
+|Description
+2+|Inability to achieve
+2+|Limited ability to achieve
+2+|Ability to achieve
+2+|Comprehensive ability to achieve
+2+|Outstanding ability to achieve
+
+|Trends
+|Positive trends or sustained outstanding performance over the strategic period/cycle.
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+
+|Targets
+|Relevant targets are set in line with strategic intent and are consistently achieved.
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+
+|Comparisons
+|Relevant external comparisons suitable to classify own performance in line with the strategic direction are made and are favourable.
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+
+|Future Focus
+|Based on current cause & effect relationships, analysis of data sets, performance patterns & predictive measures, the organisation understands the drivers for outstanding performance in the future.
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+
+2+|Overall Score
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|====
+
+[cols=12]
+|====
+|Scale
+|0%
+|10%
+|20%
+|30%
+|40%
+|50%
+|60%
+|70%
+|80%
+|90%
+|100%
+|====
 
 ==== Suggested Weightages process
 
+*Weighting Factors (see table below)*
+
+* The exact value of the weighting factor to be applied for each of the criterion parts within C3 & C6 will be the decision of the organisation.
+* To avoid, for example, an Applicant for the EFQM Global Award (EGA), deciding to allocate the 200 points for S/H perceptions as follows:
+** 150 points (75%) to customer perceptions
+** 50 points (25%) to people perceptions
+** 0 points for the other 3, recognised S/H groups
+
+* A minimum and maximum weighting factor for the 5 recoginsed S/H groups will be introduced as follows:
+** None of the 5 recognised S/H groups can be scored below 10% of the maximum number of points available.
+** None of the 5 recognised S/H groups can be scored above 40% of the maximum.
+
+[%header, cols=7]
+|====
+|1
+|20%
+|20%
+|20%
+|20%
+|20%
+|100%
+
+|2
+|15%
+|15%
+|15%
+|15%
+|40%
+|100%
+
+|3
+|20%
+|30%
+|15%
+|20%
+|15%
+|100%
+
+|4
+|40%
+|30%
+|10%
+|10%
+|10%
+|100%
+
+|5
+|35%
+|25%
+|15%
+|10%
+|15%
+|100%
+|====
 ==== Organisational Profile
+
+Key Factors & Themes-
+
+Understand the Business
+Know the Applicant
 ===== Organisational Profile - Macro Factors
+
+* Mega Trends
+* GDP
+* Price index
+* Inflation index
+* Forex, Policies
+* Technology
+* Geo political
+
 ===== Organisational Profile - Business Context
+
+* Business phase
+* Business drivers
+* Capital sensitivity
+* People competence
+* Technology impact
+* Risk & Opportunities
+* Entry barriers
+* Margins
+* Customer profile
+* Investment profile
+
 ===== Organisational Context
+
+* Ownership & shareholding pattern
+* Purpose
+* Vision
+* Values
+* Age of business
+* Asset quality, People quality
+* Net worth, Competitive landscape
+* Eco system impact, Technology position
+* Market positioning, geographical spread
+* Strategic partners, Cost structure, Core competence
+* Position in the strategic cycle
+* Strategic priorities and challenges
+* Customer value proposition
+
 ===== Organisational Profile
 
+[cols=2]
+|====
+|Performance & Transformation
+a|Initiative for the Present, Initiative for the future
+
+* Sourcing
+* Expansion
+* Offerings
+* Continuous improvement
+|====
+
 ===== Deriving Key themes / Characterizing the Organisation
+
+* Aspiration to be a Global leader
+* Technology Intensive Business
+* Business in the Growth phase - Organisation lagging the market
+* Ageing workforce
+* High dependence on suppliers
+* Volatile raw material prices
+* Seasonal demand
+* Demanding OEMs
+* Demanding compliance & environmental regulations
 ===== Group Work
+
+*Assessing Strategy*
+
+Sub criteria 1.4
+
+Read the abstract and the requirements of the Excellence model and identify the Strengths & OFIs.
+
+* Individual observation
+* Consensus observations
+
 ===== Group Work - Guidelines
+
+* Read the Organisation profile
+* Identify around 5-8 key themes (for the entire assessment)
+* Select the themes applicable to the relevant sections & the associated sub-criteria.
+* Read the relevant Direction / Execution /Result sub-criterion from the model booklet & identify the key requirements.
+* Read the abstract to pick out areas addressing the requirements. 
+Synthesize the observations.
+* Identify relevant deployment areas in line with the organisation profile.
+* Write the STs (Strenghts) & OFIs (Opportunities for Improvements)
+* Retain, merge or edit after discussions. (Do not delete any observations. Color the dropped ones / park it for further use.)
+* Identify which attribute of the RADAR is addressed.
+* Put up these as statements in a paragraph.
+
 ===== Consensus Process: Key Points
+
+* List down the individual STs & OFIs
+* Discuss & debate on all the STs & OFIs as a team constructively
+* Retain or merge or edit or park based on a discussion
+* Finalise the agreed STs & OFIs based on the consensus
+
+[NOTE]
+====
+* The statements can be based on extract & the discussions/the site-visit.
+* Try to incorporate the attributes of the RADAR in the statements to the extent possible.
+====
+
 ===== Enables - Approach
+
+Approach covers what an organisation does or plans to do, and the reasons for it, for each sub-criterion. 
+The score awarded will take account of the:
+
+a. Appropriateness of methods, tools and techniques used
+b. Existence of well defined and developed processes
+c. Focus on S/H requirements
+d. Support to strategy and flexibility
+e. Integrated with other approaches appropriately
+
 ===== Scoring Matrices: Enablers Criteria - Approach
+
+[%header, cols="5"]
+|====
+|Ancedotal
+|Basic
+|Competitive
+|Advanced
+|World class
+
+|<20
+|20-40
+|40-60
+|60-80
+|80-100
+|====
+
+* Who, what, when, how, how often, where, tools/techniques, metrics, needs of S/Hs (B, C, A, WC) addressed
+* Informal to well documented for the whole process as enabler for consistent deployment and A&R
+* Extent of alignment with other approaches (other sub-criteria), supports changes in environment and strategy
+* Improvements identified and incorporated over time.
 ===== Enablers: Deployment
+This covers what an organisation does to deploy the approach. 
+The score awarded will take account of whether the approach:
+
+* is implemented vertically and horizontally in all relevant areas, processes, products and services
+* is structured and enables flexibility and organistaional agility
+
 ===== Scoring Matrices: Enablers Criteria - Deployment
+
+[%header, cols=5]
+|====
+|Ancedotal
+|Basic
+|Competitive
+|Advanced
+|World class
+
+|<20
+|20-40
+|40-60
+|60-80
+|80-100
+|====
+
+* Extent of coverage in the relevant areas as per KFs implementation plan and means to support achievement of planned performance goals
+* Implementation plans enables progressive achievement of goal (early outcomes)
 ===== Deployment Spread (Contextual)
+
+.Leaders
+* First Line (Top) 
+* Second Line (Middle)
+* Third Line (Lower)
+
+.Partners
+* Key suppliers for products and services
+* Institutions
+* Technology providers
+* Distributors
+* NGOs
+* Academia
+
+.Customers
+* Key customers
+* Distributors
+* Retailers
+* Institutions
+* OEMs
+* End Users
+
+.Processes
+* Product/Service
+* Business
+* Support
+
+.Shareholders
+* Financial institutions
+* Major equity holders
+* Any joint venture
+
+.Employees
+* Top management
+* Middle management
+* Supervisors
+* Workers/staff
+* Contract Labour
+
 ===== Enablers - Assessment & Refinement
+
+This covers what an organisation does to assess and review the approach and the deployment of the approach. 
+The score awarded will take account of whether:
+
+. appropriate measurement of the approach and deployment has been identified and undertaken
+. creativity and learning activities are undertaken
+. output from measurement, creativity and learning, emerging trends and benchmarking is analyzed and used to identify, prioritize, plan and implement improvements and innovation in appropriate timescales.
+
 ===== Scoring Matrices: Enablers Criteria - A&R
+
+[%header, cols=5]
+|====
+|Ancedotal
+|Basic
+|Competitive
+|Advanced
+|World class
+
+|<20
+|20-40
+|40-60
+|60-80
+|80-100
+|====
+
+[cols=2]
+|====
+|Evaluated & Understood
+a|
+* Ad-hoc to regular reviews, frequency of reviews
+* Subjective to objective evaluation
+* Process outputs (indicators), perceptions of direct SH
+* Other related organisation results
+
+.2+|Learn & Improve
+a|
+* Informal to formal, Daily work management, Audits
+* Training, Consultants/External experts
+* Study groups, self assessment, bench marking
+a|
+* Ad-hoc to systematic
+* Incremental, significant, innovative/unique
+|====
 
 ===== Feedback statements Guidelines
 ===== Unacceptable Feedback statements
+* One liners (too cryptic)
+* Questions / Judgmental statements
+* Prescriptive
 ===== Feedback Comments - General Guidelines
+* Use single complete thought
+* Non-prescriptive
+* 1-3 complete sentences
+* Non-judgmental
+* Draws linkages to the organisational profile or to other criterion
+* Relevant and important to applicant based on KFs
+* Should not conflict with other comments
 ===== Enabler Comments - Basic Format
+
+Key Strengths
+
+Subject Verb
+[cols=7]
+|====
+|Subject Verb
+.2+^.^| +
+|Transition
+
+.2+^.^| +
+|Example
+.2+^.^| +
+|From Application
+|From Criterion
+|From the using activities
+|By/ through/ methods/ documents
+|Related facts
+
+"so what" - optional
+|====
 ===== Direction & Execution Statements - Key Strengths
+
+The applicant (subject) gathers and understands (verbs) key customer requirements and their relative importance to customer's purchasing decisions through (transition) third party surveys administered annually to all four customer segments. 
+The survey parameters have been refined based on change in the product profile recently.
+
 ===== Direction & Execution - Statements-Basic Format
+
+*Opportunities for improvement*
+
+[cols="7*^"]
+|====
+|Introduction
+|+
+|Subject
+|+
+|Verb
+|+
+|So What
+
+|It is not clear how/apparent the applicant does not report/address how
+|
+|From the criteria
+|
+|From the criteria
+|
+|Implied or explicit - related to KFs/Criteria
+|====
+
+"So What" - Highly desirable
+
 ===== Direction & Execution - Statements-Key OFIs
+
+It is not clear how senior leaders (subject) interact (verb) with the applicant's key communities for their improvement. 
+The specific participation of the senior leaders in the numerous community activities (e.g. Akshara, Sanjivini, Local Panchayat, and partnerships with First Response a local NGO) is not addressed. 
+Thus, the degree to which the senior leaders serve as role models of good citizenship, a core value of the applicant, is not apparent (explicit so what)
+
+===== Presentation & Discussion
+
+====== Results - Relevance & Usability
+
+*Consider the following:*
+* Relevance to Strategy, Stakeholder needs/expectations
+* Current and future competitive advantage
+* Relevant deployment spread based on the business
+* Dependability of Measurements particularly for perception measures e.g. sample size, methodology, bias free, S/H expectations
+* Explanation about the dips in the performance
+* Appropriate range of parameters
+* Use of segmented results
+* Results presented based on strategic cycles
+
+====== Results - Excellence of Results
+
+*Evaluate the performance on the following attributes:*
+* The existence of positive trends and /or sustained good performance over the strategic cycle.
+* Whether targets are set and consistently achieved for key results inline with strategic priorities.
+* Comparisons with relevant external organisations are made and are favourable for key results inline with strategic goals.
+* The future focus on the results based on established cause and effect relationship, data sets and predictive analysis.
+
+*Trends, Targets, Comparisons, Alignment with processes give deeper insight to organisation's performance*
+
+====== Results statement - Elements
+
+* Subject - The applicant or the result(s)
+* Timeframe - (in, from/to)
+* Numbers - at #, from #
+* Linkages to key themes
+* Segmentation
+* Comparison to what?
+* Gaps (Target, Benchmarks)
+* So what
+
+====== Results Statement - Example (Strengths)
+
+AC Nielsen Survey results on 20 Thought leaders indicate an increase in ratings of the applicant from 4 to 3 from 2018-2020. 
+Also Aon Hewitt best employers survey of 2019 ranks them at 15th place in the top 25 indian cos as a best employer. 
+HR practices have also been recognized and awarded by agencies such as Greentech, NHRD, HT power jobs etc.
+
+====== Results Statement - Example (OFI)
+
+While the applicant shows overall customer satisfaction for product quality in the year 2020, trends are not presented to track the rate of improvement (Figure - 6.1-1). 
+In addition, the data is not segmented by key customer groups (e.g., industrial, commercial). 
+Thus, it is not clear how the applicant identifies variation in its customer satisfaction performance over time from sector to sector, and targets opportunities for improvement.
+
+====== Some Results "So What's"
+
+* No segmentation: It is not evident how the applicant is able to identify improvement opportunities unique to key product or customer segments or how the company can capitalize on relative strengths for intra-company learning.
+* No comparison data - It is not apparent how the applicant is fully able to assess the relative strength of its results and set meaningful targets.
+* No competitive data - It is not clear how the applicant determines it is gaining or maintaining competitive advantage in this area.
+* No data on some KEY requiremetns/processes/etc. - It is not evident how the applicant tracks progress in these areas/manages and improves. (efficiency, effectiveness and reliability measures).
+* No targets - It is not clear how the applicant is able to assess the gap in performance with respect to its plan and use it for corrective and learning activities.
+
+====== Variability amongst Assessors
+
+* Scoring is not an exact science
+* Variation is to be expected
+* An initial 3:1 variation in scoring is not unusual
+* Assessor perceptions are different
+* Assessor understanding and application of the criteria are different
+* Assessor understanding of RADAR are different
+
+===== Group Work
+
+*Assessing Strategic & Operational Performance*
+
+Sub criteria 7
+
+* Read the abstract and the requirements of the EFQM model and identify the Strengths & OFIs
+** Individual observation
+** Consensus observations
+
+===== Group Work - Guidelines
+
+* Read the document
+* Identify the results associated with the assigned category under criterion 7
+* Assess the data given and identify the key themes and the RADAR attributes connected to each statement
+* Prepare the STs & OFIs for the assigned Result category
+* Retain, merge, edit or Part for discussion
+* Use the above for scoring
+
+=== Presentation & Discussion
+
+==== How to look out for potential STs & OFIs
+
+* The extent to which the requirements of sub-criterion is addressed (look at verbs, intent of sub-criterion along with the key themes)
+* To what extent the RADAR elements and attributes are covered or not addressed or has gaps (A, D, A&R, R&U, P)
+
+=== Scoring Guidelines
+* Score direction, execution & results separately
+* Least count is in a band of 5
+* Consider all STs & OFIs with an overall perspective
+* Decide the degree of evidence to arrive at the appropriate band. 
+Start from 50.
+* Consider each attributes of (S A I F EU LI / S, U, T, T, C, F) individually for scoring the sub criterion once
+
+==== Direction & Execution
+* Based on the above compute S/1, I/1, EU+LI/2 - Direction
+* Based on the above compute S+A/2, I+F/2, EU+LI/2 - Execution
+* These give you the score of A, D, A&R
+* Overall score = A+D+A&R/3
+
+Overall score should not exceed the score of the approach and is also limited by the max score for soundness attribute for Direction & Execution.
+
+===== Scoring Guidelines
+
+Results
+* Similarly, compute S+U/2 for R&U, (T+T+C+F)/4 for performance
+* Overall score: (R&U+p)/2
+
+NOTE: Overall score cannot exceed the score of the Scope & Relevance attribute
+
+==== Exercise
+
+Linking the sub-criterion, RADAR and Quality of statements
+
+==== Hints for efficient team working
+. Choose a lead, presenter & time-keeper in your team
+. Rotate duties at each round
+. Listen to all members
+. Document your observations
+. Arrive at a consensus
+
+===== Exercise 1: Feedback statements
+
+Steps:
+* Identify the statement under Direction / Execution / Result as applicable.
+* Identify the sub-criterion from the EFQM Model booklet
+* Identify the Element (A/D/A&R)/(R&U/P)
+* Classify it as either a ST/OFI
+* Discuss on the quality of statements
+
+==== Feedback statements
+
+Statement 1. Faster product introduction and time to market reduction have been identified as strategic challenges as well as one of the important future objectives of unit. 
+However, a systematic process of crating a framework of measurements to monitor progress in-line with this objective is not present. 
+For example: Results have been reported only for number of new products introduced however time to introduce these products or time to adopt new technology vis a vis competitors is not being tracked.
+
+Statement 2. The organisation has identified OTC as a way of creating breakthrough changes in the operations. 
+The strategic think tank reviews the progress of these initiatives and supports this in the area of materials management, maintenance etc. by way of improvement initiatives.
+
+[cols=8]
+|====
+|               |   Sub Crit.   |   A   |   D   |   A&R |   R&U |   P   | S / OFI   |
+|   St 1 Ans    |               |       |       |       |       |       |           |
+|   St 2 Ans    |               |       |       |       |       |       |           |
+|====
+
+Statement 3. A customer engagement matrix ensures that distributors, retailers, institutional, international customers, end users are connected by way of co-communication, co sharing, co consulting for various activities leaders at different levels communicate with customers by personal letters, weekly letters, escalation system etc.
+
+Statement 4. While the Unit provides some examples of Technology Development with partners, it is not evident how it creates synergy by working together with its large cross-section of suppliers and partners to improve its own processes.
+
+Statement 5. Even though the unit conducts simultaneous ESS & OCS at 2 year frequency, a systematic employee listening process across segments is not present which may limit the unit's ability to take corrective and preventive actions on employee issues resulting in lover scores in ESS.
+[cols=8]
+|====
+|               |   Sub Crit.   |   A   |   D   |   A&R |   R&U |   P   | S / OFI   |
+|   St 3 Ans    |               |       |       |       |       |       |           |
+|   St 4 Ans    |               |       |       |       |       |       |           |
+|   St 5 Ans    |               |       |       |       |       |       |           |
+|====
+
+Statement 6. Organisation brings out annauly its sustainability report and reviews its waste management, carbon footprint etc. initiatives using Reduce, Recycle & Reuse principles across the organisation.
+
+Statement 7. While results presented are based on product categories, results are not presented based on customer segments (Plant Hirer, Contractor, Corporate/Institutions) without which the organisation may not be able to focus on issues relevat to each cusotmer segment and improve upon them.
+
+Statement 8. The unit does competitor analysis at some SBU and product segment level, however, a consistent and systematic approach across different SBUs for doing same is not evident.
+
+[cols=8]
+|====
+|               |   Sub Crit.   |   A   |   D   |   A&R |   R&U |   P   | S / OFI   |
+|   St 6 Ans    |               |       |       |       |       |       |           |
+|   St 7 Ans    |               |       |       |       |       |       |           |
+|   St 8 Ans    |               |       |       |       |       |       |           |
+|====
+
+Statement 9. The ESS levels have been showing consistent improvement over last 2 years after shwoing a dip in the previous 2 years. 
+The performance parameters have been determined based on the data of all employee segments. 
+The performance on competence its competitive advantage, is best in the industry for 2 of its 4 employee segments.
+
+Statement 10. The organisation is a 100% vendor dependent assembly unit with over 3000 vendors and so has designed 3 different surveys to monitor various aspects of the supplier relationship from different view points and time frames, after analyzing the result of surveys for last 3 years and practices of benchmark organisations.
+
+[cols=8]
+|====
+|               |   Sub Crit.   |   A   |   D   |   A&R |   R&U |   P   | S / OFI   |
+|   St 9 Ans    |               |       |       |       |       |       |           |
+|   St 10 Ans   |               |       |       |       |       |       |           |
+|====
+
+=== Award Assessment Process
+
+Series of Tele-conferences between assessment team members to arrive at broad agreement on key factors, themes, STs, OFIs
+
+Position Report recevied by Assessors from CII Award Office
+    |
+    v
+Team plans the onsite assessment
+    |
+    v
+Forward general requirement to applicant
+    |
+    v
+Conduct onsite Assessment (Consensus + Site visit)  -> Day-1&2: Arrive at consensus & finalize list of site visit issues and allocate to sub-teams
+    |
+    v
+Document findings promptly
+    |
+    v
+Agree score changes and comments
+    |
+    v
+Summary to Award Office
+    |
+    v
+Present to Jurors
+=== Status of Organisation
+[%header, cols="1,5"]
+|====
+|Scores     |Description
+^|<300      |Several quality initiatives started; Lacking focus on results
+^|300-399   |Many activities (enablers); doing things right; loose linkages with results
+^|400-499   |Competitively managed; Quality initiatives has taken roots; Leading to good results
+^|500-599   |Doing the right things; Potential for becoming outstanding company
+^|600-699   |Amongst outstanding companies; Potential for World class
+^|>700      |Genuine World class; Excellence approaches leading to excellent results.
+|====
+
+
+
+
+
+
+
 
 
 
