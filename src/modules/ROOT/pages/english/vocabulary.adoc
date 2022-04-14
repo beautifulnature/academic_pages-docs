@@ -4,3 +4,5 @@ property:: something own
 ascending order:: lowerst to highest
 descending order:: highest to lowest
 inverse:: opposite
+commutative:: exchangeable
+inference:: coming to conclusion

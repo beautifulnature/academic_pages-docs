@@ -16,3 +16,20 @@ Integers:: positive, negative and zero (natural numbers, zero and negative numbe
 * subtraction
 add the additive inverse of the integer that is being subtracted.
 * subtract a -ve integer, we move to the right of the number line
+
+#todo
+
+== properties of multiplicaton of integers
+=== closure under multiplication
+Integers are closed under multiplication.
+
+a x b is an integer, for all integers a, b.
+
+here closed means product of any two integers is an integer.
+=== commutativity of multiplication
+=== multiplication by zero
+=== multiplicative identity
+=== associativity for multiplication
+=== distrubutive property
+=== making multiplication easier
+

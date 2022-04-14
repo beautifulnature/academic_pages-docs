@@ -2109,6 +2109,545 @@ Summary to Award Office
     |
     v
 Present to Jurors
+
+=== The Assessment Process
+
+* Key themes & CII facilitated context setting call
+* Individual assessment of all the criterion - entire team
+* Tele-consensus
+* Site visit scheduling & detailing the assessment schedule
+* Pre site visit scoring & Reporting - Submission to Award Admin
+* Onsite consensus & site visit questionnaire
+* Onsite assessment
+* Leadership presentation
+* Post site visit consensus, scoring & reporting
+
+=== Assessment Process - General Approach
+* Read the whole application end-to-end; take an overall perspective of the application; understand the business, identify the key factors, arrive at the key thems.
+* Assess the application, by criterion-part, in terms of 
+** STs
+** OFIs
+* Give a score, using the scoring matrices, by considering:
+** STs
+** OFIs
+* List any site visit issues and key themes
+
+=== Key Steps for Assessment
+
+Read position report and identify KFs & Derive key themes
+    |
+    v
+Understand the purpose & business strategy - Crit 1.1, 1.4, 1.2, 1.2 & 1.5 & 7
+    |
+    v
+Engage S/H Crit 3 & Crit 6 (S/H perceptions & corresponding results under 7)
+    |
+    v
+Assess CSV (Crit 4) & Results in Crit 7 & 6
+    |
+    v
+Assess 5 & 2 and corresponding results in 7 & 6
+
+=== Schedule for onsite assessment
+.Indicative site visit schedule (contextual)
+[cols="1,1,1,2,2,2"]
+|====
+3.2+|CII Assessment of M/s...
+|Team A
+|Team B
+|Team C
+|Flexi
+|Flexi
+|Flexi
+
+|Date
+|Day
+|Time
+|
+|
+|
+
+6+|
+
+2+|Saturday
+|---
+3+|Arrival of all outstation assessors in Mumbai
+
+6+|
+
+.3+|Day 1
+.3+|Sunday
+
+|9.30 to 11.00
+3+|Company presentation @Hotel/Guest House
+
+|10.00 onwards
+3+|Consensus discussions continue
+
+|19.30 to 21.00
+3+|Finalize SVIs, Take printouts, pre scoring
+
+6+|
+
+.6+|Day 2
+.6+|Monday
+
+|9.30 to 11.30
+3+|Disc with Senior Mgmt Team (Opening meeting) incl Biz plng / Strategy sesion - Common process management, IMS, BE - Common
+
+|11.45 to 12.45
+.2+|Corp HR & IR
+|NPD
+|Mktg (Dom)
+
+|12.45 to 1.30
+|R&D / Engg
+|Expot Mktg
+
+|1.30 to 2.30
+3+|Launch
+
+|2.30 to 3.30
+.2+|Plant HR
+|IT
+|Cust statisfaction survey
+
+|4.30 to 5.30
+|KM
+|Service
+
+6+|
+
+.8+|Day 3
+.8+|Tuesday
+
+|9.30 to 10.30
+3+|Plant visit (All)
+
+|10.30 to 11.30
+|Health, Safety
+.2+|Global sourcing
+|Ops initiatives
+
+|11.30 to 12.30
+|Societal initiatives
+.2+|Custmer Mgmt, KAM etc
+
+|12.30 to 1.30
+|CSR Field visit
+|Finance
+
+|1.30 to 2.00
+3+|Lunch
+
+|2.30 to 3.30
+|Maintenance
+|Mgmt staff-FGD
+|Branch managers meet
+
+|3.30 to 4.30
+|Union
+|Young Mgmt staff-FGD
+.2+|Customer visit
+
+|4.30 to 5.30
+|Contract workmen
+|Corporate communications
+
+6+|
+
+.2+|Day 4
+.2+|Wednesday
+|AM
+.2+|Pune
+.2+|Jamnagar
+.2+|supplier visit
+|PM
+
+6+|
+
+.5+|Day 5
+.5+|Thursday
+|9.30 to 10.30
+.4+|Customer visits / concall
+.4+|Supplier & Partner visits / concall /skype
+.4+|Spare time for any unfinished depts / clarifications
+|10.30 to 11.30
+|11.30 to 12.15
+|12.15 to 1.15
+|Afternoon
+3+|Team internal meeting
+
+6+|
+
+.2+|Day 6
+.2+|Friday
+|Morning
+3+|Team internal meeting
+
+|4.00 PM
+3+|Closing meeting and Presentation
+
+6+|
+
+|Day 7
+|Saturday
+|---
+3+|Departure of Assessors
+|====
+
+== Purpose of Onsite Assessment
+* To confirm the validity of the application. 
++
+To clarify any unclear aspects of the application including, particularly the level of deployment, to take account of what is seen
+
+* To gain a sense of the atmosphere in the organisation and test whether applicant could be a role model
+* To validate score
+
+== Consensus Process: Key Points
+
+* First 2days of the 'Onsite Assessment' is allocated for consensus process to agree/modefy tele consensus findings
+* Agree on a common view on STs and OFIs, with inputs from all team members
+* Then score individually
+* The consensus score is an agreed score that, within an acceptable margin, all members in team can own
+* Build consensus on 'Vital few' site visit issues
+* The consensus process removes emotional defense of own score
+== Site visit Planning
+
+[cols=20]
+|====
+|Sub-Crit
+|ST/OFI
+|Application Ref.
+|Site visit issue
+|MD & CEO
+|COO
+|CQO
+|CHRO
+|CMO
+|Head-strategy
+|CFO
+|Head-R&D
+|Head-Sourcing
+|CIO
+|Plant Maint
+|Admin
+|FGD-Employees
+|Cust call
+|Supplier visit
+|CSR visit
+
+|1.1
+19.3+|
+Run a macro enabled file / use filters to prioritize site visits as low, mediu & high to arrive at a list of site visit issues from all sub criteria. 
+Flag one / multiple question to different people cutting across functions. 
+(All OFIs must be site visited) - Ensure completion of all listed as high.
+|1.2
+|5.5
+|====
+
+== Feedback Process
+
+=== Feedback Report - Content
+* Description of assessment process
+* An Executive summary (overview) of the assessment findings - 2 to 4 pages
+* For each sub-criterion:
+** STs
+** OFIs
+* Score band (%) for each criterion 0-10%, 11-20% etc.
+* Total score is represented in the bands of 25 points each like 400-424 / 550-574 ... and so on.
+* Benchmark score band at the criteria level and overall are also indicated to measure relative performance of the applicant. (based on the CII EXIM Award program)
+
+=== Feedback Comments
+* Feedback comments must help the applicant in understanding the STs and OFIs vital for its business and review the strategy for improvement.
+* Comments must be supported by facts (from application + site visit)
+* All OFIs (about 100 for 23 direction & Execution sub-criteria and the 2 result criteria) need not be addressed as independent projects as they have inter-linkages of cause and effect. 
+Highlight those key OFIs which will have the larger impact on the organisation at that stage of devlopment maturity.
+* The applicant needs to understand the linkages amongst the criterion and its key themes while developing its action plan for improvement.
+* Comments must be linked to Key factors & key themes, and not in conflict with others.
+
+== Score Profile - 2013 Model
+[%header, cols=11]
+|====
+|% Score Criterion
+|0-10
+|11-20
+|21-30
+|31-40
+|41-50
+|51-60
+|61-70
+|71-80
+|81-90
+|91-100
+
+|Leadership                             |   |   |   |   |   |   |   |   |   |
+|Strategy                               |   |   |   |   |   |   |   |   |   |
+|People                                 |   |   |   |   |   |   |   |   |   |
+|Partnership & Resources                |   |   |   |   |   |   |   |   |   |
+|Processes, Products and Services       |   |   |   |   |   |   |   |   |   |
+|Customer Results                       |   |   |   |   |   |   |   |   |   |
+|People Results                         |   |   |   |   |   |   |   |   |   |
+|Society Results                        |   |   |   |   |   |   |   |   |   |
+|Business Results                       |   |   |   |   |   |   |   |   |   |
+|====
+
+[cols=16]
+|====
+.2+|Score Range
+|<300
+|300-349
+|350-399
+|400-449
+|450-499
+|500-549
+|550-599
+|600-649
+|650-699
+|700-749
+|750-799
+|800-849
+|850-899
+|900-949
+|950-1000
+
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+|====
+
+== Score Profile - 2020 Model
+[%header, cols=11]
+|====
+|% Score Criterion
+|0-10
+|11-20
+|21-30
+|31-40
+|41-50
+|51-60
+|61-70
+|71-80
+|81-90
+|91-100
+
+|Purpose, Vision & Strategy             |   |   |   |   |   |   |   |   |   |
+|Organisational Culture & Leadership    |   |   |   |   |   |   |   |   |   |
+|Engaging S/Hs                          |   |   |   |   |   |   |   |   |   |
+|Creating sustainable value             |   |   |   |   |   |   |   |   |   |
+|Driving performance & Transformation   |   |   |   |   |   |   |   |   |   |
+|S/H perceptions                        |   |   |   |   |   |   |   |   |   |
+|Strategic & Operational performance    |   |   |   |   |   |   |   |   |   |
+|====
+
+[cols=16]
+|====
+.2+|Score Range
+|<300
+|300-349
+|350-399
+|400-449
+|450-499
+|500-549
+|550-599
+|600-649
+|650-699
+|700-749
+|750-799
+|800-849
+|850-899
+|900-949
+|950-1000
+
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+|====
+
+== The path to Excellence
+
+=== Business Excellence Roadmap for competitiveness
+
+How do we enable participation?
+
+Training, consulting, projects, best practice sharing, Assessment services & conclaves
+
+Degree of maturity
+
+[cols=4]
+|====
+|Star Icon Assessments for SMBs
+|BE STAR recoginitions (Functional Assessments under People, Customer & Operations)
+|Business Excellence Maturity Assessment Programme
+|CII EXIM Award for Business Excellence
+
+|For a mature value chain to contribute to the Business inclusive approach
+|Functional Assessents to strengthen the core areas addressing major stakeholders
+|A flexible, non intimidating organizational Business Assessment to plan the way forward
+|Challenge the Award competing with the best for the coveted recognition
+|====
+
+=== For SMBs (below 100 crores) & for supply base of large organisations
+
+SMB Performance Excellence
+
+STAR ICON Recognitions
+
+Exclusively for Small & Medium Business (SMB) - Below 100 crore Turnover
+add with recognitions in a CII flagship event
+
+One day assessments focusing on Business value add with recognitions in a CII flagship event
+
+=== 2-Day deep dive functional assessments for process and result maturity
+BE STAR Recognitions
+
+Embrace Excellence
+
+Based on the CII IQ Functional Assessment Framework
+
+        ------------Leadership-----------------------Strategic Alignment--------------------
+        |                                                                                   |
+        |                                                                                   |
+        |                                       /\                                          |
+        |                                      /  \                                         |
+        |                                     s    \                                        |
+Technology Focus                             n      r                                       |
+        |                                   o        e                                      |
+        |                                  i          m                                  Results
+        |                                 t            o                                    |
+Customer Focus                           a              t                                   |
+        |                               r                s                                  |
+        |                              e                  u                                 |
+        |                             p                    c                                |
+        |                            o                      \                               |
+        |                           /                        \                              |
+        |                           ---------People-----------                              |
+        |                                                                                   |
+        |                                                                                   |
+        -------Continuous Improvement-----------Health, Safety & Environment Management-----
+
+== BE STAR - CII -IQ Operational Excellence Framework
+
+        ------------Leadership-----------------------Strategic Alignment--------------------
+        |                                                                                   |
+        |               ------------Manufacturing-------------------                        |
+        |               |                                           |                       |
+        |               |                                           |                       |
+        |               |                                           |                       |
+Technology Focus        |                                           |                       |
+        |               |                                           |                       |
+        |         Supply Chain          Operations              Quality                 Results
+        |               |                                           |                       |
+Customer Focus          |                                           |                       |
+        |               |                                           |                       |
+        |               |                                           |                       |
+        |           Resource-----------------------------------Maintenance                  |
+        |                                                                                   |
+        |                                                                                   |
+        -------Continuous Improvement-----------Health, Safety & Environment Management-----
+
+A process walk by 2 Assessors who give a feedforward on the above areas for enhanced performance
+== BE STAR - CII -IQ People Excellence Framework
+
+        ------------Leadership-----------------------Strategic Alignment--------------------
+        |                                                                                   |
+        |               ------------Human Resource Planning---------                        |
+        |               |                                           |                       |
+        |               |                                           |                       |
+        |               |                                           |                       |
+Technology Focus        |                                           |                       |
+        |               |                                           |                       |
+        |           Care & Welfare     People               Learning & Development       Results
+        |               |                                           |                       |
+Customer Focus          |                                           |                       |
+        |               |                                           |                       |
+        |               |                                           |                       |
+        |       Performance Management-------------------Engagement & Satisfaction          |
+        |                                                                                   |
+        |                                                                                   |
+        -------Continuous Improvement-----------Health, Safety & Environment Management-----
+
+A process walk by 2 Assessors who give a feedforward on the above areas for enhanced performance
+
+== BE STAR - CII - IQ Customer Excellence Framework
+
+        ------------Leadership-----------------------Strategic Alignment--------------------
+        |                                                                                   |
+        |               ------------Marketing & Promotion----------                         |
+        |               |                                           |                       |
+        |               |                                           |                       |
+        |               |                                           |                       |
+Technology Focus        |                                           |                       |
+        |               |                                           |                       |
+        |   Product/Service Development     Customer    Product/Service Delivery        Results
+        |               |                                           |                       |
+People Involement       |                                           |                       |
+& Competencies          |                                           |                       |
+        |               |                                           |                       |
+        |   Delivery Value Chain Management---------Customer Relationship Management        |
+        |                                                                                   |
+        |                                                                                   |
+        -------Continuous Improvement-----------Health, Safety & Environment Management-----
+
+A process walk by 2 Assessors who give a feedforward on the above areas for enhanced performance
+== Business Excellence
+
+Maturity Assessment programme
+
+Seed -> Nurture -> Harvest
+
+Initiate -> internalise -> Recognise
+
+Pursue the path of Business Excellece, profit from it
+== Assessment Categories
+Exemplar of Excellence
+
+Phase 1: Initializing Excellence - Organisations initiating Business Excellence through a baseline assessment
+
+Phase 2: Internalizing Excellence - Organisations who have traveled on the journey of Excellence on any Framework
+
+Phase 3: Recognizing Excellence - Organisations challenging the CII EXIM Bank Award for Business Excellence
+
+Eligibility:
+ANy Organisation operating in India with a minimum of 3year performance data
+
+Coprehensiveness & Documentation - is Low to High from phase 1 to phase 3
+s
+== Benefits of Business Excellence (improvements obtained by practitioners)
+* Enhanced customer satisfaction: 30-40% - Customer focus
+* Business results: Revenue & profitability up by 20% - Strategic focus
+* Cost reduction upto 25% - 45% - Operational focus
+* Reduction in defects & cost of poor quality upto 40% - Quality focus
+* New products/services introduced: Revenue enhancement up to 30% - Development focus
+* Supply chain effectiveness up by 40% (Reduced inventory, lead times, batch sizes etc.) - Supply chain focus
+* Enhanced asset utilization (OEE increase up to 85%) - Asset Management
+* People satisfaction up by 20% - People focus
+* Energy savings & water conservation: upto 40% - Resource focus
+* Time to market: Cycle time reduction by 40% - Market focus
+* Community engagement impact: upto 60% - Societal focus
+== Seven steps to Excellence
+Blissfule - simple, Ehical, above self
+    ^
+    |
+    v
+Recurring - standardisation, institutionalisation
+    ^
+    |
+    v
+Beneficial - stakholder focus
+    ^
+    |
+    v
+Outcome - Result oriented
+    ^
+    |
+    v
+Application - Determination, Resources, Clear priorities
+    ^
+    |
+    v
+Knowledge - Analysis, Evaluation, Synthesis
+    ^
+    |
+    v
+Information - Observation (5 senses), Measurement
+
 === Status of Organisation
 [%header, cols="1,5"]
 |====
