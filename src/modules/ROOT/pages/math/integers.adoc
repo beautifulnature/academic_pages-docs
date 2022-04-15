@@ -25,11 +25,43 @@ Integers are closed under multiplication.
 
 a x b is an integer, for all integers a, b.
 
-here closed means product of any two integers is an integer.
+here closed means product of any two integers is an integer. 
+
+
 === commutativity of multiplication
+
+Multiplication is commutative for integers.
+
+For any two integers a and b, a x b = b x a.
+
 === multiplication by zero
+
+For any integer a, a x 0 = 0 x a = 0.
+
 === multiplicative identity
+
+1 is the multiplicative identity for integers.
+
+For any integer a, 
+
+a x 1 = 1 x a = a.
+
+Note:
+0 is the additive identity for integers. 
+where as 1 is the multiplicative identity. 
+we get additive inverse of an integer a when we multiply it by -1.
+
 === associativity for multiplication
+
+In general, a x (b x c) = (a x b) x c.
+
 === distrubutive property
+
+For any integers a, b and c, 
+
+a x (b x c) = (a x b) x c.
+
 === making multiplication easier
+
+use associativity, distributivity, multiplying with 0 and multiplication identity for making multiplication easier.
 

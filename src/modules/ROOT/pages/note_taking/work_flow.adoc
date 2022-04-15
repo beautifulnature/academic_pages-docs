@@ -25,3 +25,6 @@ This is automated script (note_taking.bat) on desktop, double click.
 == vscode xcuts
 
 * ctrl + ` > toggle terminal
+* ctrl + b > toggle explorer
+* ctrl + w > close current tab
+* ctrl + tab > loop through tabs
