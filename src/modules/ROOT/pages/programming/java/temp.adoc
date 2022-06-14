@@ -1,0 +1,75 @@
+However, the `f:convertNumber` tag is not only suitable for converting currency amounts. 
+It is also possible to convert arbitrarily formatted numbers. 
+In addition a pattern (also Pattern) can be used.
+
+A selection of some tag configuration options is shown in Table. 11.1-2 listed.
+
+.Table 11.1-2: Attributes of f:convertNumber.
+|====
+|Attribute
+|Description
+
+|currencyCode
+|ISO 4217 currency code (only if type="currency").
+
+|currencySymbol
+|Currency symbol (only if type="currency").
+
+|groupingUsed
+|Indicates whether the value is presented with thousands separators.
+
+|integerOnly
+|Indicates whether the value is an integer.
+
+|locale
+|Locale used to format the values (e.g. es).
+
+|pattern
+|A number pattern that is used (e.g. €###, usable only if type="number").
+
+|type
+|Specifies the type (number, currency, or percentage). Default is percentage.
+|====
+
+The following source code uses the f:convertDateTime tag.
+
+.Example-3
+----
+<h:outputText id="date" value="#{beispielBean.datum}">
+    <f:convertDateTime dateStyle="full"
+        locale="es" timeStyle="long" type="both" />
+</h:outputText>
+----
+
+*Explanation*
++
+For example, the output here will look like this:
++
+martes 6 de febrero de 2018 21:06:00 GMT.
+
+The `f:convertDateTime` tag presented here also offers some attributes that are listed in the Table
+11.1-3 are shown.
+
+|====
+|Attribute
+|Description
+
+|dateStyle
+|The date format: default, short, medium, long and full (Java standard).
+
+|locale
+|Locale used to format the values.
+
+|pattern
+|Pattern to use for parsing - timeStyle, dateStyle and type are then ignored - example: MM/dd/yyyy.
+
+|timeStyle
+|The time format: default, short, medium, long and full (Java standard).
+
+|timeZone
+|Time zone - Example: Europe/Berlin
+
+|type
+|Specifies the type (date, time, or both). Default is date.
+|====
+Table. 11.1-3: Attributes of f:convertDateTime.
