@@ -1,0 +1,13 @@
+= Fitness
+
+== books
+Overcoming Gravity
+
+=== Chapter 1: Principles of Bodyweight Training
+
+* SAID (Specific Adaptation to Imposed Demands)
+* Progressive overload
+* The phenomenon of placing muscles into short or lengthened states at the edge of their range of motion is termed active insufficiency or passive insufficiency.
+
+== youtube
+Calisthenicmovement https://www.youtube.com/channel/UCZIIRX8rkNjVpP-oLMHpeDw

@@ -1,0 +1,17 @@
+= sql
+
+----
+show databases
+create database mydb
+use mydb
+show tables
+
+create table studenttab(
+    id int PRIMARY KEY AUTO_INCREMENT,
+    sname varchar(20),
+    scourse varchar(30),
+    sfee int
+)
+
+drop table studenttab
+----

@@ -1,0 +1,487 @@
+= Outline
+
+Technique JSF (JavaServer Faces) is a server-side framework and is used to create web applications. 
+JSF attempts the complexities of web application development to encapsulate and hides a large part of the problems and techniques that a web developer has to deal with. 
+That's what most people have to do Project team developers only have a rudimentary knowledge of web applications own because they mainly develop in their usual programming language
+can and seldom need to realize that they are a web application
+develop. 
+Even JSF cannot fully develop the developer before contact with web technologies shield.
+
+*Target*
++
+After reading this book you will be able to develop simple JSF applications. 
+Since the internal processes and concepts of the JSF framework are also examined, you should also extend JSF appropriately and can solve problems encountered during development with JSF. 
+Already after the first chapters you will at least be able to realize a simple JSF application and classify JSF as a technique to be able to After the last chapter you will also be able to independently implement JSF applications.
+
+== The Quick Start
+
+A minimal JSF page consists of an XHTML and two configuration files (faces-config.xml and web.xml). 
+The XHTML elements are rendered as HTML5.
+
+*Previous Knowledge*
++
+The quick start is intended for readers who do not yet have any previous knowledge of JSF or XHTML (Extensible HyperText Markup Language). 
+XHTML knowledge is necessary to develop JSF applications. 
+This is because Facelets are defined as a standard VDL (View Declaration Language) in JSF applications. 
+A more detailed description about Facelets will be given throughout the book. 
+When using facelets usually XHTML is used. 
+This book uses JSF version 2.3.
+
+*JSF-Version*
++
+A complete listing of all available classes, some of which are used in this book are given in [Orac18].
+
+*Motivating Example*
+
+Hello World
+
+To get a first insight into the syntax of JSF applications, a motivating example a "Hello World" example is shown here. 
+There will be a total of two configuration files `faces-config.xml` and `web.xml` are required. 
+Also, a Java class `JSFActivationBean` and a JSF page declaration `index.xhtml` created. 
+The files will be described below.
+
+.faces-config.xml
+----
+<?xml version='1.0' encoding=’UTF-8’?>
+<faces-config version="2.3"
+    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
+        http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_3.xsd">
+</faces-config>
+----
+
+To "enable" JSF, create a configuration file `faces-config.xml` in the `WEB-INF` directory (alternatively: create a specially annotated Class). 
+The specification <?xml version="1.0" encoding="UTF-8"?> designates the XML declaration
+(Extensible Markup Language). 
+It is an award with which each XML file should begin. 
+Among other things, it describes the one used XML version and the character set used. 
+By specifying version="2.3" sets the JSF version. 
+The other parameters specify the namespace which defines the available elements of a JSF page declaration.
+
+.JSF Activation Bean
+----
+@FacesConfig(version = FacesConfig.Version.JSF_2_3)
+@ApplicationScoped
+public class JSFActivationBean {
+}
+----
+
+"Activating" JSF requires the creation of a specially annotated class (alternative: create a configuration file `faces-config.xml`) JSF 2.3 becomes in a "JSF 2.2 compatibility mode". 
+This concerns, for example the management of objects in the application server using CDI (Contexts and dependency injection). 
+For using JSF 2.3 is any Class with @FacesConfig annotation with version parameter FacesConfig.Version.JSF_2_3 in the ApplicationScoped scope. 
+The name of this Any class can be chosen.
+
+*NOTICE*
++
+Throughout the book, both annotations and configurations in the the `faces-config.xml` file is used appropriately.
+
+.web.xml
+----
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+        http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+    version="4.0">
+    <context-param>
+        <param-name>javax.faces.PROJECT_STAGE</param-name>
+        <param-value>Development</param-value>
+    </context-param>
+    <welcome-file-list>
+        <welcome-file>index.xhtml</welcome-file>
+    </welcome-file-list>
+</web-app>
+----
+
+The `web.xml` file is saved in the `WEB-INF` directory. 
+Through the context parameter `javax.faces.PROJECT_STAGE` with value `Development` become automatic Messages are output in the view using the `h:messages` JSF component. 
+The start page should be `index.xhtml`. 
+This is done in the <welcome-file-list>...</welcome-filelist>.
+
+*NOTICE*
+----
+The FacesServlet class can automatically be used as the processing class for the requests
+be set. 
+The prerequisite for this is the existence of a configuration file `faces-config.xml` or at least one class with a JSF annotation (e.g. @FacesConfig). 
+This means that the <servlet>...</servlet> area can be omitted. 
+Likewise the mapping is optional. 
+If the area <servlet-mapping>...</servlet-mapping> is not set, all `*.xhtml` files are automatically mapped to the FacesServlet.
+----
+
+.index.xhtml
+----
+<!DOCTYPE html>
+<html lang="en"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html">
+<h:head>
+    <title>Hello World</title>
+</h:head>
+<h:body>
+    <h:outputText value="Hello World" />
+</h:body>
+</html>
+----
+
+In the DOCTYPE area there is no reference to an HTML DTD (Document Type Definition) given, therefore it is an HTML5 page. 
+HTML5 is not based based on SGML (Standard Generalized Markup Language), so specifying a
+Document type definition not necessary. 
+The output text Hello World is replaced by the set JSF component h:outputText.
+
+*NOTICE*
+----
+By using facelets as VDL, the DOCTYPE specification is not crucial: HTML5 source code is always rendered. 
+It would also be possible to use the following document type definition from the XHTML standard:
+
+<!DOCTYPE html PUBLIC
+    "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+----
+
+Here it is specified in the DOCTYPE area that the publicly available HTML DTD (Document Type Definition) is referred to. 
+The DTD defines the document structure. 
+It is further specified that XHTML in version 1.0 and in the variant Transitional and that the used elements and attribute names have been defined in the EN language. 
+In the html area, the language of the XHTML page and the tag libraries used specified.
+
+*Result*
+Calling up the page is shown in Fig.2.0-1.
+
+image::
+Fig.2.0-1: Example hello world.
+
+The existing source text of the call looks like this:
+----
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head id="j_idt2">
+    <title>Hallo Welt</title>
+</head>
+<body>Hallo Welt</body>
+</html>
+----
+
+The small example shows that the JSF page declaration with XHTML and JSF tags is defined, but the generated result is presented as HTML5 becomes.
+
+NOTICE
+----
+In the example, the `index.xhtml` file is named "JSF Page Declaration". 
+XHTML and JSF tags are used. 
+As the book progresses, simply the term »JSF page« is used.
+----
+
+== Web Development Basics
+
+The basics of web development with Java are described in various JSRs (Java Specification
+request). 
+These include, for example, »Java 8 SE« (JSR 337), »Expression Language 3.0« (JSR 341) and »JavaServer Faces 2.3« (JSR 372). 
+A JSR goes through different stages and may have reached a certain level. 
+Web applications can have different architectures. 
+The content will be in described in the following chapters:
+
+*Web Application Architecture*
+
+Web applications can be structured and divided in different ways. 
+The underlying architecture defines how the individual components interact with a web application.
+
+Just like common Java applications, there are also different ones for web applications
+architectural pattern. 
+At this point, the architectural patterns Model 1 and Model 2 treated. 
+For Model 1 web applications, the client accesses the directly corresponding views. 
+In the case of Model 2 web applications, access is provided by the clients not directly on the views, but always on the controller of the web application. 
+Model 2 patterns are also called MVC patterns (Model View Controller patterns).
+
+=== Model 1
+
+=== Model 2
+
+With Model 1 web applications, the client accesses a view directly. 
+For model 2 - Applications, on the other hand, have a central location that is called up instead and forwards the call. 
+This process is illustrated in Fig. 3.2-3.
+
+The user communicates with the controller, so he sends his requests directly there. 
+The controller creates and fills the model. 
+Then he delegates it Output generation to the view that accesses Model objects generated by the controller.
+
+== Java web development with Servlets and JSP pages
+
+JSF application development is different from development ordinary Java web applications with servlets and JSP pages.
+
+The rough structure of a Java web application with Model 2 architecture is explained in the introduction Fig.4.0-1 briefly explained.
+
+image::
+
+Fig.4.0-1: Structure of a web application.
+
+With Model 1 architectures, direct access to the JSP pages would also be possible. 
+Basically, a web container is required first (e.g. Tomcat or Payara), where the web application can be published. 
+The web application in turn consists of different elements. 
+The most important ones are listed in Fig. 4.0-1: A configuration file (web.xml), one or more servlets, and one or multiple JSP pages. 
+JSP pages and servlets make it easy to build a web application. 
+The client (i.e. the browser) accesses the servlet and the servlet in turn accesses the JSP pages.
+
+*Expiry of a user requirement (Request)*
+This means, of course, that all technical aspects of the web application are also here
+to be implemented. 
+This means that first the user request (Request) must be evaluated to extract any transfer parameters, when programming a servlet. 
+Then the actual business logic executed and then the HTML document is generated and returned to the client. 
+The process is illustrated in Fig.4.0-2.
+
+== JavaServer Faces
+
+Developing with JSF is a bit different than developing with Servlets or JSP pages. 
+JSF is a framework based on the Model 2 - Concept.
+
+=== Architecture of JSF
+
+JSF is a Model 2 framework - this is easy to do on the central Front-Controller-Servlet, called JSF Faces Servlet.
+
+JSF works like a Model 2 application (see »Web Application Architecture«, p. 10). All input and output takes place via Faces Servlet.
+
+=== Configuration of web.xml
+
+In the `web.xml` configuration file, Faces Servlet is specified as the one to be used Servlet not mandatory. 
+The FacesServlet class can automatically be used as the working class can be set for the requests, provided the configuration file `facesconfig.xml` or at least one class with a JSF annotation (e.g. @FacesConfig) is available. 
+This means that the <servlet>...</servlet> area can be omitted. 
+Also optional is the characteristic of the mapping. 
+If the area <servlet-mapping>...</servletmapping> is not set, all `*.xhtml` files are automatically sent to the FacesServlet Posted.
+
+=== Contexts
+
+There are different areas of validity (also: scopes) that determine how long an object has existed and from where it can be accessed.
+
+Within a web application, objects can be created and then saved. 
+However, the question arises as to where exactly these objects are stored.
+
+*Motivation*
++
+In an ordinary Java application, an object is stored in a property of another object or in a static property. 
+In a web application However, an object is used by several users. 
+So it must be determined at which point the objects are made available and for how long
+these should remain available. 
+Exactly this definition is called the scope.
+
+*Object storage options*
++
+A username e.g. B. is clearly user-related. 
+But also information like a search query, a search result or a data record to be processed are user-related information that is only available to a specific user.
+
+== Converter
+
+User input is always transmitted from the browser to the server as a string, regardless of whether the input is a number or not. 
+These inputs will converted from JSF to required format, for example to integer. 
+For it converter used. 
+Some particularly frequently used converters are in the range of JSF included:
+
+* JSF Converter
+* Custom Converter
+* Case study blog application - Converter
+
+=== JSF Converter
+
+User input is transmitted from the browser to the server as text, regardless of whether the input is a number or not. 
+Still will these values are stored as a number in the managed bean. 
+JSF uses converters for this. 
+Converters supplied by JSF can be used for this.
+
+The demo converter sample program illustrates the automatic conversion. 
+That `h:messages` tag displays error messages that occur. 
+It is defined in »Display of validation errors«, p. 113, explained in more detail.
+
+*Example 1*
++
+The following source code uses the `h:messages` tag.
+----
+<h:messages/>
+<h:form>
+    <h:inputText id="number" value="#{beispielBean.wert}" />
+    <h:commandButton value="OK" />
+</h:form>
+----
+
+*Explanation*
++
+In this example exampleBean.value is a property of type double. 
+Returns the user if you enter a number in the text field, it will be automatically converted and correctly converted into the saved managed bean. 
+Returns the user a non-numeric value (e.g. test) occurs, an error message appears, as shown in Fig. 11.1-1.
+
+image::
+
+Fig.11.1-1: Converter error message.
+
+The conversion is done automatically for some types like integer, double, etc.
+
+The validators (the topic of validators is discussed in the chapter "Validation", p. 109
+deepened) are dependent on the converters. 
+So a `f:validateLongRange` validator don't validate a string, just a numeric value. 
+The conversion must so take place before. 
+Fig. 11.1-2 shows the process.
+
+image::
+Fig. 11.1-2: Conversion process.
+
+Step 1: The user enters a number and presses the save button.
+Step 2: The value (string) is saved as submitted value in the component.
+Step 3: The value will be converted. 
+The converted value is called local value saved.
+Step 4: Now the validator can validate the value. 
+It uses the (converted) local value.
+Step 5: The local value is stored in the managed bean. 
+If required, this value was previously validated.
+
+The value transmitted by the browser is therefore initially displayed as submitted in the component value (String), then converted by a converter and stored as converted value saved as local value (for more information on submitted value and local value is referred to the chapter "The JSF Life Cycle", p. 165 referenced). 
+Table. 11.1-1 shows types that are automatically converted by JSF.
+
+In addition, there is also the option of explicitly adding converters to a component. 
+This is useful, for example, if values are to be converted that cannot be automatically converted by JSF.
+
+Specifying amounts in a currency would be an example. 
+Here JSF will not automatically since only the amount and not the currency is saved
+(€26.05 could only be stored as a simple numerical value 26.05, the currency is decisive for the amount). 
+For such a case, the universal `f:convertNumber` tag can be used.
+
+.Table 11.1-1: Types that can be automatically converted by JSF
+|====
+|Converter class
+|Conversion class
+
+|BigDecimalConverter
+|java.math.BigDecimal
+
+|BigIntegerConverter
+|java.math.BigInteger
+
+|BooleanConverter
+|java.lang.Boolean and boolean
+
+|ByteConverter
+|java.lang.Number
+
+|CharacterConverter
+|java.lang.Character and char
+
+|DoubleConverter
+|java.lang.Double and double
+
+|FloatConverter
+|java.lang.Float and float
+
+|IntegerConverter
+|java.lang.Integer and int
+
+|LongConverter
+|java.lang.Long and long
+
+|ShortConverter
+|java.lang.Short and short
+|====
+
+A converter like `f:convertNumber` is simply attached as a "child" to the input component. 
+
+The following source code uses the `f:convertNumber` tag.
+.Example-2
+----
+<h:inputText id="currency" value="#{beispielBean.wert}">
+    <f:convertNumber maxFractionDigits="2" groupingUsed="true"
+        type="currency" currencySymbol="€" />
+</h:inputText>
+----
+
+*Explanation*
++
+In the example, the value is accurate to two digits (maxFractionDigits) with the Currency (type="currency") Euro (currencySymbol) and thousands separator (groupingUsed) shown. 
+It is therefore assumed that the user exclusively enter amounts in euros. 
+A valid entry would therefore be 1,00€. 
+The value 1.0 is then stored in the managed bean. 
+This conversion works also in the other direction. 
+If the value changes in the managed bean to Example to the value 2.0, 2,00€ is displayed in the GUI.
+
+== JSON Processing
+
+JSON ( JavaScript Object Notation) is a lightweight data exchange format. 
+The data is read in a human-readable format and written. 
+In JSF applications, the Java API can be used for processing JSON.
+
+JSON only defines two data structures: objects and arrays. 
+There is an object a collection of "name/value pairs" and an array is a list of values. 
+In JSON, six different data types can be used: string, number, object, array, bool [true, false] or null.
+
+*Object*
++
+An object is defined in curly brackets {...}. 
+The existing name/value pairs are separated by a »comma«. 
+The name is specified as a string and the value is specified as value. 
+The separation of name and value is realized by means of a »colon«. 
+A value can be one of the six available acceptable data types.
+
+An example of name/value pairs looks like this:
+
+.Example-1[JSON]
+----
+{
+"firstname":"nagaraju",
+"lastname":"gumpini",
+"age":30
+}
+----
+
+*Explanation*
++
+In this case, there are three name/value pairs: firstname, lastname, and age. 
+The age is stored as a number and is therefore not in quotes.
+
+*Array*
++
+An array is defined in square brackets [...]. 
+The value values ​​are given using an array separated by "commas".
+
+An example of an array looks like this:
+.Example-1[JSON]
+----
+{
+"name":"nagaraju",
+"telephone":
+    [
+        { "type":"private", "number":"8886934448" },
+        { "type":"business", "nummer":"8886914448" }
+    ]
+}
+----
+
+*Explanation*
++
+The object consists of the name/value pairs name and phone, where phone has an array is defined as the value. 
+The array consists in turn of the name/value pair type and number.
+
+See JSR 374 for more information [JCP17a].
+
+*Server*
++
+The JsonObject interface and the Json class relevant to the creation are shown below.
+
+* javax.json.JsonObject:
++
+Represents a JSON object composed of an unordered collection of name/value pairs.
+* javax.json.Json:
++
+Factory class for creating JSON objects.
+
+*Client*
++
+Client-side A JavaScript API is used on the client side, which has the methods JSON.parse() and JSON.stringify() and is built into most web browsers.
+* JSON.parse(text [, reviver]):
++
+This method converts a text value text into a JSON object. 
+The value reviver is optional and transforms the results.
+* JSON.stringify(value [, replacer] [, space])
++
+This method converts a JavaScript value to a JSON object.
+
+The example JSON1 implements the »chat room« example from the chapter »Web Socket«, p. 201, passing a JSON object. 
+The class ChatroomBean contains Getter and setter for a temporary property to pass the input values ​​and a property of type JsonObject.
+.Example-3[java]
+----
+ChatraumBean.java
+
+----
+
