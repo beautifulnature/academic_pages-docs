@@ -396,6 +396,379 @@ The value 1.0 is then stored in the managed bean.
 This conversion works also in the other direction. 
 If the value changes in the managed bean to Example to the value 2.0, 2,00€ is displayed in the GUI.
 
+However, the `f:convertNumber` tag is not only suitable for converting currency amounts. 
+It is also possible to convert arbitrarily formatted numbers. 
+In addition a pattern (also Pattern) can be used.
+
+A selection of some tag configuration options is shown in Table. 11.1-2 listed.
+
+.Table 11.1-2: Attributes of f:convertNumber.
+|====
+|Attribute
+|Description
+
+|currencyCode
+|ISO 4217 currency code (only if type="currency").
+
+|currencySymbol
+|Currency symbol (only if type="currency").
+
+|groupingUsed
+|Indicates whether the value is presented with thousands separators.
+
+|integerOnly
+|Indicates whether the value is an integer.
+
+|locale
+|Locale used to format the values (e.g. es).
+
+|pattern
+|A number pattern that is used (e.g. €###, usable only if type="number").
+
+|type
+|Specifies the type (number, currency, or percentage). Default is percentage.
+|====
+
+The following source code uses the f:convertDateTime tag.
+
+.Example-3
+----
+<h:outputText id="date" value="#{beispielBean.datum}">
+    <f:convertDateTime dateStyle="full"
+        locale="es" timeStyle="long" type="both" />
+</h:outputText>
+----
+
+*Explanation*
++
+For example, the output here will look like this:
++
+martes 6 de febrero de 2018 21:06:00 GMT.
+
+The `f:convertDateTime` tag presented here also offers some attributes that are listed in the Table
+11.1-3 are shown.
+
+|====
+|Attribute
+|Description
+
+|dateStyle
+|The date format: default, short, medium, long and full (Java standard).
+
+|locale
+|Locale used to format the values.
+
+|pattern
+|Pattern to use for parsing - timeStyle, dateStyle and type are then ignored - example: MM/dd/yyyy.
+
+|timeStyle
+|The time format: default, short, medium, long and full (Java standard).
+
+|timeZone
+|Time zone - Example: Europe/Berlin
+
+|type
+|Specifies the type (date, time, or both). Default is date.
+|====
+Table. 11.1-3: Attributes of f:convertDateTime.
+
+=== Custom Converter
+
+In many cases the converters provided by JSF should be sufficient. 
+For special requirements there is the possibility to develop to use your own converter.
+
+*Requirements of a custom converter*
++
+A converter is supposed to turn a string (the user's input) into an object of a certain type. 
+Like a standard converter, for example string values converted to numbers (e.g. integers).
+
+The target type (that is, the class to convert to) can be a Class from the standard scope of Java or a self-developed class. 
+
+However, the conversion process is not a one-way street. 
+Values can be read from Managed beans and written to managed beans. 
+A self-developed custom converter must therefore meet two requirements:
+
+* Ability to turn a string into an object of the target type.
+* Being able to turn an object of the target type back into a string.
+
+*Structure of a converter*
++
+These requirements make it obvious that two methods are needed to be able to do the conversion. 
+A method to get a String into the object of the target type, and a method that returns the object can transform back.
+
+JSF offers an interface that is used by the implementing converter class requires exactly these two methods. 
+So it is not provided the conversion methods implement in the Managed Bean class. 
+Instead there is the converter from a separate class that has the described converter interface (javax.faces.convert.Converter) implemented. 
+Fig. 11.2-1 shows a UML representation this converter interface.
+
+image::
+
+Fig.11.2-1: Converter (UML-Notation).
+
+The example program DemoCustomConverter clarifies the use and the implementation its Custom converter.
+
+In the following, a converter is to be developed for the following city class.
+
+Example 1. City.java
+----
+public class City {
+    private int zip;
+    private String name;
+    
+    // Getter und Setter
+    ...
+    @Override public String toString() {
+        return zip + " " + name;
+    }
+}
+----
+
+In the object of the City class, the name of the city (name) and the zip code can be entered
+(plz) are saved. 
+JSF cannot automatically convert a string into an object of type city. 
+Instead, a separate converter is developed for this purpose.
+
+CityConverter.java
+----
+public class CityConverter implements Converter {
+    public Object getAsObject(FacesContext context, UIComponent component, String value) {
+        int split = value.indexOf('');
+        City city = new City();
+        city.setZip(Integer.parseInt(value.substring(0,split)));
+        city.setName(value.substring(split+1,value.length()));
+        return city;
+}
+
+public String getAsString(FacesContext context, UIComponent component, Object value) {
+    return ((City)value).getZip() + " " + ((City)value).getName();
+    }
+}
+----
+
+For example, this converter accepts input in the form »zip city«.
+
+Table 11.2-1 lists the method parameters shown in this example.
+|====
+|Attribute
+|Description
+
+|component
+|Component containing the value to convert.
+
+|context
+|Faces Context, used to communicate with the framework
+
+|value (String)
+|String to be converted to an object.
+
+|value (Object)
+|Object to be converted to a string.
+|====
+
+The example is executable in this form, but the converter must still be made known to JSF so that it can be used. 
+This is possible in two ways. 
+It can be registered to be automatically used by JSF whenever a property of a managed bean or a managed bean itself of type city to be filled with a value. 
+Alternatively, the converter can also be connected manually to a component to be hung.
+
+*General registration of a converter*
++
+The first option (general registration of the converter) is via a Annotation in the converter class and applies throughout the application.
+
+This example shows the registration of the CityConverterClass:
+----
+@FacesConverter(forClass = City.class)
+public class CityConverterClass implements Converter {
+    ...
+}
+----
+
+If a converter is registered via the `forClass` annotation parameter, JSF uses it automatically whenever a user-entered value is placed in an object of the target class (City.class) to be converted. 
+This conversion is necessary when the input in a managed bean or a managed bean property of the type of the target class is to be saved.
+
+The following class shows this connection as an example:
+
+Example 3: Address.java
+----
+@Named
+@SessionScoped
+public class Address {
+    private City city;
+    public void setCity(City city) {
+        System.out.println("was set:" + city);
+        this.city = city;
+    }
+    public Stadt getCity() {
+        return city;
+    }
+}
+----
+
+*Explanation*
++
+Now, when a JSF page accesses a managed bean of type Address and If you want to save an input as a city, JSF would automatically use the for this Process configured converter.
+
+The following snippet shows access to the city property from a JSF page out (it is assumed that a managed bean address of type Address configured):
+
+.index.xhtml
+----
+<h:inputText value="#{address.city}" />
+----
+
+In this example, the conversion is completely transparent and requires no further intervention by the developer.
+
+*Explicit configuration of converter*
++
+In addition to the general configuration described above, there are also the ability to explicitly configure a converter. 
+To do this, an explicit name in of the @FacesConverter annotation.
+
+An explicit configuration looks like this:
+
+Example 4: CityConverterName.java
+----
+@FacesConverter("cityConverterName")
+public class CityConverterName implements Converter {
+    ...
+}
+----
+
+*Explanation*
++
+The example does not generally define which converter for which target type is used, but an ID is assigned to the converter. 
+Under this one it can be referenced later in the JSF page.
+
+Explicitly adding the city converter to a component would look for that above example like this:
+
+----
+<h:inputText value="#{address.city}"
+    converter="cityConverterName" />
+</h:inputText>
+----
+
+The converter is also used in this case, but only explicitly in this case Component.
+
+=== Case Study Blog Application - Converter
+
+The case study can be extended with its own converter. 
+The converter will make it possible to specify the date in the form "today" as well. 
+The current date is then used.
+
+*GUI*
++
+In addition to »Title« and »Text«, the blog entries also contain a »Date«. 
+The corresponding date field is therefore added to the page (addEntry.xhtml). 
+Additionally need error messages are issued. 
+This is implemented using the `h:messages` tag.
+
+*Implementation CaseStudyConverter*
++
+Below are the changes compared to the Case Study input mask program shown.
+
+A converter class `DateConverter` is implemented, which is included in the display page `addEntry.xhtml` is used. 
+To do this, the annotation `@FacesConverter` must be added will.
+
+The `addEntry.xhtml` file looks like this:
+
+addEntry.xhtml
+----
+<h:body>
+<h:messages />
+<h:form>
+    ...
+    <h:outputText value="Date" />
+    <h:inputText converter="dateConverter"
+        value="#{addEntryBean.blogEntry.date}" />
+...
+</h:form>
+</h:body>
+----
+
+The `h:messages` tag is used to output error descriptions. 
+JSF cannot do automatic conversion for the date in this example. 
+Although JSF provides a suitable converter for converting to a date (Date-TimeConverter), but this will (in contrast to all other supplied converters) not automatically drawn by JSF because the formatting information is different (e.g. 2018-04-13, 2018-04-13). 
+Although this could be done via the Locale be determined, but it must be determined whether an entry with date and time (or only date or only time) is available. 
+This cannot be determined done automatically.
+
+DateConverter.java
+----
+@FacesConverter("dateConverter")
+public class DateConverter implements Converter {
+    public Object getAsObject(FacesContext context, UIComponent component, String value) {
+        if("today".equalsIgnoreCase(value)) return new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+        Date date = null;
+        try {
+            date = sdf.parse(value);
+        }
+        catch(ParseException ex) {
+            ex.printStackTrace();
+            throw new ConverterException (
+                new FacesMessage("Date cannot be converted")
+            );
+        }
+        return date;
+    }
+
+    public String getAsString(FacesContext context, UIComponent component, Object value) {
+        Date date = (Date)value;
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+        String dateText = sdf.format(date);
+        if(dateText.equals(sdf.format(new Date()))) return "heute";
+        return dateText;
+    }
+}
+----
+
+The converter is configured explicitly here. 
+The converter can be found at Specification of the name `dateConverter` can be used. 
+For each component, creates a new object of the class.
+
+In this example, a custom converter is developed. 
+The converter to be developed should - regardless of the locale set in the browser - a date in the form dd.MM.yyyy (e.g. 07.02.2018) and also accept an entry in the form »today«. 
+When the user enters "today" in the field, it automatically becomes the current date used. If the date is to be output, in the event that the to be output date corresponds to the current date, also printed as "today". 
+A possible internationalization is left out for the sake of simplicity. 
+In the converter, the SimpleDateFormat class is used to convert the String object to transform a Date object and vice versa. 
+If the date is the current date, this is a special case: Here »today« is used as the representation used instead of the date. 
+In the event of an error, a ConverterException is thrown. 
+JSF will then generate an appropriate error message, which is defined by the `h:messages` tag is shown.
+
+Fig.11.3-1 shows the Managed Bean objects involved in the case study.
+
+*Managed Bean-Objects*
++
+image::
+
+Fig.11.3-1: Managed Bean objects involved in the converter case study.
+
+Compared to the case study input mask program, only the object `dateConverter` added. 
+This is created a new for each component. 
+If in a JSF page multiple components use this converter, then one for each component new object created.
+
+== Validation
+
+A central task of a web application is the validation of the data entered by the user. 
+Various conditions often have to be checked: Was a value is entered, a text is long enough or a number is high enough. 
+In the various aspects of validation are discussed in the next chapters:
+
+* JSF Validation
+* Displaying Validation errors
+* Suspend validation
+* Custom validation
+* Bean Validation
+* Case Study Blog Application - Validation
+
+=== JSF Validation
+
+Using validation tags added input component tags JSF can perform field validations. 
+
+JSF brings one support for validations with
+
+=== Displaying Validation errors
+=== Suspend validation
+=== Custom validation
+=== Bean Validation
+=== Case Study Blog Application - Validation
+
+
 == JSON Processing
 
 JSON ( JavaScript Object Notation) is a lightweight data exchange format. 
