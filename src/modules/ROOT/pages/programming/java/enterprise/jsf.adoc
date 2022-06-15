@@ -1,4 +1,4 @@
-= Outline
+== Outline
 
 Technique JSF (JavaServer Faces) is a server-side framework and is used to create web applications. 
 JSF attempts the complexities of web application development to encapsulate and hides a large part of the problems and techniques that a web developer has to deal with. 
@@ -597,7 +597,7 @@ public class Address {
         System.out.println("was set:" + city);
         this.city = city;
     }
-    public Stadt getCity() {
+    public City getCity() {
         return city;
     }
 }
@@ -760,9 +760,277 @@ In the various aspects of validation are discussed in the next chapters:
 
 Using validation tags added input component tags JSF can perform field validations. 
 
-JSF brings one support for validations with
+*JSF brings one support for validations with*
++
+Validations can of course be done manually. 
+Such an approach is However, JSF is not required. 
+JSF already comes with a declarative validation functionality, intended for such tests. 
+The data entered by the user are used Values already checked by JSF and only then (via the value binding) in the written managed bean when conforming to the specified validation rules are valid. Incorrect validations therefore mean that the values are not in the managed bean are written.
+
+One of the simplest and at the same time most common checks is whether there is any value in
+entered in a field. 
+For JSF to check this, the required attribute for the corresponding tag can be set.
+
+*Example 1:*
+
+This could be for text fields that have the two properties lastname and firstname a represent managed bean users, look like this (on the implementation of the class for the managed bean is not received):
+
+requiredfieldsValidation.xhtml
+----
+<h:inputText value="#{user.lastName}" required="true" />
+<h:inputText value="#{user.firstName}" />
+----
+
+*Explanation*
++
+In this case, JSF will only save the user's two entries in the corresponding form in the user managed bean when the last name has been entered was. 
+If only the first name is entered by the user, JSF will neither store the first name nor the last name in the managed bean. 
+To have to i.e. all user input must be valid so that JSF accepts the values.
+
+Any JSF tag that accepts input from a user supports the required attribute (e.g. also h:inputTextarea). 
+To check this function can an output in the setFirstName() method of the corresponding managed bean class to be added.
+
+If only something is entered in the first name field and the OK button is clicked the value is not set (the setFirstName() method is not executed and thus the output does not appear). 
+Only when an entry is made in the surname field both fields are set after pressing the button.
+
+*More Validations*
++
+In addition to this simple test, there is also the possibility of more extensive ones to carry out tests. 
+So-called validators are used for this. 
+validators are attached to an input component as a »child«. 
+The validator will then check the input value of the user and save the value in the Managed Bean only allow the bean if it satisfies the relevant validation.
+
+*Example 2:*
++
+In this example, JSF will store the values in the managed bean only if the input is at least »three« characters long. 
+The `f:validateLength` tag is used for this added.
+
+lengthValidation.xhtml
+----
+<h:inputText value="#{user.firstName}">
+    <f:validateLength minimum="3" />
+</h:inputText>
+----
+
+*Explanation*
++
+Here the `f:validateLength` tag is explicitly added to the `h:inputText` tag. 
+The user must now enter at least three characters in the text field.
+
+*Procedure for a value binding without validation*
++
+It is easier to understand how this validation works within JSF if you know the normal procedure (without validation) that JSF uses for a value binding. 
+This is shown in Fig.12.1-1.
+
+image::
+
+Fig.12.1-1: Procedure: value binding.
+
+Step 1: The user enters some text in the box and hits the save-Button.
+Step 2: The user's input is taken from the `h:inputText` component on the Server read from the request and stored in it.
+Step 3: The value of the `h:inputText` component is stored in the associated Value Binding, i.e. the corresponding managed bean, is saved.
+
+*Process at one value binding with validation*
++
+If a validation is to be carried out using a validation tag, the validation tag is used between step 2 and step 3 to check the input.
+Step 3 is only then carried out if the validation is successful. 
+The graphic then looks like in Fig.12.1-2.
+
+Fig.12.1-2: Procedure: value binding with validation.
+
+There are several standard validation tags that come standard with JSF. 
+A brief overview follows.
+
+The `f:validateLength` tag validates the length of the input. 
+It gets the user's input only accept if it is longer than the minimum (if a minimum is specified
+becomes) and is not greater than the maximum (if a maximum is specified)
+(Ref. Table. 12.1-1).
+
+|====
+|Attribute|Description
+|minimum
+|Minimum input length.
+|maximum
+|Maximum length of input.
+|====
+Table. 12.1-1: Attributes of the tag `f:validateLength`.
+
+In this example, the last name entered must have a minimum of three and a maximum of eight characters long.
+*Example 3*
++
+lengthValidationMinMax.xhtml
+----
+<h:inputText value="#{user.lastName}">
+    <f:validateLength minimum="3" maximum="8" />
+</h:inputText>
+----
+
+The `f:validateLongRange` tag validates the size of the entered integer value. 
+The numeric value must be greater than the minimum (if specified) and less than that maximum (if specified) (see Table. 12.1-2).
+
+|====
+|Attribute|Description
+|minimum
+|Minimum size of the value.
+|maximum
+|Maximum size of the value.
+|====
+Table. 12.1-2: Attributes of the tag `f:validateLongRange`.
+
+In this example, the age entered must be between 18 and 120.
+
+*Example 4*
++
+numberrangeValidation.xhtml
+----
+<h:inputText value="#{user.age}">
+    <f:validateLongRange minimum="18" maximum="120" />
+</h:inputText>
+----
+
+The `f:validateDoubleRange` tag also validates the size of an entered numerical value. 
+This time, however, it is a double value with decimal places. 
+The numeric value must be greater than the minimum (if specified) and less than the maximum (if specified) (ref. Table. 12.1-3).
+
+|====
+|Attribute|Description
+|minimum
+|Minimum size of the value (also as an integer).
+|maximum
+|Maximum size of the value (also as an integer).
+|====
+Table. 12.1-2: Attributes of the tag `f:validateDoubleRange`.
+
+*Example 5*
++
+numberrangeValidation.xhtml
+
+In this example, the weight is given as a number with decimal places in the range 10.00 and 200.00 expected.
+
+----
+<h:inputText value="#{user.weight}">
+    <f:validateDoubleRange minimum="10.00" maximum="200.00" />
+</h:inputText>
+----
+
+The `f:validateRegex` tag validates a value using regular expressions (ref. Table. 12.1-4).
+
+|====
+|Attribute|Description
+|pattern
+|Regular Expressions (searched pattern in a value)
+|====
+Table.12.1-4: Attributes of the tag `f:validateRegex`.
+
+In the following example, the entered text must be four to ten characters long and contain both a number and a capital letter. 
+A valid input value would be 1abC.
+
+*Example 6*
++
+regexValidation.xhtml
+----
+<h:inputText value="#{user.lastName}">
+    <f:validateRegex pattern="((?=.*\d)(?=.*[a-z])
+        (?=.*[A-Z]).{4,10})" />
+</h:inputText>
+----
+
+These featured tags are the standard validation tags provided by JSF. 
+Additional validation tags are offered by third-party providers (both commercial and non-commercial) that integrate with JSF.
 
 === Displaying Validation errors
+
+Error messages can be output with the tags `h:message` and `h:messages`.
+
+*Validation without error message*
++
+Although JSF prevents the value from being written to the corresponding managed bean, however, the user does not know that there is an error. 
+If a Navigation Rule is defined, it will not be executed. 
+Here the user might guess that something is wrong. 
+However, if the user enters the correct input on the same page and therefore no navigation rule is defined, it will be displayed on a Incorrect input may not notice any difference: the page becomes simple loaded again.
+
+*JSF supports validations*
++
+In any case, the user is informed that his input is not valid are, essential. 
+However, since JSF cannot guess at which point on the page. 
+To present error messages most appropriately, there are two tags, with which error messages can be output. 
+So the developer can exactly determine where on the page these messages appear. 
+The two tags are used in the explained below.
+
+*h:messages*
++
+The `h:messages` tag can be used to output all error messages that are on the page have occurred (ref. Table. 12.2-1).
+
+|====
+|Attribute|Description
+
+|globalOnly
+|Indicates whether all error messages are displayed or only error messages not caused by a component (more about this type of error message in the chapter »Own Validation«, p. 120).
+
+|showDetail
+|Indicates whether details about the error message should be displayed.
+
+|showSummary
+|Indicates whether a summary of the error message is displayed.
+|====
+Table. 12.2-1: Attributes of the `h:messages` tag.
+
+For example, a summary is "validation error", the detailed message: "[ID] input required" (as "[ID]" is displayed a string identifying the component clearly identified).
+
+There are also the following properties:
+
+* errorClass/errorStyle
+* fatalClass/fatalStyle
+* infoClass/infoStyle
+* warnClass/warnStyle
+
+These attributes can be used to specify the respective classes / CSS styles that are used with
+of the respective error level (error/fatal/info/warn). 
+If you set the value border:1px solid red; to the errorStyle attribute, errors of the type error with a provided with a red frame. 
+The following examples of the program demo validation errors should clarify the situation.
+
+The input field for the last name is a mandatory field. 
+Example 1 The OK button pressed without entering a last name, an error message is displayed.
+*Example 1*
++
+messageExample.xhtml
+----
+<h:messages/>
+<h:form>
+<h:inputText value="#{user.lastName}" required="true" />
+<h:commandButton value="OK" />
+</h:form>
+----
+
+*Explaination*
++
+The error message can be slightly different depending on the JSF implementation used be. 
+An error message is output here if the user does not input (Fig. 12.2-1). 
+The information j_idt6 and j_idt7 refer to the component IDs in the component tree assigned by the JSF framework will. 
+The value j_idt6 refers to the form (h:form) and the value j_idt7 refers to the input field within the form (h:inputText).
+
+image::
+
+Fig.12.2-1: Representation: Simple error message
+
+*h:message*
++
+The `h:message` tag can be used to output error messages that occur with a specific component have occurred. 
+While with the `h:messages` tag, all error messages can be output here "in one" place on the page
+placed meaningfully on the page for a particular component. 
+As a general rule this should be near the component that caused the error. 
+This Tag should preferably be used as it increases the usability of an application greatly improved. 
+The attributes are almost identical to those of the `h:messages` tag. 
+It the `globalOnly` attribute is missing, for this there is another attribute that the `h:messages`- tag does not have (ref. Table. 12.2-2).
+
+|====
+|Attribute|Description
+|for
+|Specifies which component to display errors for.
+|====
+Table.12.2-2: Attribute of the `h:message` tag.
+
+
 === Suspend validation
 === Custom validation
 === Bean Validation
