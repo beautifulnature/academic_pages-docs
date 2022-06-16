@@ -266,6 +266,165 @@ Exactly this definition is called the scope.
 A username e.g. B. is clearly user-related. 
 But also information like a search query, a search result or a data record to be processed are user-related information that is only available to a specific user.
 
+== Case study blog application overview
+
+The following case study is used to illustrate the respective topics of the following chapter to deepen practically. 
+This is a blog Application. 
+First, the required classes for the »Business Logic« and the basic configuration files are created.
+
+*What is a blog?*
++
+A blog is a kind of diary. 
+Any text entries can be created, each with a title, date and a category. 
+Then they can displayed one below the other, creating a kind of diary.
+
+*Functionality*
++
+In order not to make the application too complicated, the »business logic« (here only persistence logic exists instead of business logic) for this sample application (case study overview) already implemented and is therefore not explained in detail.
+The classes provided offer the possibility of text entries with a title, a text, a category and a date in a definable directory save. 
+Alternatively, the current user's home directory used for storage. 
+Multi-user use is not intended.
+
+Fig.6.0-1 shows what the finished software could look like.
+
+image::
+
+Fig.6.0-1: Case study: list of blog entries.
+
+*Create blog entry*
++
+The central use case of the application is to create a blog entry. 
+The user should be able to enter the information for title, date, category and to capture text. 
+These details are then available as a blog entry on the provided classes are saved (Fig. 6.0-2).
+
+*Classes*
++
+The classes that enable the entries to be saved and loaded are already made available and therefore do not have to be programmed by yourself. 
+In this chapter introduces the classes that are used for this and the next use cases are needed. 
+The classes are shown in Fig. 6.0-3 as a UML diagram shown.
+
+The central BlogManager class provides persistence and the BlogEntry class represents an entry in the blog.
+
+image::
+
+Fig.6.0-2: Case study: Blog entry process - input.
+
+image::
+
+Fig.6.0-3: API of the case study in UML notation.
+
+The properties of the BlogEntry class are listed in Table.6.0-1.
+
+|====
+|Property
+|Description
+
+|id
+|A unique number. 
+This is set by the BlogManager - the first time save - Assigned and does not need to be set explicitly.
+
+|title
+|The title of the blog entry.
+
+|text
+|The content of the blog entry.
+
+|category
+|The category of the blog post.
+
+|date
+|A date to which the blog entry refers.
+|====
+Table. 6.0-1: BlogEntry properties.
+
+The BlogManager class provides the following methods:
+
+*Methods of Blog Manager*
++
+public void saveEntry(BlogEntry entry):
+Saves a new entry.
+public void deleteEntry(BlogEntry entry):
+Deletes an existing entry.
+public List<BlogEntry> getAllEntries():
+Returns all saved entries.
+private String getFilename():
+Returns the path to the persistence file. 
+Is a path in the web.xml by the user defined, this is used. 
+Otherwise, the home directory of the current User used for storage.
+private void saveDb(List<BlogEntry> list):
+Persist the existing blog entries.
+private void initDb():
+Initializing the database.
+
+*Own storage path*
++
+By default, the path `c:\blog.db` is used to store blog entries. 
+A user-defined storage path can be specified in the `web.xml` configuration file.
+
+web.xml
+----
+<context-param>
+    <param-name>blogdbpath</param-name>
+    <param-value>c:\blog.db</param-value>
+</context-param>
+----
+
+An object of class BlogManager is implemented as a managed bean in scope of a Session created:
+
+BlogManager.java
+----
+@Named
+@SessionScoped
+public class BlogManager implements Serializable {
+    ...
+}
+----
+
+*Overview*
++
+Fig.6.0-4 shows an overview of the available programs.
+
+image::
+
+Fig.6.0-4: Case study: Overview of the different programs.
+
+Based on the program case study overview, the programs case study input mask, Case study file upload and case study tables implemented. 
+The program case study input mask serves as the basis for the programs case study templating, case study internationalization, Case study navigation, case study converter, case study validation, case study Shortlists and case study resources. 
+The differences are in the description explained in the respective case study. 
+In the Total Case Study program, all content is summarized in one application.
+
+== Basic JSF components
+
+=== Box: Component Hierarchy
+
+=== h:outputText
+
+=== h:inputText, h:inputSecret, h:inputTextarea
+
+=== h:commandButton, h:commandLink
+
+=== The components in interaction
+
+=== Case study blog application - input mask
+
+== Templating
+
+=== JSF-Templating
+
+=== Case Study Blog Application - Templating
+
+== Internationalization
+
+=== JSF internationalization
+
+=== Case Study Blog Application - internationalization
+
+== Navigation
+
+=== JSF-Navigation
+
+=== Case Study Blog Application - Navigation
+
 == Converter
 
 User input is always transmitted from the browser to the server as a string, regardless of whether the input is a number or not. 
@@ -1036,6 +1195,57 @@ Table.12.2-2: Attribute of the `h:message` tag.
 === Bean Validation
 === Case Study Blog Application - Validation
 
+== Listener
+
+=== Action Listener
+
+=== Value Change Listener
+
+== Advanced Components
+
+=== Selection lists
+
+==== JSF picklists
+
+==== Case Study Blog Application - Picklists
+
+=== file upload
+
+==== JSF file upload
+
+==== Case Study Blog Application - File Upload
+
+=== Advanced Components - Tables
+
+==== JSF tables
+
+==== Tables - the Master Detail Pattern
+
+==== Case study blog application - table
+
+== component tree
+
+== The JSF lifecycle
+
+== Around the JSF application
+
+== Configuration files
+
+=== web.xml
+
+=== faces-config.xml
+
+== Management of resources
+
+=== JSF resources
+
+=== Case Study Blog Application - Resources
+
+== Asynchronous JavaScript and XML
+
+== HTML5 Friendly Markup
+
+== WebSocket
 
 == JSON Processing
 
@@ -1126,3 +1336,12 @@ ChatraumBean.java
 
 ----
 
+== Reuse
+
+== Faces Flows
+
+== Extend JSF core
+
+== Outlook
+
+== Appendix A Eclipse
