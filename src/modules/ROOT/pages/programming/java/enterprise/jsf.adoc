@@ -2,16 +2,45 @@
 
 Technique JSF (JavaServer Faces) is a server-side framework and is used to create web applications. 
 JSF attempts the complexities of web application development to encapsulate and hides a large part of the problems and techniques that a web developer has to deal with. 
-That's what most people have to do Project team developers only have a rudimentary knowledge of web applications own because they mainly develop in their usual programming language
-can and seldom need to realize that they are a web application
-develop. 
+That's what most people have to do Project team developers only have a rudimentary knowledge of web applications because they mainly develop in their usual programming language can and seldom need to realize that they develop are a web application. 
 Even JSF cannot fully develop the developer before contact with web technologies shield.
 
 *Target*
 +
 After reading this book you will be able to develop simple JSF applications. 
 Since the internal processes and concepts of the JSF framework are also examined, you should also extend JSF appropriately and can solve problems encountered during development with JSF. 
-Already after the first chapters you will at least be able to realize a simple JSF application and classify JSF as a technique to be able to After the last chapter you will also be able to independently implement JSF applications.
+Already after the first chapters you will at least be able to realize a simple JSF application and classify JSF as a technique to be able to after the last chapter you will also be able to independently implement JSF applications.
+
+*Method*
++
+In addition, reference is repeatedly made to practical exercises as well as examples and problems from practice are shown, which you can use in everyday work with JSF will probably encounter. 
+The task of the book is to prepare you for practice, without neglecting the theory. 
+After the first practical examples explains the more theoretical basics of JSF. 
+However, this is very lively on the previously discussed examples, so you will not have any problems to follow the explanations. 
+Please note that the examples shown have been shortened at appropriate points in order to clarify only the essential aspects.
+
+*What of you is expected*
++
+So that's what the book offers you. 
+But now to what the book of awaits you:
+* Working through the practical exercises
+* Java Knowledge (e.g. [Balz13], [Balz14])
+* Basic knowledge of developing web applications in Java (e.g. [KrBa11], [Wißm09]):
+** You know how to use your preferred development environment Web application project created.
+
+[Balz13]
+Balzert, Helmut; Java: Der Einstieg in die Programmierung - Strukturiert & prozedural
+programmieren, 4. Auflage, Dortmund, W3L-Verlag, 2013.
+[Balz14]
+Balzert, Helmut; Java: Objektorientiert programmieren - Vom objektorientierten
+Analysemodell bis zum objektorientierten Programm, 3. Auflage, Dortmund,
+W3L-Verlag, 2014.
+[KrBa11]
+Krüger, Sandra; Balzert, Helmut; HTML5, XHTML & CSS - Websites systematisch
+und barrierefrei entwickeln, 2. Auflage, W3L-Verlag, 2011.
+[Wißm09]
+Wißmann, Dieter; JavaServer Pages – Dynamische Websites mit JSP erstellen,
+W3L-Verlag, 2009.
 
 == The Quick Start
 
@@ -421,7 +450,109 @@ In the Total Case Study program, all content is summarized in one application.
 
 == Navigation
 
+Web applications usually do not only consist of one page. 
+The following chapters explain the possibilities for realizing navigation in the context of JSF:
+
 === JSF-Navigation
+
+JSF offers the possibility to choose between navigate multiple pages.
+
+It is often necessary to implement an application with several pages. 
+In the most cases, a realization with only one side should not be an option at all, for example when entering data records. 
+A distinction is made between 'user-defined' and 'implicit' navigation.
+
+*Custom Navigation*
++
+Normally, navigation rules (also: navigation rules) are defined. 
+This determine under which conditions from which side to which other side is referenced. 
+For example, from `index.xhtml` page to `saveOK.xhtml` page. 
+the conditions are described by so-called outcomes in the `faces-config.xml` (Program DemoNavigation).
+
+Example 1a.
+A navigation rule is then defined in the faces-config.xml file.
+faces-config.xml
+----
+<navigation-rule>
+    <from-view-id>/index.xhtml</from-view-id>
+    <navigation-case>
+        <from-outcome>ok</from-outcome>
+        <to-view-id>/speichernOK.xhtml</to-view-id>
+    </navigation-case>
+</navigation-rule>
+----
+
+*Explanation*
++
+This navigation rule determines that from the page `index.xhtml` to the page `save-
+OK.xhtml` is branched. 
+But only with the outcome ok.
+
+*What is a outcome?*
++
+An outcome is the result (i.e. the return value) of a method initiated by JSF method call. 
+As already shown, in JSF, buttons and links are created using Method binding associated with an action.
+
+Example 1b
+The following example is conceivable:
+
+JSF page:
+<h:commandButton value="save(ok)" action="#{exampleBean.actionSaveOK}" />
+
+Method:
+public String actionSaveOK() {
+    return "ok";
+}
+
+*Explanation*
++
+In contrast to the method bindings considered so far, this method returns a string and does not return void. 
+With this return value one also speaks of the outcome of the method. 
+This value will used to determine the appropriate navigation rule. 
+Here would be the outcome always ok and the current page is index.xhtml. 
+Therefore, JSF will save to the pageOK.xhtml branch. 
+The method would return an unknown value (for example nok), then JSF would appear on the current page (ie index.xhtml) stay.
+
+*outcomes are variable*
++
+Of course, it is not only possible to always return the same value, but different values could be returned via an if query.
+
+It would be conceivable that the method checks something and depending on it ok or nok
+returns. 
+Depending on the outcome of the method and how the navigation rules are defined, JSF then links to one side or the other.
+
+Example 1c
+An example that saves from the `index.xhtml` page to OK if the outcome is `ok.xhtml` and in the case of an outcome of `nok` refers to saving `NOK.xhtml` the following:
+
+----
+<navigation-rule>
+    <from-view-id>/index.xhtml</from-view-id>
+    <navigation-case>
+        <from-outcome>ok</from-outcome>
+        <to-view-id>/speichernOK.xhtml</to-view-id>
+    </navigation-case>
+    <navigation-case>
+        <from-outcome>nok</from-outcome>
+        <to-view-id>/speichernNOK.xhtml</to-view-id>
+    </navigation-case>
+</navigation-rule>
+----
+
+*Explanation*
++
+Two navigation cases are defined here. 
+JSF will consider the case whose `from-outcome` attribute matches the outcome returned by the method. 
+In this case, the first navigation case (saveOK.xhtml), if the outcome is ok or the second navigation case (saveNOK.xhtml) if the outcome is nok. 
+If no navigation case applies (e.g. in the case of an outcome test), JSF will remain on the current page (i.e. index.xhtml here).
+
+*Peculiarities of JSF navigation*
++
+At the time the user requests the `index.xhtml` page, JSF still knows not whether the following page will be `saveOK.xhtml` or `saveNOK.xhtml`. 
+That decides only after the form content of `index.xhtml` from user to was transmitted to the server, i.e. he pressed the button. 
+Only after pressing the button (and the associated submission of the form content) the method binding is evaluated. 
+In principle, however, every form content requires submission to the server a destination URL (Uniform Resource Locator) to which this data are transmitted. 
+But since it is not yet clear which side will follow, refer `index.xhtml` to itself first, so it sends the form data back `index.xhtml`.
+
+However, JSF will not return `index.xhtml`, but the method binding first execute and `saveOK.xhtml` or `saveNOK.xhtml` according to the outcome.
 
 === Case Study Blog Application - Navigation
 
@@ -1189,11 +1320,684 @@ It the `globalOnly` attribute is missing, for this there is another attribute th
 |====
 Table.12.2-2: Attribute of the `h:message` tag.
 
+*ID of the components*
++
+In order to be able to specify the component in the for attribute for which error messages are to be generated, the components must be provided with an ID. 
+The component can then be referenced via this ID.
+
+Usage is shown in the example below:
+
+Example 2:
++
+messageForExample.html
+----
+<h:inputText id="firstName" value="#{benutzer.firstName}"
+required="true" />
+<h:message for="firstName" />
+<h:inputText id="lastName" value="#{benutzer.lastName}"
+required="true" />
+<h:message for="lastName" />
+<h:commandButton value="OK" />
+----
+
+*Explanation*
++
+With each JSF tag, in addition to the component-specific properties, ties, an ID can also always be assigned. 
+Here the first `h:inputText`-Tag is given the ID `firstname`, the second `h:inputText` tag is given the ID `lastname`. 
+The IDs can be assigned arbitrarily. 
+Once a tag has a unique ID, error messages are output for him with the `h:message` tag. 
+This will the respective ID of the input component is specified in the for attribute of the `h:message` tag (Fig. 12.2-2). 
+In this example, the error messages are always direct displayed above the respective component.
+
+image::
+
+Fig. 12.2-2: Representation: Two error messages.
+
+*Customize error messages*
++
+The quality of the message and the appearance can still be improved. 
+Example- the wise is the id (e.g. j_idt5:lastname) represented by JSF for the user
+rather confusing. 
+The specification j_idt5 refers to the form for which no own ID was assigned. Therefore, an ID was assigned by the JSF framework.
+
+Adjusting the error texts is fairly easy, but it requires understanding the internationalization concept understood by JSF. 
+In addition to special property files with texts (also called message bundles) intended for one or more JSF pages are, there is also the possibility to define global files. 
+these can then contain customized error messages, for example. 
+Adjust demo validation errors in the program this is made clear.
+
+*Adaptation in the faces-config.xml*
++
+To configure JSF to pull such a file, the `faces-config.xml` needs to be extended as follows:
+----
+<application>
+    <message-bundle>jsf.beans.errormessages</message-bundle>
+</application>
+----
+
+*Property file with error messages*
++
+The message-bundle tag contains the property file that contains the error messages that are printed instead of the default messages.
+
+An example of a Property file overriding the message for mandatory fields left blank:
+
+*Example 3*
++
+errormessages.properties
+----
+javax.faces.component.UIInput.REQUIRED=This is a mandatory field, please fill out this field.
+----
+
+Instead of the error message given in example 2, the error message in the file defined error message. 
+Again, it is possible for different Languages different files (with appropriate language abbreviation) use to define the error messages in different languages.
+
+*Place Holder*
++
+To output the component causing the error in the form of its ID, the wildcard {0} can be used. 
+The form should also get an ID, otherwise the ID automatically assigned by the JSF framework is displayed in the error message becomes.
+
+For example, the Property file looks like this:
+*Example 4*
++
+errormessages.properties
+----
+javax.faces.component.UIInput.REQUIRED={0} is a required field, please fill this field.
+----
+
+There are numerous other keys that overwrite with appropriate error messages can become. 
+A brief listing is shown below, where the ..._detail message is the detail message. The first error message (javax.faces.component.UIInput.REQUIRED) the general error message would be e.g. Validation errors and the detailed message (javax.faces.component.UIInput.REQUIRED_detail) [ID] input required.
+
+|====
+|required
+|javax.faces.component.UIInput.REQUIRED (REQUIRED_detail)
+
+A required field was not filled out.
+
+Placeholder: {0} (ID)
+
+|f:validateLength
+|javax.faces.validator.LengthValidator.MAXIMUM (MAXIMUM_detail)
+
+The value is greater than the maximum.
+
+Placeholder: {0} (maximum), {1} (id)
+
+|javax.faces.validator.LengthValidator.MINIMUM (MINIMUM_detail)
+
+The value is less than the minimum.
+
+Placeholder: {0} (minimum), {1} (ID)
+|f:validateDoubleRange
+
+|javax.faces.validator.DoubleRangeValidator.MAXIMUM (MAXIMUM_detail)
+
+The value is greater than the maximum.
+
+Placeholder: {0} (maximum), {1} (ID)
+|javax.faces.validator.DoubleRangeValidator.MINIMUM (MINIMUM_detail)
+
+The value is less than the minimum.
+
+Placeholder: {0} (minimum), {1} (ID)
+|javax.faces.validator.DoubleRangeValidator.NOT_IN_RANGE (NOT_IN_RANGE_detail)
+
+The value entered is not in the valid range.
+
+Placeholder: {0} (from), {1} (to), {2} (ID)
+|f:validateLongRange
+|javax.faces.validator.LongRangeValidator.MAXIMUM (MAXIMUM_detail)
+
+The value is greater than the maximum.
+
+Placeholder: {0} (maximum), {1} (id)
+
+javax.faces.validator.LongRangeValidator.MINIMUM (MINIMUM_detail)
+|====
 
 === Suspend validation
+
+Sometimes it may be necessary to validate a page at certain times disable actions. 
+For example, if the "Cancel" button is pressed.
+
+When the Cancel button is pressed, validations are usually undesired: The user wants to cancel the current action, the entered Values do not need to be adopted. 
+Therefore, there should be no error message appear. 
+But for JSF it is also the Cancel button an ordinary button followed by an action. Therefore, also at A validation can be performed when this button is triggered. shows the process (generalized) Fig. 12.3-1.
+
+image::
+
+Fig. 12.3-1: Validation when cancel is triggered.
+
+Step 1: The user enters a text.
+Step 2: The text is read from the request by the input component and stored internally.
+Step 3: The internally stored text is validated.
+Step 4: The text is included in the managed bean (if it was valid).
+Step 5: The action of the button is performed.
+
+*Suspend validation*
++
+However, there is a way to suspend that. 
+That's what you use for that Validation immediate attribute of the button. 
+If this attribute is set, the button Action performed before validation (i.e. immediate) and entered Values are neither validated nor by the corresponding value binding transferred to the managed bean. 
+Instead, the (via the method Binding) defined action of the button is executed and then accordingly navigates. 
+The process is (generalized) as shown in Fig. 12.3-2.
+image::
+Fig. 12.3-2: Validation when triggering with immediate.
+
+Step 4 and step 5 are shown separated by a line in Fig. 12.3-2 because these steps are no longer performed after the immediate action has been performed. 
+The button action is already executed here in step 3.
+
+The relationships are explained in the DemoValidationRelease program.
+
+The example1.xhtml page illustrates the use of the immediate attribute.
+
+Example 1
+
+example1.xhtml
+----
+<h:message for="firstName" />
+<h:inputText value="#{benutzer.eingabe1}"
+required="true" id="firstName" />
+<h:commandButton immediate="true" value="abbrechen" />
+<h:commandButton value="speichern" />
+----
+
+*Explanation*
++
+Here the user can enter a text (first name) and then save it to press. 
+However, the save action is only executed if a text has also been entered. 
+This is provided by the `h:inputText` component's required attribute forced. 
+However, if the user presses cancel, the cancel-Action performed and no validation takes place. 
+In this case he has to User does not enter any text in the text box.
+
+If the first name field is left blank and then the save button pressed, an error message is output. 
+When pressing the button no error message is output. 
+Instead of triggering the store-button to reload the same page, it would also be possible to go to another page to branch. 
+To keep the example simple, this has been omitted.
+
+*More detailed consideration*
++
+In addition to these rather superficial observations, something else happens in this example: When canceling, the entered value is not saved in the associated value binding (here #{user.input1}), regardless of whether it is valid or not is saved (as shown in Fig. 12.3-2). 
+When saving, the Value, on the other hand, is stored in the value binding (as shown in Fig. 12.3-1).
+
+*Immediate attribute for input components*
++
+Besides being able to set the immediate attribute on the `h:commandButton` component, there is also the option to set the immediate attribute on the `h:inputText` component to put.
+
+Setting the immediate attribute on the `h:inputText` component results in the validation before the validation of the other (non-immediate) components and also before executing an action of an immediate -`h:commandButton` component is carried out. 
+Fig. 12.3-3 illustrates the process for a page on which there is both an `h:inputText` component that is immediate (here the type) and one that is not immediate (like firstname in the previous examples).
+
+Fig. 12.3-3: Validation with and without immediate.
+
+Step 3 and step 4 are only processed here for the component type, since this is immediate. 
+Only step 2 is processed for the first name component. 
+Step 5 and 6 would not be processed at all if you clicked on the Cancel button (therefore shown separated by a line).
+
+*Example 2*
+
+The source code example2.xhtml looks like this:
+
+example2.xhtml
+----
+<h:message for="typ" />
+<h:inputText value="#{benutzer.eingabe1}" required="true"
+immediate="true" id="typ" />
+<h:message for="firstName" />
+<h:inputText value="#{benutzer.eingabe2}" required="true"
+id="firstName" />
+<h:commandButton immediate="true" value="abbrechen" />
+<h:commandButton value="speichern" />
+----
+
+*Explanation*
++
+In this example, there are several ways the user can behave could. 
+Each of the possibilities, including the result, is explained below listed (see Tab. 12.3-1).
+
+|Input
+|action
+|Description
+
+Tab. 12.3-1: Input options.
+
 === Custom validation
+
+You can also implement your own imperative validations with JSF, which are also carried out before values in the respective value binding of the components are written. 
+A distinction is made here between component-dependent and component-independent validations.
+
+*Difference*
++
+In a component-dependent validation, the entered value becomes a specific component validated (e.g. an email address). 
+error messages refer to this one component.
+
+In a component-independent validation, not only a syntactical one takes place check of a single value instead of a semantic (e.g. authentication username and password combination).
+
+*Component dependent validation*
++
+In this case, a separate validation method is implemented. 
+To own one Performing validation requires a special method binding on the component
+set that is to carry out this check. 
+This is how method and component become linked together.
+
+The program DemoValidationOwnSyntactically clarifies the facts.
+
+In a JSF page, validateEmail.xhtml, it looks like this:
+
+Example 1a.
+
+validateEmail.xhtml
+----
+<h:messages />
+<h:inputText value="#{user.email}"
+    validator="#{user.validateEmail}">
+</h:inputText>
+----
+
+This assumes that the managed bean user actually has a method `validateEmail()` exists.
+
+*Method binding for validation*
++
+It is not necessary to include the validation method (as shown here) in the Implement managed bean class that also contains the value to be checked. 
+It would also be possible to create another class that, for example, only Validation methods and the method binding refer to this class to let. 
+To do this, this class must implement the `javax.faces.validator.Validator` interface.
+In the JSF page, the tag is `f:validator` specifying the validator class over the Attribute `validatorId` required. 
+However, it is often advisable to program parts that are responsible for rendering a specific page, in a managed bean class to summarize.
+
+*conventions for validation methods*
++
+A method that accepts validation must have certain accept invocation parameters and have a specific return value so that JSF can use it for validation.
+
+An example of such a method (here: validateEmail()) is listed below:
+
+Example 1b: user.java
+----
+public void validateEmail(FacesContext context, UIComponent component, Object value) {
+    String input = (String) value;
+    if (input.indexOf('@')==-1) {
+        ((UIInput)component).setValid(false);
+        FacesMessage message = new FacesMessage("Invalid e-mail address");
+        context.addMessage(component.getClientId(context), message);
+    }
+}
+----
+
+The many call parameters of the validation method may seem confusing, that however, the underlying concept is quite easy to understand (ref. Table-12.4-1).
+
+|====
+|Parameter
+|Function
+
+|FacesContext context
+|This is an object that contains all the information about the keeps current JSF state. 
+This object enables direct communication with the framework.
+
+|UIComponent component
+|The component that contains the value to validate.
+
+|Object value
+|The value to validate, entered by the user.
+|====
+Table. 12.4-1: Call parameters of the validation method.
+
+These call parameters must be present with every validation method.
+
+The core of the method is checking the entered value (in this case it is checked if
+whether the input contains an @ sign). 
+The value to be checked is given as a parameter passed value.
+
+*Converter*
++
+This does not necessarily have to be a string, as assumed here. 
+When adding any object can be expected from a converter to a component will. 
+If no converter is used and the property of the value binding is on String (as in this example), a string can also be expected here.
+
+If the check is successful, there are no further steps in the method necessary.
+
+*How to proceed if not valid values*
++
+If the value is not valid, two steps must be performed. 
+Of the the fourth step is to tell the affected component itself that the value it contains is invalid. 
+This is done via the setValid() method.
+
+The user must then also be informed with a message. 
+For this purpose, a Faces Message is created with an error message and using the addMessage() method communicated to the JSF framework.
+
+In this case, the addMessage() method is called with two parameters. the
+both parameters are explained in Table. 12.4-2.
+
+|====
+|Parameter
+|Function
+
+|String
+|FacesMessage
+|====
+Table 12.4-2: Parameters of the addMessage() method
+
+The first parameter is a string, that is, the component ID must be passed here as a string. 
+To find out the ID of a component, the getClientId() method can be used. 
+This returns the ID of the component as String back.
+
+It is important to include the component ID when communicating the error message with addMessage() to use so later with the h:message tag the error messages can be output that belong to a specific component (using of the for attribute).
+
+*Component independent validation*
++
+The mechanisms presented so far allow a syntactic single field check. 
+However, something more general must often be validated. 
+It would be conceivable that checked whether a person's first and last name already exist in the database. 
+Here not only one field is checked, but two. 
+The exam is in this case not syntactic, but semantic (content-related) nature.
+
+*Method Binding*
++
+In order to also be able to take such cases into account, JSF offers the possibility of checking data from several fields at the same time after they have been transferred to the corresponding Managed beans were written. 
+So this type of validation does not prevent adoption a value into the managed bean (this has already happened at this point), but is used for subsequent validation and display of corresponding error messages. 
+Usually this will happen in the method due to the User action (e.g. pressing a button) or the associated method Bindings is called.
+
+*Example 2*
++
+For example, the user may press a "Save" button. 
+JSF then first reads the data entered by the user (here, for example, first name and last name) in the managed bean. 
+Then the with method linked to the button (via a method binding) storeUser() executed. Before the method finally saves the record, it will conduct an exam. 
+Here it is an exam that ensures the pros and Surname does not yet exist in the database (userExists()).
+
+The DemoValidationOwnSemantic program explains the facts.
+
+----
+@Inject
+private FacesContext context;
+public String saveUser() {
+    if (userExists(user.getFirstName(), user.getLastName())) {
+        FacesMessage message = new FacesMessage();
+        message.setSeverity(FacesMessage.SEVERITY_ERROR);
+        message.setSummary("Combination of first and last name already exists");
+        message.setDetail("A combination of first and last name may only occur once");
+        context.addMessage(null,message);
+        return "";
+    }
+    return "ok";
+}
+----
+
+*Explanation*
++
+This example uses the `userExists()` method to determine whether the specified combination of first and last name is already in the database exists. 
+In this case, a Faces Message is created with the error message and the error details are set. 
+This Faces Message is then sent to the Faces Passing the context (addMessage()) without specifying an ID (in contrast to the addMessage() call for an error message associated with a component becomes). 
+The error message is therefore not assigned to any component. 
+It is a general error message. 
+Finally, JSF is returned using return ""; instructed to reload the current page. 
+Important for the return value is only that no navigation rule exists for it. 
+It might as well be there return "xyz".
+
+NOTE:
+The severity of the message can be specified using the `setSeverity()` method (SEVERITY_INFO, SEVERITY_WARN, SEVERITY_ERROR or SEVERITY_FATAL). the inserted messages may or may not be displayed depending on the setting. 
+These setting options are not discussed in detail in this book.
 === Bean Validation
+
+Using bean validation is another declarative way to do this Validating input to managed beans. 
+The validation information will be done directly in the managed bean classes.
+
+The specification of the Bean Validation 2.0 was released and made possible in the JSR 380 the use of validation rules directly in the managed bean class. 
+As in the validation tags, this is a declarative configuration. 
+Next to the specification of the validation rules in the managed bean class are no further tags necessary.
+
+Analogous to the definition of validation rules using validation tags, the passed values are not written to the managed bean until validation is successful was.
+
+*Use*
++
+When using bean validation, the necessary restrictions (Constraints) via annotations on the respective properties of the managed bean - class are defined. 
+Table. 12.5-1 shows a section of the possible annotations.
+
+|====
+|Annotation
+|Description
+
+|Min
+|Max
+|NotBlank
+|NotEmpty
+|NotNull
+|Size
+|====
+
+Table. 12.5-1: Bean validation annotations.
+
+The following examples of the program `DemoBeanValidation` clarify the usage from `BeanValidation`.
+
+Two text boxes are inserted on a JSF page with no validation information
+
+Example 1:
+user.xhtml
+----
+<h:messages />
+<h:form>
+<h:outputText value="firstName" />
+<h:inputText value="#{user.firstName}" /><br />
+<h:outputText value="lastName" />
+<h:inputText value="#{user.lastName}" /><br />
+<h:commandButton value="ok" />
+</h:form>
+----
+
+In the underlying managed bean class users are the constraints determined by annotations.
+
+User.java
+----
+@Named
+@RequestScoped
+public class User implements Serializable {
+    private String lastName;
+    private String firstName;
+
+    @NotNull(message = "Last name is a required field")
+    @NotBlank(message = "Last name cannot be empty")
+    @Pattern(regexp = "[a-z-A-Z]*", message = "Invalid characters in last name")
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    @NotNull(message = "First name is a required field")
+    @NotBlank(message = "First name cannot be empty")
+    @Pattern(regexp = "[a-z-A-Z]*", message = "Invalid characters in first name")
+    public String getFirstName() {
+        return firstName;
+    }
+    
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+}
+----
+
+The browser display after sending empty input fields shows the Fig. 12.5-1.
+
+Both properties lastName and firstName must not be "null" (@NotNull). 
+The inputs must not consist exclusively of spaces (@NotBlank) and must match the pattern "lowercase and uppercase" (@Pattern).
+
+Classic JSF validation aims at validating individual components. 
+However, in some areas it makes sense to validate the entire managed bean, for example
+a simultaneous check of several fields. 
+This mechanism is about the tag that allows `f:validateWholeBean`. 
+Simultaneous checks of several fields can also be implemented with your own validation components, but the transferred values into the managed bean when using `f:validateWholeBean` written if the validation was successful. 
+Table 12.5-2 shows the attributes this tag.
+
+image::..
+
+Fig. 12.5-1: Class validation.
+
+|====
+|Attribute
+|Description
+
+|disabled
+|id
+|validationGroups
+|value
+|====
+
+Table 12.5-2: Attributes of f:validateWholeBean.
+
+This functionality must be activated via an entry in the configuration file `web.xml`
+will.
+
+web.xml
+----
+<context-param>
+<param-name>javax.faces.validator.ENABLE_VALIDATE_WHOLE_BEAN</param-name>
+<param-value>true</param-value>
+</context-param>
+----
+
+Validation information can be refined by using the `f:validateBean` tag will. 
+For example, groupings can be specified or implicit validation be deactivated. 
+Table. 12.5-3 shows the attributes of this tag.
+
+|====
+|Attribute
+|Description
+
+|disabled
+|validationGroups
+|====
+Table. 12.5-3: Attributes of f:validateBean.
+
+*Example 2*
+
+A password including password repetition should be entered on a JSF page. 
+An entered password is only valid if both entries are identical.
+
+A ValidPasswordGroup tagging interface is set as a validation group.
+
+ValidPasswordGroup.java
+----
+public interface ValidPasswortGroup { }
+----
+
+The JSF page is shown below.
+password.xhtml
+----
+<h:messages />
+<h:form>
+<h:outputText value="Password" />
+<h:inputText value="#{password.password}">
+<f:validateBean validationGroups="jsf.beans.ValidPasswortGroup" />
+</h:inputText><br />
+<h:outputText value="Password (repeat)" />
+<h:inputText value="#{password.repeatPassword}">
+<f:validateBean validationGroups="jsf.beans.ValidPasswortGroup" />
+</h:inputText><br />
+<f:validateWholeBean value="#{password}" 
+    validationGroups="jsf.beans.ValidPasswortGroup" />
+<h:commandButton value="ok" />
+</h:form>
+----
+
+The validation group is set using the `f:validateBean` tag `jsf.beans.ValidPasswordGroup` for both input fields. 
+If one If validation of the individual fields is to be activated, the added to the `javax.validation.groups.Default` validation group. 
+The tag `f:validateWholeBean` sets the class validation. 
+The validation groups must for the input fields configured with `f:validateBean `and for the tag `f:validateWholeBean` must be identical.
+
+The managed bean class must be annotated with a specially defined annotation will. 
+The annotation `ValidPassword` is created for this.
+
+ValidPassword.java
+----
+@Target(TYPE)
+@Retention(RUNTIME)
+@Constraint(validatedBy = Password.class)
+public @interface ValidPassword {
+    String message() default "Invalid passwords";
+    Class<?>[] groups() default {};
+    Class<? extends Payload>[] payload() default {};
+}
+----
+
+The annotation should be set at class level (@Target(TYPE)) and to be available at runtime (@Retention(RUNTIME)). 
+The actual implementation class for performing the validation, specifying the annotation @Constraint(validatedBy = password.class). 
+The message annotation attribute specifies the Returns default text in case of a negative validation check. 
+The validation groups are configured via the annotation attribute groups. 
+The payload can be used to pass your own user data for validation.
+
+The `ValidPassword` managed bean class does the actual validation.
+
+ValidPassword.java
+----
+@ValidPassword(groups = jsf.beans.ValidPasswortGroup.class)
+public class Password implements Serializable, 
+    ConstraintValidator<ValidPassword, Password> {
+        private String password;
+        private String passwordWdh;
+        
+        // Getter und Setter
+        ...
+        
+        @Override
+        public void initialize(ValidPassword constraintAnnotation) { }
+
+        @Override
+        public boolean isValid(Password other, ConstraintValidatorContext context) {
+            return other.getPassword().equals(other.getPasswordWdh());
+        }
+}
+----
+
+The validation takes place in the `isValid` method. 
+Only if both passwords match, the validation is successful.
+
+The browser display after sending unequal passwords shows the Fig. 12.5-2.
+
+image::..
+
+Fig. 12.5-2: Class validation
+
 === Case Study Blog Application - Validation
+
+Validations are also necessary in the case study. 
+It becomes the input mask appropriately validated for a blog entry.
+
+*GUI*
++
+The properties title and text of a blog entry should be validated. 
+A title should come with at least three and a maximum of 50 characters. 
+The detailed text should contain at least three characters.
+
+*Implementation case study validation*
++
+Below are the changes compared to the Case Study input mask program shown.
+
+Only the `addEntry.xhtml` display page needs to be updated.
+
+The `addEntry.xhtml` file looks like this:
+
+addEntry.xhtml
+----
+<h:body>
+<h:form>
+<h:outputText value="Title" />
+<h:inputText value="#{addEntryBean.blogEntry.title}" id="title">
+    <f:validateLength minimum="3" maximum="50" />
+</h:inputText>
+<h:message for="title" />
+<h:outputText value="Text" />
+<h:inputTextarea value="#{addEntryBean.blogEntry.text}" rows="5" cols="80" id="text">
+    <f:validateLength minimum="3" />
+</h:inputTextarea>
+<h:message for="text" />
+</h:form>
+</h:body>
+----
+
+The input field for title must have a minimum of three (minimum="3") and a maximum of 50 characters (maximum="50"). 
+The input field for text must contain at least three characters (minimum="3") long. 
+In addition, an `h:message` tag was added after both fields, that outputs any error messages. 
+To allow the notifications are displayed for the respective input components, both components were additionally extended by an ID (title and text).
+
+*Managed Bean-objects*
++
+The Managed Bean objects involved are no different from the CaseStudyInputForm program.
 
 == Listener
 
