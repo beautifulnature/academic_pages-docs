@@ -27,20 +27,54 @@ But now to what the book of awaits you:
 * Java Knowledge (e.g. [Balz13], [Balz14])
 * Basic knowledge of developing web applications in Java (e.g. [KrBa11], [Wißm09]):
 ** You know how to use your preferred development environment Web application project created.
+** You have already written a JSP application (JavaServer Pages) yourself.
+** You have heard the following terms before and can roughly classify them:
+*** Markup-Element (Tag )
+*** Tag Library
+*** Servlet
+
+*If not everything is correct*
++
+If you do not meet all the criteria, this is not an exclusion criterion. 
+You can first try to "get by" once, in the appropriate places in the book all terms are briefly explained again. 
+Because all terms in a practical context, you can see directly how to use these techniques. 
+If that is not enough, you can read up on one or the other on the Internet.
+
+If you prefer the book form, the book [Wißm09] (with e-learning course) is recommended that will give you all the basics you need to understand this book and the JSF technique are required.
+
+*Development environment*
++
+Compared to programming with a programming language, web applications use several tools. You should get the necessary tools install and configure on your computer system.
+
+*Quick start*
++
+The aim of the Quick Start is to give you a feel for the JSF technique. 
+In addition a simple example serves as motivation.
+
+* The Quick Start, p.5
+
+*Basics of web development*
++
+JSF is a specification and multiple implementations of this specification exist. 
+The way from specification to implementation is shown in the basics and general web application architectures are described.
+
+* Basics of Web Development, p.9
 
 [Balz13]
-Balzert, Helmut; Java: Der Einstieg in die Programmierung - Strukturiert & prozedural
-programmieren, 4. Auflage, Dortmund, W3L-Verlag, 2013.
+
+Balzert, Helmut; Java: Der Einstieg in die Programmierung - Strukturiert & prozedural programmieren, 4. Auflage, Dortmund, W3L-Verlag, 2013.
+
 [Balz14]
-Balzert, Helmut; Java: Objektorientiert programmieren - Vom objektorientierten
-Analysemodell bis zum objektorientierten Programm, 3. Auflage, Dortmund,
-W3L-Verlag, 2014.
+
+Balzert, Helmut; Java: Objektorientiert programmieren - Vom objektorientierten Analysemodell bis zum objektorientierten Programm, 3. Auflage, Dortmund, W3L-Verlag, 2014.
+
 [KrBa11]
-Krüger, Sandra; Balzert, Helmut; HTML5, XHTML & CSS - Websites systematisch
-und barrierefrei entwickeln, 2. Auflage, W3L-Verlag, 2011.
+
+Krüger, Sandra; Balzert, Helmut; HTML5, XHTML & CSS - Websites systematisch und barrierefrei entwickeln, 2. Auflage, W3L-Verlag, 2011.
+
 [Wißm09]
-Wißmann, Dieter; JavaServer Pages – Dynamische Websites mit JSP erstellen,
-W3L-Verlag, 2009.
+
+Wißmann, Dieter; JavaServer Pages - Dynamische Websites mit JSP erstellen, W3L-Verlag, 2009.
 
 == The Quick Start
 
@@ -208,6 +242,79 @@ A JSR goes through different stages and may have reached a certain level.
 Web applications can have different architectures. 
 The content will be in described in the following chapters:
 
+* Java Specification Request, P.9
+* Web Application Architecture, P.10
+
+*Java Specification Request*
+
+A JSR (Java Specification Request) goes through different states and can have reached a certain level.
+
+JSF is first of all a specification. 
+New requirements to existing specifications are described in a JSR. 
+For the inclusion of new language elements or the API (Application Programming Interface) extension creates a new JSR. 
+As part of the specification process, a JSR is created by experts from different fields directed. 
+The current specification of JSF 2.3 is described in JSR 372 [JCP17].
+
+The specifications can have different statuses (see Table. 3.1-1).
+
+|====
+|Status
+|Description
+
+|Active
+|A specification that has had a milestone released within the last 12 months.
+
+|Final
+|A specification that has had a final release within the last 12 months.
+
+|Maintenance
+|A specification that most recently passed a maintenance review or a maintenance release milestone was created more than a year ago.
+
+|Inactive
+|A specification that is not a final release or maintenance release and is within the last 
+Year no milestone was created.
+
+|Withdrawn
+|A specification that was withdrawn prior to the release of a Final Release.
+
+|Rejected
+|A specification that was not accepted at one of the voting levels.
+
+|Dormant
+|A specification that has been voted "inactive" or has exceeded its natural lifespan has reached.
+
+|JSR Review
+|Anyone with an internet connection can view the specification for two to four weeks view and comment.
+
+|Early Draft Review
+|One to three months, the public can an early draft specification review and comment.
+
+|Public Review
+|The public can examine the draft specification for one to three months and Leave a Comment.
+
+|Proposed Final
+|The draft specification is used to create a reference implementation.
+
+|Final Release
+|The specification has been approved in its final version and can now be used to be implemented.
+
+|Maintenance Review
+|At least one month before the completion of a minor revision (minor changes at the specification), at the members and the public the proposed Review and comment on change entries.
+
+|Inactive
+|Inactive specifications have not reached final release or have been within No milestones published in the last 12 months.
+
+|Dormant
+|This marking makes it clear that no further work is invested in the specification for example because they are removed from the list of active specifications by voting was removed.
+
+|Withdrawn
+|This marks specifications that were initially started but are progressing have been removed from the list of active projects because no member has agreed to do so has to take the leading role.
+
+|Rejected
+|Specifications can be rejected by the executive committee.
+|====
+Table. 3.1-2: JSR Stand.
+
 *Web Application Architecture*
 
 Web applications can be structured and divided in different ways. 
@@ -222,6 +329,55 @@ Model 2 patterns are also called MVC patterns (Model View Controller patterns).
 
 === Model 1
 
+Web application flow control from page to page is used in Model 1 applications realized via direct references. 
+That is, in a view, a reference exists that refers to another view. 
+This process is shown in Fig. 3.2-1 illustrated.
+
+image::
+
+Fig. 3.2-1: Process model 1 (general).
+
+The client calls each view directly. 
+This can be via referrals or direct input done in the address bar. 
+The process in the context of JSP applications is shown in Fig. 3.2-2 explained.
+
+The client calls page 1.jsp ("Request 1"). 
+This page uses an object of class user to store data there. 
+To use the User class, create 1.jsp an object of the class and stores data there that is determined from the request were (»filled«). 
+The JSP page then generates a corresponding HTML document as an answer and returns it to the client. 
+This generated HTML document contains a reference to 2.jsp. 
+The user clicks on this link (Request 2) and calls 2.jsp. 
+This page also uses the object created by 1.jsp Class user and in turn generates an HTML document. 
+This HTML document is then returned to the client.
+
+*Technical structure*
++
+Typically, a Model 1 web application (seen from the client perspective) is built exclusively from JSP pages or servlets. 
+As a result, the JSP pages and Servlets can be used not only as a view but also as a controller. 
+JSP pages do not only fulfill the task of generating and returning HTML (as pure view), but also call the business logic, generate the on the page required JavaBeans and determine which JSP page is displayed next (Flow control). 
+The above tasks are things that are usually be done by a controller. 
+So the JSP pages do the job too the following (controller) aspects:
+
+image::
+
+Fig. 3.2-2: Process Model 1 in the context of JSP applications
+
+* Application/Business Logic
+* Flow control
+* Creation/filling of the used JavaBeans
+
+*limitations*
++
+Inevitably, this always occurs as the size of the application increases more complex JSP pages and servlets, as there is no strict separation between each areas of responsibility. There is a risk of losing track and create a hard-to-maintain application.
+
+*Conclusion*
++
+This does not mean that the Model 1 approach should be rejected in principle. 
+For small Applications or prototypes that can be discarded after the presentation Model 1 enable an efficient procedure. 
+For larger applications that require more than are to be maintained for a longer period of time, Model 1 is rather insufficient. 
+here there must be a stronger separation of the individual areas of responsibility. 
+This problem addressed Model 2.
+
 === Model 2
 
 With Model 1 web applications, the client accesses a view directly. 
@@ -231,6 +387,50 @@ This process is illustrated in Fig. 3.2-3.
 The user communicates with the controller, so he sends his requests directly there. 
 The controller creates and fills the model. 
 Then he delegates it Output generation to the view that accesses Model objects generated by the controller.
+
+In the context of JSP applications, the central place that the client calls is mostly a servlet (Java class that implements the javax.servlet.Servlet interface). 
+Because this task within the web application it is called front controller servlet. 
+As a rule, this servlet does not generate HTML itself, but uses it to do so for example facelets, JSP pages or servlets. 
+In principle, the client does not notice anything this procedure.
+
+Fig. 3.2-4 shows how the same application shown in Model 1 works with a Model 2 architecture.
+
+*compared with style 1*
++
+In a direct comparison of the graphic with Fig.3.2-2, it can be clearly seen that were previously handled individually by each JSP page are now handled by the front controller servlet.
+
+*No direct access on JSP pages*
++
+In Fig.3.2-4 you can see that the user no longer directly accesses the JSP pages. 
+Instead, it always calls the front controller servlet, which in turn calls the JSP pages uses. 
+In this case, the first call uses the front controller servlet the page 1.jsp.
+
+*generate and filling through front controller*
++
+With the second call (by clicking on a corresponding link) like-which calls the front controller servlet, but this time the servlet uses 2.jsp. 
+In the case of the Model 2 web application, the creation and filling of the JavaBean objects inherited from the front controller servlet, so this is no longer the case must be implemented in the views.
+
+*flow control*
++
+The central role of the front controller servlet makes it easy to specify which ones JSP page when to be called (flow control). 
+By the way, Model 2 is not set to use JSP pages to generate the HTML. 
+As good as would it be possible to use a different kind of files describing the view (e.g. XML files like Facelets).
+
+*Conclusion*
++
+The most important difference to the Model 1 architecture is the clear demarcation of the individual areas of responsibility. 
+This makes it easier to localize corresponding code parts and the risk of developing an unmaintainable "monolith" decreases.
+
+image::
+
+Fig.3.2-4: Process Model 2 in the context of JSP applications.
+
+If you look at the last two figures, you will see that many Front controller functions are more general in nature and only loosely related to the related business logic. 
+Therefore it is quite conceivable to have a universal Front controller to be used, which is set to the special by means of a configuration file Application needs can be customized. 
+This configuration file contains then information such as navigation processes (which page leads to which other referenced) or information about the model to be created. 
+A universal one Front controller does not have to be developed independently. 
+Here put Java web frameworks like JSF and ship a generic front controller (among many
+other amenities).
 
 == Java web development with Servlets and JSP pages
 
@@ -256,10 +456,592 @@ This means that first the user request (Request) must be evaluated to extract an
 Then the actual business logic executed and then the HTML document is generated and returned to the client. 
 The process is illustrated in Fig.4.0-2.
 
+*Example*
++
+In order to make the whole thing a little more vivid, a simple example is given using Servlets, JSP pages and JSF pages implemented. 
+Fig. 4.0-3 shows an example Calling the example. 
+After entering any text, e.g. »User«, and submitting the form, the text »Hello, user« is displayed. 
+The values are stored in a Java class User.java, which is just a Property `name` owns.
+
+User.java
+----
+public class User {
+    
+    private String name;
+    
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+}
+----
+
+image::
+Fig. 4.0-2: Sequence of a request/response cycle.
+
+image::
+Fig. 4.0-3: Example for comparison.
+
+The example for the respective areas is implemented in the following chapters.
+
+*Servlets*
++
+The implementation of the example with servlets is described in this chapter.
+
+»Servlets«
+
+*JSP pages*
++
+When implementing the example with JSP pages, there are different options shown: JSP scripting, JSTL (JSP Standard Tag Library) and EL (Expression Language).
+
+»JSP pages«
+
+*JSF pages*
++
+In a direct comparison, the example is implemented with JSF.
+
+»JSF pages«
+
+*Conclusion*
++
+The different areas are compared in a conclusion.
+
+»Conclusion on servlets and JSP pages«
+
+=== Servlets
+
+A servlet (more specifically, HTTP servlet) is a Java class that provides the interface 
+javax.servlet.http.HttpServlet implemented. 
+Each HTML element must be compatible with the methods `print()` or `println()` can be created.
+
+A class that implements the javax.servlet.http.HttpServlet interface and thus as the servlet must be defined as such in the web.xml configuration file will. 
+The HttpServlet interface inherits from javax.servlet.Servlet.
+
+*Example*
++
+The implementation of the presented example (see »Java web development with servlets 
+and JSP pages«, p. 15) with servlets will now be explained (Program Web developmentServlets).
+
+ExampleServlet.java
+----
+public class ExampleServlet extends HttpServlet {
+
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+
+            response.setContentType("text/html;charset=UTF-8");
+
+            PrintWriter out = response.getWriter();
+            try {
+                out.println("<!DOCTYPE html>");
+                out.println("<html lang=\"en\"xmlns=\"http://www.w3.org/1999/xhtml\">");
+                out.println("<head><title>ExampleServlet")
+                out.println("</title></head><body>");
+                out.println("<form method=\"post\">");
+                out.println("<input type=\"text\"");
+                out.println("name=\"username\" />");
+                out.println("<input type=\"submit\"");
+                out.println("value=\"send\" />");
+                out.println("</form>");
+
+                if (request.getParameter("username") != null) {
+                    out.println("<p>Hello, " + request.getParameter("username")+"</p>");
+                }
+
+                out.println("</body></html>");
+            } finally {
+                out.close();
+            }
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+            processRequest(request, response);
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+            processRequest(request, response);
+    }
+}
+----
+
+web.xml
+----
+<servlet>
+    <servlet-name>ExampleServlet</servlet-name>
+    <servlet-class>jsf.beans.ExampleServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+</servlet>
+<servlet-mapping>
+    <servlet-name>ExampleServlet</servlet-name>
+    <url-pattern>/ExampleServlet</url-pattern>
+</servlet-mapping>
+----
+
+*Explanation*
++
+This example shows the individual steps that are carried out need to go through the cycle of request and response:
+
+* First, the input form is created.
+* Then the request is evaluated and a decision is made as to whether a message is issued (is a username parameter set?).
+* Finally, the HTML is rendered.
+
+=== JSP pages
+
+JSP pages are another web development option. 
+It doesn't have to exclusively Java classes as with Servlets are used, but the program parts are positioned within the HTML elements and evaluated at runtime. 
+In the background, JSP pages become Java classes, also called JSP classes, transformed. 
+A JSP class is a servlet class, so it can also be simple called a servlet. 
+However, this is transparent to the user. 
+In the following chapters are different implementations of JSP pages shown: JSP scripting, JSTL (JSP Standard Tag Library) and EL (Expression Language).
+
+* JSP scripting
+* JSP Standard Tag Library
+* Expression Language
+
+==== JSP scripting
+
+With JSP scripting, the Java code is embedded within a JSP page. 
+The result is a mixture of HTML elements and Java code.
+
+JSP scripting is an improvement in that full development of a Java class that implements the javax.servlet.http.HttpServlet interface necessary is. 
+The required lines of Java code are written directly at the location of the HTML document
+involved where they are needed.
+
+There are different types of JSP script elements:
+* Declarations <%! ... %>
+** Used to define constants, variables, and methods that to be used in a JSP page.
+* Scriplets <% ... %>
+** In these areas, the Java code is integrated at the points in the HTML document where it is needed.
+* expressions <%= ... %>
+** Serves as a simple output. 
+Alternatively, this could be done in scriplets using out.println(...); will be realized.
+* Comments <%-- ... --%>
+** This defines JSP comments that are visible in the JSP pages, but not in the generated HTML pages.
+
+Example 1a:
+The implementation of the presented example (see »Java web development with servlets
+and JSP pages«, p. 15) with JSP scripting will now be explained (program WebdevelopmentJSP).
+
+index_jspscripting.jsp
++
+----
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>JSP-Scripting</title>
+</head>
+<body>
+<jsp:useBean id="user" scope="page" class="jsf.beans.user" />
+<jsp:setProperty name="user" property="name" param="username" />
+<form>
+<input type="text" name="username" />
+<input type="submit" value="send" />
+</form>
+<%
+if (user.getName()!=null)
+{
+%>
+<p>Hello, <%=user.getName()%></p>
+<%
+}
+%>
+</body>
+</html>
+----
+
+*Explanation*
++
+The small example already shows that JSP scripting reduces the complexity of the source code increased. 
+For the area of the closing bracket "}" must again a JSP scriplet can be generated.
+
+*Example 1b*
++
+Alternatively, the entire paragraph can be output using Java code:
+
+----
+<%
+if (user.getName()!=null)
+{
+out.println("<p>Hello, " + user.getName() + "</p>");
+}
+%>
+----
+
+*Explanation*
++
+In this case, although reopening a new JSP scriptlet that finally inserting a closing curly brace prevents, but must be explicitly accessed on the object out.
+
+==== JSP Standard Tag Library
+
+JSTL is the abbreviation for JSP Standard Tag Library. 
+Sense and purpose of this technique is to do without Java code within JSP pages as far as possible.
+
+*What can JSP tags?*
++
+The JSTL's JSP tags perform specific tasks, which are typically accomplished using Java code blocks can be implemented. 
+The areas of responsibility include whose:
+
+* Process control (when, otherwise etc.)
+* Ribbons
+* XML processing
+* internationalization
+* Using SQL (Structured Query Language)
+
+Tags already exist for most areas of application. 
+The use of the tags makes it easier to develop, maintain and understand JSP pages.
+
+If there is no tag for a specific task, it is also possible to use your own custom JSP tags to develop tags. 
+There are three approaches to implementing your own tags:
+* Simple Tags
+* Classic Tags
+* Tag files (from JSP 2.0)
+
+For the Simple Tags and Classic Tags approaches, a separate TLD file (Tag Library Descriptor) that defines the corresponding tag. 
+Inside of the TLD file is then a Java class that you also have to develop yourself with the tag linked. 
+This Java class must be of type javax.servlet.jsp.tagext.SimpleTagSupport or extend javax.servlet.jsp.tagext.TagSupport. 
+Once this TLD in its own JSP page is integrated, the self-defined tag can be used. 
+For further information on own JSP tags is referred to [Wißm09]. 
+Fig. 4.2-1 illustrates the relationship between JSP page, TLD and Java class.
+
+image::
+
+Fig. 4.2-1: Simplified TLD concept.
+
+*functioning of JSP tags*
++
+No Java code is used in the JSP page itself, just a tag and a reference to the tag library descriptor. 
+The tag library descriptor links the tag with a Java class. 
+Once this tag is used during the render process (i.e. creation of the HTML document) of the JSP page is encountered, the corresponding doTag() method of the Java class, which then renders the respective HTML codes takes over.
+
+These JSP tags can then be packed as a JAR file (Java Archive) and without any problems use in other web projects.
+
+*Example*
++
+The implementation of the previous example (see »Java Web Development with Servlets and JSP pages«, p. 15) with JSTL will now be explained (program WebdevelopmentJSP).
+
+index_ jstl.jsp
++
+----
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>JSTL</title>
+</head>
+<body>
+    <jsp:useBean id="user" scope="page" class="jsf.beans.user" />
+    <jsp:setProperty name="user" property="name" param="username" />
+    <form>
+        <input type="text" name="username"/>
+        <input type="submit" value="send"/>
+    </form>
+    <c:choose>
+        <c:when test="${user.name!=null}">
+            <p><c:out value="Hello, ${user.name}"/></p>
+        </c:when>
+    </c:choose>
+</body>
+</html>
+----
+
+*Explanation*
++
+In contrast to JSP scripting, no Java code is used, only tags used. 
+Not only the usual HTML tags are visible, but also special JSP tags (jsp:useBean ...) from the corresponding tag libraries (Tag libraries).
+
+The JSP solution is no longer as "technical" as the previous solution. 
+It is still necessary to read the parameter from the request, i.e. evaluate the request, however, the request is abstracted: the word request itself no longer appears. 
+The following is a short list of the important ones Features of this JSP solution shown:
+
+* JSP tags are used instead of Java code to generate the HTML code. 
+The username parameter is simply added to the `jsp:setProperty` tag in the property name of the object user saved, in turn, with the tag jsp:useBean was created.
+* Scopes are used to store objects.
+* Of course it's not enough just to have an object user of the type jsf.beans.user to generate. 
+It is necessary to say in which scope it is located, i.e. where it is to be stored.
+* The so-called EL (Expression Language, see »Expression Language«, p. 21) used to open Java code even for simple evaluations avoid.
+* In this solution there is no line of Java code, just the EL expressions ${user.name!=null} and ${user.name}.
+* Overall, the solution is therefore somewhat more abstracted from the underlying technology.
+
+For more information on the subject of JSP tags, see the sources [Babl03] and [Horn09].
+
+==== Expression Language
+
+The EL (Expression Language) is used to define expressions that are used in JSP pages can be used.
+
+The EL is a scripting language that allows easy access to objects that are
+are in any scope. Historically, EL was initially in
+JSTL introduced and adopted as a standalone technique since JSP 2.0.
+
+=== JSF Pages
+
+*More fundamental Construction*
++
+Facelets are used when developing JSF applications. 
+To the Comparing a JSF web application to a regular Java web application is discussed in 
+Fig. 4.3-1 shows the basic structure of a JSF web application.
+
+*comparison*
++
+The graphic is slightly different from a usual Java web application (see »Java Web Development with Servlets and JSP Pages«, p. 15). 
+Since this is a Model 2 web application, only the Faces servlet is accessed and no longer directly to the JSF pages. 
+The Faces servlet is that previously mentioned front controller servlet (see "Web Application Architecture", p. 10). 
+This is provided by the JSF framework.
+
+image::
+
+Fig. 4.3-1: Structure of a JSF web application.
+
+Besides the web.xml, which is required by every Java web application, there is one another configuration file called faces-config.xml. 
+This file can be used for configuration used by JSF-specific settings. 
+It is true that Faces takes over Servlet only general tasks like calling the JSF pages, however it is natural application-dependent when which JSF page should be called. 
+Exactly the faces-config.xml file provides such information.
+
+*Example*
++
+To make these differences a little more tangible, the web application, which have already been presented in the comments on servlets and JSP pages (see "Java Web Development with Servlets and JSP Pages," p. 15), now implemented as a JSF application (program WebdevelopmentJSF).
+
+index.xhtml
+----
+<h:body>
+<h:form>
+<h:inputText value="#{user.name}" />
+<h:commandButton value="send" />
+</h:form>
+<h:outputText value="Hello, #{user.name}" rendered="#{user.name!=null}" />
+</h:body>
+----
+
+web.xml
+----
+<welcome-file-list>
+    <welcome-file>index.xhtml</welcome-file>
+</welcome-file-list>
+----
+
+faces-config.xml
+----
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.3"
+    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+    http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_3.xsd">
+</faces-config>
+----
+
+User.java
+----
+@Named("user")
+@SessionScoped
+public class User implements Serializable {
+    private String name;
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+}
+----
+
+*Explanation*
++
+The content of the `index.xhtml` JSF page does not contain any Java source code. 
+The integration it is even forbidden here. 
+Only JSF tags and EL expressions may be used will. 
+The EL expressions used here are - in contrast to the EL expressions in the JSP examples - preceded by a »#«. 
+These will explained later in the book (see "Expression Language," p. 33). 
+In the User.java class, the @Named("user") annotation is used to make an object of this type available within the JSF page. 
+The annotation @SessionScoped specifies that the object is in the context of a session
+is saved.
+
+=== Conclusion on servlets and JSP pages
+
+JSP pages with EL or JSTL abstract more from the underlying one Technology as servlets or JSP scripting. 
+With JSF becomes even stronger from technology abstracted.
+
+*Motivation for JSF*
++
+To understand the motivation behind the JSF technique, it is helpful to look at the historical development of the previous technologies and their weaknesses.
+
+*comparison JSP/Servlet*
++
+In general it can be said that by using EL or JSTL will achieve better results than using servlet technology. 
+There are multiple reasons for this:
+
+* Stronger abstraction from the underlying technical conditions: For example, explicit access to the request is no longer necessary.
+* Better separation of the business logic from the view: the Java code can be relatively 
+easily be swapped out in Java classes, while the JSP page itself is just the view.
+
+*weaknesses of Servlet approach*
++
+In larger projects, servlet classes can quickly become confusing because Here HTML and Java code are mixed in one class. 
+With project guidelines could this problem be mitigated, but would probably have to, sooner or later, a small web framework will be developed. 
+Because of the large number of existing this is not necessary for frameworks. 
+It makes more sense to choose a suitable one from the outset select a framework that encapsulates technical aspects.
+
+*Weaknesses of the JSP / JSTL approach*
++
+The use of JSP scripting, JSTL or EL is certainly a significant improvement here compared to the servlet technique. 
+However, there are still some aspects to consider here to take care of:
+* Transfer of data from the request into objects.
+* creation of objects.
+* Generate HTML (although this is already partly inherited from the JSTL becomes).
+* Flow control (which JSP page is called after which user action).
+
+JSF abstracts even more from the underlying technology and provides solutions for the above problems and this should ultimately be motivation enough to delve deeper into JSF in the following chapters.
+
 == JavaServer Faces
 
 Developing with JSF is a bit different than developing with Servlets or JSP pages. 
 JSF is a framework based on the Model 2 - Concept.
+
+*differences to development without JSF*
++
+Development with JSF is further removed from the underlying web technology than in Java web development with servlets and JSP pages. 
+Although the use of EL or JSTL is already a possibility, to a certain extent of JSF still tries to abstract the technical details of a web application to go one step further. 
+JSTL uses tags that mainly have the task of generating certain HTML parts. 
+With JSF one uses Components that are similarly easy to use as the tags, but still offer more possibilities than with simple JSTL tags. 
+Another point is that at a simple web architecture directly on the view (i.e. the servlets and JSP pages, that generate the HTML) is accessed. 
+This is also referred to as Model 1 - web applications.
+
+In contrast, with JSF, the view is not accessed directly, but indirectly via a so-called front controller servlet. 
+That is, the user calls not directly a JSF page, but first the front controller servlet, which in turn calls the JSF page and returns the generated HTML to the user. 
+This is referred to as Model 2 web applications. 
+These web applications are based on the MVC pattern (model view controller) known from fat client development. 
+However, since this pattern does not apply one-to-one to web applications sometimes referred to as the MVC-2 pattern. 
+The following Chapters explain the main approaches and basic techniques in context from JSF:
+
+»History«, p.27
+»Architecture of JSF«, p.29
+»View Declaration Language«, p.30
+»Tag Libraries«, p.31
+"Expression Language", p.33
+"Managed Beans", p.35
+»Annotations vs. Configuration File«, p.54
+"Bindings," p.56
+
+=== History
+
+JSF 1.0 was described in JSR 127 in 2004. 
+A few have come over the years versions until the current version 2.3 was published.
+
+JSF aims to abstract from the underlying technology and existing ones Standardize approaches to Java web development.
+
+*JSF 1.0*
++
+The first JSF version 1.0 was released in March 2004 (Final Release 1) and was not yet part of the Java EE specification (Enterprise Edition).
+
+*JSF 1.1*
++
+This version was still heavily buggy and so two months later the Version 1.1 (Final Release 2) released. 
+In this version, the specification not changed, just bug fixes.
+
+*JSF 1.2*
++
+JSF 1.2 was subsequently released in May 2006 in JSR 252 and also in the Java EE specification 5 added. 
+The following functionalities were added (excerpt):
+* Expression Language:
++
+In the previous versions there is an EL version, which was created specifically for the needs of JSF. 
+This is independent from the EL used in JSP technology. 
+This is due to that older JSF versions (before 1.2) are based on JSP version 2.0 and the
+EL existing there had to remain valid. 
+In JSF 1.2 these were now both EL versions (see »Expression Language«, p. 33).
+
+*Messages to components*
++
+It can now send messages to specific components be linked. 
+This is particularly interesting for validation errors, since the error can now be displayed directly on the component.
+
+*JSF 2.0*
++
+With version 1.2, JSF was widely used. 
+The next version was 2.0 specified in JSR 314 in June 2009 and included in the Java EE specification 6. 
+The following functionalities were added (excerpt):
+
+*Facelets:*
++
+JSP has been replaced as a page declaration language by facelets (see »View Declaration Language«, p.30).
+
+*AJAX (Asynchronous JavaScript and XML):*
++
+This is an asynchronous data transmission between the client (web browser) and the server
+(Web server) (see "Asynchronous JavaScript and XML," p.189).
+
+*Components:*
++
+Own components can be developed without Java code (see »Reuse«, p.215).
+
+*Validation:*
++
+Information on validations can be specified directly at the points where they are needed, e.g. as annotations for the attributes (see »Validation«, p.109).
+
+*Annotations:*
++
+Through the wide use of annotations, JSF applications very easy to configure.
+
+*Resources:*
++
+The management of resources, e.g. CSS (Cascading Style Sheets), has been significantly simplified (see »Management of Resources«, p.183).
+
+*Scope:*
++
+A new scope view has been added.
+
+*JSF 2.1*
++
+A year later (October 2010) version 2.1 was released. 
+In this version mainly errors were fixed and the specification was changed in some places
+reworked. 
+The following functionality was added (excerpt):
+* JSP Document Syntax :
++
+Files in the JSP Document Syntax (file extension .jspx) are treated like facelets.
+
+*JSF 2.2*
++
+The JSF version 2.2 was specified in May 2013 in the JSR 344 and in the Java EE specification 7 included. 
+The following functionalities were added (excerpt):
+* Faces Flows:
++
+Several websites can be combined as processes in flows (see »Faces Flows«, p.237).
+
+* HTML5 support:
++
+HTML5 has a number of new attributes that are included in JSF 2.1 is not supported and therefore cannot be displayed. 
+JSF 2.2 enabled now the specification of "pass through attributes ", which is simply in the generated document (see »HTML5 Friendly Markup«, p.197).
+
+*upload files*
++
+It is now possible with JSF to create a file using the component `h:inputFile` (see »File upload«, p. 143).
+
+*JSF 2.3*
++
+The current JSF version 2.3 was specified in April 2017 in JSR 372 and in the Java EE specification 8 added. 
+The following functionalities were added (excerpt):
+
+* CDI managed beans instead of JSF managed beans:
++
+The management of the objects is the responsibility of the application server and not the JSF framework (see »Managed Beans«, p.35).
+
+* Java support:
++
+Language elements from Java version 8 can be used will.
+
+* WebSocket integration:
++
+Native WebSocket usage is possible (see »WebSocket«, p.201).
+
+* Validation:
++
+Class-level validations can be performed (see »Validation«, p.109).
 
 === Architecture of JSF
 
@@ -267,15 +1049,344 @@ JSF is a Model 2 framework - this is easy to do on the central Front-Controller-
 
 JSF works like a Model 2 application (see »Web Application Architecture«, p. 10). All input and output takes place via Faces Servlet.
 
-=== Configuration of web.xml
-
+*Configuration of web.xml*
++
 In the `web.xml` configuration file, Faces Servlet is specified as the one to be used Servlet not mandatory. 
 The FacesServlet class can automatically be used as the working class can be set for the requests, provided the configuration file `facesconfig.xml` or at least one class with a JSF annotation (e.g. @FacesConfig) is available. 
 This means that the <servlet>...</servlet> area can be omitted. 
 Also optional is the characteristic of the mapping. 
 If the area <servlet-mapping>...</servletmapping> is not set, all `*.xhtml` files are automatically sent to the FacesServlet Posted.
 
-=== Contexts
+*Example*
++
+Optionally, the use of Faces Servlet be defined as follows:
+
+web.xml
+----
+<servlet>
+    <servlet-name>Faces Servlet</servlet-name>
+    <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+</servlet>
+<servlet-mapping>
+    <servlet-name>Faces Servlet</servlet-name>
+    <url-pattern>*.xhtml</url-pattern>
+</servlet-mapping>
+----
+
+NOTE:
+----
+A JSF page can be made available in a web container, too if the Faces servlet is not set up, however, in this case then only the text of a JSF page is displayed without being processed.
+----
+
+*compared with style 2*
++
+Fig. 5.2-1 shows a modified Model 2 mapping, which shows the process of a JSF application again schematically.
+
+image::
+
+Fig. 5.2-1: Process Model 2 in the context of JSF applications.
+
+The illustration makes it clear once again that the Faces Servlet is used in the context of JSF representing the front controller servlet. 
+Strictly speaking, the CDI container creates the managed beans and not the faces servlet. This situation will be discussed later process described in more detail. 
+The individual JSF pages (1.xhtml and 2.xhtml) are created using XHTML and use Facelets as page declaration language. 
+the client receives HTML pages (HTML5 pages to be precise) as a response.
+
+=== View Declaration Language
+
+As VDL (View Declaration Language), the page declaration language becomes one specific technology. 
+With JSF, since JSF 2.0, these are the facelets.
+
+*Facelets vs. JSP*
++
+Facelets replaces JSP as the page declaration language for JSF applications. 
+This has diverse Reasons. 
+As already described in the previous chapters, JSF abstracts more dependent on the underlying technology than JSP. 
+Since JSF 2.0, Facelets is used as primary page declaration language used. 
+Before JSF 2.0, JSP was used as the primary page declaration language used. 
+The aim was to enable developers to switch from JSP to JSF as easy as possible.
+
+*life cycle*
++
+Facelets and JSP go through very different lifecycles. 
+A JSP page will loaded on first request. 
+The JSP page becomes a JSP class (servlet) transformed and remains available as long as the web server is started and the JSP page has not been modified. 
+The life cycle of JSF pages is much more complex (see "The JSF Life Cycle," p.165). Various tasks (e.g. render, validate, convert) are processed in a specific order.
+
+The situation becomes especially problematic when the two technologies are combined will. This is the case when JSF elements and HTML elements are used at the same time be used. The HTML elements are displayed directly when creating the view, while the JSF elements in the component tree (see »Component Tree«, p.161) and only generated at the end of the life cycle. 
+With new ones Applications should use Facelets as page declaration language. 
+Facelets is a lightweight page declaration language, which uses XHTML elements created the JSF pages and the component tree.
+
+=== Tag Libraries
+
+Tags are familiar from ordinary XHTML pages. 
+JSF tags are more complex Constructs used to build a JSF page. 
+In tag libraries (Tag Library) the tags are defined. 
+JSF supports various tag libraries.
+
+Various tag libraries can be used in facelets. 
+In Table 5.4-1 the tag libraries supported by facelets are listed (excerpt).
+
+|====
+|Tag-library
+|URI
+|prefix
+
+|JavaServer Faces Facelets
+|http://xmlns.jcp.org/jsf/facelets
+|ui:
+
+|JavaServer Faces HTML
+|http://xmlns.jcp.org/jsf/html
+|h:
+
+|JavaServer Faces Core
+|http://xmlns.jcp.org/jsf/core
+|f:
+
+|Pass-through Elements
+|http://xmlns.jcp.org/jsf/passthrough
+|jsf:
+
+|Pass-through Attributes
+|http://xmlns.jcp.org/jsf
+|p:
+
+|JSTL Core
+|http://xmlns.jcp.org/jsp/jstl/core
+|c:
+
+|JSTL Functions
+|http://xmlns.jcp.org/jsp/jstl/functions
+|fn:
+|====
+Table. 5.4-1: Supported tag libraries.
+
+Depending on the required functionality, a corresponding tag library can be used will. 
+A combination of the libraries is also possible. 
+With the one shown prefix is just the default prefix. 
+This can also be used if required get a different abbreviation. 
+For a list of all available tags go to [Orac18a]. 
+In this book, the standard prefix of each discussed Tags always specified.
+
+*Facelets*
++
+The JavaServer Faces Facelets Tag Library contains all tags required for using templating are necessary (see »Templating«, p.81) (excerpt):
+
+* ui:component
+* ui:insert
+* ui:repeat
+* ui:param
+
+
+*HTML*
++
+The JavaServer Faces HTML Tag Library contains tags for all UIComponent objects. 
+There-where are the components that generate the HTML code (excerpt):
+
+* h:head
+* h:body
+* h:form
+* h:outputText
+* h:inputText
+* h:message
+* h:messages
+
+*Core*
++
+The JavaServer Faces Core Tag Library contains tags for all components that require basic 
+enable actions independent of a specific render kit (excerpt):
+
+* f:actionListener
+* f:attribute
+* f:param
+* f:loadBundle
+* f:validateLength
+
+*Pass-through Elements*
++
+The Pass-through Elements Tag Library contains tags for HTML5 support friendly markup (excerpt):
+* jsf:id
+* jsf:element
+
+*Pass-through Attributes*
++
+The Pass-through Attributes Tag Library contains tags for HTML5 support friendly markup (excerpt):
+* p:type
+
+*JSTL Core*
++
+The JSTL Core Tag Library contains tags for frequently used functions (excerpt):
+
+* c:catch
+* c:choose
+* c:forEach
+* c:if
+* c:when
+
+*JSTL Functions*
++
+The JSTL Functions Tag Library contains tags for standard functions where mostly a manipulation of texts is carried out (excerpt):
+
+* fn:contains
+* fn:toUpperCase
+* fn:toLowerCase
+* fn:trim
+
+*Component, renderers, handlers*
++
+A typical pure JSP application using JSTL is pronounced- finally by tags. 
+With JSF, however, it's not just tags that are used. 
+Rather, the tag is just a link between the JSF page and the component, renderer or handlers. 
+The component provides the actual functionality and uses a Renderer for the rendering (depending on the context, e.g. HTML code). 
+A special one Java class (called tag handler) can be defined as a tag's "handling class" 
+and is called when building the component tree. 
+For that she has to Class javax.faces.view.facelets.TagHandler can be extended. 
+If no tag handler is defined, Facelets creates a default tag handler. 
+Furthermore, it is possible Create tag handlers specific to the component. 
+For this, the class javax.faces.view.facelets.ComponentHandler are extended.
+
+The structure of a JSF component is illustrated in Fig. 5.4-1. 
+In the TLD must at either a component or a tag handler can be entered in a tag. Additionally a specific renderer can be configured for a component.
+
+image::
+
+Fig. 5.4-1: JSF component.
+
+In JSF, the tags are only used as placeholders in the JSF pages. 
+For example, you speak from putting a tag in the JSF page. 
+However, if you talk about that Generating HTML, one usually refers to the component or the used renderer.
+
+Compared to simple tags, components have more possibilities. 
+These options will be discussed in more detail later.
+
+=== Expression Language
+
+The EL (Expression Language) enables communication between the Views and the business logic.
+
+The EL (Expression Language) was initially created with the JSTL under the name SPEL
+(Simplest Possible Expression Language) introduced. 
+Since JSP 2.0, EL expressions can also be used outside of JSTL tags to separate Java code from the JSP portion separate.
+
+With the introduction of JSF, a corresponding EL was also specified, which is JSF context could be used. 
+A separate EL for JSF was necessary because the ELExpressions be evaluated directly in JSP (when parsing the page). 
+The Life Cycle of JSF applications is more complicated and therefore the EL expressions can also be used in be evaluated at a later stage.
+
+The Expression Language is currently available in version 3.0. 
+This is fundamental independent of JSP and JSF, but combines the "JSP-EL" and the "JSF-EL". 
+The specification can be viewed at [Orac13].
+
+*evaluation*
++
+The EL differentiates between immediate and deferred evaluation.
+
+* Immediate
++
+With immediate, a specific expression is evaluated and returned as soon as the page was first rendered. 
+This behavior is already known from JSP. 
+This type of evaluation is specified with "$" and can only be read on certain access attribute values.
+
+* Deferred
++
+In contrast, with deferred, the evaluation can take place at a different phase of the life cycle are carried out. 
+This type of evaluation is specified using "#". 
+and has both read and write access to attribute values. 
+Additionally methods can also be evaluated. 
+This is not possible with immediate.
+
+NOTE:
+The preferred page declaration language, Facelets, does not distinguish between immediate
+and deferred. 
+The expressions with "$" are treated in the same way how "#". 
+It is always a deferred evaluation.
+
+*Expressions value and method*
++
+There are two types of expressions: value expression and method expression.
+
+*Value expression*
++
+With value expression, you can still choose between rvalue (read-only data) and lvalue (data read and write) can be distinguished. 
+This is an access on attribute values. 
+Expressions with "$" are always rvalue, while expressions with "#" rvalue or lvalue (depending on the underlying technology).
+NOTE:
+Facelets treat expressions with "$" the same as "#". 
+Access can be read or done in writing.
+
+*Method expression*
++
+With method expression, methods are invoked. 
+These methods must be public and can provide a return value. 
+Parameters can also be set these methods are passed.
+
+NOTE:
+Because a method can be called at different stages of its life cycle it is always a matter of deferred evaluation. 
+The expressions will i.e. introduced with »#«.
+
+Example:
+DemoEL
+The following example uses the types value expression and method expression shown. 
+An object of class jsf.beans.Output named output (@Named("output")) as a managed bean in session scope (@SessionScoped) made available. 
+Managed beans are objects managed by the application server to get managed. 
+The objects are generated automatically. 
+the Configuration of such objects is described in the "Managed Beans" chapter. 
+The web.xml configuration file is not shown here.
+
+Output.java
+----
+@Named("output")
+@SessionScoped
+public class Output implements Serializable {
+    private String param;
+    private boolean selection = false;
+    // Getter und Setter
+    ...
+    public String spend(String parameter) {
+        this.selection = true;
+        return parameter + " and " + this.param;
+    }
+}
+----
+
+index.xhtml
+----
+<h:body>
+<h:form>
+    <h:inputText value="#{output.param}" />
+    <h:commandButton value="send" />
+</h:form>
+<h:outputText value="Output 1: #{output.param}" rendered="#{output.selection!=false}" />
+<h:outputText value="Output 2: #{output.spend('parameter')}" />
+<h:outputText value="Output 3: #{output.param}" rendered="#{output.selection!=false}" />
+</h:body>
+----
+
+*Explanation*
++
+The first time the page is called up, the following result is displayed:
+
+Output 2: parameter and null
+Output 3:
+
+The first output is not generated because it first checks whether output.selection!=false. 
+This is not the case when the page is called up for the first time, since this value is initially assigned false. 
+The second output calls the method String Output(String parameter) and passes the  parameter value parameter. 
+Within the method, selection=true is set and then the concatenated value parameter, "and" and the value of param are printed. 
+Since there is no value for param is present, null is returned. 
+The third output is rendered because at the value selection=true was set in the previous method call. 
+The condition is thus fulfilled.
+
+Sending the value input produces the following output:
+Output 1: input
+Output 2: parameters and input
+Output 3: input
+
+The conditions for the first and third editions are met and it is now a Value for param present.
+
+=== Managed Beans
+==== Introduction to managed beans
+==== Contexts and Dependency Injection
+==== Contexts
 
 There are different areas of validity (also: scopes) that determine how long an object has existed and from where it can be accessed.
 
@@ -294,6 +1405,14 @@ Exactly this definition is called the scope.
 +
 A username e.g. B. is clearly user-related. 
 But also information like a search query, a search result or a data record to be processed are user-related information that is only available to a specific user.
+
+==== Dependency Injection
+
+==== Advanced configuration
+
+=== Annotations vs. Configuration File
+
+=== Bindings
 
 == Case study blog application overview
 
@@ -1331,10 +2450,10 @@ Example 2:
 +
 messageForExample.html
 ----
-<h:inputText id="firstName" value="#{benutzer.firstName}"
+<h:inputText id="firstName" value="#{user.firstName}"
 required="true" />
 <h:message for="firstName" />
-<h:inputText id="lastName" value="#{benutzer.lastName}"
+<h:inputText id="lastName" value="#{user.lastName}"
 required="true" />
 <h:message for="lastName" />
 <h:commandButton value="OK" />
