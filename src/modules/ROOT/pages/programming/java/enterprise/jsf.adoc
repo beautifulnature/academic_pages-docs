@@ -1546,6 +1546,116 @@ Exactly this definition is called the scope.
 A username e.g. B. is clearly user-related. 
 But also information like a search query, a search result or a data record to be processed are user-related information that is only available to a specific user.
 
+*areas of validity*
++
+Depending on the requirements, there are various ways of using an object:
+* RequestScoped: The object can be used as long as the current user request (Request) is processed. 
+So also if the request to another page is forwarded. 
+The request only ends after the response has been fully written and processing is complete.
+* ViewScoped: A new object is created for each view (also View). 
+Only when the view is changed, the object is no longer available. 
+Here acts it is a JSF defined scope.
+* ApplicationScoped: The object can be scoped within the entire application (and thus
+used by all users).
+
+There are a number of other areas of validity (excerpt):
+* ConversationScoped: An object is available for the duration of a "conversation".
+* TransactionScoped: Objects of this scope are within the scope of an active transaction available.
+* FlowScoped: A flow describes a unit of work. 
+Managed by the application server Managed beans are only valid in the respective flows and can be used by other flows are not accessible. 
+The topic is addressed in the chapter »Faces Flows«, p.237.
+
+In addition, there are "pseudo scopes":
+* Dependent: Here, the lifecycle of an object is dependent on the lifecycle of one
+parent object (CDI managed bean).
+* Singleton: A singleton represents a "single" object of a class.
+
+Instead of defining yourself how the object should be used, it just becomes an abstract one Scope set. 
+The technical details, where and how the object exactly stored are hidden from the developer. 
+So here is from the underlying technology abstracted.
+
+The areas of validity can be user-dependent or user-independent. 
+In the fig. 5.6-2 this connection is illustrated again.
+
+image::
+
+Fig. 5.6-2: Matrix of the areas of validity and their access options.
+
+*Access*
++
+All managed objects can be programmatically accessed through a class called BeanManager be determined. 
+However, implementation is first for a web developer not interesting. 
+Where the object is actually stored doesn't matter Role. 
+It only matters when and from where the object is accessed can.
+
+*LifeSpan*
++
+Resulting from storing the object in a specific scope. However, not only access restrictions apply (e.g. a user can only access objects its own session), but also the "lifetime" of the object determined by the scope in which it is stored. 
+Such is an object which is annotated with RequestScoped, accessible only as long as the request currently being processed. 
+Fig. 5.6-3 compares the lifetimes of the areas of validity.
+
+Due to the validity principle, the technical realization does not have to be considered. 
+This simplifies the development and improves the comprehensibility of the application, because you can see at a glance in which scope the object is located.
+
+image::
+Fig. 5.6-3: Scope: comparison of the service lives.
+
+image::
+Fig. 5.6-4: Areas of validity: example.
+
+The User class looks like this:
+User.java
+----
+public class User implements Serializable {
+    private int age;
+    public User() {
+    }
+    public User(int age) {
+        System.out.println("User with Age '" +age + "' created");
+        this.age = age;
+    }
+    public int getAge() {
+        System.out.println("Method getAge");
+        return this.age;
+    }
+    public void raiseAge() {
+        System.out.println("Method raiseAge");
+        this.age++;
+    }
+}
+----
+
+Via a "helper class" UserBean, objects of the User class are converted into the following Scopes provided:
+
+* RequestScoped: Accessed via userBean.request. Initialization at age 10.
+* ViewScoped: Accessed via userBean.view. Initialization at age 20.
+* SessionScoped : Accessed via userBean.session. Initialization at age 30.
+* ApplicationScoped : Accessed via userBean.application. Initialization with age 40
+
+For better differentiation, different ages are specified when the object is created. 
+The concepts used for generation are described in chapter »Further configuration«, p.48.
+
+A JSF page is created for each scope, which contains a form with an output (component h:outputText) and a button (component h:commandButton) contains. 
+The indexRequest.xhtml file is shown as an example. 
+Analogous pages are created for the other areas of validity.
+
+indexRequest.xhtml
+----
+<h:body>
+<h:form>
+    <h:outputText value="#{userBean.request.age}" />
+    <h:commandButton value="Increase Age" action="#{userBean.request.increaseAge}" />
+</h:form>
+</h:body>
+----
+
+The different validity areas are compared with each other. 
+The object creations are each highlighted.
+
+*Compare requests Scoped with View scoped*
++
+In the following, the scope of application RequestScoped with the valid Scope ViewScoped can be compared. 
+For this purpose, the calls to the JSF page indexRequest.xhtml compared to the indexView.xhtml JSF page calls (ref. Table. 5.6-1).
 ==== Dependency Injection
 
 ==== Advanced configuration
@@ -1553,6 +1663,12 @@ But also information like a search query, a search result or a data record to be
 === Annotations vs. Configuration File
 
 === Bindings
+
+The term binding describes the connection of a component to properties (Value Binding or Instance Binding) or methods (Method Binding).
+
+Bindings are used to link components with properties or methods of a managed link bean. Value binding links the value of a component with a managed bean property. Instance binding links the "entire"
+Component with a managed bean property. Method Binding links a
+"Action" of a component with a method of a managed bean.
 
 == Case study blog application overview
 
