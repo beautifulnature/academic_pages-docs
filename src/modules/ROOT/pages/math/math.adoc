@@ -1,0 +1,9 @@
+[[Mathematics]]
+= Mathematics
+:doctype: book
+:sectnums:
+:icons: font
+
+include::integers.adoc[leveloffset=+1]
+
+include::calculus.adoc[leveloffset=+1]

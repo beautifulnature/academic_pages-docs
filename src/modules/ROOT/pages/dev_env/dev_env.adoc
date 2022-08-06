@@ -4,6 +4,8 @@
 :sectnums:
 :icons: font
 
+include::automation.adoc[leveloffset=+1]
+
 include::cli.adoc[leveloffset=+1]
 
 include::eclipse.adoc[leveloffset=+1]
@@ -14,12 +16,18 @@ include::maven.adoc[leveloffset=+1]
 
 include::npm.adoc[leveloffset=+1]
 
+include::nvm.adoc[leveloffset=+1]
+
 include::proxy-config.adoc[leveloffset=+1]
 
 include::sdk_manager.adoc[leveloffset=+1]
+
+include::servers.adoc[leveloffset=+1]
 
 include::short_x.adoc[leveloffset=+1]
 
 include::webpack.adoc[leveloffset=+1]
 
 include::wsl.adoc[leveloffset=+1]
+
+include::git.adoc[leveloffset=+1]

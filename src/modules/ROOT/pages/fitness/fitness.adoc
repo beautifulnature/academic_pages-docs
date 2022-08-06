@@ -11,3 +11,5 @@ Overcoming Gravity
 
 == youtube
 Calisthenicmovement https://www.youtube.com/channel/UCZIIRX8rkNjVpP-oLMHpeDw
+
+include::diet.adoc[leveloffset=+1]
