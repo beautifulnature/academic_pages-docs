@@ -1,4 +1,9 @@
+[[EFQM]]
 = Assessor Workshop
+:page-aliases: ../index.adoc
+:doctype: book
+:sectnums:
+:icons: font
 
 EFQM= Evaluation of Financial Quality Management
 
