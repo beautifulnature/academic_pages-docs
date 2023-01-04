@@ -1,7 +1,7 @@
 [[Introduction]]
 = Electrical Technology
 // Redirect to this page from .../docs/optaplanner/latest.
-:page-aliases: ../index.adoc
+:page-aliases: ../electrical.adoc
 :doctype: book
 :sectnums:
 :icons: font
